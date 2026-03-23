@@ -1,1026 +1,4676 @@
 {
-  "title": "ALEKS Prep",
+  "title": "GSBE ALEKS Prep",
+  "metadata": {
+    "version": "v2-five-level-bank",
+    "notes": "Original multiple-choice questions written to mirror ALEKS/ACCUPLACER skill coverage. Not copied from proprietary tests.",
+    "totalTopics": 15,
+    "totalQuestions": 225,
+    "questionsPerTopic": 15,
+    "levelsPerTopic": 5,
+    "questionsPerLevelPerTopic": 3,
+    "difficultyScale": {
+      "1": "Foundations",
+      "2": "Core Skills",
+      "3": "Placement Ready",
+      "4": "Advanced",
+      "5": "Stretch / Precalculus Bridge"
+    },
+    "sourceBasis": [
+      "ALEKS PPL topic coverage",
+      "ACCUPLACER QAS topic coverage",
+      "ACCUPLACER AAF topic coverage",
+      "University math placement study guides",
+      "Uploaded ALEKS-style study guide"
+    ]
+  },
   "topics": [
     {
+      "id": "real_numbers",
       "name": "Real Numbers, Fractions, and Percents",
+      "alignment": [
+        "ALEKS PPL: real numbers",
+        "ACCUPLACER QAS: rational numbers"
+      ],
       "questions": [
         {
-          "question": "Which of the following is NOT a real number?",
+          "id": "real_numbers_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "fraction addition",
+          "question": "What is 3/4 + 5/8 ?",
           "choices": [
-            "√25",
-            "-7/3",
-            "π",
-            "√(-4)"
-          ],
-          "answer": 3,
-          "explanation": "√25 = 5, -7/3 is rational, and π is irrational but still real. √(-4) is not a real number."
-        },
-        {
-          "question": "Evaluate: (-8) + 15 - (-3) - 6",
-          "choices": [
-            "1",
-            "4",
-            "-2",
-            "10"
-          ],
-          "answer": 1,
-          "explanation": "Compute step by step: -8 + 15 = 7, 7 - (-3) = 10, and 10 - 6 = 4."
-        },
-        {
-          "question": "Which fraction is equivalent to 40%?",
-          "choices": [
-            "2/5",
-            "4/5",
-            "3/7",
-            "5/12"
-          ],
-          "answer": 0,
-          "explanation": "40% = 40/100 = 2/5."
-        },
-        {
-          "question": "Simplify: 3/4 + 5/6",
-          "choices": [
-            "19/12",
-            "7/10",
-            "3/2",
-            "17/12"
-          ],
-          "answer": 0,
-          "explanation": "Use a common denominator of 12: 3/4 = 9/12 and 5/6 = 10/12, so the sum is 19/12."
-        },
-        {
-          "question": "A shirt costs $50 and is on sale for 30% off. What is the sale price?",
-          "choices": [
-            "$15",
-            "$20",
-            "$35",
-            "$40"
+            "13/8",
+            "1 1/2",
+            "1 3/8",
+            "1 1/4"
           ],
           "answer": 2,
-          "explanation": "30% of $50 is $15, so the sale price is $50 - $15 = $35."
+          "correctChoice": "1 3/8",
+          "explanation": "Rewrite 3/4 as 6/8. Then 6/8 + 5/8 = 11/8 = 1 3/8.",
+          "tags": [
+            "fractions",
+            "addition"
+          ]
         },
         {
-          "question": "A recipe uses 2.5 cups of flour for 4 servings. How many cups are needed for 10 servings?",
-          "choices": [
-            "5",
-            "6.25",
-            "7.5",
-            "10"
-          ],
-          "answer": 1,
-          "explanation": "Use proportional reasoning: 2.5/4 = 0.625 cup per serving. For 10 servings, 0.625 × 10 = 6.25 cups."
-        },
-        {
-          "question": "What is the percent increase from 80 to 92?",
-          "choices": [
-            "12%",
-            "15%",
-            "18%",
-            "20%"
-          ],
-          "answer": 1,
-          "explanation": "The increase is 12. Divide by the original value: 12/80 = 0.15 = 15%."
-        },
-        {
-          "question": "In a survey, 30 students like red jelly beans, 29 like green jelly beans, and 17 like both. If 50 students were surveyed, how many like neither red nor green?",
+          "id": "real_numbers_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "percent of a number",
+          "question": "What is 25% of 64?",
           "choices": [
             "8",
-            "12",
-            "16",
-            "20"
+            "24",
+            "32",
+            "16"
+          ],
+          "answer": 3,
+          "correctChoice": "16",
+          "explanation": "25% means 1/4. One fourth of 64 is 16.",
+          "tags": [
+            "percents",
+            "part-of-whole"
+          ]
+        },
+        {
+          "id": "real_numbers_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "decimal to percent",
+          "question": "Write 0.45 as a percent.",
+          "choices": [
+            "450%",
+            "4.5%",
+            "0.45%",
+            "45%"
+          ],
+          "answer": 3,
+          "correctChoice": "45%",
+          "explanation": "Move the decimal two places to the right when converting a decimal to a percent: 0.45 = 45%.",
+          "tags": [
+            "decimals",
+            "percents"
+          ]
+        },
+        {
+          "id": "real_numbers_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "mixed number subtraction",
+          "question": "What is 2 1/3 - 5/6 ?",
+          "choices": [
+            "1 1/6",
+            "1 3/4",
+            "1 2/3",
+            "1 1/2"
+          ],
+          "answer": 3,
+          "correctChoice": "1 1/2",
+          "explanation": "Convert 2 1/3 to 7/3, then to sixths: 14/6 - 5/6 = 9/6 = 3/2 = 1 1/2.",
+          "tags": [
+            "fractions",
+            "mixed-numbers"
+          ]
+        },
+        {
+          "id": "real_numbers_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "discount",
+          "question": "A sweatshirt costs $80 before a 20% discount. What is the sale price?",
+          "choices": [
+            "$68",
+            "$60",
+            "$64",
+            "$72"
+          ],
+          "answer": 2,
+          "correctChoice": "$64",
+          "explanation": "A 20% discount is 0.20 \u00d7 80 = 16 dollars. Subtract: 80 - 16 = 64.",
+          "tags": [
+            "percents",
+            "discount"
+          ]
+        },
+        {
+          "id": "real_numbers_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "comparing forms",
+          "question": "Which value is greatest?",
+          "choices": [
+            "62%",
+            "0.58",
+            "3/5",
+            "0.6"
           ],
           "answer": 0,
-          "explanation": "Use inclusion-exclusion: 30 + 29 - 17 = 42 students like at least one of the two colors. Then 50 - 42 = 8 like neither."
+          "correctChoice": "62%",
+          "explanation": "Convert each to decimals: 62% = 0.62, 3/5 = 0.6, 0.58 = 0.58, and 0.6 = 0.60. The greatest is 0.62.",
+          "tags": [
+            "comparison",
+            "percents",
+            "fractions",
+            "decimals"
+          ]
+        },
+        {
+          "id": "real_numbers_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "find whole from percent",
+          "question": "If 18 is 30% of a number, what is the number?",
+          "choices": [
+            "54",
+            "60",
+            "90",
+            "45"
+          ],
+          "answer": 1,
+          "correctChoice": "60",
+          "explanation": "Set up 0.30x = 18. Divide by 0.30 to get x = 60.",
+          "tags": [
+            "percents",
+            "equation"
+          ]
+        },
+        {
+          "id": "real_numbers_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "pre-tax price",
+          "question": "A purchase total is $53.50 after 7% sales tax. What was the price before tax?",
+          "choices": [
+            "$50",
+            "$49.95",
+            "$57.25",
+            "$46.50"
+          ],
+          "answer": 0,
+          "correctChoice": "$50",
+          "explanation": "Let p be the pre-tax price. Then 1.07p = 53.50, so p = 53.50 / 1.07 = 50.",
+          "tags": [
+            "percents",
+            "tax"
+          ]
+        },
+        {
+          "id": "real_numbers_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "percent increase",
+          "question": "A value rises from 40 to 52. What is the percent increase?",
+          "choices": [
+            "35%",
+            "12%",
+            "25%",
+            "30%"
+          ],
+          "answer": 3,
+          "correctChoice": "30%",
+          "explanation": "The increase is 12. Divide by the original value: 12/40 = 0.30 = 30%.",
+          "tags": [
+            "percents",
+            "change"
+          ]
+        },
+        {
+          "id": "real_numbers_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "complex fraction arithmetic",
+          "question": "What is (3/4 - 1/6) \u00f7 (5/8) ?",
+          "choices": [
+            "7/10",
+            "15/14",
+            "5/6",
+            "14/15"
+          ],
+          "answer": 3,
+          "correctChoice": "14/15",
+          "explanation": "First compute 3/4 - 1/6 = 9/12 - 2/12 = 7/12. Then divide by 5/8: 7/12 \u00d7 8/5 = 56/60 = 14/15.",
+          "tags": [
+            "fractions",
+            "complex-fractions"
+          ]
+        },
+        {
+          "id": "real_numbers_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "successive discounts",
+          "question": "A backpack is marked down 20% and then another 10%. If the original price is $150, what is the final price?",
+          "choices": [
+            "$105",
+            "$120",
+            "$110",
+            "$108"
+          ],
+          "answer": 3,
+          "correctChoice": "$108",
+          "explanation": "After 20% off, the price is 0.80 \u00d7 150 = 120. After another 10% off, the price is 0.90 \u00d7 120 = 108.",
+          "tags": [
+            "percents",
+            "successive-change"
+          ]
+        },
+        {
+          "id": "real_numbers_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "overall percent change",
+          "question": "A quantity increases by 10% and then decreases by 15%. What is the overall percent change?",
+          "choices": [
+            "5% increase",
+            "8.5% decrease",
+            "5% decrease",
+            "6.5% decrease"
+          ],
+          "answer": 3,
+          "correctChoice": "6.5% decrease",
+          "explanation": "Multiply the change factors: 1.10 \u00d7 0.85 = 0.935. The final value is 93.5% of the original, so the overall change is a 6.5% decrease.",
+          "tags": [
+            "percents",
+            "successive-change"
+          ]
+        },
+        {
+          "id": "real_numbers_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "weighted average",
+          "question": "An exam average uses 40% from Test 1 and 60% from Test 2. If a student scores 78 on Test 1 and 86 on Test 2, what is the weighted average?",
+          "choices": [
+            "82",
+            "82.8",
+            "81.2",
+            "84"
+          ],
+          "answer": 1,
+          "correctChoice": "82.8",
+          "explanation": "Compute 0.40(78) + 0.60(86) = 31.2 + 51.6 = 82.8.",
+          "tags": [
+            "weighted-average",
+            "percents"
+          ]
+        },
+        {
+          "id": "real_numbers_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "original price after discount and tax",
+          "question": "After a 20% discount and then 7.5% sales tax, a jacket costs $86. What was the original price to the nearest cent?",
+          "choices": [
+            "$100",
+            "$107.50",
+            "$92.47",
+            "$95.35"
+          ],
+          "answer": 0,
+          "correctChoice": "$100",
+          "explanation": "Let p be the original price. After discount and tax, the price is 1.075 \u00d7 0.80p = 0.86p. Since 0.86p = 86, p = 100.",
+          "tags": [
+            "percents",
+            "tax",
+            "discount"
+          ]
+        },
+        {
+          "id": "real_numbers_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "multi-step percent",
+          "question": "A store raises a price from $48 to $54 and then to $60. What is the total percent increase from the original price?",
+          "choices": [
+            "30%",
+            "20%",
+            "25%",
+            "22.5%"
+          ],
+          "answer": 2,
+          "correctChoice": "25%",
+          "explanation": "Compare the final price to the original: (60 - 48) / 48 = 12/48 = 0.25 = 25%.",
+          "tags": [
+            "percents",
+            "multi-step"
+          ]
         }
       ]
     },
     {
-      "name": "Linear Equations and Inequalities",
+      "id": "ratios_proportions",
+      "name": "Ratios, Proportions, and Applied Arithmetic",
+      "alignment": [
+        "ACCUPLACER QAS: ratio and proportional relationships",
+        "University placement study guides: proportional reasoning and unit rates"
+      ],
       "questions": [
         {
-          "question": "Solve: 3x - 7 = 11",
+          "id": "ratios_proportions_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "basic proportion",
+          "question": "Solve the proportion x/5 = 12/15.",
           "choices": [
-            "x = 4",
-            "x = 5",
-            "x = 6",
-            "x = 7"
-          ],
-          "answer": 2,
-          "explanation": "Add 7 to both sides to get 3x = 18, then divide by 3."
-        },
-        {
-          "question": "Solve: 5(x - 2) = 3x + 8",
-          "choices": [
-            "x = 7",
-            "x = 8",
-            "x = 9",
-            "x = 10"
-          ],
-          "answer": 2,
-          "explanation": "Distribute: 5x - 10 = 3x + 8. Then 2x = 18, so x = 9."
-        },
-        {
-          "question": "Solve the inequality: 4x - 5 ≤ 11",
-          "choices": [
-            "x ≤ 3",
-            "x ≤ 4",
-            "x ≥ 4",
-            "x ≥ 3"
-          ],
-          "answer": 1,
-          "explanation": "Add 5 to get 4x ≤ 16, then divide by 4."
-        },
-        {
-          "question": "Solve the compound inequality: -2 < 3x + 1 ≤ 10",
-          "choices": [
-            "-1 < x ≤ 3",
-            "-1 ≤ x < 3",
-            "-3 < x ≤ 1",
-            "-3 ≤ x < 1"
-          ],
-          "answer": 0,
-          "explanation": "Subtract 1 from all parts: -3 < 3x ≤ 9. Divide by 3: -1 < x ≤ 3."
-        },
-        {
-          "question": "Solve: |2x - 3| = 7",
-          "choices": [
-            "x = 5 or x = -2",
-            "x = 2 or x = -5",
-            "x = 5 only",
-            "x = -2 only"
-          ],
-          "answer": 0,
-          "explanation": "Set up two cases: 2x - 3 = 7 gives x = 5, and 2x - 3 = -7 gives x = -2."
-        },
-        {
-          "question": "What is the slope of the line through (-1, 4) and (3, -2)?",
-          "choices": [
-            "-3/2",
-            "3/2",
-            "-2/3",
-            "2/3"
-          ],
-          "answer": 0,
-          "explanation": "Slope = (−2 − 4)/(3 − (−1)) = −6/4 = −3/2."
-        },
-        {
-          "question": "Which equation represents the line with slope 3 passing through (2, -1)?",
-          "choices": [
-            "y = 3x + 5",
-            "y = 3x - 7",
-            "y = -3x + 5",
-            "y = -3x - 7"
-          ],
-          "answer": 1,
-          "explanation": "Use point-slope form: y + 1 = 3(x - 2). Simplify to y = 3x - 7."
-        },
-        {
-          "question": "Solve the inequality: 7 - 2(3x - 1) > 15",
-          "choices": [
-            "x > -1",
-            "x < -1",
-            "x > 1",
-            "x < 1"
-          ],
-          "answer": 1,
-          "explanation": "Distribute: 7 - 6x + 2 > 15, so 9 - 6x > 15. Then -6x > 6, and dividing by -6 flips the inequality: x < -1."
-        }
-      ]
-    },
-    {
-      "name": "Systems and Modeling",
-      "questions": [
-        {
-          "question": "Solve the system: x + y = 9 and x - y = 3",
-          "choices": [
-            "(6, 3)",
-            "(3, 6)",
-            "(4, 5)",
-            "(5, 4)"
-          ],
-          "answer": 0,
-          "explanation": "Add the equations to get 2x = 12, so x = 6. Then y = 3."
-        },
-        {
-          "question": "Solve the system: 2x + 3y = 12 and x - y = 1",
-          "choices": [
-            "(3, 2)",
-            "(2, 3)",
-            "(4, 1)",
-            "(1, 4)"
-          ],
-          "answer": 0,
-          "explanation": "From x - y = 1, get x = y + 1. Substitute: 2(y + 1) + 3y = 12, so 5y = 10 and y = 2. Then x = 3."
-        },
-        {
-          "question": "How many solutions does the system y = 2x + 1 and 4x - 2y = -2 have?",
-          "choices": [
-            "No solution",
-            "Exactly one solution",
-            "Infinitely many solutions",
-            "Exactly two solutions"
-          ],
-          "answer": 2,
-          "explanation": "Rewrite 4x - 2y = -2 as -2y = -4x - 2, so y = 2x + 1. Both equations are the same line."
-        },
-        {
-          "question": "At a convenience store, 3 bags of chips and 4 containers of dip cost $18. Also, 7 bags of chips and 3 containers of dip cost $23. What is the cost of one bag of chips?",
-          "choices": [
-            "$1",
-            "$2",
-            "$3",
-            "$4"
-          ],
-          "answer": 1,
-          "explanation": "Let c be chips and d be dip. Solve 3c + 4d = 18 and 7c + 3d = 23. The solution is c = 2 and d = 3."
-        },
-        {
-          "question": "How many liters of a 50% solution are needed to make 30 liters of a 30% solution by mixing it with a 20% solution?",
-          "choices": [
+            "6",
             "5",
-            "10",
-            "15",
-            "20"
-          ],
-          "answer": 1,
-          "explanation": "Let x be liters of 50% solution. Then 0.5x + 0.2(30 - x) = 0.3(30). Solving gives x = 10."
-        },
-        {
-          "question": "Two cars leave the same town at the same time in opposite directions. One travels 50 mph and the other 60 mph. After how many hours will they be 220 miles apart?",
-          "choices": [
-            "1.5",
-            "2",
-            "2.5",
+            "4",
             "3"
           ],
-          "answer": 1,
-          "explanation": "Their combined speed is 110 mph, so time = distance/rate = 220/110 = 2 hours."
+          "answer": 2,
+          "correctChoice": "4",
+          "explanation": "Cross-multiply: 15x = 5 \u00d7 12 = 60, so x = 4.",
+          "tags": [
+            "proportion",
+            "cross-multiplication"
+          ]
         },
         {
-          "question": "A rental company charges a daily fee plus a mileage fee. One customer paid $111 for 3 days and 300 miles. Another paid $199 for 5 days and 600 miles. What is the daily fee?",
+          "id": "ratios_proportions_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "unit rate",
+          "question": "A car travels 210 miles in 3.5 hours. What is its average speed?",
           "choices": [
-            "$14",
-            "$18",
-            "$20",
-            "$23"
+            "70 miles per hour",
+            "55 miles per hour",
+            "60 miles per hour",
+            "45 miles per hour"
           ],
-          "answer": 3,
-          "explanation": "Let d be daily fee and m be mileage fee. Solve 3d + 300m = 111 and 5d + 600m = 199. The solution is d = 23 and m = 0.14."
+          "answer": 2,
+          "correctChoice": "60 miles per hour",
+          "explanation": "Average speed is distance divided by time: 210 \u00f7 3.5 = 60 miles per hour.",
+          "tags": [
+            "unit-rate",
+            "rate"
+          ]
         },
         {
-          "question": "A jar contains 34 coins, all nickels and dimes, worth $2.80 in total. How many dimes are in the jar?",
+          "id": "ratios_proportions_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "part-to-whole ratio",
+          "question": "Red to blue marbles are in the ratio 3:2. If there are 25 marbles total, how many are red?",
           "choices": [
             "12",
-            "18",
+            "15",
             "20",
+            "10"
+          ],
+          "answer": 1,
+          "correctChoice": "15",
+          "explanation": "The ratio has 3 + 2 = 5 equal parts. Each part is 25 \u00f7 5 = 5, so the number of red marbles is 3 \u00d7 5 = 15.",
+          "tags": [
+            "ratios",
+            "part-whole"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "recipe scaling",
+          "question": "A recipe for 8 servings uses 3 cups of rice. How many cups are needed for 20 servings?",
+          "choices": [
+            "8 cups",
+            "5 cups",
+            "7.5 cups",
+            "6 cups"
+          ],
+          "answer": 2,
+          "correctChoice": "7.5 cups",
+          "explanation": "Use the scale factor 20/8 = 2.5. Then 3 \u00d7 2.5 = 7.5 cups.",
+          "tags": [
+            "proportion",
+            "scaling"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "direct variation",
+          "question": "If y varies directly with x and y = 18 when x = 6, what is y when x = 11?",
+          "choices": [
+            "33",
+            "29",
+            "36",
             "22"
           ],
+          "answer": 0,
+          "correctChoice": "33",
+          "explanation": "Direct variation has the form y = kx. Here k = 18/6 = 3, so y = 3(11) = 33.",
+          "tags": [
+            "direct-variation"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "map scale",
+          "question": "On a map, 1 inch represents 12 miles. Two towns are 3.5 inches apart on the map. How far apart are they in reality?",
+          "choices": [
+            "40 miles",
+            "48 miles",
+            "42 miles",
+            "36 miles"
+          ],
+          "answer": 2,
+          "correctChoice": "42 miles",
+          "explanation": "Multiply 3.5 inches by 12 miles per inch: 3.5 \u00d7 12 = 42 miles.",
+          "tags": [
+            "scale",
+            "measurement"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "inverse variation",
+          "question": "If 4 workers can paint a fence in 15 hours at the same rate, how long would 6 workers take?",
+          "choices": [
+            "12 hours",
+            "10 hours",
+            "8 hours",
+            "22.5 hours"
+          ],
+          "answer": 1,
+          "correctChoice": "10 hours",
+          "explanation": "For a fixed amount of work, workers \u00d7 time stays constant: 4 \u00d7 15 = 60 worker-hours. Then 60 \u00f7 6 = 10 hours.",
+          "tags": [
+            "inverse-variation",
+            "work-rate"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "printer rate",
+          "question": "A printer makes 180 pages in 12 minutes. At the same rate, how many minutes are needed to print 255 pages?",
+          "choices": [
+            "18 minutes",
+            "15 minutes",
+            "17 minutes",
+            "16 minutes"
+          ],
+          "answer": 2,
+          "correctChoice": "17 minutes",
+          "explanation": "The rate is 180 \u00f7 12 = 15 pages per minute. Then 255 \u00f7 15 = 17 minutes.",
+          "tags": [
+            "unit-rate",
+            "applications"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "mixture concentration",
+          "question": "A solution contains 30% acid. How many liters of pure acid are in 18 liters of the solution?",
+          "choices": [
+            "7.2 liters",
+            "6 liters",
+            "5.4 liters",
+            "4.8 liters"
+          ],
+          "answer": 2,
+          "correctChoice": "5.4 liters",
+          "explanation": "Find 30% of 18 liters: 0.30 \u00d7 18 = 5.4 liters.",
+          "tags": [
+            "percents",
+            "mixture"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "combined work",
+          "question": "One pipe fills a tank in 6 hours and another fills it in 4 hours. How long does it take working together?",
+          "choices": [
+            "2.8 hours",
+            "3 hours",
+            "2.4 hours",
+            "2 hours"
+          ],
+          "answer": 2,
+          "correctChoice": "2.4 hours",
+          "explanation": "Add rates: 1/6 + 1/4 = 5/12 tank per hour. Time is 1 \u00f7 (5/12) = 12/5 = 2.4 hours.",
+          "tags": [
+            "work-rate",
+            "rates"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "weighted concentration",
+          "question": "Three liters of 20% acid are mixed with two liters of 35% acid. What is the concentration of the mixture?",
+          "choices": [
+            "29%",
+            "26%",
+            "23%",
+            "27.5%"
+          ],
+          "answer": 1,
+          "correctChoice": "26%",
+          "explanation": "There are 0.20(3) = 0.6 liters of acid in the first mixture and 0.35(2) = 0.7 liters in the second, for a total of 1.3 liters in 5 liters. That is 1.3/5 = 0.26 = 26%.",
+          "tags": [
+            "mixture",
+            "weighted-average"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "area scale factor",
+          "question": "Two similar figures have side-length ratio 3:5. What is the ratio of their areas?",
+          "choices": [
+            "15:25",
+            "3:5",
+            "6:10",
+            "9:25"
+          ],
           "answer": 3,
-          "explanation": "Let n be nickels and d be dimes. Then n + d = 34 and 5n + 10d = 280. Simplifying gives n + 2d = 56, so d = 22."
+          "correctChoice": "9:25",
+          "explanation": "Area scales by the square of the side-length ratio. Squaring 3:5 gives 9:25.",
+          "tags": [
+            "similar-figures",
+            "geometry"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "coffee mixture",
+          "question": "A store mixes coffee worth $8 per pound with coffee worth $14 per pound to make 20 pounds of a blend worth $10.25 per pound. How many pounds of the $14 coffee are used?",
+          "choices": [
+            "7.5 pounds",
+            "10 pounds",
+            "12.5 pounds",
+            "5 pounds"
+          ],
+          "answer": 0,
+          "correctChoice": "7.5 pounds",
+          "explanation": "Let x be the pounds of $14 coffee. Then 8(20 - x) + 14x = 10.25(20). Solving gives 160 + 6x = 205, so x = 7.5.",
+          "tags": [
+            "mixture",
+            "systems"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "rate with rest break",
+          "question": "A cyclist rides 24 miles in 1.5 hours, then rests for 15 minutes, then rides 16 more miles in 1 hour. What is the average speed for the entire trip including the rest?",
+          "choices": [
+            "18.82 miles per hour",
+            "20 miles per hour",
+            "14.55 miles per hour",
+            "16 miles per hour"
+          ],
+          "answer": 2,
+          "correctChoice": "14.55 miles per hour",
+          "explanation": "The total distance is 24 + 16 = 40 miles. The total time is 1.5 + 0.25 + 1 = 2.75 hours. Average speed is 40 \u00f7 2.75 \u2248 14.55 miles per hour.",
+          "tags": [
+            "average-rate",
+            "multi-step"
+          ]
+        },
+        {
+          "id": "ratios_proportions_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "currency exchange",
+          "question": "An exchange booth charges a 3% fee. If $242.50 is exchanged for euros after the fee, how many dollars were exchanged before the fee?",
+          "choices": [
+            "$245",
+            "$247.50",
+            "$257.50",
+            "$250"
+          ],
+          "answer": 3,
+          "correctChoice": "$250",
+          "explanation": "After a 3% fee, 97% of the original amount remains. Let x be the original amount: 0.97x = 242.50, so x = 250.",
+          "tags": [
+            "percents",
+            "reverse-percent"
+          ]
         }
       ]
     },
     {
-      "name": "Functions and Graphs",
+      "id": "expressions_exponents",
+      "name": "Algebraic Expressions and Exponents",
+      "alignment": [
+        "ALEKS PPL: exponents and polynomials",
+        "ACCUPLACER QAS: exponents and algebraic expressions"
+      ],
       "questions": [
         {
-          "question": "If f(x) = 2x² - 3x + 1, find f(-2).",
+          "id": "expressions_exponents_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "combine like terms",
+          "question": "Simplify: 3x + 5x - 2",
           "choices": [
-            "11",
-            "15",
-            "17",
-            "21"
+            "2x - 2",
+            "8x + 2",
+            "15x - 2",
+            "8x - 2"
           ],
-          "answer": 1,
-          "explanation": "f(-2) = 2(4) - 3(-2) + 1 = 8 + 6 + 1 = 15."
+          "answer": 3,
+          "correctChoice": "8x - 2",
+          "explanation": "Combine like terms: 3x + 5x = 8x, so the expression simplifies to 8x - 2.",
+          "tags": [
+            "expressions",
+            "like-terms"
+          ]
         },
         {
-          "question": "Given f(x) = { x + 2 if x < 1; 2x - 1 if x ≥ 1 }, what is f(3)?",
+          "id": "expressions_exponents_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "evaluate expression",
+          "question": "Evaluate 2a - 3b when a = 4 and b = -2.",
           "choices": [
+            "-14",
+            "14",
             "2",
-            "3",
-            "5",
-            "7"
-          ],
-          "answer": 2,
-          "explanation": "Since 3 ≥ 1, use 2x - 1. Then f(3) = 2(3) - 1 = 5."
-        },
-        {
-          "question": "What is the domain of f(x) = √(x - 5)?",
-          "choices": [
-            "x > 5",
-            "x ≥ 5",
-            "x < 5",
-            "all real numbers"
+            "8"
           ],
           "answer": 1,
-          "explanation": "For a square root, the expression inside must be nonnegative: x - 5 ≥ 0."
+          "correctChoice": "14",
+          "explanation": "Substitute the values: 2(4) - 3(-2) = 8 + 6 = 14.",
+          "tags": [
+            "substitution",
+            "expressions"
+          ]
         },
         {
-          "question": "What is the domain of g(x) = 1/(x + 3)?",
+          "id": "expressions_exponents_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "distribution",
+          "question": "Simplify: 4(2y - 3) + 5",
           "choices": [
-            "all real numbers except x = -3",
-            "all real numbers except x = 3",
-            "x > -3",
-            "x ≥ -3"
+            "8y - 12",
+            "4y - 7",
+            "8y + 2",
+            "8y - 7"
+          ],
+          "answer": 3,
+          "correctChoice": "8y - 7",
+          "explanation": "Distribute 4 to get 8y - 12, then add 5: 8y - 12 + 5 = 8y - 7.",
+          "tags": [
+            "distribution",
+            "expressions"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "distribution with subtraction",
+          "question": "Simplify: 5x - 2(3x - 4)",
+          "choices": [
+            "x + 8",
+            "-x + 8",
+            "11x - 4",
+            "-x - 8"
+          ],
+          "answer": 1,
+          "correctChoice": "-x + 8",
+          "explanation": "Distribute -2: 5x - 6x + 8 = -x + 8.",
+          "tags": [
+            "distribution",
+            "expressions"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "laws of exponents",
+          "question": "Simplify: x^2 \u00b7 x^5 \u00f7 x^3",
+          "choices": [
+            "x^3",
+            "x^4",
+            "x^10",
+            "x^2"
+          ],
+          "answer": 1,
+          "correctChoice": "x^4",
+          "explanation": "Add exponents when multiplying and subtract when dividing: x^(2+5-3) = x^4.",
+          "tags": [
+            "exponents",
+            "simplify"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "scientific notation",
+          "question": "Write 0.00056 in scientific notation.",
+          "choices": [
+            "5.6 \u00d7 10^4",
+            "56 \u00d7 10^-5",
+            "5.6 \u00d7 10^-4",
+            "5.6 \u00d7 10^-5"
+          ],
+          "answer": 2,
+          "correctChoice": "5.6 \u00d7 10^-4",
+          "explanation": "Move the decimal 4 places to the right to get 5.6, so the exponent is -4.",
+          "tags": [
+            "scientific-notation"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "product of powers",
+          "question": "Simplify: (2x^3y^2)(3x^2y^-1)",
+          "choices": [
+            "6x^5y",
+            "6x^5y^2",
+            "6x^6y",
+            "5x^5y"
           ],
           "answer": 0,
-          "explanation": "The denominator cannot be zero, so x + 3 ≠ 0."
+          "correctChoice": "6x^5y",
+          "explanation": "Multiply coefficients 2\u00b73 = 6. Add exponents on like bases: x^(3+2) = x^5 and y^(2-1) = y.",
+          "tags": [
+            "exponents",
+            "monomials"
+          ]
         },
         {
-          "question": "If f(x) = 2x + 1 and g(x) = x², what is (f ∘ g)(3)?",
+          "id": "expressions_exponents_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "negative exponent",
+          "question": "Simplify: (5a^0b^3)/(a^-2b)",
           "choices": [
+            "5ab^2",
+            "5a^2b^2",
+            "5a^2b^3",
+            "5b^2/a^2"
+          ],
+          "answer": 1,
+          "correctChoice": "5a^2b^2",
+          "explanation": "Since a^0 = 1, the expression is 5b^3 \u00f7 (a^-2b). Dividing by a^-2 is the same as multiplying by a^2, and b^3 \u00f7 b = b^2.",
+          "tags": [
+            "negative-exponents",
+            "simplify"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "fraction exponent",
+          "question": "Evaluate: (2/3)^-2",
+          "choices": [
+            "-9/4",
+            "9/4",
+            "3/2",
+            "4/9"
+          ],
+          "answer": 1,
+          "correctChoice": "9/4",
+          "explanation": "A negative exponent means take the reciprocal and then square: (2/3)^-2 = (3/2)^2 = 9/4.",
+          "tags": [
+            "exponents",
+            "fractions"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "complex exponent simplification",
+          "question": "Simplify: ((x^3y^-2)^2 \u00b7 x^-1) / y",
+          "choices": [
+            "y^5 / x^5",
+            "x^5 / y^5",
+            "x^4 / y^5",
+            "x^5 / y^3"
+          ],
+          "answer": 1,
+          "correctChoice": "x^5 / y^5",
+          "explanation": "First square: (x^3y^-2)^2 = x^6y^-4. Multiply by x^-1 to get x^5y^-4, then divide by y to get x^5y^-5 = x^5 / y^5.",
+          "tags": [
+            "exponents",
+            "complex"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "scientific notation multiplication",
+          "question": "Multiply and write in scientific notation: (3 \u00d7 10^5)(2 \u00d7 10^-3)",
+          "choices": [
+            "6 \u00d7 10^8",
+            "5 \u00d7 10^2",
+            "6 \u00d7 10^2",
+            "6 \u00d7 10^-2"
+          ],
+          "answer": 2,
+          "correctChoice": "6 \u00d7 10^2",
+          "explanation": "Multiply the coefficients to get 6 and add the exponents: 10^(5 + (-3)) = 10^2.",
+          "tags": [
+            "scientific-notation",
+            "product"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "power of a product",
+          "question": "Simplify: (-2m^2n^3)^2",
+          "choices": [
+            "4m^2n^6",
+            "-4m^4n^6",
+            "4m^4n^6",
+            "4m^4n^5"
+          ],
+          "answer": 2,
+          "correctChoice": "4m^4n^6",
+          "explanation": "Squaring removes the negative sign and doubles each exponent: (-2)^2 = 4, m^(2\u00b72) = m^4, and n^(3\u00b72) = n^6.",
+          "tags": [
+            "exponents",
+            "powers"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "advanced exponent simplification",
+          "question": "Simplify: ((2x^-2y^3)^3) / (4x^-1y)",
+          "choices": [
+            "8y^8 / x^5",
+            "2y^8 / x^5",
+            "2y^9 / x^5",
+            "2x^5y^8"
+          ],
+          "answer": 1,
+          "correctChoice": "2y^8 / x^5",
+          "explanation": "First expand the numerator: (2x^-2y^3)^3 = 8x^-6y^9. Now divide by 4x^-1y to get 2x^(-6-(-1))y^(9-1) = 2x^-5y^8 = 2y^8 / x^5.",
+          "tags": [
+            "exponents",
+            "advanced"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "expression from words",
+          "question": "Translate and simplify: 'three less than twice a number, all squared' for x = 5.",
+          "choices": [
+            "49",
+            "64",
             "7",
-            "10",
+            "25"
+          ],
+          "answer": 0,
+          "correctChoice": "49",
+          "explanation": "The phrase means (2x - 3)^2. Substitute x = 5: (10 - 3)^2 = 7^2 = 49.",
+          "tags": [
+            "translation",
+            "expressions"
+          ]
+        },
+        {
+          "id": "expressions_exponents_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "multi-step polynomial evaluation",
+          "question": "Evaluate 2a^2b^-1 when a = -3 and b = 1/2.",
+          "choices": [
             "18",
-            "19"
-          ],
-          "answer": 3,
-          "explanation": "First compute g(3) = 9. Then apply f: f(9) = 2(9) + 1 = 19."
-        },
-        {
-          "question": "What is the inverse of f(x) = 3x - 5?",
-          "choices": [
-            "(x - 5)/3",
-            "(x + 5)/3",
-            "3x + 5",
-            "3x - 5"
-          ],
-          "answer": 1,
-          "explanation": "Set y = 3x - 5, swap x and y, then solve for y: x = 3y - 5 → y = (x + 5)/3."
-        },
-        {
-          "question": "What is the vertex of y = (x - 2)² + 3?",
-          "choices": [
-            "(-2, 3)",
-            "(2, 3)",
-            "(2, -3)",
-            "(-2, -3)"
-          ],
-          "answer": 1,
-          "explanation": "In vertex form y = (x - h)² + k, the vertex is (h, k)."
-        },
-        {
-          "question": "What are the x-intercepts of y = x² - 5x + 6?",
-          "choices": [
-            "x = -2 and x = -3",
-            "x = 2 and x = 3",
-            "x = 1 and x = 6",
-            "x = -1 and x = -6"
-          ],
-          "answer": 1,
-          "explanation": "Set y = 0 and factor: x² - 5x + 6 = (x - 2)(x - 3)."
-        }
-      ]
-    },
-    {
-      "name": "Exponents and Scientific Notation",
-      "questions": [
-        {
-          "question": "Simplify: 2³ · 2⁵",
-          "choices": [
-            "2⁸",
-            "4⁸",
-            "8²",
-            "16²"
-          ],
-          "answer": 0,
-          "explanation": "When multiplying powers with the same base, add exponents: 3 + 5 = 8."
-        },
-        {
-          "question": "Simplify: (3x²)³",
-          "choices": [
-            "9x⁵",
-            "9x⁶",
-            "27x⁵",
-            "27x⁶"
-          ],
-          "answer": 3,
-          "explanation": "Raise both the coefficient and the exponent: 3³ = 27 and (x²)³ = x⁶."
-        },
-        {
-          "question": "Simplify: (x⁻²y³)/(xy⁻¹)",
-          "choices": [
-            "x⁻³y²",
-            "y⁴/x³",
-            "y²/x³",
-            "x³y⁴"
-          ],
-          "answer": 1,
-          "explanation": "Subtract exponents: x⁻²/x = x⁻³ and y³/y⁻¹ = y⁴. So the expression is y⁴/x³."
-        },
-        {
-          "question": "Write 0.000461 in scientific notation.",
-          "choices": [
-            "4.61 × 10⁻³",
-            "4.61 × 10⁻⁴",
-            "46.1 × 10⁻⁵",
-            "0.461 × 10⁻³"
-          ],
-          "answer": 1,
-          "explanation": "Move the decimal 4 places to the right to get 4.61, so the exponent is -4."
-        },
-        {
-          "question": "Simplify: (5 × 10⁶)(2 × 10⁻³)",
-          "choices": [
-            "1 × 10²",
-            "1 × 10³",
-            "1 × 10⁴",
-            "1 × 10⁵"
-          ],
-          "answer": 2,
-          "explanation": "Multiply coefficients: 5 × 2 = 10. Add exponents: 6 + (−3) = 3. Then 10 × 10³ = 1 × 10⁴."
-        },
-        {
-          "question": "Simplify: x⁰(5x²), assuming x ≠ 0.",
-          "choices": [
-            "0",
-            "5x",
-            "5x²",
-            "x²"
-          ],
-          "answer": 2,
-          "explanation": "Any nonzero number to the zero power is 1, so x⁰ = 1."
-        },
-        {
-          "question": "Write 7.2 × 10⁵ in standard notation.",
-          "choices": [
-            "72,000",
-            "720,000",
-            "7,200,000",
-            "0.00072"
-          ],
-          "answer": 1,
-          "explanation": "Move the decimal 5 places to the right."
-        },
-        {
-          "question": "Simplify: (2a⁻¹b²)²",
-          "choices": [
-            "4a²b⁴",
-            "4b⁴/a²",
-            "2b⁴/a²",
-            "4b²/a"
-          ],
-          "answer": 1,
-          "explanation": "Square each factor: 2² = 4, (a⁻¹)² = a⁻² = 1/a², and (b²)² = b⁴."
-        }
-      ]
-    },
-    {
-      "name": "Polynomials and Factoring",
-      "questions": [
-        {
-          "question": "Expand: (x + 3)(x - 5)",
-          "choices": [
-            "x² - 2x - 15",
-            "x² + 2x - 15",
-            "x² - 8x + 15",
-            "x² + 8x - 15"
-          ],
-          "answer": 0,
-          "explanation": "Use FOIL: x² - 5x + 3x - 15 = x² - 2x - 15."
-        },
-        {
-          "question": "Factor: x² + 7x + 10",
-          "choices": [
-            "(x + 10)(x - 1)",
-            "(x + 5)(x + 2)",
-            "(x + 3)(x + 4)",
-            "(x - 5)(x - 2)"
-          ],
-          "answer": 1,
-          "explanation": "Look for two numbers that multiply to 10 and add to 7: 5 and 2."
-        },
-        {
-          "question": "Factor completely: 3x² - 12x",
-          "choices": [
-            "3x(x + 4)",
-            "3x(x - 4)",
-            "x(3x - 12)",
-            "3(x² - 4)"
-          ],
-          "answer": 1,
-          "explanation": "Factor out the greatest common factor 3x."
-        },
-        {
-          "question": "Factor: x² - 16",
-          "choices": [
-            "(x - 8)(x + 2)",
-            "(x - 4)(x + 4)",
-            "(x - 16)(x + 1)",
-            "(x - 2)(x + 8)"
-          ],
-          "answer": 1,
-          "explanation": "This is a difference of squares: a² - b² = (a - b)(a + b)."
-        },
-        {
-          "question": "Simplify: (6x³ - 9x² + 12x)/(3x)",
-          "choices": [
-            "2x² - 3x + 4",
-            "2x² - 3x + 12",
-            "6x² - 9x + 4",
-            "2x² - 9x + 4"
-          ],
-          "answer": 0,
-          "explanation": "Divide each term by 3x: 6x³/(3x)=2x², -9x²/(3x)=-3x, and 12x/(3x)=4."
-        },
-        {
-          "question": "Solve: x² - x - 12 = 0",
-          "choices": [
-            "x = 4 or x = -3",
-            "x = 3 or x = -4",
-            "x = 6 or x = -2",
-            "x = 12 or x = -1"
-          ],
-          "answer": 0,
-          "explanation": "Factor: (x - 4)(x + 3) = 0."
-        },
-        {
-          "question": "Factor by grouping: 2x³ + 4x² - 3x - 6",
-          "choices": [
-            "(x + 2)(2x² - 3)",
-            "(2x + 3)(x² - 2)",
-            "(x - 2)(2x² + 3)",
-            "(2x - 3)(x² + 2)"
-          ],
-          "answer": 0,
-          "explanation": "Group terms: 2x²(x + 2) - 3(x + 2) = (x + 2)(2x² - 3)."
-        },
-        {
-          "question": "What is the discriminant of 2x² + 4x + 5 = 0?",
-          "choices": [
-            "24",
-            "-24",
             "36",
+            "72",
             "-36"
           ],
           "answer": 1,
-          "explanation": "For ax² + bx + c, the discriminant is b² - 4ac = 4² - 4(2)(5) = 16 - 40 = -24."
+          "correctChoice": "36",
+          "explanation": "Compute a^2 = 9 and b^-1 = 2. Then 2 \u00b7 9 \u00b7 2 = 36.",
+          "tags": [
+            "substitution",
+            "negative-exponents"
+          ]
         }
       ]
     },
     {
-      "name": "Rational Expressions and Equations",
+      "id": "linear_equations",
+      "name": "Linear Equations",
+      "alignment": [
+        "ALEKS PPL: equations",
+        "ACCUPLACER QAS/AAF: linear equations"
+      ],
       "questions": [
         {
-          "question": "Simplify: (6x²y)/(3xy)",
+          "id": "linear_equations_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step equation",
+          "question": "Solve: x + 7 = 15",
           "choices": [
-            "2x",
-            "2y",
-            "2xy",
-            "3x"
-          ],
-          "answer": 0,
-          "explanation": "Cancel common factors: 6/3 = 2, x²/x = x, and y/y = 1."
-        },
-        {
-          "question": "Simplify: (x² - 9)/(x + 3), where x ≠ -3",
-          "choices": [
-            "x + 3",
-            "x - 3",
-            "x² - 3",
-            "x - 9"
-          ],
-          "answer": 1,
-          "explanation": "Factor the numerator: x² - 9 = (x - 3)(x + 3), then cancel x + 3."
-        },
-        {
-          "question": "Add: 1/x + 2/x",
-          "choices": [
-            "1/(3x)",
-            "2/x²",
-            "3/x",
-            "3x"
+            "9",
+            "7",
+            "8",
+            "22"
           ],
           "answer": 2,
-          "explanation": "The denominators are the same, so add the numerators: 1 + 2 = 3."
+          "correctChoice": "8",
+          "explanation": "Subtract 7 from both sides to get x = 8.",
+          "tags": [
+            "linear-equations",
+            "one-step"
+          ]
         },
         {
-          "question": "Solve: 1/(x - 1) = 1/3",
+          "id": "linear_equations_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step multiplication",
+          "question": "Solve: 3x = 18",
           "choices": [
-            "x = 2",
-            "x = 3",
-            "x = 4",
-            "x = 5"
+            "15",
+            "3",
+            "6",
+            "9"
           ],
           "answer": 2,
-          "explanation": "Cross-multiply or recognize that x - 1 must equal 3, so x = 4."
+          "correctChoice": "6",
+          "explanation": "Divide both sides by 3: x = 6.",
+          "tags": [
+            "linear-equations",
+            "one-step"
+          ]
         },
         {
-          "question": "Solve: 2/x + 1 = 3",
+          "id": "linear_equations_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step subtraction",
+          "question": "Solve: x - 4 = -9",
           "choices": [
-            "x = 1",
-            "x = 2",
-            "x = 3",
-            "x = 4"
-          ],
-          "answer": 0,
-          "explanation": "Subtract 1 to get 2/x = 2, so 1/x = 1 and x = 1."
-        },
-        {
-          "question": "Simplify the complex fraction: (1/2)/(3/4)",
-          "choices": [
-            "3/8",
-            "2/3",
-            "4/6",
-            "8/3"
-          ],
-          "answer": 1,
-          "explanation": "Dividing by a fraction means multiplying by its reciprocal: (1/2)·(4/3)=2/3."
-        },
-        {
-          "question": "Solve: (x + 1)/(x - 2) = 4",
-          "choices": [
-            "x = 2",
-            "x = 3",
-            "x = 4",
-            "x = 6"
-          ],
-          "answer": 1,
-          "explanation": "Multiply both sides by x - 2: x + 1 = 4x - 8. Then 9 = 3x, so x = 3."
-        },
-        {
-          "question": "What is the domain of f(x) = 5/(x + 2)?",
-          "choices": [
-            "all real numbers",
-            "all real numbers except x = -2",
-            "x > -2",
-            "x ≥ -2"
-          ],
-          "answer": 1,
-          "explanation": "A rational expression is undefined where its denominator is zero."
-        }
-      ]
-    },
-    {
-      "name": "Radicals and Rational Exponents",
-      "questions": [
-        {
-          "question": "Simplify: √72",
-          "choices": [
-            "6√2",
-            "8√2",
-            "4√3",
-            "12√2"
-          ],
-          "answer": 0,
-          "explanation": "Factor 72 = 36·2, so √72 = √36·√2 = 6√2."
-        },
-        {
-          "question": "Simplify: ∛54",
-          "choices": [
-            "3∛2",
-            "2∛3",
-            "3∛6",
-            "6∛2"
-          ],
-          "answer": 0,
-          "explanation": "Factor 54 = 27·2, so ∛54 = ∛27·∛2 = 3∛2."
-        },
-        {
-          "question": "Rationalize the denominator: 3/√5",
-          "choices": [
-            "3√5",
-            "3√5/5",
-            "5√3/3",
-            "√15/5"
-          ],
-          "answer": 1,
-          "explanation": "Multiply numerator and denominator by √5 to get 3√5/5."
-        },
-        {
-          "question": "Solve: √(x + 1) = 5",
-          "choices": [
-            "x = 24",
-            "x = 26",
-            "x = 4",
-            "x = 6"
-          ],
-          "answer": 0,
-          "explanation": "Square both sides: x + 1 = 25, so x = 24."
-        },
-        {
-          "question": "Solve: √(2x + 3) = x",
-          "choices": [
-            "x = -1 only",
-            "x = 3 only",
-            "x = -1 or x = 3",
-            "no solution"
-          ],
-          "answer": 1,
-          "explanation": "Square both sides: 2x + 3 = x², so x² - 2x - 3 = 0 = (x - 3)(x + 1). Check: x = -1 is invalid because √(1) ≠ -1. So x = 3 only."
-        },
-        {
-          "question": "Simplify: x^(1/2) · x^(3/2)",
-          "choices": [
-            "x²",
-            "x³",
-            "x",
-            "x^(1)"
-          ],
-          "answer": 0,
-          "explanation": "Add the exponents: 1/2 + 3/2 = 2."
-        },
-        {
-          "question": "Assuming a and b are positive, simplify: √(16a⁴b²)",
-          "choices": [
-            "4a²b",
-            "4ab",
-            "8a²b",
-            "16a²b²"
-          ],
-          "answer": 0,
-          "explanation": "Take the square root of each factor: √16 = 4, √a⁴ = a², and √b² = b."
-        },
-        {
-          "question": "Find the distance between (1, 2) and (4, 6).",
-          "choices": [
-            "4",
+            "-5",
             "5",
-            "√13",
-            "√17"
+            "-13",
+            "13"
           ],
-          "answer": 1,
-          "explanation": "Use the distance formula: √[(4-1)² + (6-2)²] = √(9 + 16) = √25 = 5."
-        }
-      ]
-    },
-    {
-      "name": "Exponentials and Logarithms",
-      "questions": [
-        {
-          "question": "Solve: 2ˣ = 32",
-          "choices": [
-            "x = 4",
-            "x = 5",
-            "x = 6",
-            "x = 8"
-          ],
-          "answer": 1,
-          "explanation": "Since 32 = 2⁵, x = 5."
+          "answer": 0,
+          "correctChoice": "-5",
+          "explanation": "Add 4 to both sides: x = -5.",
+          "tags": [
+            "linear-equations",
+            "one-step"
+          ]
         },
         {
-          "question": "Solve: log₃(x) = 4",
+          "id": "linear_equations_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "two-step equation",
+          "question": "Solve: 5x - 7 = 18",
           "choices": [
-            "x = 12",
-            "x = 27",
-            "x = 64",
-            "x = 81"
+            "5",
+            "3",
+            "7",
+            "4"
+          ],
+          "answer": 0,
+          "correctChoice": "5",
+          "explanation": "Add 7 to both sides to get 5x = 25, then divide by 5.",
+          "tags": [
+            "linear-equations",
+            "two-step"
+          ]
+        },
+        {
+          "id": "linear_equations_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "distributive equation",
+          "question": "Solve: 3(x - 2) = 21",
+          "choices": [
+            "9",
+            "11",
+            "13",
+            "7"
+          ],
+          "answer": 0,
+          "correctChoice": "9",
+          "explanation": "Divide both sides by 3 to get x - 2 = 7, then add 2.",
+          "tags": [
+            "linear-equations",
+            "distribution"
+          ]
+        },
+        {
+          "id": "linear_equations_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "variable both sides",
+          "question": "Solve: 7 - 2x = 19",
+          "choices": [
+            "-6",
+            "6",
+            "13",
+            "-12"
+          ],
+          "answer": 0,
+          "correctChoice": "-6",
+          "explanation": "Subtract 7 from both sides: -2x = 12. Divide by -2 to get x = -6.",
+          "tags": [
+            "linear-equations",
+            "two-step"
+          ]
+        },
+        {
+          "id": "linear_equations_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "variables both sides",
+          "question": "Solve: 2(x + 3) - 4 = 3x + 1",
+          "choices": [
+            "3",
+            "-1",
+            "1",
+            "5"
+          ],
+          "answer": 2,
+          "correctChoice": "1",
+          "explanation": "Simplify the left side: 2x + 2 = 3x + 1. Subtract 2x to get 2 = x + 1, so x = 1.",
+          "tags": [
+            "linear-equations",
+            "variables-both-sides"
+          ]
+        },
+        {
+          "id": "linear_equations_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "fraction coefficient",
+          "question": "Solve: x/4 + 5 = 11",
+          "choices": [
+            "6",
+            "44",
+            "24",
+            "16"
+          ],
+          "answer": 2,
+          "correctChoice": "24",
+          "explanation": "Subtract 5 from both sides to get x/4 = 6, then multiply by 4.",
+          "tags": [
+            "linear-equations",
+            "fractions"
+          ]
+        },
+        {
+          "id": "linear_equations_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "fractional coefficient",
+          "question": "Solve: (3/5)x - 4 = 8",
+          "choices": [
+            "20",
+            "15",
+            "10",
+            "30"
+          ],
+          "answer": 0,
+          "correctChoice": "20",
+          "explanation": "Add 4 to both sides: (3/5)x = 12. Multiply by 5/3 to get x = 20.",
+          "tags": [
+            "linear-equations",
+            "fractions"
+          ]
+        },
+        {
+          "id": "linear_equations_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "literal equation",
+          "question": "Solve for b in A = (1/2)(b + h)k.",
+          "choices": [
+            "b = 2A/k - h",
+            "b = 2Ak - h",
+            "b = 2A/(k - h)",
+            "b = A/k - h"
+          ],
+          "answer": 0,
+          "correctChoice": "b = 2A/k - h",
+          "explanation": "Multiply both sides by 2/k to get 2A/k = b + h. Then subtract h.",
+          "tags": [
+            "literal-equations",
+            "formulas"
+          ]
+        },
+        {
+          "id": "linear_equations_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "literal equation",
+          "question": "Solve for t in d = rt.",
+          "choices": [
+            "t = d - r",
+            "t = d/r",
+            "t = r/d",
+            "t = dr"
+          ],
+          "answer": 1,
+          "correctChoice": "t = d/r",
+          "explanation": "Divide both sides by r to isolate t.",
+          "tags": [
+            "literal-equations",
+            "formulas"
+          ]
+        },
+        {
+          "id": "linear_equations_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "decimal coefficients",
+          "question": "Solve: 0.3(x - 4) = 1.2x + 2.4",
+          "choices": [
+            "8",
+            "-4",
+            "4",
+            "-2"
+          ],
+          "answer": 1,
+          "correctChoice": "-4",
+          "explanation": "Distribute 0.3 to get 0.3x - 1.2 = 1.2x + 2.4. Subtract 0.3x and subtract 2.4: -3.6 = 0.9x, so x = -4.",
+          "tags": [
+            "linear-equations",
+            "decimals"
+          ]
+        },
+        {
+          "id": "linear_equations_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "linear application",
+          "question": "A gym charges a $15 sign-up fee plus $8 per class. If a member pays $63 total, how many classes did the member attend?",
+          "choices": [
+            "6",
+            "5",
+            "8",
+            "7"
+          ],
+          "answer": 0,
+          "correctChoice": "6",
+          "explanation": "Write 15 + 8c = 63. Then 8c = 48, so c = 6.",
+          "tags": [
+            "applications",
+            "word-problems"
+          ]
+        },
+        {
+          "id": "linear_equations_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "perimeter application",
+          "question": "The perimeter of a rectangle is 46 feet. Its length is 5 feet more than twice its width. What is the width?",
+          "choices": [
+            "5 feet",
+            "7 feet",
+            "8 feet",
+            "6 feet"
           ],
           "answer": 3,
-          "explanation": "Rewrite in exponential form: x = 3⁴ = 81."
+          "correctChoice": "6 feet",
+          "explanation": "Let w be the width. Then the length is 2w + 5, and 2[(2w + 5) + w] = 46. This becomes 6w + 10 = 46, so w = 6.",
+          "tags": [
+            "applications",
+            "geometry"
+          ]
         },
         {
-          "question": "Evaluate: log(1000)",
+          "id": "linear_equations_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "sales application",
+          "question": "A concert organizer sells student tickets for $8 each and collects $504 from ticket sales. If no other ticket types are sold, how many student tickets were sold?",
           "choices": [
-            "1",
-            "2",
-            "3",
-            "10"
+            "56",
+            "72",
+            "60",
+            "63"
           ],
-          "answer": 2,
-          "explanation": "Common log means base 10. Since 10³ = 1000, the value is 3."
-        },
-        {
-          "question": "Expand: ln(3x²/y)",
-          "choices": [
-            "ln 3 + ln x - ln y",
-            "ln 3 + 2ln x - ln y",
-            "3ln x - ln y",
-            "ln 3 + 2ln x + ln y"
-          ],
-          "answer": 1,
-          "explanation": "Use log rules: ln(ab/c) = ln a + ln b - ln c, and ln(x²)=2ln x."
-        },
-        {
-          "question": "Write as a single logarithm: log(x) + log(x - 1)",
-          "choices": [
-            "log(x + x - 1)",
-            "log(x(x - 1))",
-            "log(x/(x - 1))",
-            "log(x - 1)"
-          ],
-          "answer": 1,
-          "explanation": "The product rule says log a + log b = log(ab)."
-        },
-        {
-          "question": "An account starts with $5000 and grows by 4% per year. What is the amount after 3 years if interest is compounded annually?",
-          "choices": [
-            "$5,600.00",
-            "$5,624.32",
-            "$5,650.00",
-            "$5,700.00"
-          ],
-          "answer": 1,
-          "explanation": "Use A = P(1 + r)^t = 5000(1.04)^3 = 5624.32."
-        },
-        {
-          "question": "Solve: e^(2x) = 7",
-          "choices": [
-            "x = ln 7",
-            "x = 7/2",
-            "x = (ln 7)/2",
-            "x = e^(7/2)"
-          ],
-          "answer": 2,
-          "explanation": "Take natural logs: 2x = ln 7, so x = (ln 7)/2."
-        },
-        {
-          "question": "What is the inverse of f(x) = 2ˣ?",
-          "choices": [
-            "f⁻¹(x) = x²",
-            "f⁻¹(x) = log₂(x)",
-            "f⁻¹(x) = ln(x)",
-            "f⁻¹(x) = 2x"
-          ],
-          "answer": 1,
-          "explanation": "An exponential function with base 2 is inverted by a logarithm with base 2."
+          "answer": 3,
+          "correctChoice": "63",
+          "explanation": "Let x be the number of tickets. Then 8x = 504, so x = 63.",
+          "tags": [
+            "applications",
+            "word-problems"
+          ]
         }
       ]
     },
     {
-      "name": "Geometry and Coordinate Geometry",
+      "id": "inequalities_abs",
+      "name": "Linear Inequalities and Absolute Value",
+      "alignment": [
+        "ALEKS PPL: equations and inequalities",
+        "University placement study guides: absolute value and interval reasoning"
+      ],
       "questions": [
         {
-          "question": "The perimeter of a rectangle is 42 feet. The length is 7 feet more than twice the width. What is the width?",
+          "id": "inequalities_abs_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step inequality",
+          "question": "Solve: x + 3 > 7",
           "choices": [
-            "14/3 ft",
-            "7 ft",
-            "14 ft",
-            "28/3 ft"
-          ],
-          "answer": 0,
-          "explanation": "Let the width be w and the length be 2w + 7. Then 2[(2w + 7) + w] = 42, so 6w + 14 = 42 and w = 14/3."
-        },
-        {
-          "question": "What is the area of a circle with radius 5?",
-          "choices": [
-            "10π",
-            "20π",
-            "25π",
-            "50π"
-          ],
-          "answer": 2,
-          "explanation": "Area = πr² = π(5²) = 25π."
-        },
-        {
-          "question": "What is the volume of a cylinder with radius 3 and height 4?",
-          "choices": [
-            "12π",
-            "24π",
-            "36π",
-            "48π"
-          ],
-          "answer": 2,
-          "explanation": "Volume = πr²h = π(3²)(4) = 36π."
-        },
-        {
-          "question": "Find the midpoint of the segment joining (2, -1) and (6, 5).",
-          "choices": [
-            "(4, 1)",
-            "(4, 2)",
-            "(2, 4)",
-            "(8, 4)"
+            "x < 10",
+            "x > 4",
+            "x < 4",
+            "x > 10"
           ],
           "answer": 1,
-          "explanation": "Average the x-coordinates and the y-coordinates: ((2+6)/2, (-1+5)/2) = (4, 2)."
+          "correctChoice": "x > 4",
+          "explanation": "Subtract 3 from both sides to get x > 4.",
+          "tags": [
+            "inequalities",
+            "one-step"
+          ]
         },
         {
-          "question": "Find the distance between (-1, -3) and (2, 3).",
+          "id": "inequalities_abs_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step inequality",
+          "question": "Solve: 2x \u2264 10",
           "choices": [
-            "3√5",
-            "√45",
-            "6",
-            "3√2"
+            "x \u2264 8",
+            "x \u2265 8",
+            "x \u2265 5",
+            "x \u2264 5"
+          ],
+          "answer": 3,
+          "correctChoice": "x \u2264 5",
+          "explanation": "Divide both sides by 2. The inequality direction stays the same because 2 is positive.",
+          "tags": [
+            "inequalities",
+            "one-step"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "negative coefficient inequality",
+          "question": "Solve: -x < 4",
+          "choices": [
+            "x < -4",
+            "x > -4",
+            "x > 4",
+            "x < 4"
+          ],
+          "answer": 1,
+          "correctChoice": "x > -4",
+          "explanation": "Multiply both sides by -1 and reverse the inequality: x > -4.",
+          "tags": [
+            "inequalities",
+            "negative-coefficient"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "two-step inequality",
+          "question": "Solve: 3x - 5 \u2265 10",
+          "choices": [
+            "x \u2265 15",
+            "x \u2264 5",
+            "x \u2265 5",
+            "x \u2264 15"
+          ],
+          "answer": 2,
+          "correctChoice": "x \u2265 5",
+          "explanation": "Add 5 to both sides: 3x \u2265 15. Divide by 3: x \u2265 5.",
+          "tags": [
+            "inequalities",
+            "two-step"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "negative slope inequality",
+          "question": "Solve: 2 - 4x > 14",
+          "choices": [
+            "x > -3",
+            "x < -3",
+            "x > 3",
+            "x < 3"
+          ],
+          "answer": 1,
+          "correctChoice": "x < -3",
+          "explanation": "Subtract 2: -4x > 12. Divide by -4 and reverse the inequality: x < -3.",
+          "tags": [
+            "inequalities",
+            "negative-coefficient"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "distributive inequality",
+          "question": "Solve: 5(x - 1) \u2264 20",
+          "choices": [
+            "x \u2265 5",
+            "x \u2265 4",
+            "x \u2264 4",
+            "x \u2264 5"
+          ],
+          "answer": 3,
+          "correctChoice": "x \u2264 5",
+          "explanation": "Divide both sides by 5 to get x - 1 \u2264 4, then add 1.",
+          "tags": [
+            "inequalities",
+            "distribution"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "compound inequality",
+          "question": "Solve: -2 < 3x + 1 \u2264 10",
+          "choices": [
+            "-1 < x \u2264 3",
+            "x < -1 or x > 3",
+            "-3 < x \u2264 1",
+            "-1 \u2264 x < 3"
           ],
           "answer": 0,
-          "explanation": "Distance = √[(2 - (-1))² + (3 - (-3))²] = √(3² + 6²) = √45 = 3√5."
+          "correctChoice": "-1 < x \u2264 3",
+          "explanation": "Subtract 1 from all three parts: -3 < 3x \u2264 9. Divide by 3 to get -1 < x \u2264 3.",
+          "tags": [
+            "compound-inequalities"
+          ]
         },
         {
-          "question": "Two triangles are similar. The sides of the smaller triangle are 3, 4, and 5. The shortest side of the larger triangle is 6. What is the longest side of the larger triangle?",
+          "id": "inequalities_abs_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "absolute value equation",
+          "question": "Solve: |x - 4| = 7",
+          "choices": [
+            "x = 11 or x = -3",
+            "x = 3 or x = -11",
+            "x = 7 or x = -7",
+            "x = 11 only"
+          ],
+          "answer": 0,
+          "correctChoice": "x = 11 or x = -3",
+          "explanation": "An absolute value equation splits into two cases: x - 4 = 7 or x - 4 = -7. Solving gives x = 11 or x = -3.",
+          "tags": [
+            "absolute-value",
+            "equations"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "absolute value inequality",
+          "question": "Solve: |2x + 1| < 5",
+          "choices": [
+            "x < -3 or x > 2",
+            "-3 \u2264 x \u2264 2",
+            "-3 < x < 2",
+            "-2 < x < 3"
+          ],
+          "answer": 2,
+          "correctChoice": "-3 < x < 2",
+          "explanation": "Write the compound inequality -5 < 2x + 1 < 5. Subtract 1 to get -6 < 2x < 4, then divide by 2.",
+          "tags": [
+            "absolute-value",
+            "inequalities"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "multi-step inequality",
+          "question": "Solve: 4 - 2(x + 3) > x - 5",
+          "choices": [
+            "x > -1",
+            "x > 1",
+            "x < 1",
+            "x < -1"
+          ],
+          "answer": 2,
+          "correctChoice": "x < 1",
+          "explanation": "Distribute: 4 - 2x - 6 > x - 5, so -2x - 2 > x - 5. Add 2x and add 5 to get 3 > 3x, so x < 1.",
+          "tags": [
+            "inequalities",
+            "multi-step"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "fractional inequality",
+          "question": "Solve: (3/4)x - 2 \u2265 1/2",
+          "choices": [
+            "x \u2264 10/3",
+            "x \u2265 10/3",
+            "x \u2265 5/2",
+            "x \u2265 3/10"
+          ],
+          "answer": 1,
+          "correctChoice": "x \u2265 10/3",
+          "explanation": "Add 2 to both sides: (3/4)x \u2265 5/2. Multiply by 4/3 to get x \u2265 10/3.",
+          "tags": [
+            "inequalities",
+            "fractions"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "absolute value greater than",
+          "question": "Solve: |x + 2| \u2265 6",
+          "choices": [
+            "x < -8 or x > 4",
+            "x \u2264 -8 or x \u2265 4",
+            "-8 \u2264 x \u2264 4",
+            "x \u2264 -4 or x \u2265 8"
+          ],
+          "answer": 1,
+          "correctChoice": "x \u2264 -8 or x \u2265 4",
+          "explanation": "For |x + 2| \u2265 6, solve x + 2 \u2265 6 or x + 2 \u2264 -6. That gives x \u2265 4 or x \u2264 -8.",
+          "tags": [
+            "absolute-value",
+            "inequalities"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "budget application",
+          "question": "A tutoring center charges a $25 registration fee plus $12 per session. If a student can spend at most $180, what is the greatest whole number of sessions the student can take?",
+          "choices": [
+            "13",
+            "12",
+            "11",
+            "10"
+          ],
+          "answer": 1,
+          "correctChoice": "12",
+          "explanation": "Write 25 + 12s \u2264 180. Then 12s \u2264 155, so s \u2264 12.91. The greatest whole number of sessions is 12.",
+          "tags": [
+            "applications",
+            "budget"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "test average application",
+          "question": "Scores on four quizzes are 80, 84, 76, and 90. What score is needed on the fifth quiz to earn an average of at least 82?",
+          "choices": [
+            "at least 82",
+            "at least 85",
+            "at least 80",
+            "at least 78"
+          ],
+          "answer": 2,
+          "correctChoice": "at least 80",
+          "explanation": "Set up (80 + 84 + 76 + 90 + x)/5 \u2265 82. The known sum is 330, so 330 + x \u2265 410, which gives x \u2265 80.",
+          "tags": [
+            "applications",
+            "averages"
+          ]
+        },
+        {
+          "id": "inequalities_abs_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "profit threshold",
+          "question": "A business models profit by P(x) = 18x - 450, where x is the number of units sold. For what values of x is the profit positive?",
+          "choices": [
+            "x < 25",
+            "x > 25",
+            "x \u2265 25",
+            "x > 18"
+          ],
+          "answer": 1,
+          "correctChoice": "x > 25",
+          "explanation": "Positive profit means 18x - 450 > 0. Add 450 and divide by 18 to get x > 25.",
+          "tags": [
+            "applications",
+            "linear-models"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "systems",
+      "name": "Systems of Equations and Applications",
+      "alignment": [
+        "ALEKS PPL: systems of linear equations",
+        "ACCUPLACER QAS/AAF: linear applications and graphs"
+      ],
+      "questions": [
+        {
+          "id": "systems_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "solve by elimination",
+          "question": "Solve the system: x + y = 11 and x - y = 3.",
+          "choices": [
+            "(6, 5)",
+            "(7, 4)",
+            "(4, 7)",
+            "(8, 3)"
+          ],
+          "answer": 1,
+          "correctChoice": "(7, 4)",
+          "explanation": "Add the equations: 2x = 14, so x = 7. Then y = 11 - 7 = 4.",
+          "tags": [
+            "systems",
+            "elimination"
+          ]
+        },
+        {
+          "id": "systems_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "solve by substitution",
+          "question": "Solve the system: 2x + y = 9 and x - y = 0.",
+          "choices": [
+            "(3, 3)",
+            "(1, 7)",
+            "(2, 5)",
+            "(4, 1)"
+          ],
+          "answer": 0,
+          "correctChoice": "(3, 3)",
+          "explanation": "From x - y = 0, we get x = y. Substitute into 2x + y = 9 to get 3x = 9, so x = 3 and y = 3.",
+          "tags": [
+            "systems",
+            "substitution"
+          ]
+        },
+        {
+          "id": "systems_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "solve by substitution",
+          "question": "Solve the system: x + 2y = 12 and x = y + 3.",
+          "choices": [
+            "(3, 6)",
+            "(6, 3)",
+            "(5, 4)",
+            "(7, 2)"
+          ],
+          "answer": 1,
+          "correctChoice": "(6, 3)",
+          "explanation": "Substitute x = y + 3 into x + 2y = 12: y + 3 + 2y = 12. Then 3y = 9, so y = 3 and x = 6.",
+          "tags": [
+            "systems",
+            "substitution"
+          ]
+        },
+        {
+          "id": "systems_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "elimination",
+          "question": "Solve the system: 2x + y = 7 and x - y = 2.",
+          "choices": [
+            "(4, -1)",
+            "(2, 3)",
+            "(1, 3)",
+            "(3, 1)"
+          ],
+          "answer": 3,
+          "correctChoice": "(3, 1)",
+          "explanation": "Add the equations after rewriting x - y = 2 as x + (-y) = 2. This gives 3x = 9, so x = 3 and y = 1.",
+          "tags": [
+            "systems",
+            "elimination"
+          ]
+        },
+        {
+          "id": "systems_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "elimination",
+          "question": "Solve the system: 4x - y = 11 and 2x + y = 7.",
+          "choices": [
+            "(2, 3)",
+            "(1, 3)",
+            "(4, -5)",
+            "(3, 1)"
+          ],
+          "answer": 3,
+          "correctChoice": "(3, 1)",
+          "explanation": "Add the equations to eliminate y: 6x = 18, so x = 3. Then 2(3) + y = 7 gives y = 1.",
+          "tags": [
+            "systems",
+            "elimination"
+          ]
+        },
+        {
+          "id": "systems_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "substitution",
+          "question": "Solve the system: 5x + 3y = 19 and x + y = 5.",
+          "choices": [
+            "(1, 4)",
+            "(3, 2)",
+            "(4, 1)",
+            "(2, 3)"
+          ],
+          "answer": 3,
+          "correctChoice": "(2, 3)",
+          "explanation": "From x + y = 5, y = 5 - x. Substitute: 5x + 3(5 - x) = 19. Then 2x = 4, so x = 2 and y = 3.",
+          "tags": [
+            "systems",
+            "substitution"
+          ]
+        },
+        {
+          "id": "systems_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "rental application",
+          "question": "A car rental company charges a daily fee d dollars and a mileage fee m dollars per mile. A 2-day, 100-mile rental costs $58, and a 4-day, 250-mile rental costs $127. What is the daily fee?",
+          "choices": [
+            "$16",
+            "$22",
+            "$20",
+            "$18"
+          ],
+          "answer": 3,
+          "correctChoice": "$18",
+          "explanation": "Write the system 2d + 100m = 58 and 4d + 250m = 127. Solving gives d = 18 and m = 0.22.",
+          "tags": [
+            "applications",
+            "rental"
+          ]
+        },
+        {
+          "id": "systems_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "coin problem",
+          "question": "A jar contains 17 nickels and dimes worth $1.30. How many dimes are in the jar?",
           "choices": [
             "8",
             "9",
-            "10",
-            "12"
-          ],
-          "answer": 2,
-          "explanation": "The scale factor is 6/3 = 2, so the longest side becomes 5·2 = 10."
-        },
-        {
-          "question": "What is the equation of the line through (0, -3) parallel to -2x + y = 7?",
-          "choices": [
-            "y = -2x - 3",
-            "y = 2x - 3",
-            "y = 2x + 3",
-            "y = -2x + 3"
+            "11",
+            "10"
           ],
           "answer": 1,
-          "explanation": "Rewrite the given line as y = 2x + 7. A parallel line has the same slope 2. Through (0, -3), the equation is y = 2x - 3."
+          "correctChoice": "9",
+          "explanation": "Let n be nickels and d be dimes. Then n + d = 17 and 5n + 10d = 130. Substitute n = 17 - d and solve to get d = 9.",
+          "tags": [
+            "applications",
+            "coins"
+          ]
         },
         {
-          "question": "A right triangle has legs 9 and 12. What is the length of the hypotenuse?",
+          "id": "systems_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "ticket sales",
+          "question": "A concert sells 120 tickets and collects $900. Adult tickets cost $10 and student tickets cost $5. How many adult tickets were sold?",
           "choices": [
-            "13",
-            "14",
-            "15",
-            "17"
+            "50",
+            "60",
+            "70",
+            "80"
+          ],
+          "answer": 1,
+          "correctChoice": "60",
+          "explanation": "Let a be adult tickets and s be student tickets. Then a + s = 120 and 10a + 5s = 900. Divide the second equation by 5 and solve to get a = 60.",
+          "tags": [
+            "applications",
+            "tickets"
+          ]
+        },
+        {
+          "id": "systems_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "no solution",
+          "question": "What kind of solution does the system have? 2x + 4y = 8 and x + 2y = 5",
+          "choices": [
+            "One solution",
+            "No solution",
+            "Exactly two solutions",
+            "Infinitely many solutions"
+          ],
+          "answer": 1,
+          "correctChoice": "No solution",
+          "explanation": "Rewrite the first equation as x + 2y = 4. Since x + 2y cannot equal both 4 and 5 at the same time, the lines are parallel and there is no solution.",
+          "tags": [
+            "systems",
+            "classify"
+          ]
+        },
+        {
+          "id": "systems_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "infinite solutions",
+          "question": "What kind of solution does the system have? 3x - 6y = 9 and x - 2y = 3",
+          "choices": [
+            "Infinitely many solutions",
+            "Exactly two solutions",
+            "One solution",
+            "No solution"
+          ],
+          "answer": 0,
+          "correctChoice": "Infinitely many solutions",
+          "explanation": "The first equation is just 3 times the second, so they represent the same line.",
+          "tags": [
+            "systems",
+            "classify"
+          ]
+        },
+        {
+          "id": "systems_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "fraction coefficients",
+          "question": "Solve the system: x/2 + y = 5 and x - y = 4.",
+          "choices": [
+            "(4, 2)",
+            "(2, 6)",
+            "(8, 1)",
+            "(6, 2)"
+          ],
+          "answer": 3,
+          "correctChoice": "(6, 2)",
+          "explanation": "From x - y = 4, we get y = x - 4. Substitute into x/2 + y = 5: x/2 + x - 4 = 5. Then 3x/2 = 9, so x = 6 and y = 2.",
+          "tags": [
+            "systems",
+            "fractions"
+          ]
+        },
+        {
+          "id": "systems_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "break-even",
+          "question": "Revenue is modeled by R(x) = 12x and cost by C(x) = 200 + 7x. At what number of units is the business at break-even?",
+          "choices": [
+            "40",
+            "28",
+            "50",
+            "20"
+          ],
+          "answer": 0,
+          "correctChoice": "40",
+          "explanation": "Break-even occurs when revenue equals cost: 12x = 200 + 7x. Then 5x = 200, so x = 40.",
+          "tags": [
+            "applications",
+            "break-even"
+          ]
+        },
+        {
+          "id": "systems_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "mixture application",
+          "question": "How many pounds of $10 per pound cashews should be mixed with $4 per pound peanuts to make 30 pounds of a $6 per pound mixture?",
+          "choices": [
+            "15 pounds",
+            "12 pounds",
+            "10 pounds",
+            "8 pounds"
           ],
           "answer": 2,
-          "explanation": "Use the Pythagorean theorem: c = √(9² + 12²) = √225 = 15."
+          "correctChoice": "10 pounds",
+          "explanation": "Let c be the pounds of cashews. Then 10c + 4(30 - c) = 6(30). Solving gives 6c = 60, so c = 10.",
+          "tags": [
+            "applications",
+            "mixture"
+          ]
+        },
+        {
+          "id": "systems_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "cell plans",
+          "question": "Plan A costs $25 plus $0.05 per text. Plan B costs $10 plus $0.08 per text. At how many texts do the plans cost the same?",
+          "choices": [
+            "600",
+            "300",
+            "250",
+            "500"
+          ],
+          "answer": 3,
+          "correctChoice": "500",
+          "explanation": "Set the costs equal: 25 + 0.05t = 10 + 0.08t. Then 15 = 0.03t, so t = 500.",
+          "tags": [
+            "applications",
+            "linear-models"
+          ]
         }
       ]
     },
     {
-      "name": "Trigonometry",
+      "id": "functions_graphs",
+      "name": "Functions and Graphs",
+      "alignment": [
+        "ALEKS PPL: linear and quadratic functions",
+        "ACCUPLACER AAF: functions"
+      ],
       "questions": [
         {
-          "question": "Convert 150° to radians.",
+          "id": "functions_graphs_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "function evaluation",
+          "question": "If f(x) = 2x + 3, what is f(4)?",
           "choices": [
-            "5π/6",
-            "3π/4",
-            "2π/3",
-            "5π/3"
+            "8",
+            "14",
+            "10",
+            "11"
           ],
-          "answer": 0,
-          "explanation": "Multiply by π/180: 150·π/180 = 5π/6."
+          "answer": 3,
+          "correctChoice": "11",
+          "explanation": "Substitute x = 4 into the rule: 2(4) + 3 = 11.",
+          "tags": [
+            "functions",
+            "evaluation"
+          ]
         },
         {
-          "question": "What is sin(30°)?",
+          "id": "functions_graphs_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "slope from two points",
+          "question": "What is the slope of the line through (2, 5) and (6, 13)?",
           "choices": [
-            "√3/2",
+            "2",
+            "4",
+            "3",
+            "1/2"
+          ],
+          "answer": 0,
+          "correctChoice": "2",
+          "explanation": "Use slope = (13 - 5)/(6 - 2) = 8/4 = 2.",
+          "tags": [
+            "graphs",
+            "slope"
+          ]
+        },
+        {
+          "id": "functions_graphs_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "linear function value",
+          "question": "If y = -3x + 1, what is y when x = -2?",
+          "choices": [
+            "-7",
+            "5",
+            "7",
+            "-5"
+          ],
+          "answer": 2,
+          "correctChoice": "7",
+          "explanation": "Substitute x = -2: y = -3(-2) + 1 = 6 + 1 = 7.",
+          "tags": [
+            "graphs",
+            "linear-functions"
+          ]
+        },
+        {
+          "id": "functions_graphs_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "parallel line",
+          "question": "Which equation represents the line through (0, -3) parallel to y = 2x + 7?",
+          "choices": [
+            "y = -3x + 2",
+            "y = 2x - 3",
+            "y = -2x - 3",
+            "y = 2x + 3"
+          ],
+          "answer": 1,
+          "correctChoice": "y = 2x - 3",
+          "explanation": "Parallel lines have the same slope. Since the given line has slope 2 and the new line passes through (0, -3), the equation is y = 2x - 3.",
+          "tags": [
+            "lines",
+            "parallel"
+          ]
+        },
+        {
+          "id": "functions_graphs_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "table pattern",
+          "question": "A table shows x-values 1, 2, 3 paired with y-values 4, 7, 10. If the pattern is linear, what is y when x = 5?",
+          "choices": [
+            "13",
+            "16",
+            "15",
+            "17"
+          ],
+          "answer": 1,
+          "correctChoice": "16",
+          "explanation": "The y-values increase by 3 each time, so the rule is y = 3x + 1. Then y = 3(5) + 1 = 16.",
+          "tags": [
+            "tables",
+            "linear-functions"
+          ]
+        },
+        {
+          "id": "functions_graphs_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "x-intercept",
+          "question": "What is the x-intercept of the line y = 3x - 12?",
+          "choices": [
+            "12",
+            "-4",
+            "3",
+            "4"
+          ],
+          "answer": 3,
+          "correctChoice": "4",
+          "explanation": "At the x-intercept, y = 0. Solve 0 = 3x - 12 to get x = 4.",
+          "tags": [
+            "graphs",
+            "intercepts"
+          ]
+        },
+        {
+          "id": "functions_graphs_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "composition",
+          "question": "If f(x) = x + 2 and g(x) = 3x, what is f(g(4))?",
+          "choices": [
+            "12",
+            "20",
+            "18",
+            "14"
+          ],
+          "answer": 3,
+          "correctChoice": "14",
+          "explanation": "First compute g(4) = 12, then apply f: f(12) = 12 + 2 = 14.",
+          "tags": [
+            "composition",
+            "functions"
+          ]
+        },
+        {
+          "id": "functions_graphs_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "inverse function evaluation",
+          "question": "If f(x) = 2x - 5, what is f^-1(11)?",
+          "choices": [
+            "8",
+            "3",
+            "5",
+            "16"
+          ],
+          "answer": 0,
+          "correctChoice": "8",
+          "explanation": "To invert, solve y = 2x - 5 for x: x = (y + 5)/2. Then f^-1(11) = (11 + 5)/2 = 8.",
+          "tags": [
+            "inverse-functions",
+            "functions"
+          ]
+        },
+        {
+          "id": "functions_graphs_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "vertex from vertex form",
+          "question": "What is the vertex of y = (x - 2)^2 + 1?",
+          "choices": [
+            "(2, 1)",
+            "(2, -1)",
+            "(-2, -1)",
+            "(-2, 1)"
+          ],
+          "answer": 0,
+          "correctChoice": "(2, 1)",
+          "explanation": "Vertex form is y = (x - h)^2 + k, so the vertex is (h, k) = (2, 1).",
+          "tags": [
+            "quadratic-functions",
+            "graphs"
+          ]
+        },
+        {
+          "id": "functions_graphs_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "composition of functions",
+          "question": "If f(x) = x^2 - 1 and g(x) = x + 3, what is (f \u2218 g)(2)?",
+          "choices": [
+            "15",
+            "25",
+            "16",
+            "24"
+          ],
+          "answer": 3,
+          "correctChoice": "24",
+          "explanation": "Compute g(2) = 5. Then f(5) = 5^2 - 1 = 24.",
+          "tags": [
+            "composition",
+            "functions"
+          ]
+        },
+        {
+          "id": "functions_graphs_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "inverse linear function",
+          "question": "If f(x) = (x - 4)/3, what is f^-1(5)?",
+          "choices": [
+            "11",
+            "27",
+            "15",
+            "19"
+          ],
+          "answer": 3,
+          "correctChoice": "19",
+          "explanation": "Solve y = (x - 4)/3 for x: x = 3y + 4. Then f^-1(5) = 3(5) + 4 = 19.",
+          "tags": [
+            "inverse-functions",
+            "linear-functions"
+          ]
+        },
+        {
+          "id": "functions_graphs_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "piecewise function",
+          "question": "For the piecewise function f(x) = 2x + 1 if x < 3 and f(x) = x - 2 if x \u2265 3, what is f(3)?",
+          "choices": [
+            "7",
+            "-1",
+            "1",
+            "4"
+          ],
+          "answer": 2,
+          "correctChoice": "1",
+          "explanation": "Because 3 is in the x \u2265 3 branch, use f(x) = x - 2. Then f(3) = 1.",
+          "tags": [
+            "piecewise-functions",
+            "evaluation"
+          ]
+        },
+        {
+          "id": "functions_graphs_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "average rate of change",
+          "question": "What is the average rate of change of f(x) = x^2 - 3x from x = 1 to x = 5?",
+          "choices": [
+            "2",
+            "4",
+            "3",
+            "6"
+          ],
+          "answer": 2,
+          "correctChoice": "3",
+          "explanation": "Compute f(5) = 10 and f(1) = -2. Then average rate of change is (10 - (-2)) / (5 - 1) = 12/4 = 3.",
+          "tags": [
+            "rate-of-change",
+            "functions"
+          ]
+        },
+        {
+          "id": "functions_graphs_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "perpendicular line",
+          "question": "Which equation represents the line through (2, -1) and perpendicular to 3x + y = 7?",
+          "choices": [
+            "y = (1/3)x + 5/3",
+            "y = -1/3x - 5/3",
+            "y = -3x + 5",
+            "y = (1/3)x - 5/3"
+          ],
+          "answer": 3,
+          "correctChoice": "y = (1/3)x - 5/3",
+          "explanation": "Rewrite 3x + y = 7 as y = -3x + 7, so the slope is -3. A perpendicular line has slope 1/3. Use point-slope form through (2, -1) to get y = (1/3)x - 5/3.",
+          "tags": [
+            "lines",
+            "perpendicular"
+          ]
+        },
+        {
+          "id": "functions_graphs_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "function transformation",
+          "question": "Which equation is the graph of y = sqrt(x) shifted right 4 units and up 2 units?",
+          "choices": [
+            "y = sqrt(x + 4) + 2",
+            "y = sqrt(x - 4) + 2",
+            "y = sqrt(x + 2) - 4",
+            "y = sqrt(x - 2) + 4"
+          ],
+          "answer": 1,
+          "correctChoice": "y = sqrt(x - 4) + 2",
+          "explanation": "A shift right by 4 changes x to x - 4, and a shift up by 2 adds 2 outside the function.",
+          "tags": [
+            "transformations",
+            "functions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "polynomials_factoring",
+      "name": "Polynomials and Factoring",
+      "alignment": [
+        "ALEKS PPL: exponents and polynomials",
+        "ACCUPLACER AAF: factoring and polynomial equations"
+      ],
+      "questions": [
+        {
+          "id": "polynomials_factoring_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "combine polynomial terms",
+          "question": "Simplify: 3x^2 + 4x^2",
+          "choices": [
+            "7x^4",
+            "7x^2",
+            "x^4",
+            "12x^4"
+          ],
+          "answer": 1,
+          "correctChoice": "7x^2",
+          "explanation": "These are like terms, so add the coefficients: 3 + 4 = 7.",
+          "tags": [
+            "polynomials",
+            "like-terms"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "multiply monomial",
+          "question": "Simplify: 2x(3x - 5)",
+          "choices": [
+            "6x - 10",
+            "5x^2 - 10x",
+            "6x^2 - 5",
+            "6x^2 - 10x"
+          ],
+          "answer": 3,
+          "correctChoice": "6x^2 - 10x",
+          "explanation": "Distribute 2x to each term: 2x\u00b73x = 6x^2 and 2x\u00b7(-5) = -10x.",
+          "tags": [
+            "polynomials",
+            "distribution"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "factor GCF",
+          "question": "Factor: 6x^3 - 9x^2",
+          "choices": [
+            "3x^2(2x - 3)",
+            "x^2(6x - 9)",
+            "9x^2(2x - 1)",
+            "3x(2x^2 - 3x)"
+          ],
+          "answer": 0,
+          "correctChoice": "3x^2(2x - 3)",
+          "explanation": "The greatest common factor is 3x^2. Factoring it out leaves 2x - 3.",
+          "tags": [
+            "factoring",
+            "gcf"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "FOIL",
+          "question": "Expand: (x + 4)(x - 2)",
+          "choices": [
+            "x^2 + 6x - 8",
+            "x^2 - 2x - 8",
+            "x^2 + 2x + 8",
+            "x^2 + 2x - 8"
+          ],
+          "answer": 3,
+          "correctChoice": "x^2 + 2x - 8",
+          "explanation": "Use FOIL: x^2 - 2x + 4x - 8 = x^2 + 2x - 8.",
+          "tags": [
+            "polynomials",
+            "multiplication"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "trinomial factor",
+          "question": "Factor: x^2 + 7x + 12",
+          "choices": [
+            "(x + 1)(x + 12)",
+            "(x + 3)(x + 4)",
+            "(x - 3)(x - 4)",
+            "(x + 2)(x + 6)"
+          ],
+          "answer": 1,
+          "correctChoice": "(x + 3)(x + 4)",
+          "explanation": "Find two numbers that multiply to 12 and add to 7: 3 and 4.",
+          "tags": [
+            "factoring",
+            "trinomial"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "difference of squares",
+          "question": "Factor: x^2 - 16",
+          "choices": [
+            "(x - 4)^2",
+            "(x + 4)^2",
+            "(x - 4)(x + 4)",
+            "(x - 8)(x + 2)"
+          ],
+          "answer": 2,
+          "correctChoice": "(x - 4)(x + 4)",
+          "explanation": "This is a difference of squares: a^2 - b^2 = (a - b)(a + b).",
+          "tags": [
+            "factoring",
+            "difference-of-squares"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "leading coefficient trinomial",
+          "question": "Factor: 2x^2 + 9x + 10",
+          "choices": [
+            "(2x + 1)(x + 10)",
+            "(2x + 5)(x + 2)",
+            "(2x + 10)(x + 1)",
+            "(x + 5)(2x + 2)"
+          ],
+          "answer": 1,
+          "correctChoice": "(2x + 5)(x + 2)",
+          "explanation": "The factors must produce 2x^2 and 10. Testing factor pairs shows (2x + 5)(x + 2) expands correctly.",
+          "tags": [
+            "factoring",
+            "trinomial"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "trinomial factor",
+          "question": "Factor: x^2 - 5x - 24",
+          "choices": [
+            "(x - 6)(x + 4)",
+            "(x - 3)(x + 8)",
+            "(x - 12)(x + 2)",
+            "(x - 8)(x + 3)"
+          ],
+          "answer": 3,
+          "correctChoice": "(x - 8)(x + 3)",
+          "explanation": "Find two numbers that multiply to -24 and add to -5: -8 and 3.",
+          "tags": [
+            "factoring",
+            "trinomial"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "factor common and difference squares",
+          "question": "Factor completely: x^3 - 9x",
+          "choices": [
+            "x(x - 3)(x + 3)",
+            "x(x - 9)",
+            "(x - 3)^2(x + 3)",
+            "x^2(x - 9)"
+          ],
+          "answer": 0,
+          "correctChoice": "x(x - 3)(x + 3)",
+          "explanation": "Factor out x to get x(x^2 - 9), then factor the difference of squares.",
+          "tags": [
+            "factoring",
+            "polynomials"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "factor common constant",
+          "question": "Factor completely: 3x^2 - 27",
+          "choices": [
+            "3(x - 3)(x + 3)",
+            "3(x - 3)^2",
+            "(3x - 3)(x + 3)",
+            "3(x - 9)(x + 3)"
+          ],
+          "answer": 0,
+          "correctChoice": "3(x - 3)(x + 3)",
+          "explanation": "Factor out 3 first to get 3(x^2 - 9), then factor the difference of squares.",
+          "tags": [
+            "factoring",
+            "difference-of-squares"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "zeros from quadratic",
+          "question": "What are the zeros of x^2 - 6x + 8?",
+          "choices": [
+            "3 and 3",
+            "1 and 8",
+            "-2 and -4",
+            "2 and 4"
+          ],
+          "answer": 3,
+          "correctChoice": "2 and 4",
+          "explanation": "Factor the expression: x^2 - 6x + 8 = (x - 2)(x - 4). Set each factor equal to 0.",
+          "tags": [
+            "zeros",
+            "quadratics"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "grouping",
+          "question": "Factor by grouping: x^3 + 3x^2 + 2x + 6",
+          "choices": [
+            "(x + 6)(x^2 + 1)",
+            "(x + 3)(x^2 + 2)",
+            "(x + 2)(x^2 + 3)",
+            "x(x^2 + 3x + 2)"
+          ],
+          "answer": 1,
+          "correctChoice": "(x + 3)(x^2 + 2)",
+          "explanation": "Group the terms: (x^3 + 3x^2) + (2x + 6) = x^2(x + 3) + 2(x + 3). Factor out the common binomial.",
+          "tags": [
+            "factoring",
+            "grouping"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "cubic equation",
+          "question": "Solve: x^3 - 4x = 0",
+          "choices": [
+            "x = -4, 0, 4",
+            "x = 0, 4",
+            "x = -2, 2",
+            "x = -2, 0, 2"
+          ],
+          "answer": 3,
+          "correctChoice": "x = -2, 0, 2",
+          "explanation": "Factor out x: x(x^2 - 4) = x(x - 2)(x + 2). Set each factor equal to 0.",
+          "tags": [
+            "polynomial-equations",
+            "factoring"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "polynomial division",
+          "question": "Divide: (x^3 - 1) \u00f7 (x - 1)",
+          "choices": [
+            "x^2 + 1",
+            "x^2 + x + 1",
+            "x^2 - x + 1",
+            "x + 1"
+          ],
+          "answer": 1,
+          "correctChoice": "x^2 + x + 1",
+          "explanation": "Use the difference of cubes formula: x^3 - 1 = (x - 1)(x^2 + x + 1).",
+          "tags": [
+            "polynomial-division",
+            "factoring"
+          ]
+        },
+        {
+          "id": "polynomials_factoring_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "factor completely",
+          "question": "Factor completely: 2x^3 - 5x^2 - 3x",
+          "choices": [
+            "(2x + 1)(x - 3)",
+            "x(2x - 1)(x + 3)",
+            "x(2x - 3)(x + 1)",
+            "x(2x + 1)(x - 3)"
+          ],
+          "answer": 3,
+          "correctChoice": "x(2x + 1)(x - 3)",
+          "explanation": "Factor out x to get x(2x^2 - 5x - 3). Then factor the quadratic as (2x + 1)(x - 3).",
+          "tags": [
+            "factoring",
+            "cubic"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadratics",
+      "name": "Quadratics",
+      "alignment": [
+        "ALEKS PPL: quadratic equations and parabolas",
+        "ACCUPLACER AAF: quadratics"
+      ],
+      "questions": [
+        {
+          "id": "quadratics_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "square root property",
+          "question": "Solve: x^2 = 49",
+          "choices": [
+            "x = 7",
+            "x = 7 or x = -7",
+            "x = 49",
+            "x = -7"
+          ],
+          "answer": 1,
+          "correctChoice": "x = 7 or x = -7",
+          "explanation": "Take the square root of both sides and remember the positive and negative roots.",
+          "tags": [
+            "quadratics",
+            "square-root"
+          ]
+        },
+        {
+          "id": "quadratics_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "square root property",
+          "question": "Solve: (x - 3)^2 = 16",
+          "choices": [
+            "x = 7 or x = -1",
+            "x = 1 or x = 7",
+            "x = 19",
+            "x = 4 or x = -4"
+          ],
+          "answer": 0,
+          "correctChoice": "x = 7 or x = -1",
+          "explanation": "Take square roots: x - 3 = \u00b14. Then x = 7 or x = -1.",
+          "tags": [
+            "quadratics",
+            "square-root"
+          ]
+        },
+        {
+          "id": "quadratics_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "vertex identification",
+          "question": "What is the vertex of y = (x + 2)^2 - 5?",
+          "choices": [
+            "(2, -5)",
+            "(-2, -5)",
+            "(2, 5)",
+            "(-2, 5)"
+          ],
+          "answer": 1,
+          "correctChoice": "(-2, -5)",
+          "explanation": "In vertex form y = (x - h)^2 + k, the vertex is (h, k). Here h = -2 and k = -5.",
+          "tags": [
+            "quadratic-functions",
+            "vertex"
+          ]
+        },
+        {
+          "id": "quadratics_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "solve by factoring",
+          "question": "Solve: x^2 - 5x + 6 = 0",
+          "choices": [
+            "x = 1 or x = 6",
+            "x = -2 or x = -3",
+            "x = 2 only",
+            "x = 2 or x = 3"
+          ],
+          "answer": 3,
+          "correctChoice": "x = 2 or x = 3",
+          "explanation": "Factor: (x - 2)(x - 3) = 0. Set each factor equal to 0.",
+          "tags": [
+            "quadratics",
+            "factoring"
+          ]
+        },
+        {
+          "id": "quadratics_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "solve simple quadratic",
+          "question": "Solve: 2x^2 - 8 = 0",
+          "choices": [
+            "x = 2 or x = -2",
+            "x = 2",
+            "x = 4 or x = -4",
+            "x = -2"
+          ],
+          "answer": 0,
+          "correctChoice": "x = 2 or x = -2",
+          "explanation": "Add 8 and divide by 2 to get x^2 = 4. Then x = \u00b12.",
+          "tags": [
+            "quadratics",
+            "square-root"
+          ]
+        },
+        {
+          "id": "quadratics_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "x-intercepts",
+          "question": "What are the x-intercepts of y = x^2 + 2x - 15?",
+          "choices": [
+            "x = 3 only",
+            "x = 15 and x = -1",
+            "x = 5 and x = -3",
+            "x = 3 and x = -5"
+          ],
+          "answer": 3,
+          "correctChoice": "x = 3 and x = -5",
+          "explanation": "Set y = 0 and factor: x^2 + 2x - 15 = (x + 5)(x - 3).",
+          "tags": [
+            "quadratic-functions",
+            "intercepts"
+          ]
+        },
+        {
+          "id": "quadratics_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "axis of symmetry",
+          "question": "What is the axis of symmetry of y = x^2 - 6x + 1?",
+          "choices": [
+            "x = 3",
+            "x = -3",
+            "x = 6",
+            "y = 3"
+          ],
+          "answer": 0,
+          "correctChoice": "x = 3",
+          "explanation": "For y = ax^2 + bx + c, the axis of symmetry is x = -b/(2a). Here x = -(-6)/(2\u00b71) = 3.",
+          "tags": [
+            "quadratic-functions",
+            "axis-of-symmetry"
+          ]
+        },
+        {
+          "id": "quadratics_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "solve by factoring",
+          "question": "Solve: x^2 + 4x - 12 = 0",
+          "choices": [
+            "x = 12 or x = -1",
+            "x = -2 or x = 6",
+            "x = 2 or x = -6",
+            "x = 3 or x = -4"
+          ],
+          "answer": 2,
+          "correctChoice": "x = 2 or x = -6",
+          "explanation": "Factor the quadratic: (x + 6)(x - 2) = 0.",
+          "tags": [
+            "quadratics",
+            "factoring"
+          ]
+        },
+        {
+          "id": "quadratics_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "projectile vertex",
+          "question": "A projectile has height h(t) = -16t^2 + 32t + 5. What is its maximum height?",
+          "choices": [
+            "21",
+            "19",
+            "16",
+            "37"
+          ],
+          "answer": 0,
+          "correctChoice": "21",
+          "explanation": "The maximum occurs at t = -b/(2a) = -32/(2\u00b7-16) = 1. Then h(1) = -16 + 32 + 5 = 21.",
+          "tags": [
+            "applications",
+            "quadratic-functions"
+          ]
+        },
+        {
+          "id": "quadratics_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "solve with factoring",
+          "question": "Solve: 3x^2 + x - 2 = 0",
+          "choices": [
+            "x = 2/3 or x = -1",
+            "x = 1/2 or x = -2",
+            "x = 2 or x = -3",
+            "x = -2/3 or x = 1"
+          ],
+          "answer": 0,
+          "correctChoice": "x = 2/3 or x = -1",
+          "explanation": "Factor: 3x^2 + x - 2 = (3x - 2)(x + 1).",
+          "tags": [
+            "quadratics",
+            "factoring"
+          ]
+        },
+        {
+          "id": "quadratics_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "vertex form rewriting",
+          "question": "Rewrite x^2 + 6x + 1 in vertex form.",
+          "choices": [
+            "(x - 3)^2 + 8",
+            "(x - 3)^2 - 8",
+            "(x + 3)^2 + 8",
+            "(x + 3)^2 - 8"
+          ],
+          "answer": 3,
+          "correctChoice": "(x + 3)^2 - 8",
+          "explanation": "Complete the square: x^2 + 6x + 1 = x^2 + 6x + 9 - 9 + 1 = (x + 3)^2 - 8.",
+          "tags": [
+            "quadratic-functions",
+            "completing-the-square"
+          ]
+        },
+        {
+          "id": "quadratics_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "quadratic formula",
+          "question": "Solve: 2x^2 + 3x - 2 = 0",
+          "choices": [
+            "x = -1 or x = 2",
+            "x = 1/2 or x = -2",
+            "x = -1/2 or x = 2",
+            "x = 1 or x = -2"
+          ],
+          "answer": 1,
+          "correctChoice": "x = 1/2 or x = -2",
+          "explanation": "Using the quadratic formula gives x = [-3 \u00b1 sqrt(25)]/4 = [-3 \u00b1 5]/4, so x = 1/2 or x = -2.",
+          "tags": [
+            "quadratics",
+            "quadratic-formula"
+          ]
+        },
+        {
+          "id": "quadratics_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "rectangle area application",
+          "question": "A rectangle has area 48 square units and length 2 units more than its width. What is the width?",
+          "choices": [
+            "6",
+            "10",
+            "8",
+            "4"
+          ],
+          "answer": 0,
+          "correctChoice": "6",
+          "explanation": "Let the width be w. Then w(w + 2) = 48, so w^2 + 2w - 48 = 0. Factor to get (w + 8)(w - 6) = 0. The positive solution is 6.",
+          "tags": [
+            "applications",
+            "quadratics"
+          ]
+        },
+        {
+          "id": "quadratics_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "projectile roots",
+          "question": "An object is launched with height h(t) = -16t^2 + 64t + 80. After how many seconds does it hit the ground?",
+          "choices": [
+            "6",
+            "4",
+            "5",
+            "8"
+          ],
+          "answer": 2,
+          "correctChoice": "5",
+          "explanation": "Set h(t) = 0: -16t^2 + 64t + 80 = 0. Divide by -16 to get t^2 - 4t - 5 = 0 = (t - 5)(t + 1). The positive time is 5 seconds.",
+          "tags": [
+            "applications",
+            "quadratic-functions"
+          ]
+        },
+        {
+          "id": "quadratics_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "quadratic inequality",
+          "question": "For what values of x is x^2 - 5x + 6 < 0?",
+          "choices": [
+            "2 < x < 3",
+            "x < 2 or x > 3",
+            "x < 2",
+            "x > 3"
+          ],
+          "answer": 0,
+          "correctChoice": "2 < x < 3",
+          "explanation": "Factor the quadratic: (x - 2)(x - 3) < 0. Since the parabola opens upward, the expression is negative between the roots.",
+          "tags": [
+            "quadratic-inequalities",
+            "intervals"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rational_expr",
+      "name": "Rational Expressions and Equations",
+      "alignment": [
+        "ALEKS PPL: rational expressions and equations",
+        "ACCUPLACER AAF: radical and rational equations"
+      ],
+      "questions": [
+        {
+          "id": "rational_expr_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "simplify rational monomial",
+          "question": "Simplify: (6x^2y)/(3xy)",
+          "choices": [
+            "3x",
+            "2xy",
+            "2y",
+            "2x"
+          ],
+          "answer": 3,
+          "correctChoice": "2x",
+          "explanation": "Divide coefficients and subtract exponents on matching variables: 6/3 = 2, x^(2-1) = x, and y cancels.",
+          "tags": [
+            "rational-expressions",
+            "simplify"
+          ]
+        },
+        {
+          "id": "rational_expr_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "simplify after factoring",
+          "question": "Simplify: (x^2 - 9)/(x - 3), where x \u2260 3.",
+          "choices": [
+            "x - 3",
+            "x^2 - 6",
+            "x + 3",
+            "x + 6"
+          ],
+          "answer": 2,
+          "correctChoice": "x + 3",
+          "explanation": "Factor the numerator as (x - 3)(x + 3), then cancel x - 3.",
+          "tags": [
+            "rational-expressions",
+            "factoring"
+          ]
+        },
+        {
+          "id": "rational_expr_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "excluded value",
+          "question": "What value of x is excluded from the expression 5/(x + 2)?",
+          "choices": [
+            "No value is excluded",
+            "x = 2",
+            "x = 0",
+            "x = -2"
+          ],
+          "answer": 3,
+          "correctChoice": "x = -2",
+          "explanation": "The denominator cannot be zero, so x + 2 \u2260 0 and x \u2260 -2.",
+          "tags": [
+            "rational-expressions",
+            "domain"
+          ]
+        },
+        {
+          "id": "rational_expr_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "multiply rational expressions",
+          "question": "Simplify: (x/4) \u00b7 (8/x), where x \u2260 0.",
+          "choices": [
+            "2x",
+            "8",
+            "2",
+            "x/2"
+          ],
+          "answer": 2,
+          "correctChoice": "2",
+          "explanation": "Cancel x and simplify 8/4 = 2.",
+          "tags": [
+            "rational-expressions",
+            "multiplication"
+          ]
+        },
+        {
+          "id": "rational_expr_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "divide rational expressions",
+          "question": "Simplify: ((x^2 - 4)/x) \u00f7 ((x - 2)/x), where x \u2260 0 and x \u2260 2.",
+          "choices": [
+            "x + 2",
+            "x^2 - 2",
+            "2x + 2",
+            "x - 2"
+          ],
+          "answer": 0,
+          "correctChoice": "x + 2",
+          "explanation": "Rewrite division as multiplication by the reciprocal: ((x^2 - 4)/x)\u00b7(x/(x - 2)). Factor x^2 - 4 = (x - 2)(x + 2), then cancel.",
+          "tags": [
+            "rational-expressions",
+            "division"
+          ]
+        },
+        {
+          "id": "rational_expr_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "add like denominators",
+          "question": "Simplify: 3/x + 2/x",
+          "choices": [
+            "1/x",
+            "5/2x",
+            "5/x",
+            "6/x^2"
+          ],
+          "answer": 2,
+          "correctChoice": "5/x",
+          "explanation": "The denominators match, so add the numerators: 3 + 2 = 5.",
+          "tags": [
+            "rational-expressions",
+            "addition"
+          ]
+        },
+        {
+          "id": "rational_expr_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "solve rational equation",
+          "question": "Solve: 2/(x - 1) = 1",
+          "choices": [
+            "3",
+            "-1",
+            "2",
+            "1"
+          ],
+          "answer": 0,
+          "correctChoice": "3",
+          "explanation": "Multiply both sides by x - 1 to get 2 = x - 1, so x = 3.",
+          "tags": [
+            "rational-equations",
+            "solve"
+          ]
+        },
+        {
+          "id": "rational_expr_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "solve rational equation",
+          "question": "Solve: 5/x + 1 = 3",
+          "choices": [
+            "2/5",
+            "5",
+            "5/2",
+            "3/2"
+          ],
+          "answer": 2,
+          "correctChoice": "5/2",
+          "explanation": "Subtract 1 to get 5/x = 2. Then x = 5/2.",
+          "tags": [
+            "rational-equations",
+            "solve"
+          ]
+        },
+        {
+          "id": "rational_expr_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "complex fraction",
+          "question": "Simplify: (1/2 + 1/3) \u00f7 (1/6)",
+          "choices": [
+            "5",
+            "5/6",
+            "6",
+            "1"
+          ],
+          "answer": 0,
+          "correctChoice": "5",
+          "explanation": "First add inside the numerator: 1/2 + 1/3 = 5/6. Then (5/6) \u00f7 (1/6) = 5.",
+          "tags": [
+            "complex-fractions",
+            "rational-expressions"
+          ]
+        },
+        {
+          "id": "rational_expr_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "add unlike denominators",
+          "question": "Simplify: x/(x - 1) + 1/(x - 1), where x \u2260 1.",
+          "choices": [
+            "1/(x - 1)",
+            "(x + 1)/(x - 1)",
+            "(2x)/(x - 1)",
+            "x/(x - 1)"
+          ],
+          "answer": 1,
+          "correctChoice": "(x + 1)/(x - 1)",
+          "explanation": "The denominators are the same, so add numerators: x + 1.",
+          "tags": [
+            "rational-expressions",
+            "addition"
+          ]
+        },
+        {
+          "id": "rational_expr_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "solve rational equation",
+          "question": "Solve: 1/x + 1/3 = 5/6",
+          "choices": [
+            "2",
+            "6",
             "1/2",
+            "3"
+          ],
+          "answer": 0,
+          "correctChoice": "2",
+          "explanation": "Subtract 1/3 from 5/6 to get 1/x = 1/2, so x = 2.",
+          "tags": [
+            "rational-equations",
+            "solve"
+          ]
+        },
+        {
+          "id": "rational_expr_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "proportion with variable denominator",
+          "question": "Solve: x/(x + 2) = 3/5",
+          "choices": [
+            "5",
+            "2",
+            "3",
+            "7"
+          ],
+          "answer": 2,
+          "correctChoice": "3",
+          "explanation": "Cross-multiply: 5x = 3(x + 2). Then 5x = 3x + 6, so 2x = 6 and x = 3.",
+          "tags": [
+            "rational-equations",
+            "proportions"
+          ]
+        },
+        {
+          "id": "rational_expr_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "solve rational equation",
+          "question": "Solve: (x + 1)/(x - 2) = 2",
+          "choices": [
+            "6",
+            "3",
+            "5",
+            "4"
+          ],
+          "answer": 2,
+          "correctChoice": "5",
+          "explanation": "Cross-multiply: x + 1 = 2x - 4. Solve to get x = 5.",
+          "tags": [
+            "rational-equations",
+            "advanced"
+          ]
+        },
+        {
+          "id": "rational_expr_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "solve multi-term rational equation",
+          "question": "Solve: 2/x + 3/(x + 1) = 2",
+          "choices": [
+            "x = 2 only",
+            "x = -2 or x = 1/2",
+            "x = 2 or x = -1/2",
+            "x = -1 only"
+          ],
+          "answer": 2,
+          "correctChoice": "x = 2 or x = -1/2",
+          "explanation": "Multiply by x(x + 1): 2(x + 1) + 3x = 2x(x + 1). This becomes 5x + 2 = 2x^2 + 2x, or 2x^2 - 3x - 2 = 0. Factor to get (2x + 1)(x - 2) = 0.",
+          "tags": [
+            "rational-equations",
+            "advanced"
+          ]
+        },
+        {
+          "id": "rational_expr_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "combine rational expressions",
+          "question": "Simplify: 2/(x - 3) - 1/(x + 1)",
+          "choices": [
+            "(x - 5)/((x - 3)(x + 1))",
+            "(x + 5)/((x - 3)(x + 1))",
+            "(x + 2)/((x - 3)(x + 1))",
+            "3/((x - 3)(x + 1))"
+          ],
+          "answer": 1,
+          "correctChoice": "(x + 5)/((x - 3)(x + 1))",
+          "explanation": "Use the common denominator (x - 3)(x + 1). The numerator becomes 2(x + 1) - (x - 3) = x + 5.",
+          "tags": [
+            "rational-expressions",
+            "addition"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "radicals",
+      "name": "Radicals and Rational Exponents",
+      "alignment": [
+        "ALEKS PPL: radical expressions and rational exponents",
+        "ACCUPLACER AAF: radical equations"
+      ],
+      "questions": [
+        {
+          "id": "radicals_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "square root",
+          "question": "What is sqrt(81)?",
+          "choices": [
+            "9",
+            "8",
+            "\u00b19",
+            "27"
+          ],
+          "answer": 0,
+          "correctChoice": "9",
+          "explanation": "The principal square root of 81 is 9.",
+          "tags": [
+            "radicals",
+            "square-roots"
+          ]
+        },
+        {
+          "id": "radicals_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "simplify radical",
+          "question": "Simplify: sqrt(50)",
+          "choices": [
+            "10sqrt(5)",
+            "25sqrt(2)",
+            "5sqrt(5)",
+            "5sqrt(2)"
+          ],
+          "answer": 3,
+          "correctChoice": "5sqrt(2)",
+          "explanation": "Factor 50 as 25\u00b72. Then sqrt(50) = sqrt(25)sqrt(2) = 5sqrt(2).",
+          "tags": [
+            "radicals",
+            "simplify"
+          ]
+        },
+        {
+          "id": "radicals_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "cube root",
+          "question": "What is the cube root of 125?",
+          "choices": [
+            "15",
+            "5",
+            "25",
+            "4"
+          ],
+          "answer": 1,
+          "correctChoice": "5",
+          "explanation": "Since 5^3 = 125, the cube root is 5.",
+          "tags": [
+            "radicals",
+            "cube-roots"
+          ]
+        },
+        {
+          "id": "radicals_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "coefficient radical",
+          "question": "Simplify: 3sqrt(8)",
+          "choices": [
+            "6sqrt(2)",
+            "12sqrt(2)",
+            "6sqrt(8)",
+            "3sqrt(2)"
+          ],
+          "answer": 0,
+          "correctChoice": "6sqrt(2)",
+          "explanation": "Since sqrt(8) = sqrt(4\u00b72) = 2sqrt(2), multiply by 3 to get 6sqrt(2).",
+          "tags": [
+            "radicals",
+            "simplify"
+          ]
+        },
+        {
+          "id": "radicals_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "add radicals",
+          "question": "Simplify: sqrt(18) + sqrt(8)",
+          "choices": [
+            "sqrt(26)",
+            "6sqrt(2)",
+            "3sqrt(2)",
+            "5sqrt(2)"
+          ],
+          "answer": 3,
+          "correctChoice": "5sqrt(2)",
+          "explanation": "Simplify each radical: sqrt(18) = 3sqrt(2) and sqrt(8) = 2sqrt(2). Then add like radicals.",
+          "tags": [
+            "radicals",
+            "addition"
+          ]
+        },
+        {
+          "id": "radicals_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "basic radical equation",
+          "question": "Solve: sqrt(x) = 7",
+          "choices": [
+            "56",
+            "49",
+            "14",
+            "21"
+          ],
+          "answer": 1,
+          "correctChoice": "49",
+          "explanation": "Square both sides to get x = 49.",
+          "tags": [
+            "radical-equations",
+            "solve"
+          ]
+        },
+        {
+          "id": "radicals_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "radical equation",
+          "question": "Solve: sqrt(x + 9) = 6",
+          "choices": [
+            "36",
+            "45",
+            "15",
+            "27"
+          ],
+          "answer": 3,
+          "correctChoice": "27",
+          "explanation": "Square both sides to get x + 9 = 36. Then x = 27.",
+          "tags": [
+            "radical-equations",
+            "solve"
+          ]
+        },
+        {
+          "id": "radicals_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "rational exponents",
+          "question": "Rewrite x^(3/2) using radicals.",
+          "choices": [
+            "sqrt(x)/x",
+            "xsqrt(x)",
+            "x^3sqrt(x)",
+            "sqrt(x^3) + 2"
+          ],
+          "answer": 1,
+          "correctChoice": "xsqrt(x)",
+          "explanation": "The exponent 3/2 means take the square root and then cube, or cube and then square root: x^(3/2) = (sqrt(x))^3 = xsqrt(x).",
+          "tags": [
+            "rational-exponents",
+            "rewrite"
+          ]
+        },
+        {
+          "id": "radicals_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "subtract radicals",
+          "question": "Simplify: sqrt(48) - sqrt(3)",
+          "choices": [
+            "sqrt(45)",
+            "3sqrt(3)",
+            "2sqrt(3)",
+            "4sqrt(3)"
+          ],
+          "answer": 1,
+          "correctChoice": "3sqrt(3)",
+          "explanation": "Since sqrt(48) = sqrt(16\u00b73) = 4sqrt(3), subtracting sqrt(3) leaves 3sqrt(3).",
+          "tags": [
+            "radicals",
+            "subtraction"
+          ]
+        },
+        {
+          "id": "radicals_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "radical equation",
+          "question": "Solve: sqrt(2x + 3) = 5",
+          "choices": [
+            "11",
+            "13",
+            "7",
+            "14"
+          ],
+          "answer": 0,
+          "correctChoice": "11",
+          "explanation": "Square both sides: 2x + 3 = 25. Then 2x = 22, so x = 11.",
+          "tags": [
+            "radical-equations",
+            "solve"
+          ]
+        },
+        {
+          "id": "radicals_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "higher root simplification",
+          "question": "Simplify: (27x^6y^3)^(1/3)",
+          "choices": [
+            "3x^3y",
+            "3x^2y^3",
+            "9x^2y",
+            "3x^2y"
+          ],
+          "answer": 3,
+          "correctChoice": "3x^2y",
+          "explanation": "Take the cube root of each factor: cube root of 27 is 3, cube root of x^6 is x^2, and cube root of y^3 is y.",
+          "tags": [
+            "radicals",
+            "higher-roots"
+          ]
+        },
+        {
+          "id": "radicals_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "rational exponent evaluation",
+          "question": "Evaluate: 16^(3/4)",
+          "choices": [
+            "12",
+            "6",
+            "8",
+            "4"
+          ],
+          "answer": 2,
+          "correctChoice": "8",
+          "explanation": "Take the fourth root first: 16^(1/4) = 2. Then cube it: 2^3 = 8.",
+          "tags": [
+            "rational-exponents",
+            "evaluate"
+          ]
+        },
+        {
+          "id": "radicals_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "radical equation",
+          "question": "Solve: sqrt(x + 1) + 1 = 5",
+          "choices": [
+            "15",
+            "16",
+            "24",
+            "8"
+          ],
+          "answer": 0,
+          "correctChoice": "15",
+          "explanation": "Subtract 1 to get sqrt(x + 1) = 4. Square both sides: x + 1 = 16, so x = 15.",
+          "tags": [
+            "radical-equations",
+            "advanced"
+          ]
+        },
+        {
+          "id": "radicals_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "rational exponent equation",
+          "question": "Solve: x^(2/3) = 9",
+          "choices": [
+            "x = 27 or x = -27",
+            "x = 9 or x = -9",
+            "x = 3 or x = -3",
+            "x = 81 or x = -81"
+          ],
+          "answer": 0,
+          "correctChoice": "x = 27 or x = -27",
+          "explanation": "Let u = cube root of x. Then u^2 = 9, so u = \u00b13. Cubing both gives x = \u00b127.",
+          "tags": [
+            "rational-exponents",
+            "equations"
+          ]
+        },
+        {
+          "id": "radicals_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "radical equation with extraneous check",
+          "question": "Solve: sqrt(x + 5) = x - 1",
+          "choices": [
+            "No solution",
+            "-1",
+            "4",
+            "5"
+          ],
+          "answer": 2,
+          "correctChoice": "4",
+          "explanation": "Square both sides: x + 5 = (x - 1)^2 = x^2 - 2x + 1. This gives x^2 - 3x - 4 = 0, so x = 4 or x = -1. Check both in the original equation: only x = 4 works.",
+          "tags": [
+            "radical-equations",
+            "extraneous-solutions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exp_logs",
+      "name": "Exponential and Logarithmic Models",
+      "alignment": [
+        "ALEKS PPL: exponentials and logarithms",
+        "ACCUPLACER AAF: exponential and logarithmic equations"
+      ],
+      "questions": [
+        {
+          "id": "exp_logs_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "evaluate exponential",
+          "question": "Evaluate: 2^5",
+          "choices": [
+            "25",
+            "10",
+            "16",
+            "32"
+          ],
+          "answer": 3,
+          "correctChoice": "32",
+          "explanation": "Multiply 2 by itself five times: 2^5 = 32.",
+          "tags": [
+            "exponential",
+            "evaluate"
+          ]
+        },
+        {
+          "id": "exp_logs_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "scaled exponential",
+          "question": "Evaluate: 3\u00b72^4",
+          "choices": [
+            "24",
+            "32",
+            "64",
+            "48"
+          ],
+          "answer": 3,
+          "correctChoice": "48",
+          "explanation": "Compute 2^4 = 16, then multiply by 3.",
+          "tags": [
+            "exponential",
+            "evaluate"
+          ]
+        },
+        {
+          "id": "exp_logs_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "growth factor",
+          "question": "A population starts at 200 and grows by 10% in one year. What is the new population?",
+          "choices": [
+            "220",
+            "230",
+            "240",
+            "210"
+          ],
+          "answer": 0,
+          "correctChoice": "220",
+          "explanation": "A 10% increase means multiply by 1.10. So 200 \u00d7 1.10 = 220.",
+          "tags": [
+            "growth",
+            "applications"
+          ]
+        },
+        {
+          "id": "exp_logs_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "solve exponential",
+          "question": "Solve: 2^x = 32",
+          "choices": [
+            "5",
+            "16",
+            "4",
+            "6"
+          ],
+          "answer": 0,
+          "correctChoice": "5",
+          "explanation": "Since 32 = 2^5, x = 5.",
+          "tags": [
+            "exponential-equations",
+            "solve"
+          ]
+        },
+        {
+          "id": "exp_logs_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "solve common base",
+          "question": "Solve: 9^x = 27",
+          "choices": [
+            "2",
+            "3",
+            "3/2",
+            "1/2"
+          ],
+          "answer": 2,
+          "correctChoice": "3/2",
+          "explanation": "Write both sides with base 3: (3^2)^x = 3^3, so 2x = 3 and x = 3/2.",
+          "tags": [
+            "exponential-equations",
+            "solve"
+          ]
+        },
+        {
+          "id": "exp_logs_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "common logarithm",
+          "question": "Evaluate: log(1000)",
+          "choices": [
+            "10",
+            "3",
+            "2",
+            "100"
+          ],
+          "answer": 1,
+          "correctChoice": "3",
+          "explanation": "The common logarithm asks for the exponent on 10. Since 10^3 = 1000, the value is 3.",
+          "tags": [
+            "logarithms",
+            "evaluate"
+          ]
+        },
+        {
+          "id": "exp_logs_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "log properties",
+          "question": "Evaluate: log(100) - log(10)",
+          "choices": [
+            "100",
+            "10",
+            "2",
+            "1"
+          ],
+          "answer": 3,
+          "correctChoice": "1",
+          "explanation": "log(100) = 2 and log(10) = 1, so the difference is 1.",
+          "tags": [
+            "logarithms",
+            "properties"
+          ]
+        },
+        {
+          "id": "exp_logs_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "solve logarithmic equation",
+          "question": "Solve: log_2(8x) = 5",
+          "choices": [
+            "32",
+            "5",
+            "4",
+            "8"
+          ],
+          "answer": 2,
+          "correctChoice": "4",
+          "explanation": "Rewrite in exponential form: 8x = 2^5 = 32. Then x = 4.",
+          "tags": [
+            "logarithms",
+            "equations"
+          ]
+        },
+        {
+          "id": "exp_logs_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "growth factor",
+          "question": "What is the growth factor for a 6% annual increase?",
+          "choices": [
+            "0.06",
+            "1.06",
+            "0.94",
+            "1.6"
+          ],
+          "answer": 1,
+          "correctChoice": "1.06",
+          "explanation": "For a 6% increase, add 0.06 to 1 to get the growth factor.",
+          "tags": [
+            "growth",
+            "percent-change"
+          ]
+        },
+        {
+          "id": "exp_logs_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "continuous growth solve",
+          "question": "Solve for t: 5e^(0.2t) = 20",
+          "choices": [
+            "about 3.47",
+            "about 8.05",
+            "about 13.86",
+            "about 6.93"
+          ],
+          "answer": 3,
+          "correctChoice": "about 6.93",
+          "explanation": "Divide by 5 to get e^(0.2t) = 4. Take natural logs: 0.2t = ln 4, so t = ln 4 / 0.2 \u2248 6.93.",
+          "tags": [
+            "exponential-models",
+            "logs"
+          ]
+        },
+        {
+          "id": "exp_logs_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "natural log inverse",
+          "question": "Evaluate: ln(e^7)",
+          "choices": [
+            "0",
+            "e^7",
+            "1",
+            "7"
+          ],
+          "answer": 3,
+          "correctChoice": "7",
+          "explanation": "Natural log and the exponential function e^x are inverses.",
+          "tags": [
+            "logarithms",
+            "natural-log"
+          ]
+        },
+        {
+          "id": "exp_logs_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "solve logarithmic equation",
+          "question": "Solve: log_3(x - 1) = 2",
+          "choices": [
+            "9",
+            "12",
+            "8",
+            "10"
+          ],
+          "answer": 3,
+          "correctChoice": "10",
+          "explanation": "Rewrite in exponential form: x - 1 = 3^2 = 9. Then x = 10.",
+          "tags": [
+            "logarithms",
+            "equations"
+          ]
+        },
+        {
+          "id": "exp_logs_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "continuous compounding",
+          "question": "If $2000 is invested at continuous growth with A = 2000e^(0.05t), how much is in the account after 8 years?",
+          "choices": [
+            "about $3,221.40",
+            "about $2,800.00",
+            "about $3,500.00",
+            "about $2,983.65"
+          ],
+          "answer": 3,
+          "correctChoice": "about $2,983.65",
+          "explanation": "Substitute t = 8: A = 2000e^(0.40) \u2248 2000(1.4918) \u2248 2983.65.",
+          "tags": [
+            "applications",
+            "continuous-compounding"
+          ]
+        },
+        {
+          "id": "exp_logs_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "doubling time",
+          "question": "For P = 80e^(0.04t), how long does it take the population to double?",
+          "choices": [
+            "about 17.33 years",
+            "about 20 years",
+            "about 25 years",
+            "about 8.66 years"
+          ],
+          "answer": 0,
+          "correctChoice": "about 17.33 years",
+          "explanation": "Set 160 = 80e^(0.04t). Then 2 = e^(0.04t), so t = ln 2 / 0.04 \u2248 17.33.",
+          "tags": [
+            "applications",
+            "doubling-time"
+          ]
+        },
+        {
+          "id": "exp_logs_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "non-integer exponential solution",
+          "question": "Solve: 2^(x + 1) = 5",
+          "choices": [
+            "about 0.322",
+            "about 1.322",
+            "about 3.322",
+            "about 2.322"
+          ],
+          "answer": 1,
+          "correctChoice": "about 1.322",
+          "explanation": "Take log base 2 of both sides: x + 1 = log_2 5. So x = log_2 5 - 1 \u2248 1.322.",
+          "tags": [
+            "exponential-equations",
+            "logs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geometry",
+      "name": "Geometry and Coordinate Geometry",
+      "alignment": [
+        "ALEKS PPL: geometry",
+        "ACCUPLACER QAS/AAF: geometry concepts"
+      ],
+      "questions": [
+        {
+          "id": "geometry_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "area rectangle",
+          "question": "What is the area of a rectangle with length 8 and width 5?",
+          "choices": [
+            "40",
+            "26",
+            "13",
+            "80"
+          ],
+          "answer": 0,
+          "correctChoice": "40",
+          "explanation": "Area of a rectangle is length \u00d7 width = 8 \u00d7 5 = 40.",
+          "tags": [
+            "geometry",
+            "area"
+          ]
+        },
+        {
+          "id": "geometry_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "circumference",
+          "question": "What is the circumference of a circle with radius 4?",
+          "choices": [
+            "8",
+            "16\u03c0",
+            "4\u03c0",
+            "8\u03c0"
+          ],
+          "answer": 3,
+          "correctChoice": "8\u03c0",
+          "explanation": "Circumference is 2\u03c0r, so 2\u03c0(4) = 8\u03c0.",
+          "tags": [
+            "geometry",
+            "circles"
+          ]
+        },
+        {
+          "id": "geometry_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "distance on number line",
+          "question": "What is the distance between -3 and 7 on a number line?",
+          "choices": [
+            "10",
+            "4",
+            "14",
+            "7"
+          ],
+          "answer": 0,
+          "correctChoice": "10",
+          "explanation": "Distance on a number line is the absolute difference: |7 - (-3)| = 10.",
+          "tags": [
+            "geometry",
+            "distance"
+          ]
+        },
+        {
+          "id": "geometry_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "pythagorean theorem",
+          "question": "A right triangle has legs 9 and 12. What is the length of the hypotenuse?",
+          "choices": [
+            "13",
+            "21",
+            "14",
+            "15"
+          ],
+          "answer": 3,
+          "correctChoice": "15",
+          "explanation": "Use the Pythagorean theorem: c = sqrt(9^2 + 12^2) = sqrt(81 + 144) = sqrt(225) = 15.",
+          "tags": [
+            "geometry",
+            "right-triangles"
+          ]
+        },
+        {
+          "id": "geometry_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "midpoint",
+          "question": "What is the midpoint of the segment joining (2, 5) and (8, -1)?",
+          "choices": [
+            "(6, 2)",
+            "(5, 2)",
+            "(4, 2)",
+            "(5, -2)"
+          ],
+          "answer": 1,
+          "correctChoice": "(5, 2)",
+          "explanation": "Average the x-coordinates and y-coordinates: ((2 + 8)/2, (5 + (-1))/2) = (5, 2).",
+          "tags": [
+            "coordinate-geometry",
+            "midpoint"
+          ]
+        },
+        {
+          "id": "geometry_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "slope",
+          "question": "What is the slope of the line through (-1, 4) and (3, 6)?",
+          "choices": [
+            "-1/2",
+            "2",
+            "1/2",
+            "4"
+          ],
+          "answer": 2,
+          "correctChoice": "1/2",
+          "explanation": "Compute the change in y over the change in x: (6 - 4)/(3 - (-1)) = 2/4 = 1/2.",
+          "tags": [
+            "coordinate-geometry",
+            "slope"
+          ]
+        },
+        {
+          "id": "geometry_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "triangle area",
+          "question": "What is the area of a triangle with base 10 and height 7?",
+          "choices": [
+            "35",
+            "140",
+            "70",
+            "17.5"
+          ],
+          "answer": 0,
+          "correctChoice": "35",
+          "explanation": "Area of a triangle is (1/2)bh = (1/2)(10)(7) = 35.",
+          "tags": [
+            "geometry",
+            "area"
+          ]
+        },
+        {
+          "id": "geometry_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "distance formula",
+          "question": "Find the distance between (1, 2) and (4, 6).",
+          "choices": [
+            "5",
+            "6",
+            "4",
+            "7"
+          ],
+          "answer": 0,
+          "correctChoice": "5",
+          "explanation": "Use the distance formula: sqrt((4 - 1)^2 + (6 - 2)^2) = sqrt(3^2 + 4^2) = 5.",
+          "tags": [
+            "coordinate-geometry",
+            "distance"
+          ]
+        },
+        {
+          "id": "geometry_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "circle equation",
+          "question": "Which equation represents a circle centered at the origin with radius 5?",
+          "choices": [
+            "x^2 + y^2 = 25",
+            "x + y = 5",
+            "x^2 - y^2 = 25",
+            "(x - 5)^2 + y^2 = 25"
+          ],
+          "answer": 0,
+          "correctChoice": "x^2 + y^2 = 25",
+          "explanation": "A circle with center (0, 0) and radius r has equation x^2 + y^2 = r^2.",
+          "tags": [
+            "geometry",
+            "circles"
+          ]
+        },
+        {
+          "id": "geometry_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "cylinder volume",
+          "question": "What is the volume of a cylinder with radius 3 and height 10?",
+          "choices": [
+            "180\u03c0",
+            "60\u03c0",
+            "90\u03c0",
+            "30\u03c0"
+          ],
+          "answer": 2,
+          "correctChoice": "90\u03c0",
+          "explanation": "Volume of a cylinder is \u03c0r^2h = \u03c0(3^2)(10) = 90\u03c0.",
+          "tags": [
+            "geometry",
+            "volume"
+          ]
+        },
+        {
+          "id": "geometry_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "surface area prism",
+          "question": "What is the surface area of a rectangular prism with dimensions 3, 4, and 5?",
+          "choices": [
+            "74",
+            "60",
+            "94",
+            "120"
+          ],
+          "answer": 2,
+          "correctChoice": "94",
+          "explanation": "Surface area is 2(lw + lh + wh) = 2(12 + 15 + 20) = 94.",
+          "tags": [
+            "geometry",
+            "surface-area"
+          ]
+        },
+        {
+          "id": "geometry_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "point-slope line",
+          "question": "Which equation represents the line through (2, -1) with slope -3?",
+          "choices": [
+            "y = -3x + 5",
+            "y = 3x + 5",
+            "y = -3x - 5",
+            "y = 3x - 5"
+          ],
+          "answer": 0,
+          "correctChoice": "y = -3x + 5",
+          "explanation": "Use point-slope form: y + 1 = -3(x - 2). Simplify to y = -3x + 5.",
+          "tags": [
+            "coordinate-geometry",
+            "lines"
+          ]
+        },
+        {
+          "id": "geometry_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "similar figures area",
+          "question": "Two similar figures have side-length ratio 2:5. If the larger figure has area 75, what is the area of the smaller figure?",
+          "choices": [
+            "37.5",
+            "12",
+            "20",
+            "30"
+          ],
+          "answer": 1,
+          "correctChoice": "12",
+          "explanation": "Areas scale by the square of the side ratio. The area ratio is 4:25, so the smaller area is (4/25)(75) = 12.",
+          "tags": [
+            "geometry",
+            "similar-figures"
+          ]
+        },
+        {
+          "id": "geometry_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "triangle area from coordinates",
+          "question": "What is the area of the triangle with vertices (0, 0), (6, 0), and (2, 4)?",
+          "choices": [
+            "24",
+            "12",
+            "8",
+            "10"
+          ],
+          "answer": 1,
+          "correctChoice": "12",
+          "explanation": "Use the base along the x-axis: base = 6 and height = 4. Area is (1/2)(6)(4) = 12.",
+          "tags": [
+            "coordinate-geometry",
+            "area"
+          ]
+        },
+        {
+          "id": "geometry_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "perpendicular bisector idea",
+          "question": "Point P lies on the perpendicular bisector of segment AB. Which statement must be true?",
+          "choices": [
+            "P is the midpoint of AB",
+            "AB is parallel to PB",
+            "PA = PB",
+            "A, B, and P are collinear"
+          ],
+          "answer": 2,
+          "correctChoice": "PA = PB",
+          "explanation": "Every point on the perpendicular bisector of a segment is equidistant from the segment's endpoints.",
+          "tags": [
+            "geometry",
+            "reasoning"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "trigonometry",
+      "name": "Trigonometry",
+      "alignment": [
+        "ALEKS PPL: trigonometry",
+        "ACCUPLACER AAF: trigonometry"
+      ],
+      "questions": [
+        {
+          "id": "trigonometry_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "basic sine",
+          "question": "In a right triangle, a side opposite angle \u03b8 has length 3 and the hypotenuse has length 5. What is sin \u03b8?",
+          "choices": [
+            "4/5",
+            "3/4",
+            "5/3",
+            "3/5"
+          ],
+          "answer": 3,
+          "correctChoice": "3/5",
+          "explanation": "Sine is opposite divided by hypotenuse, so sin \u03b8 = 3/5.",
+          "tags": [
+            "trigonometry",
+            "right-triangle"
+          ]
+        },
+        {
+          "id": "trigonometry_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "special triangle",
+          "question": "A 45-45-90 triangle has legs of length 7. What is the hypotenuse?",
+          "choices": [
+            "14sqrt(2)",
+            "14",
+            "7",
+            "7sqrt(2)"
+          ],
+          "answer": 3,
+          "correctChoice": "7sqrt(2)",
+          "explanation": "In a 45-45-90 triangle, the hypotenuse equals a leg times sqrt(2).",
+          "tags": [
+            "trigonometry",
+            "special-triangles"
+          ]
+        },
+        {
+          "id": "trigonometry_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "unit circle basic",
+          "question": "What is cos 60\u00b0 ?",
+          "choices": [
+            "sqrt(3)/2",
+            "1/2",
+            "1",
+            "0"
+          ],
+          "answer": 1,
+          "correctChoice": "1/2",
+          "explanation": "On the unit circle, the x-coordinate at 60\u00b0 is 1/2.",
+          "tags": [
+            "trigonometry",
+            "unit-circle"
+          ]
+        },
+        {
+          "id": "trigonometry_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "find trig ratio",
+          "question": "In a right triangle, the side adjacent to angle \u03b8 is 8 and the hypotenuse is 17. What is sin \u03b8?",
+          "choices": [
+            "15/17",
+            "15/8",
+            "17/15",
+            "8/17"
+          ],
+          "answer": 0,
+          "correctChoice": "15/17",
+          "explanation": "Use the Pythagorean theorem to find the opposite side: sqrt(17^2 - 8^2) = 15. Then sin \u03b8 = opposite/hypotenuse = 15/17.",
+          "tags": [
+            "trigonometry",
+            "right-triangle"
+          ]
+        },
+        {
+          "id": "trigonometry_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "tangent to secant",
+          "question": "If tan \u03b8 = 3/4 and \u03b8 is in Quadrant I, what is sec \u03b8?",
+          "choices": [
+            "5/3",
+            "4/5",
+            "3/5",
+            "5/4"
+          ],
+          "answer": 3,
+          "correctChoice": "5/4",
+          "explanation": "Draw a right triangle with opposite 3 and adjacent 4, so the hypotenuse is 5. Then sec \u03b8 = hypotenuse/adjacent = 5/4.",
+          "tags": [
+            "trigonometry",
+            "identities"
+          ]
+        },
+        {
+          "id": "trigonometry_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "solve right triangle",
+          "question": "If sin \u03b8 = x/14 and \u03b8 = 30\u00b0, what is x?",
+          "choices": [
+            "7sqrt(2)",
+            "7",
+            "28",
+            "14"
+          ],
+          "answer": 1,
+          "correctChoice": "7",
+          "explanation": "Since sin 30\u00b0 = 1/2, we have x/14 = 1/2, so x = 7.",
+          "tags": [
+            "trigonometry",
+            "right-triangle"
+          ]
+        },
+        {
+          "id": "trigonometry_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "unit circle exact value",
+          "question": "What is sin 150\u00b0 ?",
+          "choices": [
+            "1/2",
+            "-1/2",
+            "-sqrt(3)/2",
+            "sqrt(3)/2"
+          ],
+          "answer": 0,
+          "correctChoice": "1/2",
+          "explanation": "150\u00b0 is in Quadrant II with reference angle 30\u00b0. Sine is positive there, so sin 150\u00b0 = sin 30\u00b0 = 1/2.",
+          "tags": [
+            "trigonometry",
+            "unit-circle"
+          ]
+        },
+        {
+          "id": "trigonometry_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "unit circle exact value",
+          "question": "What is tan 45\u00b0 ?",
+          "choices": [
+            "sqrt(2)/2",
+            "sqrt(3)",
             "0",
             "1"
           ],
-          "answer": 1,
-          "explanation": "On the unit circle, sin(30°)=1/2."
+          "answer": 3,
+          "correctChoice": "1",
+          "explanation": "At 45\u00b0, sine and cosine are equal, so their ratio is 1.",
+          "tags": [
+            "trigonometry",
+            "unit-circle"
+          ]
         },
         {
-          "question": "What is cos(60°)?",
+          "id": "trigonometry_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "inverse trig basic",
+          "question": "If cos \u03b8 = sqrt(3)/2 and \u03b8 is in Quadrant I, what is \u03b8?",
           "choices": [
-            "1/2",
-            "√3/2",
-            "0",
-            "-1/2"
+            "30\u00b0",
+            "45\u00b0",
+            "120\u00b0",
+            "60\u00b0"
           ],
           "answer": 0,
-          "explanation": "On the unit circle, cos(60°)=1/2."
+          "correctChoice": "30\u00b0",
+          "explanation": "On the unit circle, cos 30\u00b0 = sqrt(3)/2.",
+          "tags": [
+            "trigonometry",
+            "inverse-trig"
+          ]
         },
         {
-          "question": "What is tan(45°)?",
+          "id": "trigonometry_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "amplitude and period",
+          "question": "For y = -3 cos(x/2), what are the amplitude and period?",
           "choices": [
-            "0",
-            "1",
-            "√3",
-            "undefined"
-          ],
-          "answer": 1,
-          "explanation": "In a 45-45-90 triangle, opposite and adjacent sides are equal, so tan = 1."
-        },
-        {
-          "question": "What are the coordinates on the unit circle at 135°?",
-          "choices": [
-            "(√2/2, √2/2)",
-            "(-√2/2, √2/2)",
-            "(-√2/2, -√2/2)",
-            "(√2/2, -√2/2)"
-          ],
-          "answer": 1,
-          "explanation": "135° is in Quadrant II, where cosine is negative and sine is positive."
-        },
-        {
-          "question": "In a right triangle, a side opposite θ has length 3 and the adjacent side has length 4. What is sin(θ)?",
-          "choices": [
-            "3/4",
-            "4/3",
-            "3/5",
-            "4/5"
+            "amplitude 1/2, period 4\u03c0",
+            "amplitude -3, period 2\u03c0",
+            "amplitude 3, period 4\u03c0",
+            "amplitude 3, period 2\u03c0"
           ],
           "answer": 2,
-          "explanation": "The hypotenuse is 5 by the 3-4-5 triangle. Then sin(θ)=opposite/hypotenuse=3/5."
+          "correctChoice": "amplitude 3, period 4\u03c0",
+          "explanation": "The amplitude is the absolute value of the coefficient, so 3. For cos(bx), the period is 2\u03c0/|b|. Here b = 1/2, so the period is 4\u03c0.",
+          "tags": [
+            "trigonometry",
+            "graphs"
+          ]
         },
         {
-          "question": "What is the period of y = 3cos(2x)?",
+          "id": "trigonometry_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "solve trig equation",
+          "question": "Solve 2sin \u03b8 = 1 for 0\u00b0 \u2264 \u03b8 < 360\u00b0.",
           "choices": [
-            "2π",
-            "π",
-            "π/2",
-            "3π"
+            "60\u00b0 and 120\u00b0",
+            "150\u00b0 and 330\u00b0",
+            "30\u00b0 and 150\u00b0",
+            "30\u00b0 and 330\u00b0"
           ],
-          "answer": 1,
-          "explanation": "For y = cos(bx), the period is 2π/|b|. Here b = 2, so the period is π."
+          "answer": 2,
+          "correctChoice": "30\u00b0 and 150\u00b0",
+          "explanation": "First solve sin \u03b8 = 1/2. On the unit circle, that occurs at 30\u00b0 and 150\u00b0.",
+          "tags": [
+            "trigonometry",
+            "equations"
+          ]
         },
         {
-          "question": "What is the amplitude of y = -4sin(x)?",
+          "id": "trigonometry_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "pythagorean identity",
+          "question": "If sin \u03b8 = 5/13 and \u03b8 is in Quadrant I, what is cos \u03b8?",
           "choices": [
-            "-4",
-            "4",
-            "1",
-            "2π"
+            "12/13",
+            "sqrt(119)/13",
+            "5/12",
+            "13/12"
+          ],
+          "answer": 0,
+          "correctChoice": "12/13",
+          "explanation": "Use a right triangle with opposite 5 and hypotenuse 13. The adjacent side is 12 by the Pythagorean theorem, so cos \u03b8 = 12/13.",
+          "tags": [
+            "trigonometry",
+            "identities"
+          ]
+        },
+        {
+          "id": "trigonometry_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "reciprocal trig function",
+          "question": "What is csc 30\u00b0 ?",
+          "choices": [
+            "2sqrt(3)",
+            "2",
+            "sqrt(3)",
+            "1/2"
           ],
           "answer": 1,
-          "explanation": "Amplitude is the absolute value of the coefficient of sine, so |−4| = 4."
+          "correctChoice": "2",
+          "explanation": "csc \u03b8 is the reciprocal of sin \u03b8. Since sin 30\u00b0 = 1/2, csc 30\u00b0 = 2.",
+          "tags": [
+            "trigonometry",
+            "reciprocal-functions"
+          ]
+        },
+        {
+          "id": "trigonometry_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "solve tangent equation",
+          "question": "Solve tan \u03b8 = -1 for 0\u00b0 \u2264 \u03b8 < 360\u00b0.",
+          "choices": [
+            "45\u00b0 and 225\u00b0",
+            "45\u00b0 and 315\u00b0",
+            "135\u00b0 and 225\u00b0",
+            "135\u00b0 and 315\u00b0"
+          ],
+          "answer": 3,
+          "correctChoice": "135\u00b0 and 315\u00b0",
+          "explanation": "Tangent is negative in Quadrants II and IV, and the reference angle for tan \u03b8 = 1 is 45\u00b0.",
+          "tags": [
+            "trigonometry",
+            "equations"
+          ]
+        },
+        {
+          "id": "trigonometry_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "period of sine graph",
+          "question": "For y = 2sin(3x), what is the period?",
+          "choices": [
+            "3\u03c0",
+            "6\u03c0",
+            "\u03c0/3",
+            "2\u03c0/3"
+          ],
+          "answer": 3,
+          "correctChoice": "2\u03c0/3",
+          "explanation": "For sin(bx), the period is 2\u03c0/|b|. Here b = 3, so the period is 2\u03c0/3.",
+          "tags": [
+            "trigonometry",
+            "graphs"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "prob_stats",
+      "name": "Probability, Sets, and Statistics",
+      "alignment": [
+        "ACCUPLACER QAS: probability sets and descriptive statistics",
+        "Uploaded ALEKS-style study guide: survey and average problems"
+      ],
+      "questions": [
+        {
+          "id": "prob_stats_L1_Q1",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "simple probability",
+          "question": "What is the probability of rolling an even number on a fair six-sided die?",
+          "choices": [
+            "1/3",
+            "2/3",
+            "1/2",
+            "1/6"
+          ],
+          "answer": 2,
+          "correctChoice": "1/2",
+          "explanation": "Even outcomes are 2, 4, and 6, so there are 3 favorable outcomes out of 6 total: 3/6 = 1/2.",
+          "tags": [
+            "probability",
+            "basic"
+          ]
+        },
+        {
+          "id": "prob_stats_L1_Q2",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "mean",
+          "question": "What is the mean of 4, 7, and 9?",
+          "choices": [
+            "6",
+            "7",
+            "20/3",
+            "10"
+          ],
+          "answer": 2,
+          "correctChoice": "20/3",
+          "explanation": "Add the values to get 20, then divide by 3.",
+          "tags": [
+            "statistics",
+            "mean"
+          ]
+        },
+        {
+          "id": "prob_stats_L1_Q3",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "median",
+          "question": "What is the median of 3, 8, 8, 10, and 12?",
+          "choices": [
+            "10",
+            "8.2",
+            "7",
+            "8"
+          ],
+          "answer": 3,
+          "correctChoice": "8",
+          "explanation": "The values are already ordered, and the middle value is 8.",
+          "tags": [
+            "statistics",
+            "median"
+          ]
+        },
+        {
+          "id": "prob_stats_L2_Q4",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "inclusion-exclusion",
+          "question": "In a survey, 30 students like red jelly beans, 29 like green, and 17 like both. If 50 students were surveyed, how many like neither color?",
+          "choices": [
+            "16",
+            "12",
+            "8",
+            "4"
+          ],
+          "answer": 2,
+          "correctChoice": "8",
+          "explanation": "Use inclusion-exclusion: 30 + 29 - 17 = 42 students like at least one color. Then 50 - 42 = 8 like neither.",
+          "tags": [
+            "probability",
+            "sets"
+          ]
+        },
+        {
+          "id": "prob_stats_L2_Q5",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "card probability",
+          "question": "What is the probability of drawing a heart from a standard deck of 52 cards?",
+          "choices": [
+            "3/13",
+            "1/4",
+            "1/13",
+            "1/2"
+          ],
+          "answer": 1,
+          "correctChoice": "1/4",
+          "explanation": "There are 13 hearts in a 52-card deck, so the probability is 13/52 = 1/4.",
+          "tags": [
+            "probability",
+            "cards"
+          ]
+        },
+        {
+          "id": "prob_stats_L2_Q6",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "range",
+          "question": "What is the range of the data set 12, 5, 19, 8?",
+          "choices": [
+            "14",
+            "11",
+            "7",
+            "24"
+          ],
+          "answer": 0,
+          "correctChoice": "14",
+          "explanation": "Range is largest minus smallest: 19 - 5 = 14.",
+          "tags": [
+            "statistics",
+            "range"
+          ]
+        },
+        {
+          "id": "prob_stats_L3_Q7",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "complement probability",
+          "question": "A bag contains 5 red, 3 blue, and 2 green marbles. What is the probability of drawing a marble that is not red?",
+          "choices": [
+            "1/2",
+            "3/10",
+            "7/10",
+            "2/5"
+          ],
+          "answer": 0,
+          "correctChoice": "1/2",
+          "explanation": "There are 5 marbles that are not red out of 10 total, so the probability is 5/10 = 1/2.",
+          "tags": [
+            "probability",
+            "complements"
+          ]
+        },
+        {
+          "id": "prob_stats_L3_Q8",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "average target",
+          "question": "A student scored 85, 73, 90, and 77 on four tests. What score is needed on the next test for an average of 82?",
+          "choices": [
+            "80",
+            "82",
+            "85",
+            "90"
+          ],
+          "answer": 2,
+          "correctChoice": "85",
+          "explanation": "Set up (85 + 73 + 90 + 77 + x)/5 = 82. The known sum is 325, so 325 + x = 410 and x = 85.",
+          "tags": [
+            "statistics",
+            "averages"
+          ]
+        },
+        {
+          "id": "prob_stats_L3_Q9",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Placement Ready",
+          "skill": "mode",
+          "question": "What is the mode of the data set 2, 5, 5, 7, 9, 9, 9, 10?",
+          "choices": [
+            "7",
+            "No mode",
+            "5",
+            "9"
+          ],
+          "answer": 3,
+          "correctChoice": "9",
+          "explanation": "The mode is the value that occurs most often. Here 9 appears three times.",
+          "tags": [
+            "statistics",
+            "mode"
+          ]
+        },
+        {
+          "id": "prob_stats_L4_Q10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "binomial probability",
+          "question": "What is the probability of getting exactly two heads in three fair coin tosses?",
+          "choices": [
+            "3/8",
+            "1/2",
+            "1/4",
+            "1/8"
+          ],
+          "answer": 0,
+          "correctChoice": "3/8",
+          "explanation": "The favorable outcomes are HHT, HTH, and THH, so there are 3 favorable outcomes out of 8 total outcomes.",
+          "tags": [
+            "probability",
+            "binomial"
+          ]
+        },
+        {
+          "id": "prob_stats_L4_Q11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "combinations",
+          "question": "How many different 2-person committees can be chosen from 5 students?",
+          "choices": [
+            "8",
+            "20",
+            "12",
+            "10"
+          ],
+          "answer": 3,
+          "correctChoice": "10",
+          "explanation": "Use combinations: C(5, 2) = 5\u00b74 / (2\u00b71) = 10.",
+          "tags": [
+            "counting",
+            "combinations"
+          ]
+        },
+        {
+          "id": "prob_stats_L4_Q12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "weighted mean from frequency table",
+          "question": "A data set has the value 1 appearing 2 times, 2 appearing 3 times, and 3 appearing 1 time. What is the mean?",
+          "choices": [
+            "13/6",
+            "11/6",
+            "3/2",
+            "2"
+          ],
+          "answer": 1,
+          "correctChoice": "11/6",
+          "explanation": "Compute the weighted sum: 1\u00b72 + 2\u00b73 + 3\u00b71 = 11. There are 2 + 3 + 1 = 6 values, so the mean is 11/6.",
+          "tags": [
+            "statistics",
+            "weighted-mean"
+          ]
+        },
+        {
+          "id": "prob_stats_L5_Q13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "conditional probability",
+          "question": "In a club, 12 economics majors and 9 business majors are members. Outside the club, there are 8 economics majors and 11 business majors. If a student is known to be an economics major, what is the probability the student is in the club?",
+          "choices": [
+            "2/3",
+            "12/40",
+            "12/21",
+            "3/5"
+          ],
+          "answer": 3,
+          "correctChoice": "3/5",
+          "explanation": "Among economics majors, 12 are in the club and 8 are not, so there are 20 economics majors total. The conditional probability is 12/20 = 3/5.",
+          "tags": [
+            "probability",
+            "conditional"
+          ]
+        },
+        {
+          "id": "prob_stats_L5_Q14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "at least one success",
+          "question": "What is the probability of rolling at least one 6 in two rolls of a fair die?",
+          "choices": [
+            "1/6",
+            "1/3",
+            "25/36",
+            "11/36"
+          ],
+          "answer": 3,
+          "correctChoice": "11/36",
+          "explanation": "Use the complement. The probability of no 6 on either roll is (5/6)^2 = 25/36, so the probability of at least one 6 is 1 - 25/36 = 11/36.",
+          "tags": [
+            "probability",
+            "complements"
+          ]
+        },
+        {
+          "id": "prob_stats_L5_Q15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Stretch",
+          "skill": "mean shift",
+          "question": "A data set has mean 20. If every data value is increased by 5, what is the new mean?",
+          "choices": [
+            "22.5",
+            "100",
+            "20",
+            "25"
+          ],
+          "answer": 3,
+          "correctChoice": "25",
+          "explanation": "Adding the same amount to every data value increases the mean by that amount, so the mean becomes 25.",
+          "tags": [
+            "statistics",
+            "mean"
+          ]
         }
       ]
     }

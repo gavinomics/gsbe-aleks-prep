@@ -9,8 +9,17 @@
 <body>
   <main class="app-shell">
     <header class="hero">
-      <h1>Weber State ALEKS Prep</h1>
-      <p class="intro">Goddard School of Business and Economics</p>
+      <div class="hero-brand">
+        <img
+          class="hero-logo"
+          src="assets/images/cec-logo.png"
+          alt="CEC logo"
+        >
+        <div class="hero-copy">
+          <h1>Weber State ALEKS Prep</h1>
+          <p class="intro">Goddard School of Business and Economics</p>
+        </div>
+      </div>
       <div class="hero-stats">
         <p id="current-user-text" class="hero-stat hidden">User: Guest</p>
         <p id="global-level-text" class="hero-stat">Level 1</p>
@@ -19,33 +28,60 @@
       <button id="logout-button" class="secondary-button hero-logout hidden" type="button">Logout</button>
     </header>
 
-    <section id="login-screen" class="panel">
-      <div class="welcome-badge">Student Login</div>
-      <h2>Login or create an account</h2>
-      <p class="panel-text">
-        Enter a username and password to save your ALEKS prep progress on this device.
-      </p>
-      <form id="login-form" class="login-form">
-        <label class="input-group" for="username-input">
-          <span>Username</span>
-          <input id="username-input" name="username" type="text" autocomplete="username" required>
-        </label>
-        <label class="input-group" for="password-input">
-          <span>Password</span>
-          <input id="password-input" name="password" type="password" autocomplete="current-password" required>
-        </label>
-        <button id="login-button" class="primary-button" type="submit">Login / Create Account</button>
-      </form>
-      <button id="guest-button" class="secondary-button" type="button">Continue as Guest</button>
-      <p id="login-message" class="message hidden" aria-live="polite"></p>
-    </section>
+    <div class="login-stack">
+      <div class="welcome-message" aria-label="motivational message">
+        <p class="welcome-message-lead">Place higher. Save time. Save money.</p>
+        <p class="welcome-message-body">
+          A little practice now can help you skip extra math classes and move faster toward your degree.
+        </p>
+        <p class="welcome-message-body">
+          Developed by the Crossroads Economics Center in collaboration with the Department of Economics and the Goddard School of Business and Economics at Weber State University.
+        </p>
+      </div>
+      <section id="login-screen" class="panel">
+        <div class="welcome-badge">Student Login</div>
+        <h2>Login or create an account</h2>
+        <p class="panel-text">
+          Enter a username and password to save your ALEKS prep progress on this device.
+        </p>
+        <form id="login-form" class="login-form">
+          <label class="input-group" for="username-input">
+            <span>Username</span>
+            <input id="username-input" name="username" type="text" autocomplete="username" required>
+          </label>
+          <label class="input-group" for="password-input">
+            <span>Password</span>
+            <input id="password-input" name="password" type="password" autocomplete="current-password" required>
+          </label>
+          <button id="login-button" class="primary-button" type="submit">Login / Create Account</button>
+        </form>
+        <button id="guest-button" class="secondary-button" type="button">Continue as Guest</button>
+        <p id="login-message" class="message hidden" aria-live="polite"></p>
+      </section>
+    </div>
 
     <section id="welcome-screen" class="panel hidden">
+      <div class="welcome-logo-wrap">
+        <img
+          class="welcome-logo"
+          src="assets/images/cec-logo-circle.png"
+          alt="CEC circular logo"
+        >
+      </div>
       <div class="welcome-badge">Guided Learning Path</div>
       <h2>Start with a short diagnostic assessment</h2>
       <p class="panel-text">
         Answer a few mixed math questions, see your weak areas, and get a recommended study plan before you practice.
       </p>
+      <div class="welcome-message" aria-label="motivational message">
+        <p class="welcome-message-lead">Place higher. Save time. Save money.</p>
+        <p class="welcome-message-body">
+          A little practice now can help you skip extra math classes and move faster toward your degree.
+        </p>
+        <p class="welcome-message-body">
+          Developed by the Crossroads Economics Center in collaboration with the Department of Economics and the Goddard School of Business and Economics at Weber State University.
+        </p>
+      </div>
       <button id="start-assessment-button" class="primary-button" type="button">Start Assessment</button>
     </section>
 

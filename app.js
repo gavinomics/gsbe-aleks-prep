@@ -167,11 +167,43 @@ function getTopicId(topic, index) {
 }
 
 function getQuestionChoices(question) {
-  return question.options || question.choices || [];
+  return question.choices || question.options || [];
 }
 
 function getCorrectAnswerIndex(question) {
-  return typeof question.correctIndex === "number" ? question.correctIndex : question.answer;
+  return typeof question.answer === "number" ? question.answer : question.correctIndex;
+}
+
+function mapDifficultyLevel(value) {
+  if (typeof value === "string") {
+    const normalized = value.toLowerCase();
+
+    if (difficultyOrder.includes(normalized)) {
+      return normalized;
+    }
+
+    const numericValue = Number.parseInt(value, 10);
+
+    if (!Number.isNaN(numericValue)) {
+      value = numericValue;
+    } else {
+      return "medium";
+    }
+  }
+
+  if (typeof value !== "number") {
+    return "medium";
+  }
+
+  if (value <= 1) {
+    return "easy";
+  }
+
+  if (value >= 4) {
+    return "hard";
+  }
+
+  return "medium";
 }
 
 function normalizeAreaName(topicName) {
@@ -199,8 +231,8 @@ function normalizeAreaName(topicName) {
 }
 
 function inferDifficulty(question, topicName) {
-  if (question.difficulty) {
-    return question.difficulty.toLowerCase();
+  if (question.difficulty !== undefined && question.difficulty !== null) {
+    return mapDifficultyLevel(question.difficulty);
   }
 
   const prompt = `${topicName} ${question.question} ${question.explanation}`.toLowerCase();
@@ -935,9 +967,9 @@ async function loadQuizData() {
     quizTopics = (data.topics || []).map((topic, index) => ({
       ...topic,
       id: getTopicId(topic, index),
-      questions: topic.questions.map((question, questionIndex) => ({
+      questions: (topic.questions || []).map((question, questionIndex) => ({
         ...question,
-        id: buildQuestionId(getTopicId(topic, index), questionIndex),
+        id: question.id || buildQuestionId(getTopicId(topic, index), questionIndex),
         difficulty: inferDifficulty(question, topic.name)
       }))
     }));
