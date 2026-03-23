@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weber State ALEKS Prep</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="hero">
+      <h1>Weber State ALEKS Prep</h1>
+      <p class="intro">Goddard School of Business and Economics</p>
+      <div class="hero-stats">
+        <p id="current-user-text" class="hero-stat hidden">User: Guest</p>
+        <p id="global-level-text" class="hero-stat">Level 1</p>
+        <p id="global-xp-text" class="hero-stat">Total XP: 0</p>
+      </div>
+      <button id="logout-button" class="secondary-button hero-logout hidden" type="button">Logout</button>
+    </header>
+
+    <section id="login-screen" class="panel">
+      <div class="welcome-badge">Student Login</div>
+      <h2>Login or create an account</h2>
+      <p class="panel-text">
+        Enter a username and password to save your ALEKS prep progress on this device.
+      </p>
+      <form id="login-form" class="login-form">
+        <label class="input-group" for="username-input">
+          <span>Username</span>
+          <input id="username-input" name="username" type="text" autocomplete="username" required>
+        </label>
+        <label class="input-group" for="password-input">
+          <span>Password</span>
+          <input id="password-input" name="password" type="password" autocomplete="current-password" required>
+        </label>
+        <button id="login-button" class="primary-button" type="submit">Login / Create Account</button>
+      </form>
+      <button id="guest-button" class="secondary-button" type="button">Continue as Guest</button>
+      <p id="login-message" class="message hidden" aria-live="polite"></p>
+    </section>
+
+    <section id="welcome-screen" class="panel hidden">
+      <div class="welcome-badge">Guided Learning Path</div>
+      <h2>Start with a short diagnostic assessment</h2>
+      <p class="panel-text">
+        Answer a few mixed math questions, see your weak areas, and get a recommended study plan before you practice.
+      </p>
+      <button id="start-assessment-button" class="primary-button" type="button">Start Assessment</button>
+    </section>
+
+    <section id="report-screen" class="panel hidden">
+      <h2>Assessment Report</h2>
+      <p id="report-score" class="panel-text"></p>
+      <div class="report-card">
+        <p class="report-label">Weak Areas</p>
+        <p id="weak-areas-text" class="report-value"></p>
+      </div>
+      <div class="report-card">
+        <p class="report-label">Recommended Focus</p>
+        <p id="focus-text" class="report-value"></p>
+      </div>
+      <button id="view-study-plan-button" class="primary-button" type="button">View Study Plan</button>
+    </section>
+
+    <section id="study-plan-screen" class="panel hidden">
+      <h2>Your Study Plan</h2>
+      <p class="panel-text">
+        Recommended topics are shown first based on your assessment. You can still study any topic.
+      </p>
+      <div class="study-actions">
+        <button id="recommended-next-button" class="primary-button" type="button">Recommended Next</button>
+        <button id="review-mistakes-button" class="secondary-button" type="button">Review Mistakes</button>
+      </div>
+
+      <div class="study-section">
+        <div class="section-header">
+          <h3>Recommended Topics</h3>
+          <p id="study-plan-focus" class="section-note"></p>
+        </div>
+        <div id="recommended-topic-list" class="topic-list"></div>
+      </div>
+
+      <div class="study-section">
+        <div class="section-header">
+          <h3>All Topics</h3>
+          <p class="section-note">Use these for extra review after your priority topics.</p>
+        </div>
+        <div id="all-topic-list" class="topic-list"></div>
+      </div>
+    </section>
+
+    <section id="quiz-screen" class="panel hidden">
+      <div class="progress-panel">
+        <div class="progress-header">
+          <p id="progress-text" class="progress-text"></p>
+          <p id="score-text" class="score-text">Score: 0 | Streak: 0</p>
+        </div>
+        <div class="progress-bar">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+
+      <div class="quiz-topbar">
+        <button id="back-button" class="secondary-button" type="button">Back</button>
+        <p id="xp-text" class="xp-text">XP: 0</p>
+      </div>
+
+      <div class="quiz-heading">
+        <h2 id="topic-title"></h2>
+        <p id="quiz-mode-text" class="panel-text"></p>
+        <p id="difficulty-text" class="difficulty-text"></p>
+        <div class="mastery-panel">
+          <div class="mastery-header">
+            <p id="mastery-text" class="mastery-text">Mastery: 0%</p>
+            <p id="level-text" class="mastery-text">Level 1</p>
+          </div>
+          <div class="mastery-bar">
+            <div id="mastery-fill" class="mastery-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <article class="question-card">
+        <p id="encouragement-text" class="encouragement-text"></p>
+        <p id="review-text" class="review-text hidden">Let's review this again</p>
+        <h3 id="question-text"></h3>
+        <div id="answer-list" class="answer-list"></div>
+        <div id="feedback-box" class="feedback-box hidden" aria-live="polite">
+          <p id="feedback-text" class="feedback-text"></p>
+          <p id="explanation-text" class="explanation-text"></p>
+        </div>
+        <div class="question-actions">
+          <button id="try-again-button" class="secondary-button hidden" type="button">Try Again</button>
+          <button id="next-button" class="primary-button hidden" type="button">Next Question</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="complete-screen" class="panel hidden">
+      <h2>Level Complete</h2>
+      <p id="complete-message" class="panel-text"></p>
+      <div class="complete-stats">
+        <p id="complete-score" class="complete-stat"></p>
+        <p id="complete-streak" class="complete-stat"></p>
+        <p id="complete-mastery" class="complete-stat"></p>
+      </div>
+      <div class="complete-actions">
+        <button id="replay-button" class="primary-button" type="button">Play This Topic Again</button>
+        <button id="topics-button" class="secondary-button" type="button">Back to Study Plan</button>
+      </div>
+    </section>
+
+    <p id="topic-error" class="message error hidden" aria-live="polite"></p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
