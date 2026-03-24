@@ -1,8 +1,8 @@
 {
-  "title": "GSBE ALEKS Prep",
+  "title": "GSBE Math Placement Prep",
   "metadata": {
     "version": "v2-five-level-bank",
-    "notes": "Original multiple-choice questions written to mirror ALEKS/ACCUPLACER skill coverage. Not copied from proprietary tests.",
+    "notes": "Original multiple-choice questions written to mirror Math Placement/ACCUPLACER skill coverage. Not copied from proprietary tests.",
     "totalTopics": 15,
     "totalQuestions": 225,
     "questionsPerTopic": 15,
@@ -16,11 +16,11 @@
       "5": "Stretch / Precalculus Bridge"
     },
     "sourceBasis": [
-      "ALEKS PPL topic coverage",
+      "Math Placement PPL topic coverage",
       "ACCUPLACER QAS topic coverage",
       "ACCUPLACER AAF topic coverage",
       "University math placement study guides",
-      "Uploaded ALEKS-style study guide"
+      "Uploaded Math Placement-style study guide"
     ]
   },
   "topics": [
@@ -28,7 +28,7 @@
       "id": "real_numbers",
       "name": "Real Numbers, Fractions, and Percents",
       "alignment": [
-        "ALEKS PPL: real numbers",
+        "Math Placement PPL: real numbers",
         "ACCUPLACER QAS: rational numbers"
       ],
       "questions": [
@@ -650,7 +650,7 @@
       "id": "expressions_exponents",
       "name": "Algebraic Expressions and Exponents",
       "alignment": [
-        "ALEKS PPL: exponents and polynomials",
+        "Math Placement PPL: exponents and polynomials",
         "ACCUPLACER QAS: exponents and algebraic expressions"
       ],
       "questions": [
@@ -959,7 +959,7 @@
       "id": "linear_equations",
       "name": "Linear Equations",
       "alignment": [
-        "ALEKS PPL: equations",
+        "Math Placement PPL: equations",
         "ACCUPLACER QAS/AAF: linear equations"
       ],
       "questions": [
@@ -1269,7 +1269,7 @@
       "id": "inequalities_abs",
       "name": "Linear Inequalities and Absolute Value",
       "alignment": [
-        "ALEKS PPL: equations and inequalities",
+        "Math Placement PPL: equations and inequalities",
         "University placement study guides: absolute value and interval reasoning"
       ],
       "questions": [
@@ -1578,7 +1578,7 @@
       "id": "systems",
       "name": "Systems of Equations and Applications",
       "alignment": [
-        "ALEKS PPL: systems of linear equations",
+        "Math Placement PPL: systems of linear equations",
         "ACCUPLACER QAS/AAF: linear applications and graphs"
       ],
       "questions": [
@@ -1888,7 +1888,7 @@
       "id": "functions_graphs",
       "name": "Functions and Graphs",
       "alignment": [
-        "ALEKS PPL: linear and quadratic functions",
+        "Math Placement PPL: linear and quadratic functions",
         "ACCUPLACER AAF: functions"
       ],
       "questions": [
@@ -2198,7 +2198,7 @@
       "id": "polynomials_factoring",
       "name": "Polynomials and Factoring",
       "alignment": [
-        "ALEKS PPL: exponents and polynomials",
+        "Math Placement PPL: exponents and polynomials",
         "ACCUPLACER AAF: factoring and polynomial equations"
       ],
       "questions": [
@@ -2508,7 +2508,7 @@
       "id": "quadratics",
       "name": "Quadratics",
       "alignment": [
-        "ALEKS PPL: quadratic equations and parabolas",
+        "Math Placement PPL: quadratic equations and parabolas",
         "ACCUPLACER AAF: quadratics"
       ],
       "questions": [
@@ -2818,7 +2818,7 @@
       "id": "rational_expr",
       "name": "Rational Expressions and Equations",
       "alignment": [
-        "ALEKS PPL: rational expressions and equations",
+        "Math Placement PPL: rational expressions and equations",
         "ACCUPLACER AAF: radical and rational equations"
       ],
       "questions": [
@@ -3128,7 +3128,7 @@
       "id": "radicals",
       "name": "Radicals and Rational Exponents",
       "alignment": [
-        "ALEKS PPL: radical expressions and rational exponents",
+        "Math Placement PPL: radical expressions and rational exponents",
         "ACCUPLACER AAF: radical equations"
       ],
       "questions": [
@@ -3438,7 +3438,7 @@
       "id": "exp_logs",
       "name": "Exponential and Logarithmic Models",
       "alignment": [
-        "ALEKS PPL: exponentials and logarithms",
+        "Math Placement PPL: exponentials and logarithms",
         "ACCUPLACER AAF: exponential and logarithmic equations"
       ],
       "questions": [
@@ -3748,7 +3748,7 @@
       "id": "geometry",
       "name": "Geometry and Coordinate Geometry",
       "alignment": [
-        "ALEKS PPL: geometry",
+        "Math Placement PPL: geometry",
         "ACCUPLACER QAS/AAF: geometry concepts"
       ],
       "questions": [
@@ -4058,7 +4058,7 @@
       "id": "trigonometry",
       "name": "Trigonometry",
       "alignment": [
-        "ALEKS PPL: trigonometry",
+        "Math Placement PPL: trigonometry",
         "ACCUPLACER AAF: trigonometry"
       ],
       "questions": [
@@ -4369,7 +4369,7 @@
       "name": "Probability, Sets, and Statistics",
       "alignment": [
         "ACCUPLACER QAS: probability sets and descriptive statistics",
-        "Uploaded ALEKS-style study guide: survey and average problems"
+        "Uploaded Math Placement-style study guide: survey and average problems"
       ],
       "questions": [
         {

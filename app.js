@@ -168,7 +168,7 @@ const topicOrderByName = assessmentTopicOrder.reduce((order, topic, index) => {
 const correctMessages = ["Nice work 🔥", "Strong start ✨", "You've got this 💪"];
 const incorrectMessages = ["Keep going 💪", "Take another look 👀", "One more try"];
 
-let appTitle = "Weber State ALEKS Prep";
+let appTitle = "Weber State Math Placement Prep";
 let quizTopics = [];
 let diagnosticQuestions = [];
 let recommendedTopicIds = [];
