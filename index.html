@@ -71,7 +71,7 @@
       <div class="welcome-badge">Guided Learning Path</div>
       <h2>Start with a short diagnostic assessment</h2>
       <p class="panel-text">
-        Answer a few mixed math questions, see your weak areas, and get a recommended study plan before you practice.
+        Answer a few mixed math questions, see your recommended focus areas, and get a study plan before you practice.
       </p>
       <div class="welcome-message" aria-label="motivational message">
         <p class="welcome-message-lead">Place higher. Save time. Save money.</p>
@@ -88,10 +88,6 @@
     <section id="report-screen" class="panel hidden">
       <h2>Assessment Report</h2>
       <p id="report-score" class="panel-text"></p>
-      <div class="report-card">
-        <p class="report-label">Weak Areas</p>
-        <p id="weak-areas-text" class="report-value"></p>
-      </div>
       <div class="report-card">
         <p class="report-label">Recommended Focus</p>
         <p id="focus-text" class="report-value"></p>
@@ -124,6 +120,22 @@
         </div>
         <div id="all-topic-list" class="topic-list"></div>
       </div>
+    </section>
+
+    <section id="review-mistakes-screen" class="panel hidden">
+      <div class="review-header">
+        <div>
+          <h2>Review Mistakes</h2>
+          <p class="panel-text">
+            Review the questions you missed, see the correct answer, and study each explanation in one place.
+          </p>
+        </div>
+        <button id="review-mistakes-back-button" class="secondary-button" type="button">Back to Study Plan</button>
+      </div>
+      <div id="review-mistakes-empty" class="review-empty hidden">
+        <p class="review-empty-title">No mistakes to review. Great work.</p>
+      </div>
+      <div id="review-mistakes-list" class="review-list"></div>
     </section>
 
     <section id="quiz-screen" class="panel hidden">
@@ -162,6 +174,7 @@
         <p id="review-text" class="review-text hidden">Let's review this again</p>
         <h3 id="question-text"></h3>
         <div id="answer-list" class="answer-list"></div>
+        <button id="dont-know-button" class="secondary-button dont-know-button" type="button">I don’t know how to do this</button>
         <div id="feedback-box" class="feedback-box hidden" aria-live="polite">
           <p id="feedback-text" class="feedback-text"></p>
           <p id="explanation-text" class="explanation-text"></p>
