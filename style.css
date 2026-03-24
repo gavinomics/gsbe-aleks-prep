@@ -232,6 +232,32 @@ p {
   margin-bottom: 14px;
 }
 
+.login-note {
+  margin: 0 0 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  background: #faf9fc;
+}
+
+.login-note-title,
+.login-note-text {
+  margin-bottom: 0;
+}
+
+.login-note-title {
+  margin-bottom: 6px;
+  color: var(--accent-dark);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.login-note-text {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
 .input-group {
   display: grid;
   gap: 8px;
@@ -428,6 +454,16 @@ p {
   font-size: 0.9rem;
 }
 
+.assessment-notice {
+  margin-bottom: 10px;
+  padding: 10px 12px;
+  border-radius: 14px;
+  background: var(--accent-soft);
+  color: var(--accent-dark);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
 .review-text {
   color: var(--accent-dark);
   font-weight: 700;
@@ -446,6 +482,95 @@ p {
 .question-actions {
   display: grid;
   gap: 14px;
+}
+
+.study-plan-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 320px);
+  gap: 14px;
+  align-items: stretch;
+}
+
+.study-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  background: var(--gray-soft);
+}
+
+.practice-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+}
+
+.recommended-row .practice-card {
+  border-color: rgba(79, 45, 127, 0.22);
+  background: linear-gradient(180deg, #f6f1fd 0%, #faf9fc 100%);
+}
+
+.study-card-label {
+  margin-bottom: 8px;
+  color: var(--gray-strong);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.study-card-title {
+  margin-bottom: 10px;
+  color: var(--accent-dark);
+  font-size: 1rem;
+}
+
+.study-card-text {
+  margin-bottom: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.study-card-subtitle {
+  margin: 14px 0 8px;
+  color: var(--accent-dark);
+  font-size: 0.92rem;
+  font-weight: 700;
+}
+
+.study-guide-summary {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  display: grid;
+  gap: 6px;
+}
+
+.study-guide-links {
+  display: grid;
+  gap: 8px;
+}
+
+.study-guide-link {
+  display: block;
+  padding: 10px 12px;
+  border: 1px solid var(--panel-border);
+  border-radius: 14px;
+  background: #ffffff;
+  color: var(--accent-dark);
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+.study-guide-link:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(31, 36, 48, 0.08);
+  border-color: rgba(79, 45, 127, 0.28);
+}
+
+.practice-button {
+  margin-top: auto;
 }
 
 .dont-know-button {
@@ -682,5 +807,9 @@ p {
   .quiz-topbar {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  .study-plan-row {
+    grid-template-columns: 1fr;
   }
 }

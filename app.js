@@ -18,6 +18,7 @@ const viewStudyPlanButton = document.getElementById("view-study-plan-button");
 const recommendedTopicList = document.getElementById("recommended-topic-list");
 const allTopicList = document.getElementById("all-topic-list");
 const studyPlanFocus = document.getElementById("study-plan-focus");
+const retakeAssessmentButton = document.getElementById("retake-assessment-button");
 const reviewMistakesList = document.getElementById("review-mistakes-list");
 const reviewMistakesEmpty = document.getElementById("review-mistakes-empty");
 const reviewMistakesBackButton = document.getElementById("review-mistakes-back-button");
@@ -35,6 +36,7 @@ const scoreText = document.getElementById("score-text");
 const xpText = document.getElementById("xp-text");
 const topicTitle = document.getElementById("topic-title");
 const quizModeText = document.getElementById("quiz-mode-text");
+const assessmentNoticeText = document.getElementById("assessment-notice-text");
 const difficultyText = document.getElementById("difficulty-text");
 const masteryText = document.getElementById("mastery-text");
 const masteryFill = document.getElementById("mastery-fill");
@@ -190,6 +192,8 @@ let mistakesByTopic = {};
 let lastAssessmentPerfect = false;
 let currentUser = null;
 let isGuestMode = false;
+let assessmentAttempts = 0;
+let currentAssessmentLevel = 1;
 
 function getStoredUsers() {
   const rawUsers = localStorage.getItem(USERS_STORAGE_KEY);
@@ -217,7 +221,8 @@ function getDefaultProfile(password) {
       topicPerformance: {},
       mistakesByTopic: {},
       recommendedTopicIds: [],
-      lastAssessmentPerfect: false
+      lastAssessmentPerfect: false,
+      assessmentAttempts: 0
     }
   };
 }
@@ -361,6 +366,16 @@ function mapDifficultyLevel(value) {
   return "medium";
 }
 
+function normalizeDifficultyLevel(value) {
+  const parsedValue = Number.parseInt(value, 10);
+
+  if (Number.isNaN(parsedValue)) {
+    return null;
+  }
+
+  return Math.min(5, Math.max(1, parsedValue));
+}
+
 function inferDifficulty(question, topicName) {
   if (question.difficulty !== undefined && question.difficulty !== null) {
     return mapDifficultyLevel(question.difficulty);
@@ -381,12 +396,36 @@ function inferDifficulty(question, topicName) {
   return "medium";
 }
 
+function inferDifficultyLevel(question, topicName) {
+  const explicitDifficultyLevel = normalizeDifficultyLevel(question.difficulty);
+
+  if (explicitDifficultyLevel !== null) {
+    return explicitDifficultyLevel;
+  }
+
+  const mappedDifficulty = inferDifficulty(question, topicName);
+
+  if (mappedDifficulty === "easy") {
+    return 1;
+  }
+
+  if (mappedDifficulty === "hard") {
+    return 5;
+  }
+
+  return 3;
+}
+
 function buildQuestionId(topicId, index) {
   return `${topicId}-question-${index + 1}`;
 }
 
 function getDifficultyLabel(difficulty) {
   return difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
+}
+
+function getAssessmentLevelFromAttempts(attempts = assessmentAttempts) {
+  return Math.min(Math.max((attempts || 0) + 1, 1), 5);
 }
 
 function getRandomMessage(messages) {
@@ -443,7 +482,31 @@ function buildAssessmentQuestion(config, usedQuestionIds = new Set()) {
   const matchedQuestions = typeof config.questionMatcher === "function"
     ? orderedQuestions.filter((question) => config.questionMatcher(question))
     : orderedQuestions;
-  const selectedQuestion = matchedQuestions[0] || orderedQuestions[0];
+
+  if (matchedQuestions.length === 0) {
+    return null;
+  }
+
+  const availableLevels = matchedQuestions
+    .map((question) => question.difficultyLevel)
+    .filter((level, index, levels) => level !== null && levels.indexOf(level) === index)
+    .sort((firstLevel, secondLevel) => firstLevel - secondLevel);
+  const closestLevel = availableLevels.reduce((bestLevel, level) => {
+    if (bestLevel === null) {
+      return level;
+    }
+
+    const bestDifference = Math.abs(bestLevel - currentAssessmentLevel);
+    const levelDifference = Math.abs(level - currentAssessmentLevel);
+
+    if (levelDifference !== bestDifference) {
+      return levelDifference < bestDifference ? level : bestLevel;
+    }
+
+    return level < bestLevel ? level : bestLevel;
+  }, null);
+  const levelMatchedQuestions = matchedQuestions.filter((question) => question.difficultyLevel === closestLevel);
+  const selectedQuestion = levelMatchedQuestions[0] || matchedQuestions[0];
 
   if (!selectedQuestion) {
     return null;
@@ -523,7 +586,8 @@ function saveCurrentUserProgress() {
     topicPerformance,
     mistakesByTopic,
     recommendedTopicIds,
-    lastAssessmentPerfect
+    lastAssessmentPerfect,
+    assessmentAttempts
   };
 
   users[currentUser] = profile;
@@ -536,6 +600,8 @@ function loadSavedProgress(progress = {}) {
   mistakesByTopic = normalizeMistakesByTopic(progress.mistakesByTopic);
   recommendedTopicIds = progress.recommendedTopicIds || [];
   lastAssessmentPerfect = Boolean(progress.lastAssessmentPerfect);
+  assessmentAttempts = progress.assessmentAttempts || 0;
+  currentAssessmentLevel = getAssessmentLevelFromAttempts(assessmentAttempts);
   updateGlobalLevelDisplay();
 }
 
@@ -547,7 +613,7 @@ function loginAsSavedUser(username, profile) {
   resetTransientState();
   buildStudyPlan();
   updateHeaderIdentity();
-  showScreen("welcome");
+  showScreen(recommendedTopicIds.length > 0 || assessmentAttempts > 0 ? "studyPlan" : "welcome");
 }
 
 function handleLogin(event) {
@@ -594,6 +660,8 @@ function handleGuestMode() {
   mistakesByTopic = {};
   recommendedTopicIds = [];
   lastAssessmentPerfect = false;
+  assessmentAttempts = 0;
+  currentAssessmentLevel = 1;
   resetTransientState();
   updateGlobalLevelDisplay();
   showScreen("welcome");
@@ -610,6 +678,8 @@ function handleLogout() {
   mistakesByTopic = {};
   recommendedTopicIds = [];
   lastAssessmentPerfect = false;
+  assessmentAttempts = 0;
+  currentAssessmentLevel = 1;
   resetTransientState();
   updateGlobalLevelDisplay();
   clearLoginMessage();
@@ -748,20 +818,101 @@ function getRecommendedNextTopicId() {
   return getWeakestTopicId() || getOrderedTopics()[0]?.id || null;
 }
 
-function buildTopicButton(topic, isRecommended) {
-  const button = document.createElement("button");
-  const mastery = getTopicMastery(topic.id);
-  button.className = "topic-button";
+function buildPracticeCard(topic, isRecommended) {
+  const card = document.createElement("article");
+  card.className = "study-card practice-card";
   if (isRecommended) {
-    button.classList.add("recommended");
+    card.classList.add("recommended");
   }
+
+  const label = document.createElement("p");
+  label.className = "study-card-label";
+  label.textContent = "Practice";
+  card.appendChild(label);
+
+  const title = document.createElement("h4");
+  title.className = "study-card-title";
+  title.textContent = topic.name;
+  card.appendChild(title);
+
+  const meta = document.createElement("p");
+  meta.className = "study-card-text";
+  const mastery = getTopicMastery(topic.id);
+  meta.textContent = `${topic.questions.length} questions ready for practice`;
+  card.appendChild(meta);
+
+  const button = document.createElement("button");
+  button.className = "topic-button practice-button";
   button.type = "button";
   button.innerHTML = `
-    <span>${topic.name} (${topic.questions.length} questions)</span>
+    <span>Start Practice</span>
     <span class="topic-meta">Mastery ${mastery}%</span>
   `;
   button.addEventListener("click", () => startTopic(topic.id));
-  return button;
+  card.appendChild(button);
+
+  return card;
+}
+
+function buildStudyGuideCard(topic) {
+  const guide = STUDY_GUIDES[topic.name];
+  const card = document.createElement("article");
+  card.className = "study-card";
+
+  const label = document.createElement("p");
+  label.className = "study-card-label";
+  label.textContent = "Study Guide";
+  card.appendChild(label);
+
+  const title = document.createElement("h4");
+  title.className = "study-card-title";
+  title.textContent = topic.name;
+  card.appendChild(title);
+
+  const summaryList = document.createElement("ul");
+  summaryList.className = "study-guide-summary";
+
+  (guide?.summary || ["Review the core ideas, work a few examples, and then try practice questions."]).forEach((item) => {
+    const bullet = document.createElement("li");
+    bullet.textContent = item;
+    summaryList.appendChild(bullet);
+  });
+
+  card.appendChild(summaryList);
+
+  const videosHeading = document.createElement("p");
+  videosHeading.className = "study-card-subtitle";
+  videosHeading.textContent = "Watch Videos";
+  card.appendChild(videosHeading);
+
+  const videoList = document.createElement("div");
+  videoList.className = "study-guide-links";
+
+  (guide?.videos || []).forEach((video) => {
+    const link = document.createElement("a");
+    link.className = "study-guide-link";
+    link.href = video.url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = video.title;
+    videoList.appendChild(link);
+  });
+
+  card.appendChild(videoList);
+
+  return card;
+}
+
+function buildStudyPlanRow(topic, isRecommended) {
+  const row = document.createElement("div");
+  row.className = "study-plan-row";
+  if (isRecommended) {
+    row.classList.add("recommended-row");
+  }
+
+  row.appendChild(buildStudyGuideCard(topic));
+  row.appendChild(buildPracticeCard(topic, isRecommended));
+  return row;
 }
 
 function buildStudyPlan() {
@@ -780,12 +931,11 @@ function buildStudyPlan() {
   }
 
   orderedTopics.forEach((topic) => {
-    const allButton = buildTopicButton(topic, false);
-    allTopicList.appendChild(allButton);
+    allTopicList.appendChild(buildStudyPlanRow(topic, false));
   });
 
   recommendedTopics.forEach((topic) => {
-    recommendedTopicList.appendChild(buildTopicButton(topic, true));
+    recommendedTopicList.appendChild(buildStudyPlanRow(topic, true));
   });
 
   if (recommendedTopicList.children.length === 0) {
@@ -845,12 +995,11 @@ function startAssessment() {
   currentMode = "assessment";
   currentSessionType = "assessment";
   currentTopic = null;
+  currentAssessmentLevel = getAssessmentLevelFromAttempts();
   diagnosticQuestions = buildDiagnosticQuestions();
   currentQuestionSet = diagnosticQuestions;
   currentQuestionIndex = 0;
   assessmentResults = [];
-  recommendedTopicIds = [];
-  lastAssessmentPerfect = false;
   resetRunStats();
   renderQuestion();
   showScreen("quiz");
@@ -895,8 +1044,14 @@ function renderQuestion() {
     : currentSessionType === "review"
       ? "Revisit missed questions and lock in the right steps."
       : "Work through the topic and build your score.";
+  assessmentNoticeText.textContent = isAssessment && currentAssessmentLevel > 1
+    ? "You are taking a more advanced assessment."
+    : "";
+  assessmentNoticeText.classList.toggle("hidden", !(isAssessment && currentAssessmentLevel > 1));
   progressText.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestionSet.length}`;
-  difficultyText.textContent = `Difficulty: ${getDifficultyLabel(question.difficulty || "medium")}`;
+  difficultyText.textContent = isAssessment
+    ? `Assessment level: ${question.difficultyLevel || currentAssessmentLevel} of 5`
+    : `Difficulty: ${getDifficultyLabel(question.difficulty || "medium")}`;
   encouragementText.textContent = isAssessment ? "Show what you know." : "Stay focused and keep building.";
   reviewText.classList.toggle("hidden", !question.isReview);
   questionText.textContent = formatMathText(question.question);
@@ -1069,6 +1224,8 @@ function showAssessmentReport() {
 
   recommendedTopicIds = missedTopicIds;
   lastAssessmentPerfect = scorePercent === 100;
+  assessmentAttempts += 1;
+  currentAssessmentLevel = getAssessmentLevelFromAttempts();
 
   reportScore.textContent = `Overall score: ${correctCount}/${questionCount} (${scorePercent}%)`;
   focusText.textContent = lastAssessmentPerfect
@@ -1103,7 +1260,11 @@ function showCompleteScreen() {
 
 function handleBack() {
   if (currentMode === "assessment") {
-    showScreen("welcome");
+    if (recommendedTopicIds.length > 0 || assessmentAttempts > 0) {
+      showStudyPlan();
+    } else {
+      showScreen("welcome");
+    }
     return;
   }
 
@@ -1129,7 +1290,8 @@ async function loadQuizData() {
         ...question,
         id: question.id || buildQuestionId(getTopicId(topic, index), questionIndex),
         sourceIndex: questionIndex,
-        difficulty: inferDifficulty(question, topic.name)
+        difficulty: inferDifficulty(question, topic.name),
+        difficultyLevel: inferDifficultyLevel(question, topic.name)
       }))
     }));
 
@@ -1161,6 +1323,7 @@ recommendedNextButton.addEventListener("click", () => {
   }
 });
 reviewMistakesButton.addEventListener("click", startReviewMistakes);
+retakeAssessmentButton.addEventListener("click", startAssessment);
 reviewMistakesBackButton.addEventListener("click", showStudyPlan);
 dontKnowButton.addEventListener("click", () => handleAnswer(-1, { wasSkipped: true }));
 tryAgainButton.addEventListener("click", handleTryAgain);

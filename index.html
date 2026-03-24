@@ -55,6 +55,12 @@
           </label>
           <button id="login-button" class="primary-button" type="submit">Login / Create Account</button>
         </form>
+        <div class="login-note" aria-label="progress saving note">
+          <p class="login-note-title">How saving works</p>
+          <p class="login-note-text">
+            Your progress saves only in this browser on this device. If you switch devices or browsers, it will not follow you. On school computers, it may only stay saved if you use the same browser profile and the computer does not clear data when you sign out.
+          </p>
+        </div>
         <button id="guest-button" class="secondary-button" type="button">Continue as Guest</button>
         <p id="login-message" class="message hidden" aria-live="polite"></p>
       </section>
@@ -103,6 +109,7 @@
       <div class="study-actions">
         <button id="recommended-next-button" class="primary-button" type="button">Recommended Next</button>
         <button id="review-mistakes-button" class="secondary-button" type="button">Review Mistakes</button>
+        <button id="retake-assessment-button" class="secondary-button" type="button">Retake Assessment</button>
       </div>
 
       <div class="study-section">
@@ -157,6 +164,7 @@
       <div class="quiz-heading">
         <h2 id="topic-title"></h2>
         <p id="quiz-mode-text" class="panel-text"></p>
+        <p id="assessment-notice-text" class="assessment-notice hidden"></p>
         <p id="difficulty-text" class="difficulty-text"></p>
         <div class="mastery-panel">
           <div class="mastery-header">
@@ -203,6 +211,7 @@
     <p id="topic-error" class="message error hidden" aria-live="polite"></p>
   </main>
 
+  <script src="study-guides.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
