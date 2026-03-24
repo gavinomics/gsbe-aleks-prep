@@ -108,6 +108,11 @@ p {
   margin: 16px auto 0;
 }
 
+.hero-chooser {
+  max-width: 200px;
+  margin: 16px auto 0;
+}
+
 .hero-stat {
   margin-bottom: 0;
   padding: 10px 14px;
@@ -144,6 +149,16 @@ p {
   display: grid;
   gap: 14px;
   margin: 22px 0 28px;
+}
+
+.track-selection {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.track-button {
+  min-height: 72px;
 }
 
 .review-header {

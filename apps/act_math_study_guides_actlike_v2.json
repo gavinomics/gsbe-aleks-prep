@@ -1,0 +1,430 @@
+{
+  "title": "ACT Math Study Guides",
+  "metadata": {
+    "description": "ACT-focused study guides and free video links aligned to the more ACT-like v2 math bank.",
+    "topicCount": 15,
+    "notes": "Video links favor free, well-established channels. Lessons emphasize ACT-style pacing, graphs, tables, and applied multiple-choice questions."
+  },
+  "topics": [
+    {
+      "topicId": "real_numbers",
+      "name": "Number Sense, Fractions, and Percents",
+      "lesson": "On ACT Math, these are usually quick points if you convert between fractions, decimals, and percents fast and estimate before computing. Focus on fraction/decimal/percent conversion, order of operations, and quick arithmetic with positive and negative numbers. On ACT-style questions, fluency matters: estimate first, then compute carefully.",
+      "keySkills": [
+        "fraction and decimal operations",
+        "percent of a number",
+        "equivalent forms",
+        "order of operations"
+      ],
+      "videos": [
+        {
+          "title": "Math Antics - Fractions and Decimals",
+          "url": "https://www.youtube.com/watch?v=Mst8iZjIpFE",
+          "channel": "Math Antics"
+        },
+        {
+          "title": "Math Antics - What Are Percentages?",
+          "url": "https://www.youtube.com/watch?v=JeVSmq1Nrpw",
+          "channel": "Math Antics"
+        },
+        {
+          "title": "Order of operations with fractions and exponents",
+          "url": "https://www.youtube.com/watch?v=jAVbApE7lJ8",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "ratios_proportions",
+      "name": "Ratios, Proportions, and Unit Rates",
+      "lesson": "ACT often wraps ratio and rate skills inside word problems, map scales, and unit-price questions. Set up ratios carefully and keep units visible. ACT questions often hide the proportion inside a short word problem, so identify what is being compared before you cross-multiply.",
+      "keySkills": [
+        "ratios and rates",
+        "unit conversions",
+        "proportions",
+        "percent and scale problems"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to ratios",
+          "url": "https://www.youtube.com/watch?v=HpdMJaKaXXc",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Introduction to rates",
+          "url": "https://www.youtube.com/watch?v=qGTYSAeLTOE",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Proportion word problem example",
+          "url": "https://www.youtube.com/watch?v=s8_14yxp1lQ",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "expressions_exponents",
+      "name": "Algebraic Expressions and Exponents",
+      "lesson": "ACT algebra questions here are usually short but reward careful use of exponent rules and equivalent expressions. Practice combining like terms, distributing, and applying exponent rules without overcomplicating. The ACT usually rewards clean symbolic manipulation more than long calculations.",
+      "keySkills": [
+        "combine like terms",
+        "distributive property",
+        "exponent rules",
+        "scientific notation"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to exponents",
+          "url": "https://www.youtube.com/watch?v=XZRQhkii0h0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Exponent properties 1",
+          "url": "https://www.youtube.com/watch?v=-TpiL4J_yUA",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Scientific notation examples",
+          "url": "https://www.youtube.com/watch?v=i6lfVUp5RW8",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "linear_equations",
+      "name": "Linear Equations",
+      "lesson": "Expect a mix of direct equations and real-world linear models involving fees, rates, and totals. Keep inverse operations in order and check your solution mentally. ACT linear-equation questions range from simple one-step equations to contextual word problems.",
+      "keySkills": [
+        "one-step and two-step equations",
+        "distribution",
+        "variables on both sides",
+        "word problems"
+      ],
+      "videos": [
+        {
+          "title": "Algebra: Linear equations 1",
+          "url": "https://www.youtube.com/watch?v=bAerID24QJ0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Algebra: Linear equations 2",
+          "url": "https://www.youtube.com/watch?v=DopnmxeMt-s",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Basic linear equation word problem",
+          "url": "https://www.youtube.com/watch?v=roHvNNFXr4k",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "inequalities_abs",
+      "name": "Linear Inequalities and Absolute Value",
+      "lesson": "These questions often test sign changes, interval meaning, and whether you can translate a short condition correctly. Solve inequalities like equations, but remember to reverse the inequality when multiplying or dividing by a negative. For absolute value, interpret distance first, then solve and check.",
+      "keySkills": [
+        "one-step and multi-step inequalities",
+        "compound inequalities",
+        "absolute value equations",
+        "absolute value inequalities"
+      ],
+      "videos": [
+        {
+          "title": "Solving Absolute Value Equations and Inequalities",
+          "url": "https://www.youtube.com/watch?v=3LN0IDooaIE",
+          "channel": "The Organic Chemistry Tutor"
+        },
+        {
+          "title": "How To Solve Absolute Value Inequalities",
+          "url": "https://www.youtube.com/watch?v=30PrH3OIiqk",
+          "channel": "The Organic Chemistry Tutor"
+        },
+        {
+          "title": "Solving inequalities with interval notation",
+          "url": "https://www.youtube.com/watch?v=tm49BYGw_Sg",
+          "channel": "The Organic Chemistry Tutor"
+        }
+      ]
+    },
+    {
+      "topicId": "systems",
+      "name": "Systems of Equations and Modeling",
+      "lesson": "ACT system questions frequently appear in ticket, mixture, and plan-comparison contexts where setup matters as much as solving. Choose elimination when coefficients line up and substitution when one equation is easy to isolate. In word problems, define variables before writing equations so the model stays organized.",
+      "keySkills": [
+        "substitution",
+        "elimination",
+        "systems from context",
+        "interpreting intersection points"
+      ],
+      "videos": [
+        {
+          "title": "Solving systems by elimination",
+          "url": "https://www.youtube.com/watch?v=vA-55wZtLeE",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Solving systems by substitution example",
+          "url": "https://www.youtube.com/watch?v=GWZKz4F9hWM",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Systems of equations word problems",
+          "url": "https://www.youtube.com/watch?v=z1hz8-Kri1E",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "functions_graphs",
+      "name": "Functions and Graphs",
+      "lesson": "ACT function questions often involve notation, slope, graphs, tables, and picking the right equation from a pattern. Translate comfortably between equations, tables, and graphs. ACT function questions often test evaluation, slope, rate of change, and how transformations affect a graph.",
+      "keySkills": [
+        "function notation",
+        "slope and rate of change",
+        "graph interpretation",
+        "transformations"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to functions",
+          "url": "https://www.youtube.com/watch?v=VhokQhjl5t0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Graphs of linear equations",
+          "url": "https://www.youtube.com/watch?v=rgvysb9emcQ",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Shifting functions introduction",
+          "url": "https://www.youtube.com/watch?v=RttvubuBhAE",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "polynomials_factoring",
+      "name": "Polynomials and Factoring",
+      "lesson": "These tend to reward pattern recognition: combine like terms, expand efficiently, and spot factorable expressions. Start with the greatest common factor, then look for patterns like trinomials and difference of squares. Factoring is often the fastest path to solving higher-level ACT algebra questions.",
+      "keySkills": [
+        "GCF factoring",
+        "trinomial factoring",
+        "special products",
+        "polynomial operations"
+      ],
+      "videos": [
+        {
+          "title": "Factoring trinomials and polynomials",
+          "url": "https://www.youtube.com/watch?v=9MUDAr1PnlE",
+          "channel": "The Organic Chemistry Tutor"
+        },
+        {
+          "title": "Factoring special products",
+          "url": "https://www.youtube.com/watch?v=BI_jmI4xRus",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Difference of squares",
+          "url": "https://www.youtube.com/watch?v=uNweU6I4Icw",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "quadratics",
+      "name": "Quadratic Functions and Equations",
+      "lesson": "ACT quadratic questions usually focus on factoring, roots, vertex meaning, intercepts, and simple projectile models. Be flexible: solve by factoring, square roots, completing the square, or the quadratic formula depending on the form. Also watch for graph features like vertex, intercepts, and direction of opening.",
+      "keySkills": [
+        "solving quadratics",
+        "vertex and intercepts",
+        "graph interpretation",
+        "quadratic formula"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to the quadratic equation",
+          "url": "https://www.youtube.com/watch?v=IWigvJcCAJ0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "How to use the quadratic formula",
+          "url": "https://www.youtube.com/watch?v=i7idZfS8t8w",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Solving quadratic equations using the quadratic formula",
+          "url": "https://www.youtube.com/watch?v=qwpxeaz2GBI",
+          "channel": "The Organic Chemistry Tutor"
+        }
+      ]
+    },
+    {
+      "topicId": "rational_expr",
+      "name": "Rational Expressions and Equations",
+      "lesson": "These questions mix algebra fluency with domain restrictions, canceled factors, and quick rational equations. Factor first, simplify carefully, and keep excluded values in mind. For rational equations, clear denominators and then check for extraneous solutions.",
+      "keySkills": [
+        "simplifying rational expressions",
+        "excluded values",
+        "rational equations",
+        "operations with rational expressions"
+      ],
+      "videos": [
+        {
+          "title": "Simplifying rational expressions introduction",
+          "url": "https://www.youtube.com/watch?v=7Uos1ED3KHI",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Rational equations intro",
+          "url": "https://www.youtube.com/watch?v=3RdNPrNUi4s",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Dividing rational expressions",
+          "url": "https://www.youtube.com/watch?v=0cmhBgQNGDI",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "radicals",
+      "name": "Radicals and Rational Exponents",
+      "lesson": "ACT uses radicals in both pure algebra and applied equations, so practice simplifying and checking solutions after squaring. Switch comfortably between radical notation and rational exponents. Simplify before solving, and always check radical-equation answers for extraneous solutions.",
+      "keySkills": [
+        "square and cube roots",
+        "simplifying radicals",
+        "rational exponents",
+        "radical equations"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to Rational Exponents & Radicals",
+          "url": "https://www.youtube.com/watch?v=5y6gRf71UqM",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Simplifying radicals",
+          "url": "https://www.youtube.com/watch?v=6QJtWfIiyZo",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Solving radical equations",
+          "url": "https://www.youtube.com/watch?v=pFFoAGIEyJc",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "exp_logs",
+      "name": "Exponential and Logarithmic Functions",
+      "lesson": "Exponential questions are more common than deep logarithm work, and ACT usually keeps the algebra short and interpretable. Recognize the structure first: repeated multiplication suggests exponentials, while inverse questions often lead to logs. ACT questions in this area usually emphasize interpretation and simple solving rather than advanced identities.",
+      "keySkills": [
+        "evaluate exponential expressions",
+        "growth and decay",
+        "intro to logarithms",
+        "solve simple exponential equations"
+      ],
+      "videos": [
+        {
+          "title": "Exponential growth functions",
+          "url": "https://www.youtube.com/watch?v=6WMZ7J0wwMI",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Introduction to Logarithms",
+          "url": "https://www.youtube.com/watch?v=mQTWzLpCcW0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Logarithms",
+          "url": "https://www.youtube.com/watch?v=Z5myJ8dg_rM",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "geometry",
+      "name": "Geometry and Coordinate Geometry",
+      "lesson": "Expect standard geometry formulas plus coordinate geometry, with many questions tied to diagrams or simple coordinate setups. Know the standard formulas, but also watch for geometry questions that can be solved by reasoning or estimation. Coordinate geometry combines algebra and geometry, so slope, midpoint, and distance should feel automatic.",
+      "keySkills": [
+        "area and circumference",
+        "Pythagorean theorem",
+        "midpoint",
+        "distance and slope"
+      ],
+      "videos": [
+        {
+          "title": "Circumference of a circle",
+          "url": "https://www.youtube.com/watch?v=Rcb7ZUTOQ1I",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Midpoint formula",
+          "url": "https://www.youtube.com/watch?v=Ez_-RwV9WVo",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Distance formula",
+          "url": "https://www.youtube.com/watch?v=oKpwFowbDhE",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "trigonometry",
+      "name": "Trigonometry",
+      "lesson": "ACT trig is usually right-triangle focused: sin, cos, tan, special triangles, and angle-of-elevation applications. Most ACT trig is right-triangle trig plus common unit-circle values. Memorize the basic sine, cosine, and tangent relationships and connect them to triangle side lengths.",
+      "keySkills": [
+        "sine cosine tangent",
+        "special triangles",
+        "unit circle basics",
+        "solve right triangles"
+      ],
+      "videos": [
+        {
+          "title": "Basic trigonometry",
+          "url": "https://www.youtube.com/watch?v=Jsiy4TxgIME",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Basic Trigonometry",
+          "url": "https://www.youtube.com/watch?v=F21S9Wpi0y8",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Right triangle trigonometry basic example",
+          "url": "https://www.youtube.com/watch?v=VNfWOjRCP6w",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "prob_stats",
+      "name": "Statistics, Probability, and Data",
+      "lesson": "These questions often come from tables, sets, and real-world data summaries, so read carefully before calculating. Read charts carefully and decide whether the task is descriptive statistics, simple probability, or set counting. On ACT-style data questions, the fastest solution usually comes from organizing the information before calculating.",
+      "keySkills": [
+        "mean median mode",
+        "simple probability",
+        "set counting",
+        "interpreting data displays"
+      ],
+      "videos": [
+        {
+          "title": "Finding mean, median, and mode",
+          "url": "https://www.youtube.com/watch?v=k3aKKasOmIw",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Probability explained",
+          "url": "https://www.youtube.com/watch?v=uzkc-qNVoOk",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Experimental probability",
+          "url": "https://www.youtube.com/watch?v=RdehfQJ8i_0",
+          "channel": "Khan Academy"
+        }
+      ]
+    }
+  ]
+}

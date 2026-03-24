@@ -1,5 +1,6 @@
 const screens = {
   login: document.getElementById("login-screen"),
+  testSelection: document.getElementById("test-selection-screen"),
   welcome: document.getElementById("welcome-screen"),
   report: document.getElementById("report-screen"),
   studyPlan: document.getElementById("study-plan-screen"),
@@ -13,15 +14,24 @@ const usernameInput = document.getElementById("username-input");
 const passwordInput = document.getElementById("password-input");
 const guestButton = document.getElementById("guest-button");
 const loginMessage = document.getElementById("login-message");
+const placementTrackButton = document.getElementById("placement-track-button");
+const actTrackButton = document.getElementById("act-track-button");
+const chooseTestButton = document.getElementById("choose-test-button");
+const currentTrackText = document.getElementById("current-track-text");
 const startAssessmentButton = document.getElementById("start-assessment-button");
 const viewStudyPlanButton = document.getElementById("view-study-plan-button");
 const recommendedTopicList = document.getElementById("recommended-topic-list");
 const allTopicList = document.getElementById("all-topic-list");
+const studyPlanHeading = document.getElementById("study-plan-heading");
+const studyPlanDescription = document.getElementById("study-plan-description");
 const studyPlanFocus = document.getElementById("study-plan-focus");
 const retakeAssessmentButton = document.getElementById("retake-assessment-button");
 const reviewMistakesList = document.getElementById("review-mistakes-list");
 const reviewMistakesEmpty = document.getElementById("review-mistakes-empty");
+const reviewMistakesHeading = document.getElementById("review-mistakes-heading");
+const reviewMistakesDescription = document.getElementById("review-mistakes-description");
 const reviewMistakesBackButton = document.getElementById("review-mistakes-back-button");
+const reportHeading = document.getElementById("report-heading");
 const reportScore = document.getElementById("report-score");
 const focusText = document.getElementById("focus-text");
 const recommendedNextButton = document.getElementById("recommended-next-button");
@@ -53,6 +63,7 @@ const dontKnowButton = document.getElementById("dont-know-button");
 const tryAgainButton = document.getElementById("try-again-button");
 const nextButton = document.getElementById("next-button");
 const backButton = document.getElementById("back-button");
+const completeHeading = document.getElementById("complete-heading");
 const completeMessage = document.getElementById("complete-message");
 const completeScore = document.getElementById("complete-score");
 const completeStreak = document.getElementById("complete-streak");
@@ -90,7 +101,7 @@ const subscriptMap = {
   8: "₈",
   9: "₉"
 };
-const assessmentTopicOrder = [
+const placementAssessmentTopicOrder = [
   {
     label: "Real Numbers & Arithmetic",
     sourceTopicName: "Real Numbers, Fractions, and Percents",
@@ -158,18 +169,65 @@ const assessmentTopicOrder = [
     questionMatcher: (question) => /\blog\b|\bln\b/i.test(question.question)
   }
 ];
-const topicOrderByName = assessmentTopicOrder.reduce((order, topic, index) => {
-  if (!(topic.sourceTopicName in order)) {
-    order[topic.sourceTopicName] = index;
-  }
-
-  return order;
-}, {});
+const actAssessmentTopicOrder = [
+  { label: "Number Sense, Fractions, and Percents", sourceTopicId: "real_numbers" },
+  { label: "Ratios, Proportions, and Unit Rates", sourceTopicId: "ratios_proportions" },
+  { label: "Algebraic Expressions and Exponents", sourceTopicId: "expressions_exponents" },
+  { label: "Linear Equations", sourceTopicId: "linear_equations" },
+  { label: "Linear Inequalities and Absolute Value", sourceTopicId: "inequalities_abs" },
+  { label: "Systems of Equations and Modeling", sourceTopicId: "systems" },
+  { label: "Functions and Graphs", sourceTopicId: "functions_graphs" },
+  { label: "Polynomials and Factoring", sourceTopicId: "polynomials_factoring" },
+  { label: "Quadratic Functions and Equations", sourceTopicId: "quadratics" },
+  { label: "Rational Expressions and Equations", sourceTopicId: "rational_expr" },
+  { label: "Radicals and Rational Exponents", sourceTopicId: "radicals" },
+  { label: "Exponential and Logarithmic Functions", sourceTopicId: "exp_logs" },
+  { label: "Geometry and Coordinate Geometry", sourceTopicId: "geometry" },
+  { label: "Trigonometry", sourceTopicId: "trigonometry" },
+  { label: "Statistics, Probability, and Data", sourceTopicId: "prob_stats" }
+];
 const correctMessages = ["Nice work 🔥", "Strong start ✨", "You've got this 💪"];
 const incorrectMessages = ["Keep going 💪", "Take another look 👀", "One more try"];
 
-let appTitle = "Weber State Math Placement Prep";
+const trackConfigs = {
+  placement: {
+    key: "placement",
+    label: "Math Placement (ALEKS / ACCUPLACER)",
+    shortLabel: "Math Placement",
+    assessmentTitle: "Diagnostic Assessment",
+    welcomeTitle: "Start with a short diagnostic assessment",
+    welcomeDescription: "Answer a few mixed math questions, see your recommended focus areas, and get a study plan before you practice.",
+    studyPlanHeading: "Your Study Plan",
+    studyPlanDescription: "Recommended topics are shown first based on your assessment. You can still study any topic.",
+    reportHeading: "Assessment Report",
+    reviewHeading: "Review Mistakes",
+    reviewDescription: "Review the questions you missed, see the correct answer, and study each explanation in one place.",
+    completeHeading: "Level Complete",
+    assessmentTopicOrder: placementAssessmentTopicOrder,
+    defaultStudyGuides: typeof STUDY_GUIDES === "object" ? STUDY_GUIDES : {}
+  },
+  act: {
+    key: "act",
+    label: "ACT Math",
+    shortLabel: "ACT Math",
+    assessmentTitle: "ACT Assessment",
+    welcomeTitle: "Start with a short ACT Math assessment",
+    welcomeDescription: "Answer 15 ACT-style questions, see your recommended focus areas, and jump into an ACT-specific study plan.",
+    studyPlanHeading: "Your ACT Study Plan",
+    studyPlanDescription: "Recommended ACT topics are shown first based on your ACT assessment. Each topic includes an ACT lesson and practice questions.",
+    reportHeading: "ACT Assessment Report",
+    reviewHeading: "Review ACT Mistakes",
+    reviewDescription: "Review the ACT questions you missed, see the correct answer, and study each explanation in one place.",
+    completeHeading: "ACT Practice Complete",
+    assessmentTopicOrder: actAssessmentTopicOrder,
+    defaultStudyGuides: {}
+  }
+};
+
+let trackCatalog = {};
+let activeTrackKey = null;
 let quizTopics = [];
+let studyGuides = {};
 let diagnosticQuestions = [];
 let recommendedTopicIds = [];
 let assessmentResults = [];
@@ -213,18 +271,56 @@ function saveStoredUsers(users) {
   localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
 }
 
+function getDefaultTrackProgress() {
+  return {
+    totalXp: 0,
+    topicPerformance: {},
+    mistakesByTopic: {},
+    recommendedTopicIds: [],
+    lastAssessmentPerfect: false,
+    assessmentAttempts: 0
+  };
+}
+
+function migrateProfile(profile) {
+  const nextProfile = { ...profile };
+
+  if (!nextProfile.tracks) {
+    nextProfile.tracks = {
+      placement: nextProfile.progress || getDefaultTrackProgress(),
+      act: getDefaultTrackProgress()
+    };
+  }
+
+  if (!nextProfile.tracks.placement) {
+    nextProfile.tracks.placement = nextProfile.progress || getDefaultTrackProgress();
+  }
+
+  if (!nextProfile.tracks.act) {
+    nextProfile.tracks.act = getDefaultTrackProgress();
+  }
+
+  delete nextProfile.progress;
+  return nextProfile;
+}
+
 function getDefaultProfile(password) {
   return {
     password,
-    progress: {
-      totalXp: 0,
-      topicPerformance: {},
-      mistakesByTopic: {},
-      recommendedTopicIds: [],
-      lastAssessmentPerfect: false,
-      assessmentAttempts: 0
+    tracks: {
+      placement: getDefaultTrackProgress(),
+      act: getDefaultTrackProgress()
     }
   };
+}
+
+function getActiveTrack() {
+  return activeTrackKey ? trackCatalog[activeTrackKey] || null : null;
+}
+
+function getTrackProgress(profile, trackKey) {
+  const migratedProfile = migrateProfile(profile);
+  return migratedProfile.tracks[trackKey] || getDefaultTrackProgress();
 }
 
 function showScreen(screenName) {
@@ -258,6 +354,11 @@ function updateHeaderIdentity() {
     currentUserText.classList.add("hidden");
     logoutButton.classList.add("hidden");
   }
+
+  const activeTrack = getActiveTrack();
+  currentTrackText.classList.toggle("hidden", !activeTrack);
+  currentTrackText.textContent = activeTrack ? `Track: ${activeTrack.shortLabel}` : "";
+  chooseTestButton.classList.toggle("hidden", !(currentUser || isGuestMode) || !activeTrack);
 }
 
 function updateGlobalLevelDisplay() {
@@ -283,8 +384,8 @@ function formatMathText(text) {
     .replace(/sqrt\s*\(/gi, "√(")
     .replace(/sqrt/gi, "√")
     .replace(/log_(\d+)/gi, (_, digits) => `log${digits.split("").map((digit) => subscriptMap[digit] || digit).join("")}`)
-    .replace(/\^([+-]?\d+)/g, (_, exponent) => exponent.split("").map((character) => superscriptMap[character] || character).join(""))
-    .replace(/\^\(([-+]?\d+)\)/g, (_, exponent) => exponent.split("").map((character) => superscriptMap[character] || character).join(""));
+    .replace(/\^\(([-+]?\d+)\)/g, (_, exponent) => exponent.split("").map((character) => superscriptMap[character] || character).join(""))
+    .replace(/\^([+-]?\d+)/g, (_, exponent) => exponent.split("").map((character) => superscriptMap[character] || character).join(""));
 }
 
 function getCorrectAnswerIndex(question) {
@@ -451,12 +552,40 @@ function getOrderedQuestions(questions) {
   return questions.slice().sort(compareQuestionsByDifficulty);
 }
 
-function getTopicSortRank(topic) {
-  if (topic.name in topicOrderByName) {
-    return topicOrderByName[topic.name];
+function getTrackOrderValue(config) {
+  return config.sourceTopicId || config.sourceTopicName || config.label;
+}
+
+function getTopicOrderMap() {
+  const activeTrack = getActiveTrack();
+
+  if (!activeTrack) {
+    return {};
   }
 
-  return assessmentTopicOrder.length + (topic.sourceIndex || 0);
+  return activeTrack.assessmentTopicOrder.reduce((order, topicConfig, index) => {
+    const orderKey = getTrackOrderValue(topicConfig);
+
+    if (!(orderKey in order)) {
+      order[orderKey] = index;
+    }
+
+    return order;
+  }, {});
+}
+
+function getTopicSortRank(topic) {
+  const orderMap = getTopicOrderMap();
+
+  if (topic?.id in orderMap) {
+    return orderMap[topic.id];
+  }
+
+  if (topic?.name in orderMap) {
+    return orderMap[topic.name];
+  }
+
+  return (getActiveTrack()?.assessmentTopicOrder.length || 0) + (topic?.sourceIndex || 0);
 }
 
 function getOrderedTopics(topics = quizTopics) {
@@ -464,15 +593,23 @@ function getOrderedTopics(topics = quizTopics) {
 }
 
 function getUniqueTopicIds(items) {
-  return items.filter((item, index, list) => list.indexOf(item) === index);
+  return items.filter((item, index, list) => item && list.indexOf(item) === index);
 }
 
-function getTopicByName(topicName) {
-  return quizTopics.find((topic) => topic.name === topicName) || null;
+function getTopicByConfig(config) {
+  if (config.sourceTopicId) {
+    return quizTopics.find((topic) => topic.id === config.sourceTopicId) || null;
+  }
+
+  if (config.sourceTopicName) {
+    return quizTopics.find((topic) => topic.name === config.sourceTopicName) || null;
+  }
+
+  return null;
 }
 
 function buildAssessmentQuestion(config, usedQuestionIds = new Set()) {
-  const topic = getTopicByName(config.sourceTopicName);
+  const topic = getTopicByConfig(config);
 
   if (!topic) {
     return null;
@@ -531,8 +668,29 @@ function resetRunStats() {
   xp = 0;
 }
 
+function buildDiagnosticQuestions() {
+  const activeTrack = getActiveTrack();
+  const usedQuestionIds = new Set();
+
+  if (!activeTrack) {
+    return [];
+  }
+
+  return activeTrack.assessmentTopicOrder
+    .map((config) => {
+      const question = buildAssessmentQuestion(config, usedQuestionIds);
+
+      if (question) {
+        usedQuestionIds.add(question.id);
+      }
+
+      return question;
+    })
+    .filter(Boolean);
+}
+
 function resetTransientState() {
-  diagnosticQuestions = buildDiagnosticQuestions();
+  diagnosticQuestions = getActiveTrack() ? buildDiagnosticQuestions() : [];
   assessmentResults = [];
   currentMode = "assessment";
   currentSessionType = "assessment";
@@ -570,7 +728,7 @@ function getCurrentMastery() {
 }
 
 function saveCurrentUserProgress() {
-  if (isGuestMode || !currentUser) {
+  if (isGuestMode || !currentUser || !activeTrackKey) {
     return;
   }
 
@@ -581,7 +739,8 @@ function saveCurrentUserProgress() {
     return;
   }
 
-  profile.progress = {
+  const nextProfile = migrateProfile(profile);
+  nextProfile.tracks[activeTrackKey] = {
     totalXp,
     topicPerformance,
     mistakesByTopic,
@@ -590,7 +749,7 @@ function saveCurrentUserProgress() {
     assessmentAttempts
   };
 
-  users[currentUser] = profile;
+  users[currentUser] = nextProfile;
   saveStoredUsers(users);
 }
 
@@ -605,15 +764,79 @@ function loadSavedProgress(progress = {}) {
   updateGlobalLevelDisplay();
 }
 
-function loginAsSavedUser(username, profile) {
-  currentUser = username;
-  isGuestMode = false;
-  localStorage.setItem(CURRENT_USER_STORAGE_KEY, username);
-  loadSavedProgress(profile.progress);
+function loadTrackState(trackKey, progress = getDefaultTrackProgress()) {
+  const track = trackCatalog[trackKey];
+
+  activeTrackKey = trackKey;
+  quizTopics = track?.topics || [];
+  studyGuides = track?.studyGuides || {};
+  loadSavedProgress(progress);
   resetTransientState();
+  updateTrackContent();
+}
+
+function getProgressForCurrentUser(trackKey) {
+  if (isGuestMode || !currentUser) {
+    return getDefaultTrackProgress();
+  }
+
+  const users = getStoredUsers();
+  const savedProfile = users[currentUser];
+
+  if (!savedProfile) {
+    return getDefaultTrackProgress();
+  }
+
+  const migratedProfile = migrateProfile(savedProfile);
+  users[currentUser] = migratedProfile;
+  saveStoredUsers(users);
+  return getTrackProgress(migratedProfile, trackKey);
+}
+
+function openTestSelection() {
+  saveCurrentUserProgress();
+  activeTrackKey = null;
+  quizTopics = [];
+  studyGuides = {};
+  resetTransientState();
+  totalXp = 0;
+  topicPerformance = {};
+  mistakesByTopic = {};
+  recommendedTopicIds = [];
+  lastAssessmentPerfect = false;
+  assessmentAttempts = 0;
+  currentAssessmentLevel = 1;
+  updateGlobalLevelDisplay();
+  showScreen("testSelection");
+}
+
+function enterTrack(trackKey) {
+  const progress = getProgressForCurrentUser(trackKey);
+  loadTrackState(trackKey, progress);
   buildStudyPlan();
   updateHeaderIdentity();
   showScreen(recommendedTopicIds.length > 0 || assessmentAttempts > 0 ? "studyPlan" : "welcome");
+}
+
+function loginAsSavedUser(username, profile) {
+  currentUser = username;
+  isGuestMode = false;
+  const users = getStoredUsers();
+  users[username] = migrateProfile(profile);
+  saveStoredUsers(users);
+  localStorage.setItem(CURRENT_USER_STORAGE_KEY, username);
+  activeTrackKey = null;
+  totalXp = 0;
+  topicPerformance = {};
+  mistakesByTopic = {};
+  recommendedTopicIds = [];
+  lastAssessmentPerfect = false;
+  assessmentAttempts = 0;
+  currentAssessmentLevel = 1;
+  resetTransientState();
+  updateTrackContent();
+  updateGlobalLevelDisplay();
+  showScreen("testSelection");
 }
 
 function handleLogin(event) {
@@ -654,6 +877,7 @@ function handleGuestMode() {
   clearLoginMessage();
   currentUser = null;
   isGuestMode = true;
+  activeTrackKey = null;
   localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
   totalXp = 0;
   topicPerformance = {};
@@ -663,8 +887,9 @@ function handleGuestMode() {
   assessmentAttempts = 0;
   currentAssessmentLevel = 1;
   resetTransientState();
+  updateTrackContent();
   updateGlobalLevelDisplay();
-  showScreen("welcome");
+  showScreen("testSelection");
   showLoginMessage("Guest mode is active. Progress will not be saved.");
 }
 
@@ -672,6 +897,7 @@ function handleLogout() {
   saveCurrentUserProgress();
   currentUser = null;
   isGuestMode = false;
+  activeTrackKey = null;
   localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
   totalXp = 0;
   topicPerformance = {};
@@ -681,11 +907,49 @@ function handleLogout() {
   assessmentAttempts = 0;
   currentAssessmentLevel = 1;
   resetTransientState();
+  updateTrackContent();
   updateGlobalLevelDisplay();
   clearLoginMessage();
   usernameInput.value = "";
   passwordInput.value = "";
   showScreen("login");
+}
+
+function updateTrackContent() {
+  const activeTrack = getActiveTrack();
+  const shortLabel = activeTrack?.shortLabel || "Math Prep";
+
+  document.title = activeTrack ? `${activeTrack.label} Prep` : "Weber State Math Prep";
+  startAssessmentButton.textContent = activeTrack?.key === "act" ? "Start ACT Assessment" : "Start Assessment";
+  reportHeading.textContent = activeTrack?.reportHeading || "Assessment Report";
+  studyPlanHeading.textContent = activeTrack?.studyPlanHeading || "Your Study Plan";
+  studyPlanDescription.textContent = activeTrack?.studyPlanDescription || "Recommended topics are shown first based on your assessment. You can still study any topic.";
+  reviewMistakesHeading.textContent = activeTrack?.reviewHeading || "Review Mistakes";
+  reviewMistakesDescription.textContent = activeTrack?.reviewDescription || "Review the questions you missed, see the correct answer, and study each explanation in one place.";
+  completeHeading.textContent = activeTrack?.completeHeading || "Level Complete";
+  topicTitle.textContent = currentMode === "assessment" && activeTrack ? activeTrack.assessmentTitle : topicTitle.textContent;
+
+  const welcomeBadge = document.getElementById("welcome-track-badge");
+  const welcomeTitle = document.getElementById("welcome-title");
+  const welcomeDescription = document.getElementById("welcome-description");
+
+  if (welcomeBadge) {
+    welcomeBadge.textContent = activeTrack ? activeTrack.shortLabel : "Guided Learning Path";
+  }
+
+  if (welcomeTitle) {
+    welcomeTitle.textContent = activeTrack?.welcomeTitle || "Start with a short diagnostic assessment";
+  }
+
+  if (welcomeDescription) {
+    welcomeDescription.textContent = activeTrack?.welcomeDescription || "Answer a few mixed math questions, see your recommended focus areas, and get a study plan before you practice.";
+  }
+
+  viewStudyPlanButton.textContent = activeTrack?.key === "act" ? "View ACT Study Plan" : "View Study Plan";
+  retakeAssessmentButton.textContent = activeTrack?.key === "act" ? "Retake ACT Assessment" : "Retake Assessment";
+  reviewMistakesBackButton.textContent = activeTrack ? `Back to ${shortLabel} Study Plan` : "Back to Study Plan";
+  topicsButton.textContent = activeTrack ? `Back to ${shortLabel} Study Plan` : "Back to Study Plan";
+  updateHeaderIdentity();
 }
 
 function updateGameStats(answeredCount = currentQuestionIndex) {
@@ -714,22 +978,6 @@ function playQuestionFlash(className) {
   void questionText.offsetWidth;
   questionText.classList.add(className);
   questionCard.classList.add(className === "flash-correct" ? "correct-flash" : "incorrect-flash");
-}
-
-function buildDiagnosticQuestions() {
-  const usedQuestionIds = new Set();
-
-  return assessmentTopicOrder
-    .map((config) => {
-      const question = buildAssessmentQuestion(config, usedQuestionIds);
-
-      if (question) {
-        usedQuestionIds.add(question.id);
-      }
-
-      return question;
-    })
-    .filter(Boolean);
 }
 
 function addMistake(question) {
@@ -821,6 +1069,7 @@ function getRecommendedNextTopicId() {
 function buildPracticeCard(topic, isRecommended) {
   const card = document.createElement("article");
   card.className = "study-card practice-card";
+
   if (isRecommended) {
     card.classList.add("recommended");
   }
@@ -837,7 +1086,6 @@ function buildPracticeCard(topic, isRecommended) {
 
   const meta = document.createElement("p");
   meta.className = "study-card-text";
-  const mastery = getTopicMastery(topic.id);
   meta.textContent = `${topic.questions.length} questions ready for practice`;
   card.appendChild(meta);
 
@@ -846,7 +1094,7 @@ function buildPracticeCard(topic, isRecommended) {
   button.type = "button";
   button.innerHTML = `
     <span>Start Practice</span>
-    <span class="topic-meta">Mastery ${mastery}%</span>
+    <span class="topic-meta">Mastery ${getTopicMastery(topic.id)}%</span>
   `;
   button.addEventListener("click", () => startTopic(topic.id));
   card.appendChild(button);
@@ -855,7 +1103,7 @@ function buildPracticeCard(topic, isRecommended) {
 }
 
 function buildStudyGuideCard(topic) {
-  const guide = STUDY_GUIDES[topic.name];
+  const guide = studyGuides[topic.id] || studyGuides[topic.name];
   const card = document.createElement("article");
   card.className = "study-card";
 
@@ -869,10 +1117,18 @@ function buildStudyGuideCard(topic) {
   title.textContent = topic.name;
   card.appendChild(title);
 
+  if (guide?.lesson) {
+    const lesson = document.createElement("p");
+    lesson.className = "study-card-text";
+    lesson.textContent = guide.lesson;
+    card.appendChild(lesson);
+  }
+
+  const summaryItems = guide?.summary || guide?.keySkills || [];
   const summaryList = document.createElement("ul");
   summaryList.className = "study-guide-summary";
 
-  (guide?.summary || ["Review the core ideas, work a few examples, and then try practice questions."]).forEach((item) => {
+  (summaryItems.length > 0 ? summaryItems : ["Review the core ideas, work a few examples, and then try practice questions."]).forEach((item) => {
     const bullet = document.createElement("li");
     bullet.textContent = item;
     summaryList.appendChild(bullet);
@@ -888,7 +1144,7 @@ function buildStudyGuideCard(topic) {
   const videoList = document.createElement("div");
   videoList.className = "study-guide-links";
 
-  (guide?.videos || []).forEach((video) => {
+  (guide?.videos || []).slice(0, 3).forEach((video) => {
     const link = document.createElement("a");
     link.className = "study-guide-link";
     link.href = video.url;
@@ -899,13 +1155,13 @@ function buildStudyGuideCard(topic) {
   });
 
   card.appendChild(videoList);
-
   return card;
 }
 
 function buildStudyPlanRow(topic, isRecommended) {
   const row = document.createElement("div");
   row.className = "study-plan-row";
+
   if (isRecommended) {
     row.classList.add("recommended-row");
   }
@@ -916,9 +1172,16 @@ function buildStudyPlanRow(topic, isRecommended) {
 }
 
 function buildStudyPlan() {
+  if (!getActiveTrack()) {
+    recommendedTopicList.innerHTML = "";
+    allTopicList.innerHTML = "";
+    return;
+  }
+
   recommendedTopicList.innerHTML = "";
   allTopicList.innerHTML = "";
   updateReviewMistakesButton();
+
   const recommendedTopics = getOrderedTopics(quizTopics.filter((topic) => recommendedTopicIds.includes(topic.id)));
   const orderedTopics = getOrderedTopics();
 
@@ -930,12 +1193,12 @@ function buildStudyPlan() {
     studyPlanFocus.textContent = "Complete the diagnostic to see priority study areas.";
   }
 
-  orderedTopics.forEach((topic) => {
-    allTopicList.appendChild(buildStudyPlanRow(topic, false));
-  });
-
   recommendedTopics.forEach((topic) => {
     recommendedTopicList.appendChild(buildStudyPlanRow(topic, true));
+  });
+
+  orderedTopics.forEach((topic) => {
+    allTopicList.appendChild(buildStudyPlanRow(topic, false));
   });
 
   if (recommendedTopicList.children.length === 0) {
@@ -992,6 +1255,10 @@ function renderReviewMistakes() {
 }
 
 function startAssessment() {
+  if (!getActiveTrack()) {
+    return;
+  }
+
   currentMode = "assessment";
   currentSessionType = "assessment";
   currentTopic = null;
@@ -1030,6 +1297,7 @@ function startReviewMistakes() {
 
 function renderQuestion() {
   const isAssessment = currentMode === "assessment";
+  const activeTrack = getActiveTrack();
   const question = currentQuestionSet[currentQuestionIndex];
 
   if (!question) {
@@ -1038,7 +1306,7 @@ function renderQuestion() {
   }
 
   currentQuestion = question;
-  topicTitle.textContent = isAssessment ? "Diagnostic Assessment" : currentTopic.name;
+  topicTitle.textContent = isAssessment ? activeTrack?.assessmentTitle || "Diagnostic Assessment" : currentTopic.name;
   quizModeText.textContent = isAssessment
     ? "Answer these mixed questions to build your study plan."
     : currentSessionType === "review"
@@ -1162,9 +1430,7 @@ function handleAnswer(selectedIndex, options = {}) {
     tryAgainButton.classList.remove("hidden");
   }
 
-  const isLastQuestion = currentMode === "assessment"
-    ? currentQuestionIndex === currentQuestionSet.length - 1
-    : currentQuestionIndex === currentQuestionSet.length - 1;
+  const isLastQuestion = currentQuestionIndex === currentQuestionSet.length - 1;
 
   nextButton.textContent = isLastQuestion
     ? (currentMode === "assessment" ? "View Report" : "Finish Level")
@@ -1195,9 +1461,7 @@ function handleTryAgain() {
 }
 
 function handleNextStep() {
-  const isLastQuestion = currentMode === "assessment"
-    ? currentQuestionIndex === currentQuestionSet.length - 1
-    : currentQuestionIndex === currentQuestionSet.length - 1;
+  const isLastQuestion = currentQuestionIndex === currentQuestionSet.length - 1;
 
   if (isLastQuestion) {
     if (currentMode === "assessment") {
@@ -1245,9 +1509,10 @@ function showStudyPlan() {
 function showCompleteScreen() {
   const completedTopicId = currentSessionType === "review" ? (getWeakestTopicId() || recommendedTopicIds[0]) : currentTopic?.id;
   const mastery = completedTopicId ? getTopicMastery(completedTopicId) : 0;
+  const activeTrack = getActiveTrack();
 
   completeMessage.textContent = currentSessionType === "review"
-    ? "You finished Review Mistakes. Head back to the study plan or jump into your next recommended topic."
+    ? `You finished ${activeTrack?.shortLabel || "Review Mistakes"}. Head back to the study plan or jump into your next recommended topic.`
     : `You finished ${currentTopic.name}. Replay it to raise your score or continue with another recommended topic.`;
   completeScore.textContent = `Final Score: ${score} | Total XP: ${xp}`;
   completeStreak.textContent = `Best Streak: ${bestStreak}`;
@@ -1271,31 +1536,66 @@ function handleBack() {
   showStudyPlan();
 }
 
-async function loadQuizData() {
-  try {
-    const response = await fetch("apps/aleks.json");
+function normalizeTopics(data) {
+  return (data.topics || []).map((topic, index) => ({
+    ...topic,
+    id: getTopicId(topic, index),
+    sourceIndex: index,
+    questions: (topic.questions || []).map((question, questionIndex) => ({
+      ...question,
+      id: question.id || buildQuestionId(getTopicId(topic, index), questionIndex),
+      sourceIndex: questionIndex,
+      difficulty: inferDifficulty(question, topic.name),
+      difficultyLevel: inferDifficultyLevel(question, topic.name)
+    }))
+  }));
+}
 
-    if (!response.ok) {
-      throw new Error("Quiz file could not be loaded.");
+function normalizeActStudyGuides(data) {
+  return (data.topics || []).reduce((guides, topic) => {
+    guides[topic.topicId] = topic;
+    return guides;
+  }, {});
+}
+
+async function loadTrackCatalog() {
+  const [placementResponse, actResponse, actGuidesResponse] = await Promise.all([
+    fetch("apps/aleks.json"),
+    fetch("apps/act_math_bank_actlike_v2_app.json"),
+    fetch("apps/act_math_study_guides_actlike_v2.json")
+  ]);
+
+  if (!placementResponse.ok || !actResponse.ok || !actGuidesResponse.ok) {
+    throw new Error("Quiz files could not be loaded.");
+  }
+
+  const [placementData, actData, actGuidesData] = await Promise.all([
+    placementResponse.json(),
+    actResponse.json(),
+    actGuidesResponse.json()
+  ]);
+
+  trackCatalog = {
+    placement: {
+      ...trackConfigs.placement,
+      title: placementData.title || trackConfigs.placement.label,
+      topics: normalizeTopics(placementData),
+      studyGuides: trackConfigs.placement.defaultStudyGuides
+    },
+    act: {
+      ...trackConfigs.act,
+      title: actData.title || trackConfigs.act.label,
+      topics: normalizeTopics(actData),
+      studyGuides: normalizeActStudyGuides(actGuidesData)
     }
+  };
+}
 
-    const data = await response.json();
-    appTitle = data.title || appTitle;
-    document.title = appTitle;
-    quizTopics = (data.topics || []).map((topic, index) => ({
-      ...topic,
-      id: getTopicId(topic, index),
-      sourceIndex: index,
-      questions: (topic.questions || []).map((question, questionIndex) => ({
-        ...question,
-        id: question.id || buildQuestionId(getTopicId(topic, index), questionIndex),
-        sourceIndex: questionIndex,
-        difficulty: inferDifficulty(question, topic.name),
-        difficultyLevel: inferDifficultyLevel(question, topic.name)
-      }))
-    }));
-
+async function initializeApp() {
+  try {
+    await loadTrackCatalog();
     resetTransientState();
+    updateTrackContent();
 
     const savedUser = localStorage.getItem(CURRENT_USER_STORAGE_KEY);
     const users = getStoredUsers();
@@ -1307,17 +1607,21 @@ async function loadQuizData() {
       showScreen("login");
     }
   } catch (error) {
-    topicError.textContent = "Could not load the quiz content. Make sure the JSON file is available.";
+    topicError.textContent = "Could not load the quiz content. Make sure the JSON files are available.";
     topicError.classList.remove("hidden");
   }
 }
 
 loginForm.addEventListener("submit", handleLogin);
 guestButton.addEventListener("click", handleGuestMode);
+placementTrackButton.addEventListener("click", () => enterTrack("placement"));
+actTrackButton.addEventListener("click", () => enterTrack("act"));
+chooseTestButton.addEventListener("click", openTestSelection);
 startAssessmentButton.addEventListener("click", startAssessment);
 viewStudyPlanButton.addEventListener("click", showStudyPlan);
 recommendedNextButton.addEventListener("click", () => {
   const topicId = getRecommendedNextTopicId();
+
   if (topicId) {
     startTopic(topicId);
   }
@@ -1340,4 +1644,4 @@ replayButton.addEventListener("click", () => {
 topicsButton.addEventListener("click", showStudyPlan);
 logoutButton.addEventListener("click", handleLogout);
 
-loadQuizData();
+initializeApp();

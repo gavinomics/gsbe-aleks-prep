@@ -22,9 +22,11 @@
       </div>
       <div class="hero-stats">
         <p id="current-user-text" class="hero-stat hidden">User: Guest</p>
+        <p id="current-track-text" class="hero-stat hidden">Track: Math Placement</p>
         <p id="global-level-text" class="hero-stat">Level 1</p>
         <p id="global-xp-text" class="hero-stat">Total XP: 0</p>
       </div>
+      <button id="choose-test-button" class="secondary-button hero-chooser hidden" type="button">Choose Test</button>
       <button id="logout-button" class="secondary-button hero-logout hidden" type="button">Logout</button>
     </header>
 
@@ -66,6 +68,18 @@
       </section>
     </div>
 
+    <section id="test-selection-screen" class="panel hidden">
+      <div class="welcome-badge">Choose Your Track</div>
+      <h2>Which test are you preparing for?</h2>
+      <p class="panel-text">
+        Pick a test to use the matching assessment, study plan, question bank, and study guides.
+      </p>
+      <div class="track-selection">
+        <button id="placement-track-button" class="primary-button track-button" type="button">Math Placement (ALEKS / ACCUPLACER)</button>
+        <button id="act-track-button" class="primary-button track-button" type="button">ACT Math</button>
+      </div>
+    </section>
+
     <section id="welcome-screen" class="panel hidden">
       <div class="welcome-logo-wrap">
         <img
@@ -74,9 +88,9 @@
           alt="CEC circular logo"
         >
       </div>
-      <div class="welcome-badge">Guided Learning Path</div>
-      <h2>Start with a short diagnostic assessment</h2>
-      <p class="panel-text">
+      <div id="welcome-track-badge" class="welcome-badge">Guided Learning Path</div>
+      <h2 id="welcome-title">Start with a short diagnostic assessment</h2>
+      <p id="welcome-description" class="panel-text">
         Answer a few mixed math questions, see your recommended focus areas, and get a study plan before you practice.
       </p>
       <div class="welcome-message" aria-label="motivational message">
@@ -92,7 +106,7 @@
     </section>
 
     <section id="report-screen" class="panel hidden">
-      <h2>Assessment Report</h2>
+      <h2 id="report-heading">Assessment Report</h2>
       <p id="report-score" class="panel-text"></p>
       <div class="report-card">
         <p class="report-label">Recommended Focus</p>
@@ -102,8 +116,8 @@
     </section>
 
     <section id="study-plan-screen" class="panel hidden">
-      <h2>Your Study Plan</h2>
-      <p class="panel-text">
+      <h2 id="study-plan-heading">Your Study Plan</h2>
+      <p id="study-plan-description" class="panel-text">
         Recommended topics are shown first based on your assessment. You can still study any topic.
       </p>
       <div class="study-actions">
@@ -132,8 +146,8 @@
     <section id="review-mistakes-screen" class="panel hidden">
       <div class="review-header">
         <div>
-          <h2>Review Mistakes</h2>
-          <p class="panel-text">
+          <h2 id="review-mistakes-heading">Review Mistakes</h2>
+          <p id="review-mistakes-description" class="panel-text">
             Review the questions you missed, see the correct answer, and study each explanation in one place.
           </p>
         </div>
@@ -195,7 +209,7 @@
     </section>
 
     <section id="complete-screen" class="panel hidden">
-      <h2>Level Complete</h2>
+      <h2 id="complete-heading">Level Complete</h2>
       <p id="complete-message" class="panel-text"></p>
       <div class="complete-stats">
         <p id="complete-score" class="complete-stat"></p>
