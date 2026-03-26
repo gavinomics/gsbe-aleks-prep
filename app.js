@@ -1180,7 +1180,7 @@ function loginAsSavedUser(username, profile) {
   showScreen("testSelection");
 }
 
-function handleLogin(event) {
+async function handleLogin(event) {
   event.preventDefault();
   clearLoginMessage();
 
@@ -1190,6 +1190,12 @@ function handleLogin(event) {
   if (!username || !password) {
     showLoginMessage("Enter both a username and password.", true);
     return;
+  }
+
+  try {
+    await window.firebaseSignIn(username, password);
+  } catch (e) {
+    console.error("Firebase login failed:", e.message);
   }
 
   const users = getStoredUsers();
@@ -1208,6 +1214,12 @@ function handleLogin(event) {
     saveStoredUsers(users);
     loginAsSavedUser(username, users[username]);
     showLoginMessage(`Account created for ${username}.`);
+
+    try {
+      await window.firebaseCreateAccount(username, password);
+    } catch (e) {
+      console.error("Firebase account creation failed:", e.message);
+    }
   }
 
   usernameInput.value = "";
