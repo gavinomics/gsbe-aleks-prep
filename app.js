@@ -2,6 +2,15 @@ const firebaseAuthModulePromise = typeof window.firebaseAuth === "undefined"
   ? Promise.resolve(null)
   : import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
 
+async function waitForFirebaseAuth() {
+  let attempts = 0;
+  while (!window.firebaseAuth && attempts < 50) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    attempts++;
+  }
+  return window.firebaseAuth;
+}
+
 const screens = {
   login: document.getElementById("login-screen"),
   testSelection: document.getElementById("test-selection-screen"),
@@ -1251,15 +1260,16 @@ function handleLogout() {
 }
 
 window.firebaseCreateAccount = async function(email, password) {
+  const auth = await waitForFirebaseAuth();
+
+  if (!auth) {
+    console.error("Firebase Auth still not available");
+    return;
+  }
+
   try {
-    const firebaseAuthModule = await firebaseAuthModulePromise;
-
-    if (!firebaseAuthModule || !window.firebaseAuth) {
-      console.error("Firebase create error:", "Firebase Auth is not available.");
-      return;
-    }
-
-    const userCredential = await firebaseAuthModule.createUserWithEmailAndPassword(window.firebaseAuth, email, password);
+    const { createUserWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
     console.log("Firebase account created:", userCredential.user);
   } catch (error) {
     console.error("Firebase create error:", error.message);
@@ -1267,15 +1277,16 @@ window.firebaseCreateAccount = async function(email, password) {
 };
 
 window.firebaseSignIn = async function(email, password) {
+  const auth = await waitForFirebaseAuth();
+
+  if (!auth) {
+    console.error("Firebase Auth still not available");
+    return;
+  }
+
   try {
-    const firebaseAuthModule = await firebaseAuthModulePromise;
-
-    if (!firebaseAuthModule || !window.firebaseAuth) {
-      console.error("Firebase sign-in error:", "Firebase Auth is not available.");
-      return;
-    }
-
-    const userCredential = await firebaseAuthModule.signInWithEmailAndPassword(window.firebaseAuth, email, password);
+    const { signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
     console.log("Firebase signed in:", userCredential.user);
   } catch (error) {
     console.error("Firebase sign-in error:", error.message);
@@ -1283,15 +1294,16 @@ window.firebaseSignIn = async function(email, password) {
 };
 
 window.firebaseSignOut = async function() {
+  const auth = await waitForFirebaseAuth();
+
+  if (!auth) {
+    console.error("Firebase Auth still not available");
+    return;
+  }
+
   try {
-    const firebaseAuthModule = await firebaseAuthModulePromise;
-
-    if (!firebaseAuthModule || !window.firebaseAuth) {
-      console.error("Firebase sign-out error:", "Firebase Auth is not available.");
-      return;
-    }
-
-    await firebaseAuthModule.signOut(window.firebaseAuth);
+    const { signOut } = await import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
+    await signOut(auth);
     console.log("Firebase signed out");
   } catch (error) {
     console.error("Firebase sign-out error:", error.message);
