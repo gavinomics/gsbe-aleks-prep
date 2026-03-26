@@ -1,3 +1,7 @@
+const firebaseAuthModulePromise = typeof window.firebaseAuth === "undefined"
+  ? Promise.resolve(null)
+  : import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
+
 const screens = {
   login: document.getElementById("login-screen"),
   testSelection: document.getElementById("test-selection-screen"),
@@ -1245,6 +1249,73 @@ function handleLogout() {
   passwordInput.value = "";
   showScreen("login");
 }
+
+window.firebaseCreateAccount = async function(email, password) {
+  try {
+    const firebaseAuthModule = await firebaseAuthModulePromise;
+
+    if (!firebaseAuthModule || !window.firebaseAuth) {
+      console.error("Firebase create error:", "Firebase Auth is not available.");
+      return;
+    }
+
+    const userCredential = await firebaseAuthModule.createUserWithEmailAndPassword(window.firebaseAuth, email, password);
+    console.log("Firebase account created:", userCredential.user);
+  } catch (error) {
+    console.error("Firebase create error:", error.message);
+  }
+};
+
+window.firebaseSignIn = async function(email, password) {
+  try {
+    const firebaseAuthModule = await firebaseAuthModulePromise;
+
+    if (!firebaseAuthModule || !window.firebaseAuth) {
+      console.error("Firebase sign-in error:", "Firebase Auth is not available.");
+      return;
+    }
+
+    const userCredential = await firebaseAuthModule.signInWithEmailAndPassword(window.firebaseAuth, email, password);
+    console.log("Firebase signed in:", userCredential.user);
+  } catch (error) {
+    console.error("Firebase sign-in error:", error.message);
+  }
+};
+
+window.firebaseSignOut = async function() {
+  try {
+    const firebaseAuthModule = await firebaseAuthModulePromise;
+
+    if (!firebaseAuthModule || !window.firebaseAuth) {
+      console.error("Firebase sign-out error:", "Firebase Auth is not available.");
+      return;
+    }
+
+    await firebaseAuthModule.signOut(window.firebaseAuth);
+    console.log("Firebase signed out");
+  } catch (error) {
+    console.error("Firebase sign-out error:", error.message);
+  }
+};
+
+firebaseAuthModulePromise
+  .then((firebaseAuthModule) => {
+    if (!firebaseAuthModule || !window.firebaseAuth) {
+      console.log("No Firebase user logged in");
+      return;
+    }
+
+    firebaseAuthModule.onAuthStateChanged(window.firebaseAuth, (user) => {
+      if (user) {
+        console.log("Firebase user logged in:", user.email);
+      } else {
+        console.log("No Firebase user logged in");
+      }
+    });
+  })
+  .catch((error) => {
+    console.error("Firebase auth listener error:", error.message);
+  });
 
 function updateTrackContent() {
   const activeTrack = getActiveTrack();
