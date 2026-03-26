@@ -241,8 +241,27 @@ p {
   margin-top: 24px;
 }
 
+.aspire-track-note {
+  display: grid;
+  gap: 6px;
+  margin-top: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--panel-border);
+  border-radius: 18px;
+  background: var(--gray-soft);
+}
+
+.aspire-track-note p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
 .track-button {
   min-height: 72px;
+}
+
+.sub-selection-back-button {
+  margin-top: 18px;
 }
 
 .review-header {

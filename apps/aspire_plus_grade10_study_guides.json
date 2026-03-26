@@ -1,0 +1,295 @@
+{
+  "title": "Utah Aspire Plus Math Grade 10 Study Guides",
+  "metadata": {
+    "description": "Grade 10 / Secondary Math II study guides for Utah Aspire Plus-style preparation.",
+    "topicCount": 10,
+    "sourceAlignment": [
+      "Utah Aspire Plus Grade 10 mathematics blueprint",
+      "Utah Secondary Mathematics II course overview",
+      "ACT Aspire early high school exemplar mathematics items"
+    ],
+    "notes": "Study guide text is original and paired with free YouTube resources from established math-education channels."
+  },
+  "topics": [
+    {
+      "topicId": "radicals_number_systems",
+      "name": "Radicals, Rational Exponents, and Number Systems",
+      "lesson": "Secondary Math II extends the number system. Students should simplify radicals, rewrite roots as rational exponents, compare irrational values, and understand why complex numbers appear when quadratic equations have no real solutions.",
+      "keySkills": [
+        "simplifying radicals",
+        "rational exponents",
+        "irrational numbers",
+        "introduction to complex numbers"
+      ],
+      "videos": [
+        {
+          "title": "Comparing irrational numbers involving radicals",
+          "url": "https://www.youtube.com/watch?v=KibTbfkoPTs",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Rewriting roots as rational exponents",
+          "url": "https://www.youtube.com/watch?v=gH4IsIEYof0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Introduction to complex numbers",
+          "url": "https://www.youtube.com/watch?v=SP-YJe7Vldo",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "polynomials_factoring",
+      "name": "Polynomials and Factoring",
+      "lesson": "Factoring is one of the fastest ways to solve and analyze quadratic and polynomial expressions. Students should look for common factors, special products, and structured ways to break apart trinomials.",
+      "keySkills": [
+        "GCF factoring",
+        "difference of squares",
+        "factoring trinomials",
+        "expanding and simplifying polynomials"
+      ],
+      "videos": [
+        {
+          "title": "Factoring trinomials and polynomials",
+          "url": "https://www.youtube.com/watch?v=9MUDAr1PnlE",
+          "channel": "The Organic Chemistry Tutor"
+        },
+        {
+          "title": "Factoring special products",
+          "url": "https://www.youtube.com/watch?v=BI_jmI4xRus",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Difference of squares",
+          "url": "https://www.youtube.com/watch?v=uNweU6I4Icw",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "quadratic_functions_equations",
+      "name": "Quadratic Functions and Equations",
+      "lesson": "Quadratics are the heart of Secondary Math II. Students should move smoothly between equations, graphs, factored form, vertex form, and solution methods like factoring or the quadratic formula.",
+      "keySkills": [
+        "vertex and axis of symmetry",
+        "factoring quadratics",
+        "quadratic formula",
+        "interpreting zeros and maximums"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to the quadratic equation",
+          "url": "https://www.youtube.com/watch?v=IWigvJcCAJ0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "How to use the quadratic formula",
+          "url": "https://www.youtube.com/watch?v=i7idZfS8t8w",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Solving quadratic equations using the quadratic formula",
+          "url": "https://www.youtube.com/watch?v=qwpxeaz2GBI",
+          "channel": "The Organic Chemistry Tutor"
+        }
+      ]
+    },
+    {
+      "topicId": "functions_transformations",
+      "name": "Functions and Transformations",
+      "lesson": "Grade 10 students compare functions and interpret how graphs shift, stretch, and reflect. Strong students can connect a transformation in an equation to a visible change in the graph.",
+      "keySkills": [
+        "function notation",
+        "key graph features",
+        "translations and reflections of graphs",
+        "piecewise and absolute value functions"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to functions",
+          "url": "https://www.youtube.com/watch?v=VhokQhjl5t0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "How to interpret an expression with function notation",
+          "url": "https://www.youtube.com/watch?v=HERb3x0aw6c",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Shifting functions introduction",
+          "url": "https://www.youtube.com/watch?v=RttvubuBhAE",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "exponential_functions_modeling",
+      "name": "Exponential Functions and Modeling",
+      "lesson": "Exponential functions appear when a quantity changes by the same factor again and again. Students should build exponential models from context, compare them with linear models, and interpret growth and decay in realistic situations.",
+      "keySkills": [
+        "growth and decay models",
+        "growth factors",
+        "half-life and repeated change",
+        "comparing linear and exponential models"
+      ],
+      "videos": [
+        {
+          "title": "Exponential growth functions",
+          "url": "https://www.youtube.com/watch?v=6WMZ7J0wwMI",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Writing functions with exponential decay",
+          "url": "https://www.youtube.com/watch?v=cgZJU38j8-U",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Linear vs. exponential growth: from data",
+          "url": "https://www.youtube.com/watch?v=721RrH6auoU",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "similarity_trigonometry",
+      "name": "Similarity and Right Triangle Trigonometry",
+      "lesson": "Secondary Math II links similarity to trigonometric ratios. Students should use sine, cosine, and tangent in right triangles and understand how similar figures scale side lengths, perimeters, and areas.",
+      "keySkills": [
+        "similarity and scale factor",
+        "30-60-90 and 45-45-90 triangles",
+        "sine, cosine, and tangent",
+        "angle of elevation/depression"
+      ],
+      "videos": [
+        {
+          "title": "Similarity to define sine, cosine, and tangent",
+          "url": "https://www.youtube.com/watch?v=QuZMXVJNLCo",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Introduction to the Pythagorean theorem",
+          "url": "https://www.youtube.com/watch?v=s9t7rNhaBp8",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Using right triangle ratios to approximate angle measure",
+          "url": "https://www.youtube.com/watch?v=fPXQTEYjF-o",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "circles_coordinate_geometry",
+      "name": "Circles and Coordinate Geometry",
+      "lesson": "Students should connect circle geometry to algebra by reading and writing equations of circles, finding centers and radii, and using distance in the coordinate plane. Many Utah-style items blend formulas with coordinate reasoning.",
+      "keySkills": [
+        "equation of a circle",
+        "center and radius",
+        "distance on the coordinate plane",
+        "points on/inside/outside circles"
+      ],
+      "videos": [
+        {
+          "title": "Circles: radius, diameter, circumference and Pi",
+          "url": "https://www.youtube.com/watch?v=jyLRpr2P0MQ",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Equation for a circle using the Pythagorean Theorem",
+          "url": "https://www.youtube.com/watch?v=GQXUpB2NHvQ",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Completing the square to write equation in standard form of a circle",
+          "url": "https://www.youtube.com/watch?v=XyDMsotfJhE",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "probability_conditional",
+      "name": "Probability and Conditional Probability",
+      "lesson": "Grade 10 probability moves beyond simple fractions. Students should reason with two-way tables, compound events, conditional probability, independence, and expected value in context.",
+      "keySkills": [
+        "conditional probability",
+        "independence",
+        "two-way tables",
+        "expected value and compound events"
+      ],
+      "videos": [
+        {
+          "title": "Calculate conditional probability",
+          "url": "https://www.youtube.com/watch?v=803ZXPCsGPQ",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Calculating conditional probability",
+          "url": "https://www.youtube.com/watch?v=Dy-bVzTSzfQ",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Marginal and conditional distributions",
+          "url": "https://www.youtube.com/watch?v=Iw9fEYIpPMA",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "systems_modeling",
+      "name": "Systems and Modeling",
+      "lesson": "Systems remain important in grade 10 because students use them to compare plans, solve mixtures, and interpret intersections in context. Modeling means explaining what each variable and solution represents, not just solving for x and y.",
+      "keySkills": [
+        "substitution and elimination",
+        "interpreting intersections",
+        "word problems in context",
+        "checking reasonableness"
+      ],
+      "videos": [
+        {
+          "title": "Solving systems by elimination",
+          "url": "https://www.youtube.com/watch?v=vA-55wZtLeE",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Solving systems by substitution example",
+          "url": "https://www.youtube.com/watch?v=GWZKz4F9hWM",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Systems of equations word problems",
+          "url": "https://www.youtube.com/watch?v=z1hz8-Kri1E",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "geometry_modeling_measurement",
+      "name": "Geometry Modeling and Measurement",
+      "lesson": "Students should apply geometry to physical situations: length, area, surface area, volume, and coordinate measurements. The key is choosing the right formula or theorem and connecting the answer back to the diagram or context.",
+      "keySkills": [
+        "Pythagorean theorem",
+        "area and volume",
+        "distance and midpoint",
+        "measurement modeling"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to the Pythagorean theorem",
+          "url": "https://www.youtube.com/watch?v=s9t7rNhaBp8",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Midpoint formula",
+          "url": "https://www.youtube.com/watch?v=Ez_-RwV9WVo",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Distance formula",
+          "url": "https://www.youtube.com/watch?v=nyZuite17Pc",
+          "channel": "Khan Academy"
+        }
+      ]
+    }
+  ]
+}

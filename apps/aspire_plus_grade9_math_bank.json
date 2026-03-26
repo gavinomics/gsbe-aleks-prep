@@ -1,0 +1,3368 @@
+{
+  "title": "Utah Aspire Plus Math Grade 9 Practice Bank",
+  "metadata": {
+    "description": "Original Utah Aspire Plus-aligned Grade 9 / Secondary Math I practice bank. 10 topics, 15 questions per topic, 5 difficulty levels.",
+    "questionCount": 150,
+    "topicCount": 10,
+    "difficultyLevels": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "sourceAlignment": [
+      "Utah Aspire Plus Grade 9 mathematics blueprint",
+      "Utah Secondary Mathematics I course overview",
+      "ACT Aspire Early High School exemplar mathematics items"
+    ],
+    "notes": "Questions are original practice items written to match Utah Aspire Plus Grade 9 / Secondary Math I skills and style. They are not official Utah Aspire Plus items."
+  },
+  "topics": [
+    {
+      "id": "numbers_rates_percents",
+      "name": "Numbers, Rates, and Percents",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I foundations: numerical reasoning, ratios, rates, and percent modeling",
+      "questions": [
+        {
+          "id": "numbers_rates_percents_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "percent of a number",
+          "question": "A store advertises a 25% discount on a $64 backpack. What is the amount of the discount?",
+          "choices": [
+            "$8",
+            "$12",
+            "$16",
+            "$24"
+          ],
+          "answer": 2,
+          "correctChoice": "$16",
+          "explanation": "25% of 64 is 0.25 \u00d7 64 = 16.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "percent",
+            "discount",
+            "number sense"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "fraction addition",
+          "question": "A trail is 3/4 mile long, and a runner adds another 1/2 mile warm-up. What total distance does the runner cover?",
+          "choices": [
+            "1 1/4 miles",
+            "1 1/2 miles",
+            "1 mile",
+            "1 3/4 miles"
+          ],
+          "answer": 0,
+          "correctChoice": "1 1/4 miles",
+          "explanation": "Rewrite 1/2 as 2/4. Then 3/4 + 2/4 = 5/4 = 1 1/4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "fractions",
+            "operations"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "unit price",
+          "question": "If 5 notebooks cost $12.50, what is the cost of 1 notebook?",
+          "choices": [
+            "$1.50",
+            "$2.00",
+            "$2.50",
+            "$3.00"
+          ],
+          "answer": 2,
+          "correctChoice": "$2.50",
+          "explanation": "Divide total cost by number of notebooks: 12.50 \u00f7 5 = 2.50.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "unit rate",
+            "money"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "signed number operations",
+          "question": "At sunrise the temperature was -6\u00b0F. By noon it had risen 14\u00b0F. What was the temperature at noon?",
+          "choices": [
+            "8\u00b0F",
+            "20\u00b0F",
+            "-20\u00b0F",
+            "-8\u00b0F"
+          ],
+          "answer": 0,
+          "correctChoice": "8\u00b0F",
+          "explanation": "Start at -6 and add 14: -6 + 14 = 8.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "integers",
+            "temperature"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "scientific notation",
+          "question": "Which of the following is equal to 0.00056 ?",
+          "choices": [
+            "5.6 \u00d7 10^4",
+            "5.6 \u00d7 10^-4",
+            "56 \u00d7 10^-5",
+            "0.56 \u00d7 10^-3"
+          ],
+          "answer": 1,
+          "correctChoice": "5.6 \u00d7 10^-4",
+          "explanation": "Move the decimal 4 places right to get 5.6, so the exponent is -4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "scientific notation"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "solve proportion",
+          "question": "Solve the proportion x/7 = 18/21.",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "answer": 2,
+          "correctChoice": "6",
+          "explanation": "18/21 simplifies to 6/7, so x/7 = 6/7 and x = 6.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "proportion"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "sales tax",
+          "question": "A calculator costs $48 before tax. If the sales tax rate is 7.5%, what is the total cost?",
+          "choices": [
+            "$50.40",
+            "$51.60",
+            "$55.20",
+            "$48.36"
+          ],
+          "answer": 1,
+          "correctChoice": "$51.60",
+          "explanation": "Tax is 0.075 \u00d7 48 = 3.60, so total cost is 48 + 3.60 = 51.60.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "percent",
+            "tax",
+            "modeling"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "comparing forms",
+          "question": "Which number is greatest?",
+          "choices": [
+            "5/8",
+            "0.61",
+            "63%",
+            "0.6"
+          ],
+          "answer": 2,
+          "correctChoice": "63%",
+          "explanation": "Convert to decimals: 5/8 = 0.625, 0.61 = 0.61, 63% = 0.63, and 0.6 = 0.60. The greatest is 63%.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "compare numbers",
+            "number sense"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "speed",
+          "question": "A car travels 210 miles in 3.5 hours. What is the car\u2019s average speed?",
+          "choices": [
+            "50 mph",
+            "55 mph",
+            "60 mph",
+            "65 mph"
+          ],
+          "answer": 2,
+          "correctChoice": "60 mph",
+          "explanation": "Average speed is distance \u00f7 time = 210 \u00f7 3.5 = 60 mph.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "unit rate",
+            "speed"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "percent increase and decrease",
+          "question": "A jacket originally costs $50. Its price is increased by 20% and then discounted by 10%. What is the final price?",
+          "choices": [
+            "$50",
+            "$52",
+            "$54",
+            "$55"
+          ],
+          "answer": 2,
+          "correctChoice": "$54",
+          "explanation": "After a 20% increase, the price is 50 \u00d7 1.2 = 60. Then 10% off gives 60 \u00d7 0.9 = 54.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "percent change",
+            "multi-step"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "absolute value",
+          "question": "What is |\u22127| + |4 \u2212 9| ?",
+          "choices": [
+            "7",
+            "10",
+            "12",
+            "16"
+          ],
+          "answer": 2,
+          "correctChoice": "12",
+          "explanation": "|\u22127| = 7 and |4 \u2212 9| = |\u22125| = 5. Their sum is 12.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "absolute value",
+            "number sense"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "direct variation",
+          "question": "Suppose y varies directly with x and y = 10 when x = 4. What is y when x = 7?",
+          "choices": [
+            "14",
+            "16",
+            "17.5",
+            "20"
+          ],
+          "answer": 2,
+          "correctChoice": "17.5",
+          "explanation": "If y = kx, then k = 10/4 = 2.5. So y = 2.5 \u00d7 7 = 17.5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "direct variation"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "successive percent changes",
+          "question": "A price decreases by 20% and then increases by 25%. Compared with the original price, the final price is:",
+          "choices": [
+            "5% greater",
+            "the same",
+            "5% less",
+            "10% greater"
+          ],
+          "answer": 1,
+          "correctChoice": "the same",
+          "explanation": "Use a convenient starting value such as 100. After a 20% decrease: 80. After a 25% increase: 80 \u00d7 1.25 = 100.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "percent change",
+            "reasoning"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "complex fraction",
+          "question": "What is (3/4) \u00f7 (5/8) ?",
+          "choices": [
+            "6/5",
+            "15/32",
+            "2/5",
+            "5/6"
+          ],
+          "answer": 0,
+          "correctChoice": "6/5",
+          "explanation": "Divide by multiplying by the reciprocal: (3/4) \u00d7 (8/5) = 24/20 = 6/5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "fractions",
+            "division"
+          ]
+        },
+        {
+          "id": "numbers_rates_percents_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "percent and ratio model",
+          "question": "A school\u2019s student-to-teacher ratio is 18:1. If the school has 756 students, how many teachers are there?",
+          "choices": [
+            "36",
+            "40",
+            "42",
+            "44"
+          ],
+          "answer": 2,
+          "correctChoice": "42",
+          "explanation": "Let t be the number of teachers. 18 students per teacher means 18t = 756, so t = 42.",
+          "tags": [
+            "aspire_plus_grade9",
+            "numbers_rates_percents",
+            "ratios",
+            "modeling"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "expressions_exponents",
+      "name": "Expressions and Exponents",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I algebra foundations",
+      "questions": [
+        {
+          "id": "expressions_exponents_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "evaluate expression",
+          "question": "Evaluate 3a - 2b when a = 4 and b = 1.",
+          "choices": [
+            "8",
+            "10",
+            "12",
+            "14"
+          ],
+          "answer": 1,
+          "correctChoice": "10",
+          "explanation": "Substitute: 3(4) - 2(1) = 12 - 2 = 10.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "expressions",
+            "substitution"
+          ]
+        },
+        {
+          "id": "expressions_exponents_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "combine like terms",
+          "question": "Which expression is equivalent to 5x + 3x - 7 ?",
+          "choices": [
+            "8x - 7",
+            "15x - 7",
+            "8x + 7",
+            "2x - 7"
+          ],
+          "answer": 0,
+          "correctChoice": "8x - 7",
+          "explanation": "Combine like terms: 5x + 3x = 8x.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "algebraic expressions"
+          ]
+        },
+        {
+          "id": "expressions_exponents_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "distribute",
+          "question": "Which expression is equivalent to 2(y + 4) - 3 ?",
+          "choices": [
+            "2y + 1",
+            "2y + 5",
+            "2y + 8",
+            "y + 5"
+          ],
+          "answer": 1,
+          "correctChoice": "2y + 5",
+          "explanation": "Distribute 2 to get 2y + 8, then subtract 3 to get 2y + 5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "distribution"
+          ]
+        },
+        {
+          "id": "expressions_exponents_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "product of powers",
+          "question": "Simplify (2x^3)(3x^2).",
+          "choices": [
+            "5x^5",
+            "6x^5",
+            "6x^6",
+            "5x^6"
+          ],
+          "answer": 1,
+          "correctChoice": "6x^5",
+          "explanation": "Multiply coefficients and add exponents of x: 2\u00b73 = 6 and x^3\u00b7x^2 = x^5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "exponents",
+            "monomials"
+          ]
+        },
+        {
+          "id": "expressions_exponents_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "distribute negatives",
+          "question": "Simplify 4m - 3(2m - 5).",
+          "choices": [
+            "-2m - 15",
+            "-2m + 15",
+            "10m - 15",
+            "10m + 15"
+          ],
+          "answer": 1,
+          "correctChoice": "-2m + 15",
+          "explanation": "Distribute -3: 4m - 6m + 15 = -2m + 15.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "distribution",
+            "integers"
+          ]
+        },
+        {
+          "id": "expressions_exponents_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "evaluate powers",
+          "question": "What is 2^3 \u00b7 2^4 ?",
+          "choices": [
+            "16",
+            "32",
+            "64",
+            "128"
+          ],
+          "answer": 3,
+          "correctChoice": "128",
+          "explanation": "Add the exponents: 2^(3+4) = 2^7 = 128.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "exponents"
+          ]
+        },
+        {
+          "id": "expressions_exponents_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "simplify rational monomial",
+          "question": "Simplify ((3x^2y)(2xy^3)) / (6xy).",
+          "choices": [
+            "xy^2",
+            "x^2y^2",
+            "x^2y^3",
+            "xy^3"
+          ],
+          "answer": 2,
+          "correctChoice": "x^2y^3",
+          "explanation": "The numerator is 6x^3y^4. Dividing by 6xy leaves x^2y^3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "exponents",
+            "simplify"
+          ]
+        },
+        {
+          "id": "expressions_exponents_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "negative exponent",
+          "question": "If x^-2 = 1/25 and x > 0, what is x ?",
+          "choices": [
+            "1/5",
+            "5",
+            "25",
+            "50"
+          ],
+          "answer": 1,
+          "correctChoice": "5",
+          "explanation": "x^-2 = 1/x^2. So 1/x^2 = 1/25, which means x^2 = 25 and x = 5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "negative exponents"
+          ]
+        },
+        {
+          "id": "expressions_exponents_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "equivalent expression",
+          "question": "Which expression is equivalent to (a + b)^2 - ab ?",
+          "choices": [
+            "a^2 + b^2",
+            "a^2 + ab + b^2",
+            "a^2 + 2ab + b^2",
+            "a^2 - ab + b^2"
+          ],
+          "answer": 1,
+          "correctChoice": "a^2 + ab + b^2",
+          "explanation": "Expand (a + b)^2 = a^2 + 2ab + b^2, then subtract ab to get a^2 + ab + b^2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "polynomials",
+            "equivalent expressions"
+          ]
+        },
+        {
+          "id": "expressions_exponents_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "quotient of powers",
+          "question": "Simplify (9p^4q^2)/(3pq^-1).",
+          "choices": [
+            "3p^3q",
+            "3p^3q^2",
+            "3p^3q^3",
+            "6p^3q^3"
+          ],
+          "answer": 2,
+          "correctChoice": "3p^3q^3",
+          "explanation": "Divide coefficients: 9/3 = 3. Subtract exponents: p^(4-1)=p^3 and q^(2-(-1))=q^3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "exponents",
+            "quotient"
+          ]
+        },
+        {
+          "id": "expressions_exponents_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "solve exponential equation",
+          "question": "If 3^(x+1) = 81, what is x ?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "answer": 1,
+          "correctChoice": "3",
+          "explanation": "Since 81 = 3^4, x + 1 = 4, so x = 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "exponential"
+          ]
+        },
+        {
+          "id": "expressions_exponents_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "literal equation",
+          "question": "Solve for m in n = mp^2 / q.",
+          "choices": [
+            "m = nq/p^2",
+            "m = np^2/q",
+            "m = q/(np^2)",
+            "m = n/(p^2q)"
+          ],
+          "answer": 0,
+          "correctChoice": "m = nq/p^2",
+          "explanation": "Multiply both sides by q to get nq = mp^2, then divide by p^2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "literal equation"
+          ]
+        },
+        {
+          "id": "expressions_exponents_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "power of a quotient",
+          "question": "Simplify (2x^-1y^2)^2 / (4y).",
+          "choices": [
+            "y^2/x^2",
+            "y^3/x^2",
+            "x^2y^3",
+            "x^2/y^3"
+          ],
+          "answer": 1,
+          "correctChoice": "y^3/x^2",
+          "explanation": "(2x^-1y^2)^2 = 4x^-2y^4. Dividing by 4y gives x^-2y^3 = y^3/x^2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "rational exponents",
+            "simplify"
+          ]
+        },
+        {
+          "id": "expressions_exponents_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "use sum and product",
+          "question": "If a + b = 5 and ab = 6, what is a^2 + b^2 ?",
+          "choices": [
+            "11",
+            "12",
+            "13",
+            "25"
+          ],
+          "answer": 2,
+          "correctChoice": "13",
+          "explanation": "a^2 + b^2 = (a + b)^2 - 2ab = 25 - 12 = 13.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "identity",
+            "algebra"
+          ]
+        },
+        {
+          "id": "expressions_exponents_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "rewriting expression",
+          "question": "Which expression is equivalent to (x^3 - x^2)/x^2 for x \u2260 0 ?",
+          "choices": [
+            "x - 1",
+            "x + 1",
+            "x^2 - 1",
+            "1 - x"
+          ],
+          "answer": 0,
+          "correctChoice": "x - 1",
+          "explanation": "Factor x^2 from the numerator: x^2(x - 1). Dividing by x^2 leaves x - 1.",
+          "tags": [
+            "aspire_plus_grade9",
+            "expressions_exponents",
+            "simplify",
+            "algebraic expressions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "linear_equations",
+      "name": "Linear Equations",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I algebra",
+      "questions": [
+        {
+          "id": "linear_equations_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step equation",
+          "question": "Solve x + 7 = 19.",
+          "choices": [
+            "10",
+            "11",
+            "12",
+            "26"
+          ],
+          "answer": 2,
+          "correctChoice": "12",
+          "explanation": "Subtract 7 from both sides to get x = 12.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "linear equation"
+          ]
+        },
+        {
+          "id": "linear_equations_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step equation",
+          "question": "Solve 4x = 28.",
+          "choices": [
+            "6",
+            "7",
+            "8",
+            "24"
+          ],
+          "answer": 1,
+          "correctChoice": "7",
+          "explanation": "Divide both sides by 4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "linear equation"
+          ]
+        },
+        {
+          "id": "linear_equations_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step equation",
+          "question": "Solve x/3 = 5.",
+          "choices": [
+            "8",
+            "12",
+            "15",
+            "18"
+          ],
+          "answer": 2,
+          "correctChoice": "15",
+          "explanation": "Multiply both sides by 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "linear equation"
+          ]
+        },
+        {
+          "id": "linear_equations_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "two-step equation",
+          "question": "Solve 5x - 8 = 17.",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "answer": 1,
+          "correctChoice": "5",
+          "explanation": "Add 8 to both sides and divide by 5: 5x = 25, so x = 5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "two-step equation"
+          ]
+        },
+        {
+          "id": "linear_equations_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "distribute and solve",
+          "question": "Solve 2(x + 3) = 18.",
+          "choices": [
+            "6",
+            "7",
+            "9",
+            "12"
+          ],
+          "answer": 0,
+          "correctChoice": "6",
+          "explanation": "Divide by 2 to get x + 3 = 9, then subtract 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "distribution",
+            "equation"
+          ]
+        },
+        {
+          "id": "linear_equations_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "variables on both sides",
+          "question": "Solve 3x + 4 = x + 18.",
+          "choices": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "answer": 1,
+          "correctChoice": "7",
+          "explanation": "Subtract x from both sides and subtract 4: 2x = 14, so x = 7.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "equation"
+          ]
+        },
+        {
+          "id": "linear_equations_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "fraction equation",
+          "question": "Solve (x - 2)/3 = 5.",
+          "choices": [
+            "13",
+            "15",
+            "17",
+            "19"
+          ],
+          "answer": 2,
+          "correctChoice": "17",
+          "explanation": "Multiply both sides by 3: x - 2 = 15, so x = 17.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "fractions",
+            "equation"
+          ]
+        },
+        {
+          "id": "linear_equations_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "decimal equation",
+          "question": "Solve 0.4x + 6 = 14.",
+          "choices": [
+            "20",
+            "22",
+            "24",
+            "35"
+          ],
+          "answer": 0,
+          "correctChoice": "20",
+          "explanation": "Subtract 6: 0.4x = 8. Then x = 8/0.4 = 20.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "decimals",
+            "equation"
+          ]
+        },
+        {
+          "id": "linear_equations_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "multi-step linear equation",
+          "question": "Solve 7 - 2(x - 1) = 15.",
+          "choices": [
+            "-4",
+            "-3",
+            "3",
+            "4"
+          ],
+          "answer": 1,
+          "correctChoice": "-3",
+          "explanation": "Distribute: 7 - 2x + 2 = 15, so 9 - 2x = 15. Then -2x = 6, so x = -3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "equation",
+            "distribution"
+          ]
+        },
+        {
+          "id": "linear_equations_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "fraction coefficient",
+          "question": "Solve (3/4)x - 5 = 7.",
+          "choices": [
+            "12",
+            "14",
+            "16",
+            "18"
+          ],
+          "answer": 2,
+          "correctChoice": "16",
+          "explanation": "Add 5 to get (3/4)x = 12. Multiply by 4/3 to get x = 16.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "fractions",
+            "linear equation"
+          ]
+        },
+        {
+          "id": "linear_equations_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "multi-step linear equation",
+          "question": "Solve 2(3y - 4) - 5(y + 1) = 7.",
+          "choices": [
+            "18",
+            "19",
+            "20",
+            "21"
+          ],
+          "answer": 2,
+          "correctChoice": "20",
+          "explanation": "Expand: 6y - 8 - 5y - 5 = 7, so y - 13 = 7. Then y = 20.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "distribution",
+            "equation"
+          ]
+        },
+        {
+          "id": "linear_equations_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "model with fee plus rate",
+          "question": "A phone plan charges a $25 monthly fee plus $0.10 per text. If the monthly bill is $41.50, how many texts were sent?",
+          "choices": [
+            "155",
+            "160",
+            "165",
+            "170"
+          ],
+          "answer": 2,
+          "correctChoice": "165",
+          "explanation": "Set up 25 + 0.10t = 41.50. Then 0.10t = 16.50 and t = 165.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "modeling",
+            "linear equation"
+          ]
+        },
+        {
+          "id": "linear_equations_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "literal equation",
+          "question": "Solve A = (1/2)h(b1 + b2) for h.",
+          "choices": [
+            "h = A/(b1 + b2)",
+            "h = 2A/(b1 + b2)",
+            "h = (b1 + b2)/(2A)",
+            "h = 2A(b1 + b2)"
+          ],
+          "answer": 1,
+          "correctChoice": "h = 2A/(b1 + b2)",
+          "explanation": "Multiply both sides by 2, then divide by (b1 + b2).",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "literal equation",
+            "geometry formula"
+          ]
+        },
+        {
+          "id": "linear_equations_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "equation with fractions",
+          "question": "Solve 3(x - 2)/5 + 1 = x/2.",
+          "choices": [
+            "0",
+            "2",
+            "4",
+            "6"
+          ],
+          "answer": 1,
+          "correctChoice": "2",
+          "explanation": "Multiply by 10: 6(x - 2) + 10 = 5x. Then 6x - 12 + 10 = 5x, so x = 2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "fractions",
+            "equation"
+          ]
+        },
+        {
+          "id": "linear_equations_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "consecutive integers",
+          "question": "Three consecutive integers have a sum of 72. What is the middle integer?",
+          "choices": [
+            "23",
+            "24",
+            "25",
+            "26"
+          ],
+          "answer": 1,
+          "correctChoice": "24",
+          "explanation": "Let the integers be n - 1, n, and n + 1. Their sum is 3n = 72, so n = 24.",
+          "tags": [
+            "aspire_plus_grade9",
+            "linear_equations",
+            "word problem",
+            "integers"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "inequalities_absolute_value",
+      "name": "Linear Inequalities and Absolute Value",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I algebra",
+      "questions": [
+        {
+          "id": "inequalities_absolute_value_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step inequality",
+          "question": "Solve x - 4 > 9.",
+          "choices": [
+            "x > 5",
+            "x > 13",
+            "x < 13",
+            "x < 5"
+          ],
+          "answer": 1,
+          "correctChoice": "x > 13",
+          "explanation": "Add 4 to both sides.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "inequality"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "one-step inequality",
+          "question": "Solve 3x \u2264 21.",
+          "choices": [
+            "x \u2264 7",
+            "x \u2265 7",
+            "x \u2264 18",
+            "x \u2265 18"
+          ],
+          "answer": 0,
+          "correctChoice": "x \u2264 7",
+          "explanation": "Divide both sides by 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "inequality"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "basic absolute value",
+          "question": "If |x| = 5, which of the following could be x ?",
+          "choices": [
+            "0",
+            "5",
+            "10",
+            "Only \u22125"
+          ],
+          "answer": 1,
+          "correctChoice": "5",
+          "explanation": "A number with absolute value 5 can be 5 or \u22125, so 5 is one possible value.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "absolute value"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "two-step inequality",
+          "question": "Solve 2x - 3 < 7.",
+          "choices": [
+            "x < 2",
+            "x < 5",
+            "x > 5",
+            "x > 2"
+          ],
+          "answer": 1,
+          "correctChoice": "x < 5",
+          "explanation": "Add 3 to both sides to get 2x < 10, then divide by 2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "inequality"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "inequality with negative coefficient",
+          "question": "Solve -4x \u2265 12.",
+          "choices": [
+            "x \u2265 -3",
+            "x \u2264 -3",
+            "x \u2265 3",
+            "x \u2264 3"
+          ],
+          "answer": 1,
+          "correctChoice": "x \u2264 -3",
+          "explanation": "Divide by -4 and reverse the inequality sign.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "inequality",
+            "negative coefficient"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "absolute value equation",
+          "question": "Solve |x - 2| = 6.",
+          "choices": [
+            "x = 8 or x = -4",
+            "x = 4 or x = -8",
+            "x = 6 or x = -6",
+            "x = 8 only"
+          ],
+          "answer": 0,
+          "correctChoice": "x = 8 or x = -4",
+          "explanation": "Set x - 2 = 6 or x - 2 = -6. The solutions are 8 and -4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "absolute value"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "compound inequality",
+          "question": "Solve 5 \u2264 2x + 1 < 11.",
+          "choices": [
+            "1 \u2264 x < 5",
+            "2 \u2264 x < 5",
+            "2 < x \u2264 5",
+            "3 \u2264 x < 6"
+          ],
+          "answer": 1,
+          "correctChoice": "2 \u2264 x < 5",
+          "explanation": "Subtract 1: 4 \u2264 2x < 10. Divide by 2: 2 \u2264 x < 5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "compound inequality"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "absolute value with coefficient",
+          "question": "Solve |3y| = 12.",
+          "choices": [
+            "y = 4 only",
+            "y = \u00b112",
+            "y = \u00b14",
+            "y = \u00b13"
+          ],
+          "answer": 2,
+          "correctChoice": "y = \u00b14",
+          "explanation": "3y = 12 or 3y = -12, so y = 4 or y = -4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "absolute value"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "interval form",
+          "question": "Which interval represents the solutions of |x| < 3 ?",
+          "choices": [
+            "x < -3 or x > 3",
+            "-3 < x < 3",
+            "x \u2264 3",
+            "x \u2265 -3"
+          ],
+          "answer": 1,
+          "correctChoice": "-3 < x < 3",
+          "explanation": "A number has absolute value less than 3 if it lies between -3 and 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "absolute value",
+            "intervals"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "multi-step inequality",
+          "question": "Solve 4 - 2x > 10.",
+          "choices": [
+            "x > -3",
+            "x < -3",
+            "x > 3",
+            "x < 3"
+          ],
+          "answer": 1,
+          "correctChoice": "x < -3",
+          "explanation": "Subtract 4: -2x > 6. Divide by -2 and reverse the sign: x < -3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "inequality"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "absolute value inequality",
+          "question": "Solve |x + 1| \u2264 4.",
+          "choices": [
+            "-3 \u2264 x \u2264 5",
+            "-5 \u2264 x \u2264 3",
+            "x \u2264 -5 or x \u2265 3",
+            "x \u2264 -3 or x \u2265 5"
+          ],
+          "answer": 1,
+          "correctChoice": "-5 \u2264 x \u2264 3",
+          "explanation": "Write -4 \u2264 x + 1 \u2264 4 and subtract 1: -5 \u2264 x \u2264 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "absolute value",
+            "compound inequality"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "word problem inequality",
+          "question": "Adult tickets cost $12 each. Student tickets cost $8 each. If 20 student tickets are sold, how many adult tickets are needed for the total revenue to be at least $320?",
+          "choices": [
+            "at least 12",
+            "at least 13",
+            "at least 14",
+            "at least 15"
+          ],
+          "answer": 2,
+          "correctChoice": "at least 14",
+          "explanation": "Revenue is 12a + 8(20) \u2265 320, so 12a + 160 \u2265 320. Then 12a \u2265 160, so a \u2265 13.33.... At least 14 adult tickets are needed.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "modeling",
+            "inequality"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "absolute value equation",
+          "question": "Solve |2x - 5| = 9.",
+          "choices": [
+            "x = 7 only",
+            "x = -2 only",
+            "x = 7 or x = -2",
+            "x = 2 or x = -7"
+          ],
+          "answer": 2,
+          "correctChoice": "x = 7 or x = -2",
+          "explanation": "Set 2x - 5 = 9 or 2x - 5 = -9. The solutions are x = 7 and x = -2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "absolute value"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "capacity modeling",
+          "question": "An elevator can carry at most 1,600 pounds. Eight students weigh 140 pounds each, and a teacher weighs 170 pounds. Each box weighs 12 pounds. What is the greatest number of boxes the elevator can carry?",
+          "choices": [
+            "24",
+            "25",
+            "26",
+            "27"
+          ],
+          "answer": 1,
+          "correctChoice": "25",
+          "explanation": "Current weight is 8(140) + 170 = 1,290. That leaves 310 pounds. Since 310/12 = 25.83..., the maximum whole number of boxes is 25.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "inequality",
+            "modeling"
+          ]
+        },
+        {
+          "id": "inequalities_absolute_value_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "absolute value greater than",
+          "question": "Solve |x - 4| > 7.",
+          "choices": [
+            "x > 11",
+            "x < -3 or x > 11",
+            "-3 < x < 11",
+            "x < 11"
+          ],
+          "answer": 1,
+          "correctChoice": "x < -3 or x > 11",
+          "explanation": "Either x - 4 > 7 or x - 4 < -7. So x > 11 or x < -3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "inequalities_absolute_value",
+            "absolute value",
+            "compound inequality"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "systems_modeling",
+      "name": "Systems of Equations and Modeling",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I algebra and modeling",
+      "questions": [
+        {
+          "id": "systems_modeling_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "evaluate from simple system",
+          "question": "If x = 3 and y = 2x + 1, what is y ?",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "answer": 2,
+          "correctChoice": "7",
+          "explanation": "Substitute x = 3 into y = 2x + 1 to get y = 7.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems",
+            "substitution"
+          ]
+        },
+        {
+          "id": "systems_modeling_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "solve simple system",
+          "question": "For the system x + y = 10 and x - y = 2, what is x ?",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "8"
+          ],
+          "answer": 2,
+          "correctChoice": "6",
+          "explanation": "Add the equations: 2x = 12, so x = 6.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "value in context",
+          "question": "At a snack bar, 2 drinks and 1 pretzel cost $7. If a pretzel costs $3, how much does a drink cost?",
+          "choices": [
+            "$1",
+            "$2",
+            "$3",
+            "$4"
+          ],
+          "answer": 1,
+          "correctChoice": "$2",
+          "explanation": "Subtract the pretzel cost: 2 drinks cost $4, so one drink costs $2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "modeling",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "solve by substitution",
+          "question": "Solve the system 2x + y = 11 and x - y = 1.",
+          "choices": [
+            "(3, 5)",
+            "(4, 3)",
+            "(5, 1)",
+            "(6, -1)"
+          ],
+          "answer": 1,
+          "correctChoice": "(4, 3)",
+          "explanation": "From x - y = 1, y = x - 1. Substitute: 2x + (x - 1) = 11, so x = 4 and y = 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "intersection of lines",
+          "question": "The lines y = -x + 5 and y = 2x - 4 intersect at what point?",
+          "choices": [
+            "(2, 1)",
+            "(3, 2)",
+            "(4, 1)",
+            "(5, 0)"
+          ],
+          "answer": 1,
+          "correctChoice": "(3, 2)",
+          "explanation": "Set -x + 5 = 2x - 4. Then 9 = 3x, so x = 3 and y = 2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "graphing",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "ticket model",
+          "question": "Adult tickets cost $10 and child tickets cost $6. If 2 tickets cost $16 total, which combination is possible?",
+          "choices": [
+            "2 adult",
+            "1 adult and 1 child",
+            "2 child",
+            "No combination"
+          ],
+          "answer": 1,
+          "correctChoice": "1 adult and 1 child",
+          "explanation": "One adult and one child cost 10 + 6 = 16.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "modeling",
+            "money"
+          ]
+        },
+        {
+          "id": "systems_modeling_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "ticket system",
+          "question": "Adult tickets cost $8 and student tickets cost $5. If 31 tickets are sold for a total of $203, how many adult tickets are sold?",
+          "choices": [
+            "14",
+            "15",
+            "16",
+            "18"
+          ],
+          "answer": 2,
+          "correctChoice": "16",
+          "explanation": "Let a + s = 31 and 8a + 5s = 203. Substitute s = 31 - a: 8a + 5(31 - a) = 203, so 3a = 48 and a = 16.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems",
+            "word problem"
+          ]
+        },
+        {
+          "id": "systems_modeling_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "sum and difference",
+          "question": "The sum of 2 numbers is 19 and their difference is 5. What are the numbers?",
+          "choices": [
+            "12 and 7",
+            "13 and 6",
+            "14 and 5",
+            "10 and 9"
+          ],
+          "answer": 0,
+          "correctChoice": "12 and 7",
+          "explanation": "Let x + y = 19 and x - y = 5. Adding gives 2x = 24, so x = 12 and y = 7.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "elimination",
+          "question": "Solve the system 3x + 2y = 18 and x - y = 1.",
+          "choices": [
+            "(3, 2)",
+            "(4, 3)",
+            "(5, 1)",
+            "(6, 0)"
+          ],
+          "answer": 1,
+          "correctChoice": "(4, 3)",
+          "explanation": "From x - y = 1, x = y + 1. Substitute: 3(y + 1) + 2y = 18, so 5y = 15 and y = 3. Then x = 4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "compare plans",
+          "question": "Gym A charges $35 monthly plus $4 per class. Gym B charges $55 monthly plus $2 per class. After how many classes do the plans cost the same?",
+          "choices": [
+            "8",
+            "10",
+            "12",
+            "15"
+          ],
+          "answer": 1,
+          "correctChoice": "10",
+          "explanation": "Set 35 + 4c = 55 + 2c. Then 2c = 20, so c = 10.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "modeling",
+            "linear models"
+          ]
+        },
+        {
+          "id": "systems_modeling_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "solve by elimination",
+          "question": "Solve the system 2x + 3y = 19 and 4x - y = 3.",
+          "choices": [
+            "(1, 5)",
+            "(2, 5)",
+            "(3, 4)",
+            "(4, 3)"
+          ],
+          "answer": 1,
+          "correctChoice": "(2, 5)",
+          "explanation": "From 4x - y = 3, y = 4x - 3. Substitute into 2x + 3y = 19: 2x + 3(4x - 3) = 19, so 14x = 28 and x = 2. Then y = 5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "coin problem",
+          "question": "A jar contains only quarters and dimes. There are 20 coins worth $3.20 in all. How many quarters are in the jar?",
+          "choices": [
+            "6",
+            "8",
+            "10",
+            "12"
+          ],
+          "answer": 1,
+          "correctChoice": "8",
+          "explanation": "Let q be quarters and d be dimes. Then q + d = 20 and 25q + 10d = 320. Substitute d = 20 - q: 25q + 200 - 10q = 320, so 15q = 120 and q = 8.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems",
+            "money"
+          ]
+        },
+        {
+          "id": "systems_modeling_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "mixture comparison",
+          "question": "Two stores sell the same type of smoothie. Store A charges $4 per smoothie plus a $6 delivery fee. Store B charges $5 per smoothie plus a $2 delivery fee. For how many smoothies is the total cost the same?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "answer": 2,
+          "correctChoice": "4",
+          "explanation": "Set 4s + 6 = 5s + 2. Then 6 = s + 2, so s = 4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "modeling",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "solve integer system",
+          "question": "Solve the system 4p + 3n = 25 and 2p + n = 11.",
+          "choices": [
+            "p = 3, n = 5",
+            "p = 4, n = 3",
+            "p = 5, n = 1",
+            "p = 2, n = 7"
+          ],
+          "answer": 1,
+          "correctChoice": "p = 4, n = 3",
+          "explanation": "From 2p + n = 11, n = 11 - 2p. Substitute: 4p + 3(11 - 2p) = 25, so -2p = -8 and p = 4. Then n = 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems"
+          ]
+        },
+        {
+          "id": "systems_modeling_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "system from geometry",
+          "question": "The perimeter of a rectangle is 34 inches. The length is 3 inches greater than the width. What are the rectangle\u2019s dimensions?",
+          "choices": [
+            "14 by 3",
+            "13 by 4",
+            "10 by 7",
+            "11 by 6"
+          ],
+          "answer": 2,
+          "correctChoice": "10 by 7",
+          "explanation": "Let length = l and width = w. Then 2l + 2w = 34 and l = w + 3. Substitute: 2(w + 3) + 2w = 34, so 4w = 28 and w = 7. Then l = 10.",
+          "tags": [
+            "aspire_plus_grade9",
+            "systems_modeling",
+            "systems",
+            "geometry",
+            "modeling"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "functions_linear_graphs",
+      "name": "Functions and Linear Graphs",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I functions",
+      "questions": [
+        {
+          "id": "functions_linear_graphs_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "function notation",
+          "question": "If f(x) = x + 4, what is f(3)?",
+          "choices": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "answer": 1,
+          "correctChoice": "7",
+          "explanation": "Substitute x = 3 to get 3 + 4 = 7.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "functions",
+            "notation"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "find slope",
+          "question": "A line passes through (0, 1) and (2, 5). What is the slope of the line?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "answer": 1,
+          "correctChoice": "2",
+          "explanation": "Slope = (5 - 1)/(2 - 0) = 4/2 = 2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "slope",
+            "graphs"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "identify function",
+          "question": "Which set of ordered pairs represents a function?",
+          "choices": [
+            "(1, 2), (1, 5), (2, 3)",
+            "(0, 1), (1, 3), (2, 5)",
+            "(2, 4), (2, 4), (3, 6), (3, 7)",
+            "(1, 2), (2, 3), (2, 4)"
+          ],
+          "answer": 1,
+          "correctChoice": "(0, 1), (1, 3), (2, 5)",
+          "explanation": "A relation is a function if each x-value is paired with only one y-value. Only the second set has no repeated x-values with different y-values.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "function definition"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "evaluate nonlinear function",
+          "question": "If g(x) = 2x^2 - 1, what is g(-2)?",
+          "choices": [
+            "5",
+            "7",
+            "9",
+            "-9"
+          ],
+          "answer": 1,
+          "correctChoice": "7",
+          "explanation": "g(-2) = 2(4) - 1 = 7.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "functions",
+            "evaluation"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "slope from points",
+          "question": "What is the slope of the line through (1, 2) and (4, 11)?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "answer": 1,
+          "correctChoice": "3",
+          "explanation": "Slope = (11 - 2)/(4 - 1) = 9/3 = 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "slope"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "y-intercept",
+          "question": "For the equation y = -3x + 6, what is the y-intercept?",
+          "choices": [
+            "-3",
+            "0",
+            "3",
+            "6"
+          ],
+          "answer": 3,
+          "correctChoice": "6",
+          "explanation": "The y-intercept is the value of y when x = 0, which is 6.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "intercepts"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "use a table",
+          "question": "A table shows x-values 0, 1, 2 and corresponding y-values 5, 8, 11. Which equation matches the pattern?",
+          "choices": [
+            "y = 2x + 5",
+            "y = 3x + 5",
+            "y = 5x + 3",
+            "y = 3x + 2"
+          ],
+          "answer": 1,
+          "correctChoice": "y = 3x + 5",
+          "explanation": "The y-values increase by 3 each time x increases by 1, so slope is 3. When x = 0, y = 5, so the equation is y = 3x + 5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "tables",
+            "linear functions"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "domain restriction",
+          "question": "If f(x) = 1/(x - 4), which value is not in the domain of f?",
+          "choices": [
+            "-4",
+            "0",
+            "4",
+            "8"
+          ],
+          "answer": 2,
+          "correctChoice": "4",
+          "explanation": "The denominator cannot equal 0, so x \u2260 4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "domain",
+            "rational functions"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "absolute value function",
+          "question": "If f(x) = |x - 3|, what is f(1)?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "answer": 1,
+          "correctChoice": "2",
+          "explanation": "f(1) = |1 - 3| = 2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "absolute value",
+            "functions"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "equation of a line",
+          "question": "A line passes through (-2, 4) and (2, -4). Which equation represents the line?",
+          "choices": [
+            "y = -x + 2",
+            "y = -2x",
+            "y = 2x",
+            "y = -2x + 4"
+          ],
+          "answer": 1,
+          "correctChoice": "y = -2x",
+          "explanation": "Slope = (-4 - 4)/(2 - (-2)) = -8/4 = -2. Using point (2, -4), the line is y = -2x.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "graphing",
+            "linear functions"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "vertex form",
+          "question": "For h(x) = 2(x - 1)^2 + 3, what is the vertex of the parabola?",
+          "choices": [
+            "(1, 3)",
+            "(-1, 3)",
+            "(2, 3)",
+            "(1, -3)"
+          ],
+          "answer": 0,
+          "correctChoice": "(1, 3)",
+          "explanation": "In vertex form a(x - h)^2 + k, the vertex is (h, k).",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "quadratic graph",
+            "vertex"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "composition",
+          "question": "If f(x) = x - 2 and g(x) = 3x, what is g(f(5))?",
+          "choices": [
+            "3",
+            "6",
+            "9",
+            "15"
+          ],
+          "answer": 2,
+          "correctChoice": "9",
+          "explanation": "First find f(5) = 3. Then g(3) = 9.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "composition",
+            "functions"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "piecewise evaluation",
+          "question": "Let f(x) = x + 1 for x < 2 and f(x) = 5 - x for x \u2265 2. What is f(3)?",
+          "choices": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "answer": 1,
+          "correctChoice": "2",
+          "explanation": "Since 3 \u2265 2, use f(x) = 5 - x. Then f(3) = 2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "piecewise functions"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "perpendicular line",
+          "question": "Which equation represents the line through (4, -1) that is perpendicular to y = (1/2)x + 3 ?",
+          "choices": [
+            "y = -2x + 7",
+            "y = -2x - 9",
+            "y = 2x - 9",
+            "y = (1/2)x - 3"
+          ],
+          "answer": 0,
+          "correctChoice": "y = -2x + 7",
+          "explanation": "A perpendicular line has slope -2. Using point-slope form with (4, -1): y + 1 = -2(x - 4), so y = -2x + 7.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "perpendicular lines"
+          ]
+        },
+        {
+          "id": "functions_linear_graphs_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "linear pattern",
+          "question": "A function passes through (1, 4), (3, 10), and (5, 16). Assuming the function is linear, what is f(8)?",
+          "choices": [
+            "22",
+            "24",
+            "25",
+            "28"
+          ],
+          "answer": 2,
+          "correctChoice": "25",
+          "explanation": "The change in y is +6 when x increases by 2, so slope is 3. Using (1, 4), the equation is y = 3x + 1. Then f(8) = 25.",
+          "tags": [
+            "aspire_plus_grade9",
+            "functions_linear_graphs",
+            "linear models",
+            "tables"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "exponential_relationships",
+      "name": "Exponential Relationships",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I functions: compare and model exponential growth and decay",
+      "questions": [
+        {
+          "id": "exponential_relationships_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "evaluate exponent",
+          "question": "What is 3^4 ?",
+          "choices": [
+            "9",
+            "12",
+            "64",
+            "81"
+          ],
+          "answer": 3,
+          "correctChoice": "81",
+          "explanation": "3^4 means 3\u00b73\u00b73\u00b73 = 81.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential"
+          ]
+        },
+        {
+          "id": "exponential_relationships_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "evaluate exponential function",
+          "question": "If y = 2\u00b73^x, what is y when x = 2 ?",
+          "choices": [
+            "6",
+            "9",
+            "12",
+            "18"
+          ],
+          "answer": 3,
+          "correctChoice": "18",
+          "explanation": "Substitute x = 2: y = 2\u00b73^2 = 2\u00b79 = 18.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential"
+          ]
+        },
+        {
+          "id": "exponential_relationships_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "recognize exponential growth",
+          "question": "A population starts at 40 and triples every year. Which expression models the population after t years?",
+          "choices": [
+            "40 + 3t",
+            "40\u00b73^t",
+            "3(40 + t)",
+            "40t^3"
+          ],
+          "answer": 1,
+          "correctChoice": "40\u00b73^t",
+          "explanation": "Tripling each year means multiply by 3 each time, so the model is 40\u00b73^t.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential",
+            "modeling"
+          ]
+        },
+        {
+          "id": "exponential_relationships_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "solve simple exponential",
+          "question": "Solve 2\u00b75^x = 50.",
+          "choices": [
+            "x = 1",
+            "x = 2",
+            "x = 3",
+            "x = 5"
+          ],
+          "answer": 1,
+          "correctChoice": "x = 2",
+          "explanation": "Divide by 2 to get 5^x = 25 = 5^2, so x = 2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential"
+          ]
+        },
+        {
+          "id": "exponential_relationships_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "percent growth",
+          "question": "A savings account has $200 and grows by 10% in 1 year. What is the balance after 1 year?",
+          "choices": [
+            "$210",
+            "$218",
+            "$220",
+            "$240"
+          ],
+          "answer": 2,
+          "correctChoice": "$220",
+          "explanation": "10% of 200 is 20, so the new balance is 200 + 20 = 220.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential",
+            "percent"
+          ]
+        },
+        {
+          "id": "exponential_relationships_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "exponential decay model",
+          "question": "A quantity starts at 100 and is cut in half every 2 hours. Which function models the quantity after t hours?",
+          "choices": [
+            "100(1/2)^t",
+            "100(1/2)^(t/2)",
+            "100 - 2t",
+            "50(1/2)^t"
+          ],
+          "answer": 1,
+          "correctChoice": "100(1/2)^(t/2)",
+          "explanation": "Half every 2 hours means multiply by 1/2 once for each 2-hour block, so 100(1/2)^(t/2).",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential",
+            "modeling"
+          ]
+        },
+        {
+          "id": "exponential_relationships_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "evaluate decay model",
+          "question": "If y = 300(0.8)^t, what is y when t = 2 ?",
+          "choices": [
+            "160",
+            "180",
+            "192",
+            "240"
+          ],
+          "answer": 2,
+          "correctChoice": "192",
+          "explanation": "Compute 300(0.8)^2 = 300(0.64) = 192.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential"
+          ]
+        },
+        {
+          "id": "exponential_relationships_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "recognize exponential pattern",
+          "question": "A table shows x-values 0, 1, 2, 3 and y-values 5, 10, 20, 40. Which rule matches the pattern?",
+          "choices": [
+            "y = 5x",
+            "y = 5\u00b72^x",
+            "y = 2x + 5",
+            "y = x^2 + 5"
+          ],
+          "answer": 1,
+          "correctChoice": "y = 5\u00b72^x",
+          "explanation": "The output doubles each time x increases by 1, so the rule is y = 5\u00b72^x.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential",
+            "functions"
+          ]
+        },
+        {
+          "id": "exponential_relationships_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "doubling time",
+          "question": "A culture starts with 500 bacteria and doubles every 4 hours. How many bacteria are present after 8 hours?",
+          "choices": [
+            "1,000",
+            "1,500",
+            "2,000",
+            "4,000"
+          ],
+          "answer": 2,
+          "correctChoice": "2,000",
+          "explanation": "8 hours is 2 doubling periods, so 500\u00b72^2 = 2,000.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential",
+            "modeling"
+          ]
+        },
+        {
+          "id": "exponential_relationships_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "solve exponential equation",
+          "question": "If 4^(x - 1) = 64, what is x ?",
+          "choices": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "answer": 1,
+          "correctChoice": "4",
+          "explanation": "Since 64 = 4^3, we have x - 1 = 3, so x = 4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential"
+          ]
+        },
+        {
+          "id": "exponential_relationships_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "compare models",
+          "question": "Quantity A = 50 + 6t and Quantity B = 50(1.08)^t. For very large t, which statement is true?",
+          "choices": [
+            "A will eventually exceed B",
+            "B will eventually exceed A",
+            "They stay equal",
+            "There is not enough information"
+          ],
+          "answer": 1,
+          "correctChoice": "B will eventually exceed A",
+          "explanation": "An exponential model eventually grows faster than a linear model, so B will eventually exceed A.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential",
+            "modeling"
+          ]
+        },
+        {
+          "id": "exponential_relationships_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "identify model from table",
+          "question": "A table shows y-values 6, 12, 24, 48 when x = 0, 1, 2, 3. Which equation fits?",
+          "choices": [
+            "y = 6x",
+            "y = 6 + 2x",
+            "y = 6\u00b72^x",
+            "y = 2\u00b76^x"
+          ],
+          "answer": 2,
+          "correctChoice": "y = 6\u00b72^x",
+          "explanation": "The outputs double each step and start at 6 when x = 0, so y = 6\u00b72^x.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential",
+            "functions"
+          ]
+        },
+        {
+          "id": "exponential_relationships_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "solve decay equation",
+          "question": "If 81(1/3)^t = 3, what is t ?",
+          "choices": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "answer": 1,
+          "correctChoice": "3",
+          "explanation": "Divide by 81: (1/3)^t = 1/27 = (1/3)^3, so t = 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential"
+          ]
+        },
+        {
+          "id": "exponential_relationships_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "identify growth factor",
+          "question": "If y = a\u00b7b^x and the value doubles whenever x increases by 1, what is b ?",
+          "choices": [
+            "1/2",
+            "2",
+            "10",
+            "a"
+          ],
+          "answer": 1,
+          "correctChoice": "2",
+          "explanation": "Doubling means the growth factor for each 1-step increase is 2, so b = 2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential",
+            "functions"
+          ]
+        },
+        {
+          "id": "exponential_relationships_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "estimate exponential solution",
+          "question": "If 3^x = 20, between which two integers does x lie?",
+          "choices": [
+            "between 1 and 2",
+            "between 2 and 3",
+            "between 3 and 4",
+            "between 4 and 5"
+          ],
+          "answer": 1,
+          "correctChoice": "between 2 and 3",
+          "explanation": "Since 3^2 = 9 and 3^3 = 27, x must lie between 2 and 3.",
+          "tags": [
+            "aspire_plus_grade9",
+            "exponential_relationships",
+            "aspire_g9",
+            "exponential"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "transformations_congruence",
+      "name": "Transformations and Congruence",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I geometry: rigid motions, dilations, congruence, and similarity foundations",
+      "questions": [
+        {
+          "id": "transformations_congruence_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "translation",
+          "question": "Translate the point (2, -1) by the vector \u27e83, 4\u27e9.",
+          "choices": [
+            "(5, 3)",
+            "(5, -5)",
+            "(-1, 3)",
+            "(1, 4)"
+          ],
+          "answer": 0,
+          "correctChoice": "(5, 3)",
+          "explanation": "Add 3 to the x-coordinate and 4 to the y-coordinate: (2 + 3, -1 + 4) = (5, 3).",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "reflection over x-axis",
+          "question": "What is the image of (4, -2) after reflection over the x-axis?",
+          "choices": [
+            "(4, 2)",
+            "(-4, -2)",
+            "(-4, 2)",
+            "(2, 4)"
+          ],
+          "answer": 0,
+          "correctChoice": "(4, 2)",
+          "explanation": "Reflection over the x-axis keeps x the same and changes the sign of y.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "rigid motion",
+          "question": "Which transformation always preserves both side lengths and angle measures?",
+          "choices": [
+            "dilation",
+            "translation",
+            "stretch",
+            "shear"
+          ],
+          "answer": 1,
+          "correctChoice": "translation",
+          "explanation": "A translation is a rigid motion, so it preserves lengths and angle measures.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "congruence",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "rotation 90 ccw",
+          "question": "Rotate the point (3, 1) 90\u00b0 counterclockwise about the origin.",
+          "choices": [
+            "(1, 3)",
+            "(-1, 3)",
+            "(3, -1)",
+            "(-3, 1)"
+          ],
+          "answer": 1,
+          "correctChoice": "(-1, 3)",
+          "explanation": "A 90\u00b0 counterclockwise rotation sends (x, y) to (-y, x), so (3, 1) goes to (-1, 3).",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "dilation about origin",
+          "question": "Dilate the point (2, -3) by a scale factor of 2 about the origin.",
+          "choices": [
+            "(1, -1.5)",
+            "(4, -6)",
+            "(4, -3)",
+            "(0, -6)"
+          ],
+          "answer": 1,
+          "correctChoice": "(4, -6)",
+          "explanation": "Multiply each coordinate by 2: (2, -3) \u2192 (4, -6).",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "similarity",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "congruence meaning",
+          "question": "If two polygons have the same shape and the same size, the polygons are:",
+          "choices": [
+            "similar only",
+            "congruent",
+            "mirror images only",
+            "rotated only"
+          ],
+          "answer": 1,
+          "correctChoice": "congruent",
+          "explanation": "Congruent figures have the same size and shape.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "congruence"
+          ]
+        },
+        {
+          "id": "transformations_congruence_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "reflection over y-axis",
+          "question": "What is the image of the point (-5, 2) after reflection over the y-axis?",
+          "choices": [
+            "(-5, -2)",
+            "(5, 2)",
+            "(2, -5)",
+            "(5, -2)"
+          ],
+          "answer": 1,
+          "correctChoice": "(5, 2)",
+          "explanation": "Reflection over the y-axis changes the sign of x and keeps y the same.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "two-step transformation",
+          "question": "A point starts at (1, 2). It is translated right 4 units and then reflected over the x-axis. Where does it end up?",
+          "choices": [
+            "(5, 2)",
+            "(5, -2)",
+            "(-5, 2)",
+            "(-5, -2)"
+          ],
+          "answer": 1,
+          "correctChoice": "(5, -2)",
+          "explanation": "After the translation the point is (5, 2). Reflecting over the x-axis gives (5, -2).",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "perimeter under dilation",
+          "question": "A triangle is dilated by a scale factor of 3/2. How is its perimeter affected?",
+          "choices": [
+            "multiplied by 3/2",
+            "multiplied by 9/4",
+            "unchanged",
+            "divided by 3/2"
+          ],
+          "answer": 0,
+          "correctChoice": "multiplied by 3/2",
+          "explanation": "All lengths in a dilation scale by the scale factor, so perimeter also scales by 3/2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "similarity",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "area under dilation",
+          "question": "A square is dilated by a scale factor of 4. By what factor does its area change?",
+          "choices": [
+            "4",
+            "8",
+            "12",
+            "16"
+          ],
+          "answer": 3,
+          "correctChoice": "16",
+          "explanation": "Area changes by the square of the scale factor, so 4^2 = 16.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "similarity",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "line of reflection",
+          "question": "Which point is unchanged by reflection across the line y = x ?",
+          "choices": [
+            "(2, 5)",
+            "(-3, -3)",
+            "(4, -1)",
+            "(0, 2)"
+          ],
+          "answer": 1,
+          "correctChoice": "(-3, -3)",
+          "explanation": "Points on the line y = x have equal coordinates, so (-3, -3) stays fixed.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "congruence through motions",
+          "question": "If one triangle can be translated and rotated to land exactly on another triangle, what can you conclude?",
+          "choices": [
+            "The triangles are similar but not congruent",
+            "The triangles are congruent",
+            "The triangles have equal area only",
+            "The triangles are reflections only"
+          ],
+          "answer": 1,
+          "correctChoice": "The triangles are congruent",
+          "explanation": "A sequence of rigid motions mapping one figure onto another proves the figures are congruent.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "congruence",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "rotation 180",
+          "question": "Rotate the point (-3, 5) 180\u00b0 about the origin.",
+          "choices": [
+            "(3, -5)",
+            "(-5, 3)",
+            "(5, -3)",
+            "(-3, -5)"
+          ],
+          "answer": 0,
+          "correctChoice": "(3, -5)",
+          "explanation": "A 180\u00b0 rotation about the origin sends (x, y) to (-x, -y).",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "identify translation rule",
+          "question": "A segment with endpoints A(1, 2) and B(4, 2) is moved to A'(3, 5) and B'(6, 5). Which translation maps the segment to its image?",
+          "choices": [
+            "(x, y) \u2192 (x + 2, y + 3)",
+            "(x, y) \u2192 (x + 3, y + 2)",
+            "(x, y) \u2192 (x - 2, y + 3)",
+            "(x, y) \u2192 (x + 2, y - 3)"
+          ],
+          "answer": 0,
+          "correctChoice": "(x, y) \u2192 (x + 2, y + 3)",
+          "explanation": "The x-values increase by 2 and the y-values increase by 3, so the rule is (x + 2, y + 3).",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "transformations"
+          ]
+        },
+        {
+          "id": "transformations_congruence_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "similar figures area",
+          "question": "Two similar triangles have a side-length ratio of 2:5 from the smaller to the larger. What is the ratio of their areas?",
+          "choices": [
+            "2:5",
+            "4:25",
+            "10:25",
+            "5:2"
+          ],
+          "answer": 1,
+          "correctChoice": "4:25",
+          "explanation": "Area scales by the square of the side-length ratio, so 2^2 : 5^2 = 4 : 25.",
+          "tags": [
+            "aspire_plus_grade9",
+            "transformations_congruence",
+            "aspire_g9",
+            "similarity"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "geometry_coordinate",
+      "name": "Geometry and Coordinate Geometry",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I geometry and coordinate reasoning",
+      "questions": [
+        {
+          "id": "geometry_coordinate_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "perimeter",
+          "question": "A rectangle is 5 units by 8 units. What is its perimeter?",
+          "choices": [
+            "13",
+            "26",
+            "40",
+            "80"
+          ],
+          "answer": 1,
+          "correctChoice": "26",
+          "explanation": "Perimeter = 2(5 + 8) = 26.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "geometry",
+            "perimeter"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "vertical distance",
+          "question": "What is the distance between the points (2, 3) and (2, 9)?",
+          "choices": [
+            "4",
+            "6",
+            "8",
+            "12"
+          ],
+          "answer": 1,
+          "correctChoice": "6",
+          "explanation": "The x-values are the same, so the distance is the difference in y-values: 9 - 3 = 6.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "coordinate geometry",
+            "distance"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "supplementary angles",
+          "question": "If 2 angles are supplementary and one angle measures 65\u00b0, what is the measure of the other angle?",
+          "choices": [
+            "25\u00b0",
+            "65\u00b0",
+            "105\u00b0",
+            "115\u00b0"
+          ],
+          "answer": 3,
+          "correctChoice": "115\u00b0",
+          "explanation": "Supplementary angles add to 180\u00b0, so the other angle is 180 - 65 = 115\u00b0.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "angles"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "triangle angle sum",
+          "question": "A triangle has angles measuring 50\u00b0 and 60\u00b0. What is the measure of the third angle?",
+          "choices": [
+            "60\u00b0",
+            "70\u00b0",
+            "80\u00b0",
+            "90\u00b0"
+          ],
+          "answer": 1,
+          "correctChoice": "70\u00b0",
+          "explanation": "Triangle angles add to 180\u00b0, so the third angle is 180 - 110 = 70\u00b0.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "triangles"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "circle area",
+          "question": "What is the area of a circle with radius 4?",
+          "choices": [
+            "8\u03c0",
+            "16\u03c0",
+            "32\u03c0",
+            "64\u03c0"
+          ],
+          "answer": 1,
+          "correctChoice": "16\u03c0",
+          "explanation": "Area = \u03c0r^2 = \u03c0(4^2) = 16\u03c0.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "circles",
+            "area"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "midpoint",
+          "question": "What is the midpoint of the segment with endpoints (2, 1) and (6, 5)?",
+          "choices": [
+            "(4, 2)",
+            "(4, 3)",
+            "(3, 4)",
+            "(8, 6)"
+          ],
+          "answer": 1,
+          "correctChoice": "(4, 3)",
+          "explanation": "Average the x-values and y-values: ((2 + 6)/2, (1 + 5)/2) = (4, 3).",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "coordinate geometry",
+            "midpoint"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "similar figures",
+          "question": "Two similar rectangles have a scale factor of 3:5 from the smaller to the larger. If the smaller rectangle has a side length of 12, what is the corresponding side length of the larger rectangle?",
+          "choices": [
+            "18",
+            "20",
+            "24",
+            "30"
+          ],
+          "answer": 1,
+          "correctChoice": "20",
+          "explanation": "Multiply by 5/3: 12\u00b75/3 = 20.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "similarity",
+            "proportions"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "circle equation",
+          "question": "Which equation represents a circle centered at the origin with radius 6?",
+          "choices": [
+            "x^2 + y^2 = 6",
+            "x^2 + y^2 = 12",
+            "x^2 + y^2 = 36",
+            "(x + 6)^2 + y^2 = 1"
+          ],
+          "answer": 2,
+          "correctChoice": "x^2 + y^2 = 36",
+          "explanation": "For a circle centered at the origin, the equation is x^2 + y^2 = r^2.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "circles",
+            "coordinate geometry"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "Pythagorean theorem",
+          "question": "A right triangle has legs of lengths 9 and 12. What is the length of the hypotenuse?",
+          "choices": [
+            "13",
+            "14",
+            "15",
+            "21"
+          ],
+          "answer": 2,
+          "correctChoice": "15",
+          "explanation": "Use the Pythagorean theorem: \u221a(9^2 + 12^2) = \u221a225 = 15.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "right triangles"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "trapezoid area",
+          "question": "What is the area of a trapezoid with bases 8 and 14 and height 5?",
+          "choices": [
+            "44",
+            "50",
+            "55",
+            "70"
+          ],
+          "answer": 2,
+          "correctChoice": "55",
+          "explanation": "Area = (1/2)(b1 + b2)h = (1/2)(22)(5) = 55.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "area",
+            "trapezoid"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "distance formula",
+          "question": "What is the distance between (-1, 2) and (3, 5)?",
+          "choices": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "answer": 1,
+          "correctChoice": "5",
+          "explanation": "Distance = \u221a[(3 - (-1))^2 + (5 - 2)^2] = \u221a(4^2 + 3^2) = 5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "distance formula"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "parallel line",
+          "question": "A line passes through (2, -1) and is parallel to y = 3x + 4. Which equation could represent the line?",
+          "choices": [
+            "y = 3x - 7",
+            "y = 3x + 1",
+            "y = -3x + 5",
+            "y = x - 3"
+          ],
+          "answer": 0,
+          "correctChoice": "y = 3x - 7",
+          "explanation": "Parallel lines have the same slope 3. Using point (2, -1): -1 = 3(2) + b, so b = -7.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "coordinate geometry",
+            "parallel lines"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "cylinder volume",
+          "question": "What is the volume of a cylinder with radius 3 and height 8?",
+          "choices": [
+            "24\u03c0",
+            "48\u03c0",
+            "72\u03c0",
+            "144\u03c0"
+          ],
+          "answer": 2,
+          "correctChoice": "72\u03c0",
+          "explanation": "Volume = \u03c0r^2h = \u03c0(3^2)(8) = 72\u03c0.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "volume",
+            "cylinders"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "Pythagorean application",
+          "question": "A 10-foot ladder leans against a wall and reaches 8 feet high. How far is the bottom of the ladder from the wall?",
+          "choices": [
+            "2 ft",
+            "4 ft",
+            "6 ft",
+            "8 ft"
+          ],
+          "answer": 2,
+          "correctChoice": "6 ft",
+          "explanation": "Use a right triangle with hypotenuse 10 and leg 8: x = \u221a(10^2 - 8^2) = \u221a36 = 6.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "right triangles",
+            "applications"
+          ]
+        },
+        {
+          "id": "geometry_coordinate_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "point on parabola",
+          "question": "Which point lies on the graph of y = -x^2 + 4x + 5 ?",
+          "choices": [
+            "(2, 5)",
+            "(2, 9)",
+            "(4, 5)",
+            "(5, 4)"
+          ],
+          "answer": 1,
+          "correctChoice": "(2, 9)",
+          "explanation": "When x = 2, y = -(2^2) + 4(2) + 5 = -4 + 8 + 5 = 9, so (2, 9) lies on the graph.",
+          "tags": [
+            "aspire_plus_grade9",
+            "geometry_coordinate",
+            "coordinate geometry",
+            "quadratic graph"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "statistics_probability_data",
+      "name": "Statistics, Probability, and Data",
+      "alignment": "Utah Aspire Plus Grade 9 / Secondary Math I statistics and linear modeling foundations",
+      "questions": [
+        {
+          "id": "statistics_probability_data_01",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "mean",
+          "question": "What is the mean of 4, 6, and 8?",
+          "choices": [
+            "5",
+            "6",
+            "7",
+            "18"
+          ],
+          "answer": 1,
+          "correctChoice": "6",
+          "explanation": "The mean is (4 + 6 + 8)/3 = 18/3 = 6.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "statistics",
+            "mean"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_02",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "simple probability",
+          "question": "A bag contains 3 red chips and 2 blue chips. If 1 chip is chosen at random, what is the probability of choosing a red chip?",
+          "choices": [
+            "2/5",
+            "3/5",
+            "1/2",
+            "3/2"
+          ],
+          "answer": 1,
+          "correctChoice": "3/5",
+          "explanation": "There are 3 favorable outcomes out of 5 total outcomes.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "probability"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_03",
+          "difficulty": 1,
+          "difficultyLabel": "Level 1 - Foundations",
+          "skill": "median",
+          "question": "What is the median of 2, 7, 9, 10, 14?",
+          "choices": [
+            "7",
+            "8",
+            "9",
+            "10"
+          ],
+          "answer": 2,
+          "correctChoice": "9",
+          "explanation": "The middle value of the ordered list is 9.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "statistics",
+            "median"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_04",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "read a table",
+          "question": "A table shows the number of books sold on 4 days: Monday 12, Tuesday 15, Wednesday 9, Thursday 14. On which day were the most books sold?",
+          "choices": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday"
+          ],
+          "answer": 1,
+          "correctChoice": "Tuesday",
+          "explanation": "The greatest value in the table is 15 on Tuesday.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "data interpretation",
+            "tables"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_05",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "simple probability",
+          "question": "A spinner has 8 equal sections: 3 are green and 5 are yellow. What is the probability of landing on yellow?",
+          "choices": [
+            "3/8",
+            "5/8",
+            "1/2",
+            "5/3"
+          ],
+          "answer": 1,
+          "correctChoice": "5/8",
+          "explanation": "There are 5 yellow sections out of 8 total sections.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "probability"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_06",
+          "difficulty": 2,
+          "difficultyLabel": "Level 2 - Core Skills",
+          "skill": "range",
+          "question": "What is the range of the data set 18, 23, 19, 30 ?",
+          "choices": [
+            "7",
+            "11",
+            "12",
+            "48"
+          ],
+          "answer": 2,
+          "correctChoice": "12",
+          "explanation": "Range = greatest value - least value = 30 - 18 = 12.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "statistics",
+            "range"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_07",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "association in scatterplot context",
+          "question": "A scatterplot shows that as study time increases, test score also tends to increase. What type of association does the scatterplot show?",
+          "choices": [
+            "negative association",
+            "no association",
+            "positive association",
+            "nonlinear only"
+          ],
+          "answer": 2,
+          "correctChoice": "positive association",
+          "explanation": "If both variables tend to increase together, the association is positive.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "scatterplots",
+            "association"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_08",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "inclusion-exclusion",
+          "question": "In a group of 20 students, 12 play a sport, 7 play an instrument, and 4 do both. How many do neither?",
+          "choices": [
+            "3",
+            "4",
+            "5",
+            "9"
+          ],
+          "answer": 2,
+          "correctChoice": "5",
+          "explanation": "Students who do at least 1 activity: 12 + 7 - 4 = 15. So neither = 20 - 15 = 5.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "sets",
+            "probability"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_09",
+          "difficulty": 3,
+          "difficultyLabel": "Level 3 - Aspire Ready",
+          "skill": "mean from scores",
+          "question": "What is the mean of the scores 80, 90, 70, and 100?",
+          "choices": [
+            "82.5",
+            "85",
+            "87.5",
+            "90"
+          ],
+          "answer": 1,
+          "correctChoice": "85",
+          "explanation": "The mean is (80 + 90 + 70 + 100)/4 = 340/4 = 85.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "mean",
+            "statistics"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_10",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "effect of outlier",
+          "question": "A data set has values 5, 6, 6, 7, 30. Which measure of center is affected more by the outlier 30?",
+          "choices": [
+            "median",
+            "mode",
+            "mean",
+            "range"
+          ],
+          "answer": 2,
+          "correctChoice": "mean",
+          "explanation": "The mean is pulled strongly by large outliers; the median is less affected.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "statistics",
+            "outliers"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_11",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "at least one success",
+          "question": "What is the probability of getting at least 1 head when 2 fair coins are flipped?",
+          "choices": [
+            "1/4",
+            "1/2",
+            "3/4",
+            "1"
+          ],
+          "answer": 2,
+          "correctChoice": "3/4",
+          "explanation": "The only way not to get at least 1 head is TT, which has probability 1/4. So the answer is 1 - 1/4 = 3/4.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "probability"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_12",
+          "difficulty": 4,
+          "difficultyLabel": "Level 4 - Advanced",
+          "skill": "line of best fit prediction",
+          "question": "A line of best fit for a data set is y = 2.5x + 4. What value does the line predict when x = 6?",
+          "choices": [
+            "15",
+            "17",
+            "19",
+            "21"
+          ],
+          "answer": 2,
+          "correctChoice": "19",
+          "explanation": "Substitute x = 6: y = 2.5(6) + 4 = 15 + 4 = 19.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "modeling",
+            "data"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_13",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "survey bias",
+          "question": "Which sampling method is most likely to produce an unbiased estimate of the average number of hours students sleep each night?",
+          "choices": [
+            "Ask only students in the library after midnight",
+            "Ask every tenth student entering school in the morning",
+            "Ask only members of the soccer team",
+            "Post an optional poll on social media"
+          ],
+          "answer": 1,
+          "correctChoice": "Ask every tenth student entering school in the morning",
+          "explanation": "Selecting every tenth student entering school is more representative than sampling only a special subgroup or volunteers.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "statistics",
+            "sampling"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_14",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "without replacement probability",
+          "question": "A box contains 5 math books and 3 science books. Two books are selected at random without replacement. What is the probability that both are science books?",
+          "choices": [
+            "1/8",
+            "3/28",
+            "1/4",
+            "3/8"
+          ],
+          "answer": 1,
+          "correctChoice": "3/28",
+          "explanation": "The probability is (3/8)(2/7) = 6/56 = 3/28.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "probability",
+            "without replacement"
+          ]
+        },
+        {
+          "id": "statistics_probability_data_15",
+          "difficulty": 5,
+          "difficultyLabel": "Level 5 - Challenge",
+          "skill": "expected value",
+          "question": "A game pays $5 with probability 0.2 and $0 otherwise. What is the expected value of 1 play?",
+          "choices": [
+            "$0.20",
+            "$0.50",
+            "$1.00",
+            "$2.50"
+          ],
+          "answer": 2,
+          "correctChoice": "$1.00",
+          "explanation": "Expected value = 5(0.2) + 0(0.8) = 1.00.",
+          "tags": [
+            "aspire_plus_grade9",
+            "statistics_probability_data",
+            "expected value",
+            "probability"
+          ]
+        }
+      ]
+    }
+  ]
+}

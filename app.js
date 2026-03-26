@@ -1,6 +1,7 @@
 const screens = {
   login: document.getElementById("login-screen"),
   testSelection: document.getElementById("test-selection-screen"),
+  aspireSelection: document.getElementById("aspire-selection-screen"),
   welcome: document.getElementById("welcome-screen"),
   report: document.getElementById("report-screen"),
   studyPlan: document.getElementById("study-plan-screen"),
@@ -22,6 +23,10 @@ const stepperButtons = Array.from(appStepper.querySelectorAll("[data-step-button
 const appLiveRegion = document.getElementById("app-live-region");
 const placementTrackButton = document.getElementById("placement-track-button");
 const actTrackButton = document.getElementById("act-track-button");
+const aspireTrackButton = document.getElementById("aspire-track-button");
+const aspireGrade9Button = document.getElementById("aspire-grade9-button");
+const aspireGrade10Button = document.getElementById("aspire-grade10-button");
+const aspireSelectionBackButton = document.getElementById("aspire-selection-back-button");
 const currentTrackText = document.getElementById("current-track-text");
 const startAssessmentButton = document.getElementById("start-assessment-button");
 const recommendedTopicList = document.getElementById("recommended-topic-list");
@@ -199,6 +204,30 @@ const actAssessmentTopicOrder = [
   { label: "Trigonometry", sourceTopicId: "trigonometry" },
   { label: "Statistics, Probability, and Data", sourceTopicId: "prob_stats" }
 ];
+const aspireGrade9AssessmentTopicOrder = [
+  { label: "Numbers, Rates, and Percents", sourceTopicId: "numbers_rates_percents" },
+  { label: "Expressions and Exponents", sourceTopicId: "expressions_exponents" },
+  { label: "Linear Equations", sourceTopicId: "linear_equations" },
+  { label: "Linear Inequalities and Absolute Value", sourceTopicId: "inequalities_absolute_value" },
+  { label: "Systems of Equations and Modeling", sourceTopicId: "systems_modeling" },
+  { label: "Functions and Linear Graphs", sourceTopicId: "functions_linear_graphs" },
+  { label: "Exponential Relationships", sourceTopicId: "exponential_relationships" },
+  { label: "Transformations and Congruence", sourceTopicId: "transformations_congruence" },
+  { label: "Geometry and Coordinate Geometry", sourceTopicId: "geometry_coordinate" },
+  { label: "Statistics, Probability, and Data", sourceTopicId: "statistics_probability_data" }
+];
+const aspireGrade10AssessmentTopicOrder = [
+  { label: "Radicals, Rational Exponents, and Number Systems", sourceTopicId: "radicals_number_systems" },
+  { label: "Polynomials and Factoring", sourceTopicId: "polynomials_factoring" },
+  { label: "Quadratic Functions and Equations", sourceTopicId: "quadratic_functions_equations" },
+  { label: "Functions and Transformations", sourceTopicId: "functions_transformations" },
+  { label: "Exponential Functions and Modeling", sourceTopicId: "exponential_functions_modeling" },
+  { label: "Similarity and Right Triangle Trigonometry", sourceTopicId: "similarity_trigonometry" },
+  { label: "Circles and Coordinate Geometry", sourceTopicId: "circles_coordinate_geometry" },
+  { label: "Probability and Conditional Probability", sourceTopicId: "probability_conditional" },
+  { label: "Systems and Modeling", sourceTopicId: "systems_modeling" },
+  { label: "Geometry Modeling and Measurement", sourceTopicId: "geometry_modeling_measurement" }
+];
 const correctMessages = ["Nice work 🔥", "Strong start ✨", "You've got this 💪"];
 const incorrectMessages = ["Keep going 💪", "Take another look 👀", "One more try"];
 
@@ -233,6 +262,38 @@ const trackConfigs = {
     reviewDescription: "Review the ACT questions you missed, see the correct answer, and study each explanation in one place.",
     completeHeading: "ACT Practice Complete",
     assessmentTopicOrder: actAssessmentTopicOrder,
+    defaultStudyGuides: {}
+  },
+  aspireGrade9: {
+    key: "aspireGrade9",
+    label: "Utah Aspire Plus Math",
+    shortLabel: "Aspire Grade 9",
+    assessmentTitle: "Utah Aspire Plus Grade 9 Assessment",
+    welcomeTitle: "Start with a short Utah Aspire Plus Grade 9 assessment",
+    welcomeDescription: "Answer 10 Grade 9 / Secondary Math I questions, see your recommended focus areas, and jump into a grade-specific study plan.",
+    studyPlanHeading: "Your Utah Aspire Plus Grade 9 Study Plan",
+    studyPlanDescription: "Recommended Grade 9 topics are shown first based on your assessment. Each topic keeps the matching study guide and practice together.",
+    reportHeading: "Utah Aspire Plus Grade 9 Report",
+    reviewHeading: "Review Grade 9 Mistakes",
+    reviewDescription: "Review the Grade 9 questions you missed, see the correct answer, and study each explanation in one place.",
+    completeHeading: "Grade 9 Practice Complete",
+    assessmentTopicOrder: aspireGrade9AssessmentTopicOrder,
+    defaultStudyGuides: {}
+  },
+  aspireGrade10: {
+    key: "aspireGrade10",
+    label: "Utah Aspire Plus Math",
+    shortLabel: "Aspire Grade 10",
+    assessmentTitle: "Utah Aspire Plus Grade 10 Assessment",
+    welcomeTitle: "Start with a short Utah Aspire Plus Grade 10 assessment",
+    welcomeDescription: "Answer 10 Grade 10 / Secondary Math II questions, see your recommended focus areas, and jump into a grade-specific study plan.",
+    studyPlanHeading: "Your Utah Aspire Plus Grade 10 Study Plan",
+    studyPlanDescription: "Recommended Grade 10 topics are shown first based on your assessment. Each topic keeps the matching study guide and practice together.",
+    reportHeading: "Utah Aspire Plus Grade 10 Report",
+    reviewHeading: "Review Grade 10 Mistakes",
+    reviewDescription: "Review the Grade 10 questions you missed, see the correct answer, and study each explanation in one place.",
+    completeHeading: "Grade 10 Practice Complete",
+    assessmentTopicOrder: aspireGrade10AssessmentTopicOrder,
     defaultStudyGuides: {}
   }
 };
@@ -302,7 +363,9 @@ function migrateProfile(profile) {
   if (!nextProfile.tracks) {
     nextProfile.tracks = {
       placement: nextProfile.progress || getDefaultTrackProgress(),
-      act: getDefaultTrackProgress()
+      act: getDefaultTrackProgress(),
+      aspireGrade9: getDefaultTrackProgress(),
+      aspireGrade10: getDefaultTrackProgress()
     };
   }
 
@@ -314,6 +377,14 @@ function migrateProfile(profile) {
     nextProfile.tracks.act = getDefaultTrackProgress();
   }
 
+  if (!nextProfile.tracks.aspireGrade9) {
+    nextProfile.tracks.aspireGrade9 = getDefaultTrackProgress();
+  }
+
+  if (!nextProfile.tracks.aspireGrade10) {
+    nextProfile.tracks.aspireGrade10 = getDefaultTrackProgress();
+  }
+
   delete nextProfile.progress;
   return nextProfile;
 }
@@ -323,7 +394,9 @@ function getDefaultProfile(password) {
     password,
     tracks: {
       placement: getDefaultTrackProgress(),
-      act: getDefaultTrackProgress()
+      act: getDefaultTrackProgress(),
+      aspireGrade9: getDefaultTrackProgress(),
+      aspireGrade10: getDefaultTrackProgress()
     }
   };
 }
@@ -367,6 +440,7 @@ function getScreenTitle(screenName) {
   const titles = {
     login: "Login",
     testSelection: "Choose Test",
+    aspireSelection: "Choose Aspire Test",
     welcome: "Assessment",
     report: "Assessment",
     studyPlan: "Study Plan",
@@ -386,6 +460,10 @@ function getScreenTitle(screenName) {
 
 function getStepperStep(screenName) {
   if (screenName === "testSelection") {
+    return "choose";
+  }
+
+  if (screenName === "aspireSelection") {
     return "choose";
   }
 
@@ -1039,6 +1117,25 @@ function openTestSelection() {
   showScreen("testSelection");
 }
 
+function openAspireSelection() {
+  saveCurrentUserProgress();
+  activeTrackKey = null;
+  quizTopics = [];
+  studyGuides = {};
+  resetTransientState();
+  totalXp = 0;
+  topicPerformance = {};
+  mistakesByTopic = {};
+  recommendedTopicIds = [];
+  lastAssessmentPerfect = false;
+  assessmentAttempts = 0;
+  currentAssessmentLevel = 1;
+  updateTrackContent();
+  updateGlobalLevelDisplay();
+  announceStatus("Choose the Utah Aspire Plus grade you want to prepare for.");
+  showScreen("aspireSelection");
+}
+
 function enterTrack(trackKey) {
   const progress = getProgressForCurrentUser(trackKey);
   loadTrackState(trackKey, progress);
@@ -1153,7 +1250,11 @@ function updateTrackContent() {
   const activeTrack = getActiveTrack();
   const shortLabel = activeTrack?.shortLabel || "Math Prep";
 
-  startAssessmentButton.textContent = activeTrack?.key === "act" ? "Start ACT Assessment" : "Start Assessment";
+  startAssessmentButton.textContent = activeTrack?.key === "act"
+    ? "Start ACT Assessment"
+    : activeTrack?.key?.startsWith("aspire")
+      ? `Start ${activeTrack.shortLabel} Assessment`
+      : "Start Assessment";
   reportHeading.textContent = activeTrack?.reportHeading || "Assessment Report";
   studyPlanHeading.textContent = activeTrack?.studyPlanHeading || "Your Study Plan";
   studyPlanDescription.textContent = activeTrack?.studyPlanDescription || "Recommended topics are shown first based on your assessment. You can still study any topic.";
@@ -1178,7 +1279,11 @@ function updateTrackContent() {
     welcomeDescription.textContent = activeTrack?.welcomeDescription || "Answer a few mixed math questions, see your recommended focus areas, and get a study plan before you practice.";
   }
 
-  retakeAssessmentButton.textContent = activeTrack?.key === "act" ? "Retake ACT Assessment" : "Retake Assessment";
+  retakeAssessmentButton.textContent = activeTrack?.key === "act"
+    ? "Retake ACT Assessment"
+    : activeTrack?.key?.startsWith("aspire")
+      ? `Retake ${activeTrack.shortLabel} Assessment`
+      : "Retake Assessment";
   reviewMistakesBackButton.textContent = activeTrack ? `Back to ${shortLabel} Study Plan` : "Back to Study Plan";
   topicsButton.textContent = activeTrack ? `Back to ${shortLabel} Study Plan` : "Back to Study Plan";
   recommendedNextButton.textContent = recommendedTopicIds.length > 0 ? "Recommended Next" : "Start Practice";
@@ -1853,21 +1958,60 @@ function normalizeActStudyGuides(data) {
   }, {});
 }
 
+function normalizeTopicStudyGuides(data) {
+  return (data.topics || []).reduce((guides, topic) => {
+    guides[topic.topicId || topic.name] = topic;
+    return guides;
+  }, {});
+}
+
 async function loadTrackCatalog() {
-  const [placementResponse, actResponse, actGuidesResponse] = await Promise.all([
+  const [
+    placementResponse,
+    actResponse,
+    actGuidesResponse,
+    aspireGrade9Response,
+    aspireGrade10Response,
+    aspireGrade9GuidesResponse,
+    aspireGrade10GuidesResponse
+  ] = await Promise.all([
     fetch("apps/aleks.json"),
     fetch("apps/act_math_bank_actlike_v2_app.json"),
-    fetch("apps/act_math_study_guides_actlike_v2.json")
+    fetch("apps/act_math_study_guides_actlike_v2.json"),
+    fetch("apps/aspire_plus_grade9_math_bank.json"),
+    fetch("apps/aspire_plus_grade10_math_bank.json"),
+    fetch("apps/aspire_plus_grade9_study_guides.json"),
+    fetch("apps/aspire_plus_grade10_study_guides.json")
   ]);
 
-  if (!placementResponse.ok || !actResponse.ok || !actGuidesResponse.ok) {
+  if (
+    !placementResponse.ok ||
+    !actResponse.ok ||
+    !actGuidesResponse.ok ||
+    !aspireGrade9Response.ok ||
+    !aspireGrade10Response.ok ||
+    !aspireGrade9GuidesResponse.ok ||
+    !aspireGrade10GuidesResponse.ok
+  ) {
     throw new Error("Quiz files could not be loaded.");
   }
 
-  const [placementData, actData, actGuidesData] = await Promise.all([
+  const [
+    placementData,
+    actData,
+    actGuidesData,
+    aspireGrade9Data,
+    aspireGrade10Data,
+    aspireGrade9GuidesData,
+    aspireGrade10GuidesData
+  ] = await Promise.all([
     placementResponse.json(),
     actResponse.json(),
-    actGuidesResponse.json()
+    actGuidesResponse.json(),
+    aspireGrade9Response.json(),
+    aspireGrade10Response.json(),
+    aspireGrade9GuidesResponse.json(),
+    aspireGrade10GuidesResponse.json()
   ]);
 
   trackCatalog = {
@@ -1882,6 +2026,18 @@ async function loadTrackCatalog() {
       title: actData.title || trackConfigs.act.label,
       topics: normalizeTopics(actData),
       studyGuides: normalizeActStudyGuides(actGuidesData)
+    },
+    aspireGrade9: {
+      ...trackConfigs.aspireGrade9,
+      title: aspireGrade9Data.title || trackConfigs.aspireGrade9.label,
+      topics: normalizeTopics(aspireGrade9Data),
+      studyGuides: normalizeTopicStudyGuides(aspireGrade9GuidesData)
+    },
+    aspireGrade10: {
+      ...trackConfigs.aspireGrade10,
+      title: aspireGrade10Data.title || trackConfigs.aspireGrade10.label,
+      topics: normalizeTopics(aspireGrade10Data),
+      studyGuides: normalizeTopicStudyGuides(aspireGrade10GuidesData)
     }
   };
 }
@@ -1911,6 +2067,10 @@ loginForm.addEventListener("submit", handleLogin);
 guestButton.addEventListener("click", handleGuestMode);
 placementTrackButton.addEventListener("click", () => enterTrack("placement"));
 actTrackButton.addEventListener("click", () => enterTrack("act"));
+aspireTrackButton.addEventListener("click", openAspireSelection);
+aspireGrade9Button.addEventListener("click", () => enterTrack("aspireGrade9"));
+aspireGrade10Button.addEventListener("click", () => enterTrack("aspireGrade10"));
+aspireSelectionBackButton.addEventListener("click", openTestSelection);
 startAssessmentButton.addEventListener("click", startAssessment);
 stepperButtons.forEach((button) => {
   button.addEventListener("click", () => handleStepperNavigation(button.dataset.stepButton));

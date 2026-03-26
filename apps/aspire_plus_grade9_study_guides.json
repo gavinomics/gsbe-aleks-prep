@@ -1,0 +1,295 @@
+{
+  "title": "Utah Aspire Plus Math Grade 9 Study Guides",
+  "metadata": {
+    "description": "Grade 9 / Secondary Math I study guides for Utah Aspire Plus-style preparation.",
+    "topicCount": 10,
+    "sourceAlignment": [
+      "Utah Aspire Plus Grade 9 mathematics blueprint",
+      "Utah Secondary Mathematics I course overview",
+      "ACT Aspire early high school exemplar mathematics items"
+    ],
+    "notes": "Study guide text is original and paired with free YouTube resources from established math-education channels."
+  },
+  "topics": [
+    {
+      "topicId": "numbers_rates_percents",
+      "name": "Numbers, Rates, and Percents",
+      "lesson": "Utah Aspire Plus grade 9 math still expects strong numerical fluency. Students should move comfortably between fractions, decimals, percents, unit rates, and proportional reasoning so they can focus on the structure of harder algebra and modeling problems.",
+      "keySkills": [
+        "fraction/decimal/percent conversions",
+        "unit rates and scale factors",
+        "proportions",
+        "percent increase and decrease"
+      ],
+      "videos": [
+        {
+          "title": "Fractions and Decimals",
+          "url": "https://www.youtube.com/watch?v=Mst8iZjIpFE",
+          "channel": "Math Antics"
+        },
+        {
+          "title": "What Are Percentages?",
+          "url": "https://www.youtube.com/watch?v=JeVSmq1Nrpw",
+          "channel": "Math Antics"
+        },
+        {
+          "title": "Proportion word problem example",
+          "url": "https://www.youtube.com/watch?v=s8_14yxp1lQ",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "expressions_exponents",
+      "name": "Expressions and Exponents",
+      "lesson": "Students should simplify expressions accurately and use exponent rules with confidence. On Aspire-style tasks, this shows up inside larger algebra and function problems, not just as isolated drills.",
+      "keySkills": [
+        "combining like terms",
+        "using exponent rules",
+        "scientific notation",
+        "writing equivalent expressions"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to exponents",
+          "url": "https://www.youtube.com/watch?v=XZRQhkii0h0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Exponent properties 1",
+          "url": "https://www.youtube.com/watch?v=-TpiL4J_yUA",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Scientific notation examples",
+          "url": "https://www.youtube.com/watch?v=i6lfVUp5RW8",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "linear_equations",
+      "name": "Linear Equations",
+      "lesson": "Linear equations are a core Secondary Math I skill. Students should solve one-variable equations, write equations from contexts, and explain what a solution means in the problem.",
+      "keySkills": [
+        "one-variable equations",
+        "variables on both sides",
+        "literal equations",
+        "word-problem setup"
+      ],
+      "videos": [
+        {
+          "title": "Algebra: Linear equations 1",
+          "url": "https://www.youtube.com/watch?v=bAerID24QJ0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Algebra: Linear equations 2",
+          "url": "https://www.youtube.com/watch?v=DopnmxeMt-s",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Basic linear equation word problem",
+          "url": "https://www.youtube.com/watch?v=roHvNNFXr4k",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "inequalities_absolute_value",
+      "name": "Linear Inequalities and Absolute Value",
+      "lesson": "Students should solve and interpret inequalities, especially when a context limits what answers make sense. Absolute value appears as distance from zero and can create two-case reasoning.",
+      "keySkills": [
+        "one-variable inequalities",
+        "interval notation",
+        "absolute value equations",
+        "absolute value inequalities"
+      ],
+      "videos": [
+        {
+          "title": "Solving Absolute Value Equations and Inequalities",
+          "url": "https://www.youtube.com/watch?v=3LN0IDooaIE",
+          "channel": "The Organic Chemistry Tutor"
+        },
+        {
+          "title": "How To Solve Absolute Value Inequalities",
+          "url": "https://www.youtube.com/watch?v=30PrH3OIiqk",
+          "channel": "The Organic Chemistry Tutor"
+        },
+        {
+          "title": "Solving inequalities with interval notation",
+          "url": "https://www.youtube.com/watch?v=tm49BYGw_Sg",
+          "channel": "The Organic Chemistry Tutor"
+        }
+      ]
+    },
+    {
+      "topicId": "systems_modeling",
+      "name": "Systems of Equations and Modeling",
+      "lesson": "Systems show up when two relationships must be true at the same time. Students should connect tables, graphs, and equations and use systems to model prices, mixtures, and break-even situations.",
+      "keySkills": [
+        "substitution",
+        "elimination",
+        "interpreting intersections",
+        "word problems with two variables"
+      ],
+      "videos": [
+        {
+          "title": "Solving systems by elimination",
+          "url": "https://www.youtube.com/watch?v=vA-55wZtLeE",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Solving systems by substitution example",
+          "url": "https://www.youtube.com/watch?v=GWZKz4F9hWM",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Systems of equations word problems",
+          "url": "https://www.youtube.com/watch?v=z1hz8-Kri1E",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "functions_linear_graphs",
+      "name": "Functions and Linear Graphs",
+      "lesson": "Secondary Math I emphasizes function notation, multiple representations, slope, intercepts, and patterns in tables and graphs. Students should be able to connect a rule to a graph and explain what features mean.",
+      "keySkills": [
+        "function notation",
+        "slope and intercepts",
+        "reading tables and graphs",
+        "linear patterns"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to functions",
+          "url": "https://www.youtube.com/watch?v=VhokQhjl5t0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "How to interpret an expression with function notation",
+          "url": "https://www.youtube.com/watch?v=HERb3x0aw6c",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Graphs of linear equations",
+          "url": "https://www.youtube.com/watch?v=rgvysb9emcQ",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "exponential_relationships",
+      "name": "Exponential Relationships",
+      "lesson": "Grade 9 students often compare linear and exponential patterns. The goal is to notice repeated multiplication, write exponential rules from a context, and decide when exponential growth or decay is the better model.",
+      "keySkills": [
+        "recognizing exponential growth/decay",
+        "writing exponential models",
+        "growth factors",
+        "comparing linear and exponential patterns"
+      ],
+      "videos": [
+        {
+          "title": "Exponential growth functions",
+          "url": "https://www.youtube.com/watch?v=6WMZ7J0wwMI",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Graphs of exponential growth",
+          "url": "https://www.youtube.com/watch?v=m265q9FL7w8",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Linear vs. exponential growth: from data",
+          "url": "https://www.youtube.com/watch?v=721RrH6auoU",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "transformations_congruence",
+      "name": "Transformations and Congruence",
+      "lesson": "Utah Secondary Math I uses rigid motions and dilations to define congruence and similarity. Students should know how coordinates change under transformations and how scale factor affects perimeter and area.",
+      "keySkills": [
+        "translations, reflections, and rotations",
+        "dilations",
+        "congruence via rigid motions",
+        "similarity and scale factor"
+      ],
+      "videos": [
+        {
+          "title": "Introduction to transformations",
+          "url": "https://www.youtube.com/watch?v=XiAoUDfrar0",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Testing congruence by transformations example",
+          "url": "https://www.youtube.com/watch?v=Tn9U8hLu9aI",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Dilating shapes: shrinking",
+          "url": "https://www.youtube.com/watch?v=xAxgxUHzgaY",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "geometry_coordinate",
+      "name": "Geometry and Coordinate Geometry",
+      "lesson": "Students should use coordinates to find slope, distance, midpoint, and line relationships while also applying angle, triangle, and measurement ideas. Aspire-style problems often blend geometry with algebra or modeling.",
+      "keySkills": [
+        "midpoint and distance",
+        "parallel/perpendicular lines",
+        "triangle and angle reasoning",
+        "perimeter, area, and volume"
+      ],
+      "videos": [
+        {
+          "title": "Midpoint formula",
+          "url": "https://www.youtube.com/watch?v=Ez_-RwV9WVo",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Distance formula",
+          "url": "https://www.youtube.com/watch?v=nyZuite17Pc",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Equations of parallel and perpendicular lines",
+          "url": "https://www.youtube.com/watch?v=9hryH94KFJA",
+          "channel": "Khan Academy"
+        }
+      ]
+    },
+    {
+      "topicId": "statistics_probability_data",
+      "name": "Statistics, Probability, and Data",
+      "lesson": "Students should read tables and scatterplots, interpret probability in context, and use lines of best fit to make sensible predictions. The strongest responses explain why a model or probability calculation fits the situation.",
+      "keySkills": [
+        "mean/median/range",
+        "simple probability",
+        "scatterplots and association",
+        "line of best fit"
+      ],
+      "videos": [
+        {
+          "title": "Finding mean, median, and mode",
+          "url": "https://www.youtube.com/watch?v=k3aKKasOmIw",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Scatterplots \u2014 Basic example",
+          "url": "https://www.youtube.com/watch?v=j2HM_76Jqqk",
+          "channel": "Khan Academy"
+        },
+        {
+          "title": "Probability explained",
+          "url": "https://www.youtube.com/watch?v=uzkc-qNVoOk",
+          "channel": "Khan Academy"
+        }
+      ]
+    }
+  ]
+}
