@@ -14,12 +14,16 @@ const usernameInput = document.getElementById("username-input");
 const passwordInput = document.getElementById("password-input");
 const guestButton = document.getElementById("guest-button");
 const loginMessage = document.getElementById("login-message");
+const heroStats = document.getElementById("hero-stats");
+const appNav = document.getElementById("app-nav");
+const saveStatusText = document.getElementById("save-status-text");
+const appStepper = document.getElementById("app-stepper");
+const stepperButtons = Array.from(appStepper.querySelectorAll("[data-step-button]"));
+const appLiveRegion = document.getElementById("app-live-region");
 const placementTrackButton = document.getElementById("placement-track-button");
 const actTrackButton = document.getElementById("act-track-button");
-const chooseTestButton = document.getElementById("choose-test-button");
 const currentTrackText = document.getElementById("current-track-text");
 const startAssessmentButton = document.getElementById("start-assessment-button");
-const viewStudyPlanButton = document.getElementById("view-study-plan-button");
 const recommendedTopicList = document.getElementById("recommended-topic-list");
 const allTopicList = document.getElementById("all-topic-list");
 const studyPlanHeading = document.getElementById("study-plan-heading");
@@ -74,7 +78,16 @@ const topicError = document.getElementById("topic-error");
 
 const USERS_STORAGE_KEY = "codexapps_users";
 const CURRENT_USER_STORAGE_KEY = "codexapps_current_user";
+const APP_TITLE = "CEC Math Prep";
+const APP_TITLE_SUFFIX = "Math Preparation for the Goddard School of Business & Economics";
 const difficultyOrder = ["easy", "medium", "hard"];
+const KNOWN_VIDEO_CHANNELS = [
+  "Khan Academy",
+  "Math Antics",
+  "The Organic Chemistry Tutor",
+  "PatrickJMT",
+  "Algebra Basics"
+];
 const superscriptMap = {
   0: "⁰",
   1: "¹",
@@ -252,6 +265,7 @@ let currentUser = null;
 let isGuestMode = false;
 let assessmentAttempts = 0;
 let currentAssessmentLevel = 1;
+let lastSaveMessage = "";
 
 function getStoredUsers() {
   const rawUsers = localStorage.getItem(USERS_STORAGE_KEY);
@@ -323,10 +337,221 @@ function getTrackProgress(profile, trackKey) {
   return migratedProfile.tracks[trackKey] || getDefaultTrackProgress();
 }
 
-function showScreen(screenName) {
+function announceStatus(message, options = {}) {
+  if (!message) {
+    return;
+  }
+
+  const { visible = false } = options;
+
+  appLiveRegion.textContent = "";
+  requestAnimationFrame(() => {
+    appLiveRegion.textContent = message;
+  });
+
+  if (visible) {
+    saveStatusText.textContent = message;
+    saveStatusText.classList.remove("hidden");
+  }
+}
+
+function getCurrentScreenName() {
+  return Object.entries(screens).find(([, screen]) => !screen.hidden)?.[0] || "login";
+}
+
+function getScreenHeading(screen) {
+  return screen?.querySelector("h2, h1, h3") || null;
+}
+
+function getScreenTitle(screenName) {
+  const titles = {
+    login: "Login",
+    testSelection: "Choose Test",
+    welcome: "Assessment",
+    report: "Assessment",
+    studyPlan: "Study Plan",
+    reviewMistakes: "Study Plan",
+    quiz: currentMode === "assessment" ? "Assessment" : "Study Plan",
+    complete: "Study Plan"
+  };
+
+  const screenTitle = titles[screenName];
+
+  if (!screenTitle) {
+    return `${APP_TITLE} | ${APP_TITLE_SUFFIX}`;
+  }
+
+  return `${screenTitle} | ${APP_TITLE} | ${APP_TITLE_SUFFIX}`;
+}
+
+function getStepperStep(screenName) {
+  if (screenName === "testSelection") {
+    return "choose";
+  }
+
+  if (["welcome", "report"].includes(screenName)) {
+    return "assessment";
+  }
+
+  if (screenName === "quiz") {
+    return currentMode === "assessment" ? "assessment" : "study";
+  }
+
+  if (["studyPlan", "reviewMistakes", "complete"].includes(screenName)) {
+    return "study";
+  }
+
+  return null;
+}
+
+function hasAssessmentStartedOrCompleted(screenName = getCurrentScreenName()) {
+  return Boolean(
+    getActiveTrack() &&
+    (
+      assessmentAttempts > 0 ||
+      ["welcome", "report"].includes(screenName) ||
+      (screenName === "quiz" && currentMode === "assessment")
+    )
+  );
+}
+
+function hasAssessmentCompleted() {
+  return assessmentAttempts > 0;
+}
+
+function getAssessmentNavigationTarget(screenName = getCurrentScreenName()) {
+  if (screenName === "welcome" || (!hasAssessmentCompleted() && hasAssessmentStartedOrCompleted(screenName))) {
+    return "welcome";
+  }
+
+  return "report";
+}
+
+function canNavigateToStep(stepName, screenName = getCurrentScreenName()) {
+  if (stepName === "choose") {
+    return true;
+  }
+
+  if (stepName === "assessment") {
+    return hasAssessmentStartedOrCompleted(screenName);
+  }
+
+  if (stepName === "study") {
+    return hasAssessmentCompleted();
+  }
+
+  return false;
+}
+
+function handleStepperNavigation(stepName) {
+  if (!canNavigateToStep(stepName)) {
+    return;
+  }
+
+  if (stepName === "choose") {
+    openTestSelection();
+    return;
+  }
+
+  if (stepName === "assessment") {
+    showScreen(getAssessmentNavigationTarget());
+    return;
+  }
+
+  if (stepName === "study") {
+    showStudyPlan();
+  }
+}
+
+function updateStepper(screenName) {
+  const currentStep = getStepperStep(screenName);
+  const shouldShow = Boolean((currentUser || isGuestMode) && currentStep && screenName !== "login");
+
+  appStepper.classList.toggle("hidden", !shouldShow);
+  appStepper.setAttribute("aria-hidden", shouldShow ? "false" : "true");
+
+  appStepper.querySelectorAll("[data-step]").forEach((stepItem) => {
+    const stepName = stepItem.dataset.step;
+    const isCurrent = stepName === currentStep;
+    const stepButton = stepItem.querySelector("[data-step-button]");
+    const isEnabled = canNavigateToStep(stepName, screenName);
+
+    stepItem.classList.toggle("is-current", isCurrent);
+
+    if (stepButton) {
+      stepButton.disabled = !isEnabled;
+
+      if (isCurrent) {
+        stepButton.setAttribute("aria-current", "step");
+      } else {
+        stepButton.removeAttribute("aria-current");
+      }
+    }
+  });
+}
+
+function focusScreenHeading(screenName) {
+  const heading = getScreenHeading(screens[screenName]);
+
+  if (!heading) {
+    return;
+  }
+
+  heading.setAttribute("tabindex", "-1");
+  heading.focus();
+}
+
+function updateSaveStatus() {
+  const hasSession = currentUser || isGuestMode;
+
+  if (!hasSession) {
+    saveStatusText.textContent = "";
+    saveStatusText.classList.add("hidden");
+    return;
+  }
+
+  if (isGuestMode) {
+    saveStatusText.textContent = "Guest mode: progress is not saved";
+  } else if (lastSaveMessage) {
+    saveStatusText.textContent = `Saved on this browser/device. ${lastSaveMessage}`;
+  } else {
+    saveStatusText.textContent = "Saved on this browser/device";
+  }
+
+  saveStatusText.classList.remove("hidden");
+}
+
+function updateAppChrome(screenName) {
+  const hasSession = Boolean(currentUser || isGuestMode);
+  const showActions = hasSession;
+
+  heroStats.classList.toggle("hidden", !hasSession);
+  appNav.classList.toggle("hidden", !showActions);
+  updateSaveStatus();
+  updateStepper(screenName);
+}
+
+function showScreen(screenName, options = {}) {
+  const { focusHeading = true } = options;
   topicError.classList.add("hidden");
-  Object.values(screens).forEach((screen) => screen.classList.add("hidden"));
-  screens[screenName].classList.remove("hidden");
+  Object.entries(screens).forEach(([name, screen]) => {
+    const isActive = name === screenName;
+
+    screen.classList.toggle("hidden", !isActive);
+    screen.hidden = !isActive;
+    screen.setAttribute("aria-hidden", isActive ? "false" : "true");
+
+    if ("inert" in screen) {
+      screen.inert = !isActive;
+    }
+  });
+
+  document.title = getScreenTitle(screenName);
+  updateAppChrome(screenName);
+
+  if (focusHeading) {
+    requestAnimationFrame(() => focusScreenHeading(screenName));
+  }
 }
 
 function showLoginMessage(message, isError = false) {
@@ -358,7 +583,7 @@ function updateHeaderIdentity() {
   const activeTrack = getActiveTrack();
   currentTrackText.classList.toggle("hidden", !activeTrack);
   currentTrackText.textContent = activeTrack ? `Track: ${activeTrack.shortLabel}` : "";
-  chooseTestButton.classList.toggle("hidden", !(currentUser || isGuestMode) || !activeTrack);
+  updateAppChrome(getCurrentScreenName());
 }
 
 function updateGlobalLevelDisplay() {
@@ -751,6 +976,9 @@ function saveCurrentUserProgress() {
 
   users[currentUser] = nextProfile;
   saveStoredUsers(users);
+  lastSaveMessage = "Last saved just now.";
+  updateSaveStatus();
+  announceStatus("Progress saved on this browser and device.");
 }
 
 function loadSavedProgress(progress = {}) {
@@ -807,6 +1035,7 @@ function openTestSelection() {
   assessmentAttempts = 0;
   currentAssessmentLevel = 1;
   updateGlobalLevelDisplay();
+  announceStatus("Choose the test you want to prepare for.");
   showScreen("testSelection");
 }
 
@@ -815,12 +1044,14 @@ function enterTrack(trackKey) {
   loadTrackState(trackKey, progress);
   buildStudyPlan();
   updateHeaderIdentity();
+  announceStatus(`${getActiveTrack()?.shortLabel || "Track"} selected.`);
   showScreen(recommendedTopicIds.length > 0 || assessmentAttempts > 0 ? "studyPlan" : "welcome");
 }
 
 function loginAsSavedUser(username, profile) {
   currentUser = username;
   isGuestMode = false;
+  lastSaveMessage = "";
   const users = getStoredUsers();
   users[username] = migrateProfile(profile);
   saveStoredUsers(users);
@@ -877,6 +1108,7 @@ function handleGuestMode() {
   clearLoginMessage();
   currentUser = null;
   isGuestMode = true;
+  lastSaveMessage = "";
   activeTrackKey = null;
   localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
   totalXp = 0;
@@ -891,6 +1123,7 @@ function handleGuestMode() {
   updateGlobalLevelDisplay();
   showScreen("testSelection");
   showLoginMessage("Guest mode is active. Progress will not be saved.");
+  announceStatus("Guest mode is active. Progress will not be saved.", { visible: true });
 }
 
 function handleLogout() {
@@ -898,6 +1131,7 @@ function handleLogout() {
   currentUser = null;
   isGuestMode = false;
   activeTrackKey = null;
+  lastSaveMessage = "";
   localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
   totalXp = 0;
   topicPerformance = {};
@@ -919,7 +1153,6 @@ function updateTrackContent() {
   const activeTrack = getActiveTrack();
   const shortLabel = activeTrack?.shortLabel || "Math Prep";
 
-  document.title = activeTrack ? `${activeTrack.label} Prep` : "Weber State Math Prep";
   startAssessmentButton.textContent = activeTrack?.key === "act" ? "Start ACT Assessment" : "Start Assessment";
   reportHeading.textContent = activeTrack?.reportHeading || "Assessment Report";
   studyPlanHeading.textContent = activeTrack?.studyPlanHeading || "Your Study Plan";
@@ -945,10 +1178,10 @@ function updateTrackContent() {
     welcomeDescription.textContent = activeTrack?.welcomeDescription || "Answer a few mixed math questions, see your recommended focus areas, and get a study plan before you practice.";
   }
 
-  viewStudyPlanButton.textContent = activeTrack?.key === "act" ? "View ACT Study Plan" : "View Study Plan";
   retakeAssessmentButton.textContent = activeTrack?.key === "act" ? "Retake ACT Assessment" : "Retake Assessment";
   reviewMistakesBackButton.textContent = activeTrack ? `Back to ${shortLabel} Study Plan` : "Back to Study Plan";
   topicsButton.textContent = activeTrack ? `Back to ${shortLabel} Study Plan` : "Back to Study Plan";
+  recommendedNextButton.textContent = recommendedTopicIds.length > 0 ? "Recommended Next" : "Start Practice";
   updateHeaderIdentity();
 }
 
@@ -1081,7 +1314,7 @@ function buildPracticeCard(topic, isRecommended) {
 
   const title = document.createElement("h4");
   title.className = "study-card-title";
-  title.textContent = topic.name;
+  title.textContent = "Build mastery";
   card.appendChild(title);
 
   const meta = document.createElement("p");
@@ -1093,7 +1326,7 @@ function buildPracticeCard(topic, isRecommended) {
   button.className = "topic-button practice-button";
   button.type = "button";
   button.innerHTML = `
-    <span>Start Practice</span>
+    <span>${isRecommended ? "Practice This Topic" : "Start Practice"}</span>
     <span class="topic-meta">Mastery ${getTopicMastery(topic.id)}%</span>
   `;
   button.addEventListener("click", () => startTopic(topic.id));
@@ -1114,7 +1347,7 @@ function buildStudyGuideCard(topic) {
 
   const title = document.createElement("h4");
   title.className = "study-card-title";
-  title.textContent = topic.name;
+  title.textContent = "Review key ideas";
   card.appendChild(title);
 
   if (guide?.lesson) {
@@ -1150,7 +1383,7 @@ function buildStudyGuideCard(topic) {
     link.href = video.url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
-    link.textContent = video.title;
+    link.textContent = formatVideoLabel(video.title);
     videoList.appendChild(link);
   });
 
@@ -1158,16 +1391,71 @@ function buildStudyGuideCard(topic) {
   return card;
 }
 
+function formatVideoLabel(title = "") {
+  const trimmedTitle = title.trim();
+
+  if (!trimmedTitle) {
+    return "YouTube";
+  }
+
+  if (trimmedTitle.includes(":")) {
+    return trimmedTitle;
+  }
+
+  const matchedChannel = KNOWN_VIDEO_CHANNELS.find((channel) => trimmedTitle.startsWith(channel));
+
+  if (!matchedChannel) {
+    return `YouTube: ${trimmedTitle}`;
+  }
+
+  const normalizedTitle = trimmedTitle
+    .slice(matchedChannel.length)
+    .replace(/^[\s/\\|:-]+/, "")
+    .trim();
+
+  return normalizedTitle ? `${matchedChannel}: ${normalizedTitle}` : matchedChannel;
+}
+
+function getTopicRecommendationReason(topic, isRecommended) {
+  if (isRecommended) {
+    return "Recommended because this topic needs more review from your assessment.";
+  }
+
+  if (lastAssessmentPerfect) {
+    return "Optional review to stay sharp across all areas.";
+  }
+
+  return "You can still study this topic any time.";
+}
+
 function buildStudyPlanRow(topic, isRecommended) {
-  const row = document.createElement("div");
+  const row = document.createElement("section");
   row.className = "study-plan-row";
 
   if (isRecommended) {
     row.classList.add("recommended-row");
   }
 
-  row.appendChild(buildStudyGuideCard(topic));
-  row.appendChild(buildPracticeCard(topic, isRecommended));
+  const header = document.createElement("div");
+  header.className = "topic-unit-header";
+
+  const title = document.createElement("h4");
+  title.className = "topic-unit-title";
+  title.textContent = topic.name;
+  header.appendChild(title);
+
+  const reason = document.createElement("p");
+  reason.className = "topic-unit-reason";
+  reason.textContent = getTopicRecommendationReason(topic, isRecommended);
+  header.appendChild(reason);
+
+  const cards = document.createElement("div");
+  cards.className = "topic-unit-cards";
+  cards.appendChild(buildStudyGuideCard(topic));
+  cards.appendChild(buildPracticeCard(topic, isRecommended));
+
+  row.appendChild(header);
+  row.appendChild(cards);
   return row;
 }
 
@@ -1186,9 +1474,9 @@ function buildStudyPlan() {
   const orderedTopics = getOrderedTopics();
 
   if (lastAssessmentPerfect) {
-    studyPlanFocus.textContent = "Great work. We recommend you study all areas so you are as prepared as possible.";
+    studyPlanFocus.textContent = "Great work. You covered every assessment topic correctly, so use the full plan for extra review.";
   } else if (recommendedTopics.length > 0) {
-    studyPlanFocus.textContent = `Priority areas: ${recommendedTopics.map((topic) => topic.name).join(", ")}`;
+    studyPlanFocus.textContent = `Start where it matters most: ${recommendedTopics.map((topic) => topic.name).join(", ")}`;
   } else {
     studyPlanFocus.textContent = "Complete the diagnostic to see priority study areas.";
   }
@@ -1202,11 +1490,16 @@ function buildStudyPlan() {
   });
 
   if (recommendedTopicList.children.length === 0) {
-    const message = document.createElement("p");
-    message.className = "panel-text";
-    message.textContent = "You are in good shape across the diagnostic. Start anywhere for extra review.";
+    const message = document.createElement("div");
+    message.className = "success-state";
+    message.innerHTML = `
+      <p class="success-state-title">Assessment complete. You are in strong shape.</p>
+      <p class="panel-text">Study all areas for extra review, or jump into any topic to stay ready.</p>
+    `;
     recommendedTopicList.appendChild(message);
   }
+
+  announceStatus("Study recommendations updated.");
 }
 
 function renderReviewMistakes() {
@@ -1498,6 +1791,7 @@ function showAssessmentReport() {
 
   buildStudyPlan();
   saveCurrentUserProgress();
+  announceStatus("Assessment complete. Recommendations updated.");
   showScreen("report");
 }
 
@@ -1520,6 +1814,7 @@ function showCompleteScreen() {
 
   buildStudyPlan();
   saveCurrentUserProgress();
+  announceStatus(currentSessionType === "review" ? "Review session complete." : "Practice session complete.");
   showScreen("complete");
 }
 
@@ -1616,9 +1911,10 @@ loginForm.addEventListener("submit", handleLogin);
 guestButton.addEventListener("click", handleGuestMode);
 placementTrackButton.addEventListener("click", () => enterTrack("placement"));
 actTrackButton.addEventListener("click", () => enterTrack("act"));
-chooseTestButton.addEventListener("click", openTestSelection);
 startAssessmentButton.addEventListener("click", startAssessment);
-viewStudyPlanButton.addEventListener("click", showStudyPlan);
+stepperButtons.forEach((button) => {
+  button.addEventListener("click", () => handleStepperNavigation(button.dataset.stepButton));
+});
 recommendedNextButton.addEventListener("click", () => {
   const topicId = getRecommendedNextTopicId();
 

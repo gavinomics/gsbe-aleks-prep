@@ -3,12 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Weber State Math Placement Prep</title>
+  <title>CEC Math Prep | Math Preparation for the Goddard School of Business &amp; Economics</title>
+  <meta
+    name="description"
+    content="Prepare for math placement and ACT with CEC Math Prep. Save time, save money, and place higher."
+  >
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main class="app-shell">
-    <header class="hero">
+  <a class="skip-link" href="#app-main">Skip to main content</a>
+  <div class="app-shell">
+    <header class="hero" role="banner">
       <div class="hero-brand">
         <img
           class="hero-logo"
@@ -16,35 +21,43 @@
           alt="CEC logo"
         >
         <div class="hero-copy">
-          <h1>Weber State Math Placement Prep</h1>
+          <h1>Crossroads Math Placement Prep</h1>
           <p class="intro">Goddard School of Business and Economics</p>
         </div>
       </div>
-      <div class="hero-stats">
+      <div id="hero-stats" class="hero-stats">
         <p id="current-user-text" class="hero-stat hidden">User: Guest</p>
         <p id="current-track-text" class="hero-stat hidden">Track: Math Placement</p>
         <p id="global-level-text" class="hero-stat">Level 1</p>
         <p id="global-xp-text" class="hero-stat">Total XP: 0</p>
       </div>
-      <button id="choose-test-button" class="secondary-button hero-chooser hidden" type="button">Choose Test</button>
-      <button id="logout-button" class="secondary-button hero-logout hidden" type="button">Logout</button>
+      <nav id="app-nav" class="hero-actions hidden" aria-label="Account and study navigation">
+        <button id="logout-button" class="secondary-button hero-logout" type="button">Logout</button>
+      </nav>
+      <p id="save-status-text" class="save-status hidden" aria-live="polite"></p>
+      <ol id="app-stepper" class="app-stepper hidden" aria-label="Study steps">
+        <li data-step="choose">
+          <button class="stepper-button" data-step-button="choose" type="button">Choose Test</button>
+        </li>
+        <li data-step="assessment">
+          <button class="stepper-button" data-step-button="assessment" type="button">Assessment</button>
+        </li>
+        <li data-step="study">
+          <button class="stepper-button" data-step-button="study" type="button">Study Plan</button>
+        </li>
+      </ol>
     </header>
 
-    <div class="login-stack">
-      <div class="welcome-message" aria-label="motivational message">
-        <p class="welcome-message-lead">Place higher. Save time. Save money.</p>
-        <p class="welcome-message-body">
-          A little practice now can help you skip extra math classes and move faster toward your degree.
-        </p>
-        <p class="welcome-message-body">
-          Developed by the Crossroads Economics Center in collaboration with the Department of Economics and the Goddard School of Business and Economics at Weber State University.
-        </p>
-      </div>
+    <main id="app-main" class="app-main" tabindex="-1">
       <section id="login-screen" class="panel">
         <div class="welcome-badge">Student Login</div>
         <h2>Login or create an account</h2>
+        <p class="welcome-message-lead">Place higher. Save time. Save money.</p>
         <p class="panel-text">
           Enter a username and password to save your Math Placement prep progress on this device.
+        </p>
+        <p class="panel-text">
+          Start where it matters most with a short assessment and a focused study plan.
         </p>
         <form id="login-form" class="login-form">
           <label class="input-group" for="username-input">
@@ -58,15 +71,15 @@
           <button id="login-button" class="primary-button" type="submit">Login / Create Account</button>
         </form>
         <div class="login-note" aria-label="progress saving note">
-          <p class="login-note-title">How saving works</p>
+          <p class="login-note-title">Same browser / same device</p>
           <p class="login-note-text">
             Your progress saves only in this browser on this device. If you switch devices or browsers, it will not follow you. On school computers, it may only stay saved if you use the same browser profile and the computer does not clear data when you sign out.
           </p>
         </div>
         <button id="guest-button" class="secondary-button" type="button">Continue as Guest</button>
+        <p class="guest-note">Guest progress won’t be saved.</p>
         <p id="login-message" class="message hidden" aria-live="polite"></p>
       </section>
-    </div>
 
     <section id="test-selection-screen" class="panel hidden">
       <div class="welcome-badge">Choose Your Track</div>
@@ -75,8 +88,8 @@
         Pick a test to use the matching assessment, study plan, question bank, and study guides.
       </p>
       <div class="track-selection">
-        <button id="placement-track-button" class="primary-button track-button" type="button">Math Placement (ALEKS / ACCUPLACER)</button>
-        <button id="act-track-button" class="primary-button track-button" type="button">ACT Math</button>
+        <button id="placement-track-button" class="secondary-button track-button" type="button">Math Placement (ALEKS / ACCUPLACER)</button>
+        <button id="act-track-button" class="secondary-button track-button" type="button">ACT Math</button>
       </div>
     </section>
 
@@ -99,7 +112,7 @@
           A little practice now can help you skip extra math classes and move faster toward your degree.
         </p>
         <p class="welcome-message-body">
-          Developed by the Crossroads Economics Center in collaboration with the Department of Economics and the Goddard School of Business and Economics at Weber State University.
+          Developed by the Crossroads Economics Center in collaboration with the Department of Economics and the Goddard School of Business and Economics at Crossroads University.
         </p>
       </div>
       <button id="start-assessment-button" class="primary-button" type="button">Start Assessment</button>
@@ -112,7 +125,6 @@
         <p class="report-label">Recommended Focus</p>
         <p id="focus-text" class="report-value"></p>
       </div>
-      <button id="view-study-plan-button" class="primary-button" type="button">View Study Plan</button>
     </section>
 
     <section id="study-plan-screen" class="panel hidden">
@@ -125,6 +137,7 @@
         <button id="review-mistakes-button" class="secondary-button" type="button">Review Mistakes</button>
         <button id="retake-assessment-button" class="secondary-button" type="button">Retake Assessment</button>
       </div>
+      <p class="study-helper-text">Your recommendations update after each assessment.</p>
 
       <div class="study-section">
         <div class="section-header">
@@ -155,6 +168,7 @@
       </div>
       <div id="review-mistakes-empty" class="review-empty hidden">
         <p class="review-empty-title">No mistakes to review. Great work.</p>
+        <p class="panel-text review-empty-text">You can move on with confidence or keep practicing any topic for extra review.</p>
       </div>
       <div id="review-mistakes-list" class="review-list"></div>
     </section>
@@ -223,7 +237,12 @@
     </section>
 
     <p id="topic-error" class="message error hidden" aria-live="polite"></p>
-  </main>
+      <p id="app-live-region" class="sr-only" aria-live="polite" aria-atomic="true"></p>
+    </main>
+    <footer class="site-footer">
+      <p class="site-footer-text">Crossroads Economics Center at Crossroads University</p>
+    </footer>
+  </div>
 
   <script src="study-guides.js"></script>
   <script src="app.js"></script>
