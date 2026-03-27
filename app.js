@@ -1423,10 +1423,12 @@ function loginAsAuthenticatedUser(email, uid, profile) {
 
 async function handleLogin(event) {
   event.preventDefault();
+  console.log("Login handler triggered");
   clearLoginMessage();
 
   const email = emailInput.value.trim();
   const password = passwordInput.value;
+  console.log("Email:", email);
 
   if (!email || !password) {
     showLoginMessage("Enter both an email and password.", true);
@@ -1434,9 +1436,12 @@ async function handleLogin(event) {
   }
 
   try {
+    console.log("Attempting Firebase login...");
     await window.firebaseSignIn(email, password);
+    console.log("Firebase login success");
     showLoginMessage(`Welcome back, ${email}.`);
   } catch (error) {
+    console.error("Firebase login error:", error.message);
     if (error?.code === "auth/user-not-found" || error?.code === "auth/invalid-credential") {
       try {
         await window.firebaseCreateAccount(email, password);
