@@ -521,6 +521,26 @@ function getCurrentTrackProgressPayload() {
   });
 }
 
+function cleanFirestoreValue(value) {
+  if (value === undefined) {
+    return null;
+  }
+
+  if (Array.isArray(value)) {
+    return value.map((item) => cleanFirestoreValue(item));
+  }
+
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value)
+        .filter(([, entryValue]) => entryValue !== undefined)
+        .map(([key, entryValue]) => [key, cleanFirestoreValue(entryValue)])
+    );
+  }
+
+  return value;
+}
+
 async function loadUserProfileFromFirestore(uid) {
   const timer = startPerfTimer("loadUserProfileFromFirestore", `uid=${uid}`);
   const db = await waitForFirebaseDB();
@@ -587,6 +607,12 @@ async function saveProgressToFirestore(trackKey, progress) {
     return;
   }
 
+  const cleanData = Object.fromEntries(
+    Object.entries(progress)
+      .filter(([, value]) => value !== undefined)
+      .map(([key, value]) => [key, cleanFirestoreValue(value)])
+  );
+
   await Promise.all([
     firestore.setDoc(
       firestore.doc(db, "users", currentUserUid),
@@ -599,7 +625,7 @@ async function saveProgressToFirestore(trackKey, progress) {
     ),
     firestore.setDoc(
       firestore.doc(db, "users", currentUserUid, "tracks", trackKey),
-      progress,
+      cleanData,
       { merge: true }
     )
   ]);
