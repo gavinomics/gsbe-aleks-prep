@@ -3,6 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; base-uri 'self'; object-src 'none'; script-src 'self' https://www.gstatic.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://www.googleapis.com https://firestore.googleapis.com https://securetoken.googleapis.com https://identitytoolkit.googleapis.com https://firebaseinstallations.googleapis.com https://www.google-analytics.com https://region1.google-analytics.com https://*.googleapis.com https://*.gstatic.com; frame-ancestors 'self'; font-src 'self'"
+  >
   <title>CEC Math Prep | Math Preparation for the Goddard School of Business &amp; Economics</title>
   <meta
     name="description"
@@ -54,15 +58,15 @@
         <h2>Login or create an account</h2>
         <p class="welcome-message-lead">Place higher. Save time. Save money.</p>
         <p class="panel-text">
-          Enter a username and password to save your Math Placement prep progress on this device.
+          Enter your email and password to save your progress to your account.
         </p>
         <p class="panel-text">
           Start where it matters most with a short assessment and a focused study plan.
         </p>
         <form id="login-form" class="login-form">
-          <label class="input-group" for="username-input">
-            <span>Username</span>
-            <input id="username-input" name="username" type="text" autocomplete="username" required>
+          <label class="input-group" for="email-input">
+            <span>Email</span>
+            <input id="email-input" name="email" type="email" autocomplete="email" required>
           </label>
           <label class="input-group" for="password-input">
             <span>Password</span>
@@ -71,9 +75,9 @@
           <button id="login-button" class="primary-button" type="submit">Login / Create Account</button>
         </form>
         <div class="login-note" aria-label="progress saving note">
-          <p class="login-note-title">Same browser / same device</p>
+          <p class="login-note-title">Cloud save</p>
           <p class="login-note-text">
-            Your progress saves only in this browser on this device. If you switch devices or browsers, it will not follow you. On school computers, it may only stay saved if you use the same browser profile and the computer does not clear data when you sign out.
+            Create an account to save progress across devices. Guest progress is not saved.
           </p>
         </div>
         <button id="guest-button" class="secondary-button" type="button">Continue as Guest</button>
@@ -263,32 +267,7 @@
   </div>
 
   <script src="study-guides.js"></script>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-app.js";
-    import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-analytics.js";
-    import { getAuth } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js";
-    import { getFirestore } from "https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAdMuaOh98n79zp_7iSCT1guLKZLVQUKk4",
-      authDomain: "cecmathprep.firebaseapp.com",
-      projectId: "cecmathprep",
-      storageBucket: "cecmathprep.firebasestorage.app",
-      messagingSenderId: "159084078564",
-      appId: "1:159084078564:web:7b90443099d6fb4e17d3f1",
-      measurementId: "G-BK33F2DKVK"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const analytics = getAnalytics(app);
-    const auth = getAuth(app);
-    const db = getFirestore(app);
-
-    // Expose globally for now (simple integration)
-    window.firebaseApp = app;
-    window.firebaseAuth = auth;
-    window.firebaseDB = db;
-  </script>
+  <script type="module" src="firebase-init.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,6 +1,5 @@
-const firebaseAuthModulePromise = typeof window.firebaseAuth === "undefined"
-  ? Promise.resolve(null)
-  : import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
+const firebaseAuthModulePromise = import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
+const firebaseFirestoreModulePromise = import("https://www.gstatic.com/firebasejs/12.11.0/firebase-firestore.js");
 
 async function waitForFirebaseAuth() {
   let attempts = 0;
@@ -10,6 +9,20 @@ async function waitForFirebaseAuth() {
   }
   return window.firebaseAuth;
 }
+
+async function waitForFirebaseDB() {
+  let attempts = 0;
+  while (!window.firebaseDB && attempts < 50) {
+    await new Promise(resolve => setTimeout(resolve, 100));
+    attempts++;
+  }
+  return window.firebaseDB;
+}
+
+let resolveInitialAuthState;
+const initialAuthStatePromise = new Promise((resolve) => {
+  resolveInitialAuthState = resolve;
+});
 
 const screens = {
   login: document.getElementById("login-screen"),
@@ -24,7 +37,7 @@ const screens = {
 };
 
 const loginForm = document.getElementById("login-form");
-const usernameInput = document.getElementById("username-input");
+const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
 const guestButton = document.getElementById("guest-button");
 const loginMessage = document.getElementById("login-message");
@@ -94,8 +107,8 @@ const replayButton = document.getElementById("replay-button");
 const topicsButton = document.getElementById("topics-button");
 const topicError = document.getElementById("topic-error");
 
-const USERS_STORAGE_KEY = "codexapps_users";
-const CURRENT_USER_STORAGE_KEY = "codexapps_current_user";
+const LEGACY_USERS_STORAGE_KEY = "codexapps_users";
+const LEGACY_CURRENT_USER_STORAGE_KEY = "codexapps_current_user";
 const APP_TITLE = "CEC Math Prep";
 const APP_TITLE_SUFFIX = "Math Preparation for the Goddard School of Business & Economics";
 const difficultyOrder = ["easy", "medium", "hard"];
@@ -336,13 +349,16 @@ let topicPerformance = {};
 let mistakesByTopic = {};
 let lastAssessmentPerfect = false;
 let currentUser = null;
+let currentUserUid = null;
+let currentUserProfile = null;
 let isGuestMode = false;
 let assessmentAttempts = 0;
 let currentAssessmentLevel = 1;
 let lastSaveMessage = "";
+let isLoggingOut = false;
 
-function getStoredUsers() {
-  const rawUsers = localStorage.getItem(USERS_STORAGE_KEY);
+function getLegacyUsers() {
+  const rawUsers = localStorage.getItem(LEGACY_USERS_STORAGE_KEY);
 
   if (!rawUsers) {
     return {};
@@ -355,8 +371,29 @@ function getStoredUsers() {
   }
 }
 
-function saveStoredUsers(users) {
-  localStorage.setItem(USERS_STORAGE_KEY, JSON.stringify(users));
+function saveLegacyUsers(users) {
+  localStorage.setItem(LEGACY_USERS_STORAGE_KEY, JSON.stringify(users));
+}
+
+function scrubLegacyPasswordStorage() {
+  localStorage.removeItem(LEGACY_CURRENT_USER_STORAGE_KEY);
+
+  const legacyUsers = getLegacyUsers();
+  let didChange = false;
+  const sanitizedUsers = Object.entries(legacyUsers).reduce((result, [key, profile]) => {
+    const sanitizedProfile = migrateProfile(profile);
+
+    if (JSON.stringify(profile) !== JSON.stringify(sanitizedProfile)) {
+      didChange = true;
+    }
+
+    result[key] = sanitizedProfile;
+    return result;
+  }, {});
+
+  if (didChange) {
+    saveLegacyUsers(sanitizedUsers);
+  }
 }
 
 function getDefaultTrackProgress() {
@@ -371,6 +408,17 @@ function getDefaultTrackProgress() {
 }
 
 function migrateProfile(profile) {
+  if (!profile || typeof profile !== "object") {
+    return {
+      tracks: {
+        placement: getDefaultTrackProgress(),
+        act: getDefaultTrackProgress(),
+        aspireGrade9: getDefaultTrackProgress(),
+        aspireGrade10: getDefaultTrackProgress()
+      }
+    };
+  }
+
   const nextProfile = { ...profile };
 
   if (!nextProfile.tracks) {
@@ -399,19 +447,8 @@ function migrateProfile(profile) {
   }
 
   delete nextProfile.progress;
+  delete nextProfile.password;
   return nextProfile;
-}
-
-function getDefaultProfile(password) {
-  return {
-    password,
-    tracks: {
-      placement: getDefaultTrackProgress(),
-      act: getDefaultTrackProgress(),
-      aspireGrade9: getDefaultTrackProgress(),
-      aspireGrade10: getDefaultTrackProgress()
-    }
-  };
 }
 
 function getActiveTrack() {
@@ -421,6 +458,191 @@ function getActiveTrack() {
 function getTrackProgress(profile, trackKey) {
   const migratedProfile = migrateProfile(profile);
   return migratedProfile.tracks[trackKey] || getDefaultTrackProgress();
+}
+
+function getDefaultUserProfile() {
+  return {
+    tracks: {
+      placement: getDefaultTrackProgress(),
+      act: getDefaultTrackProgress(),
+      aspireGrade9: getDefaultTrackProgress(),
+      aspireGrade10: getDefaultTrackProgress()
+    }
+  };
+}
+
+function sanitizeTrackProgress(progress = {}) {
+  return {
+    totalXp: progress.totalXp || 0,
+    topicPerformance: progress.topicPerformance || {},
+    mistakesByTopic: normalizeMistakesByTopic(progress.mistakesByTopic),
+    recommendedTopicIds: Array.isArray(progress.recommendedTopicIds) ? progress.recommendedTopicIds : [],
+    lastAssessmentPerfect: Boolean(progress.lastAssessmentPerfect),
+    assessmentAttempts: progress.assessmentAttempts || 0
+  };
+}
+
+function getCurrentTrackProgressPayload() {
+  return sanitizeTrackProgress({
+    totalXp,
+    topicPerformance,
+    mistakesByTopic,
+    recommendedTopicIds,
+    lastAssessmentPerfect,
+    assessmentAttempts
+  });
+}
+
+async function loadUserProfileFromFirestore(uid) {
+  const db = await waitForFirebaseDB();
+  const firestore = await firebaseFirestoreModulePromise;
+
+  if (!db) {
+    return getDefaultUserProfile();
+  }
+
+  const userRef = firestore.doc(db, "users", uid);
+  const tracksRef = firestore.collection(db, "users", uid, "tracks");
+  const [userSnapshot, tracksSnapshot] = await Promise.all([
+    firestore.getDoc(userRef),
+    firestore.getDocs(tracksRef)
+  ]);
+  const profile = getDefaultUserProfile();
+  const userData = userSnapshot.exists() ? userSnapshot.data() : {};
+
+  tracksSnapshot.forEach((trackDoc) => {
+    profile.tracks[trackDoc.id] = sanitizeTrackProgress(trackDoc.data());
+  });
+
+  if (userData.activeTrackKey) {
+    profile.activeTrackKey = userData.activeTrackKey;
+  }
+
+  return profile;
+}
+
+async function persistUserProfileMetadata() {
+  if (!currentUserUid || !currentUser) {
+    return;
+  }
+
+  const db = await waitForFirebaseDB();
+  const firestore = await firebaseFirestoreModulePromise;
+
+  if (!db) {
+    return;
+  }
+
+  await firestore.setDoc(
+    firestore.doc(db, "users", currentUserUid),
+    {
+      email: currentUser,
+      activeTrackKey: activeTrackKey || null,
+      updatedAt: Date.now()
+    },
+    { merge: true }
+  );
+}
+
+async function saveProgressToFirestore(trackKey, progress) {
+  if (!currentUserUid || !currentUser || !trackKey) {
+    return;
+  }
+
+  const db = await waitForFirebaseDB();
+  const firestore = await firebaseFirestoreModulePromise;
+
+  if (!db) {
+    return;
+  }
+
+  await Promise.all([
+    firestore.setDoc(
+      firestore.doc(db, "users", currentUserUid),
+      {
+        email: currentUser,
+        activeTrackKey: activeTrackKey || null,
+        updatedAt: Date.now()
+      },
+      { merge: true }
+    ),
+    firestore.setDoc(
+      firestore.doc(db, "users", currentUserUid, "tracks", trackKey),
+      progress,
+      { merge: true }
+    )
+  ]);
+}
+
+async function migrateLegacyProgressIfNeeded(email, uid, existingProfile) {
+  const legacyUsers = getLegacyUsers();
+  const legacyProfile = legacyUsers[email];
+
+  if (!legacyProfile) {
+    return existingProfile;
+  }
+
+  const db = await waitForFirebaseDB();
+  const firestore = await firebaseFirestoreModulePromise;
+
+  if (!db) {
+    return existingProfile;
+  }
+
+  const migratedLegacyProfile = migrateProfile(legacyProfile);
+  const nextProfile = migrateProfile(existingProfile || getDefaultUserProfile());
+  const writes = [];
+
+  Object.keys(nextProfile.tracks).forEach((trackKey) => {
+    const currentProgress = sanitizeTrackProgress(nextProfile.tracks[trackKey]);
+    const hasCloudProgress = currentProgress.totalXp > 0
+      || currentProgress.recommendedTopicIds.length > 0
+      || currentProgress.assessmentAttempts > 0
+      || Object.keys(currentProgress.topicPerformance).length > 0
+      || Object.keys(currentProgress.mistakesByTopic).length > 0;
+
+    if (hasCloudProgress) {
+      return;
+    }
+
+    const legacyProgress = sanitizeTrackProgress(getTrackProgress(migratedLegacyProfile, trackKey));
+    const hasLegacyProgress = legacyProgress.totalXp > 0
+      || legacyProgress.recommendedTopicIds.length > 0
+      || legacyProgress.assessmentAttempts > 0
+      || Object.keys(legacyProgress.topicPerformance).length > 0
+      || Object.keys(legacyProgress.mistakesByTopic).length > 0;
+
+    if (!hasLegacyProgress) {
+      return;
+    }
+
+    nextProfile.tracks[trackKey] = legacyProgress;
+    writes.push(
+      firestore.setDoc(
+        firestore.doc(db, "users", uid, "tracks", trackKey),
+        legacyProgress,
+        { merge: true }
+      )
+    );
+  });
+
+  writes.push(
+    firestore.setDoc(
+      firestore.doc(db, "users", uid),
+      {
+        email,
+        activeTrackKey: existingProfile?.activeTrackKey || migratedLegacyProfile.activeTrackKey || null,
+        updatedAt: Date.now(),
+        legacyMigratedAt: Date.now()
+      },
+      { merge: true }
+    )
+  );
+
+  await Promise.all(writes);
+  delete legacyUsers[email];
+  saveLegacyUsers(legacyUsers);
+  return nextProfile;
 }
 
 function announceStatus(message, options = {}) {
@@ -604,9 +826,9 @@ function updateSaveStatus() {
   if (isGuestMode) {
     saveStatusText.textContent = "Guest mode: progress is not saved";
   } else if (lastSaveMessage) {
-    saveStatusText.textContent = `Saved on this browser/device. ${lastSaveMessage}`;
+    saveStatusText.textContent = `Saved to your account. ${lastSaveMessage}`;
   } else {
-    saveStatusText.textContent = "Saved on this browser/device";
+    saveStatusText.textContent = "Saved to your account";
   }
 
   saveStatusText.classList.remove("hidden");
@@ -1043,33 +1265,28 @@ function getCurrentMastery() {
   return getTopicMastery(currentTopic.id);
 }
 
-function saveCurrentUserProgress() {
-  if (isGuestMode || !currentUser || !activeTrackKey) {
+async function saveCurrentUserProgress() {
+  if (isGuestMode || !currentUser || !currentUserUid || !activeTrackKey) {
     return;
   }
 
-  const users = getStoredUsers();
-  const profile = users[currentUser];
+  const nextProfile = migrateProfile(currentUserProfile || getDefaultUserProfile());
+  const progress = getCurrentTrackProgressPayload();
+  nextProfile.tracks[activeTrackKey] = progress;
+  nextProfile.activeTrackKey = activeTrackKey;
 
-  if (!profile) {
-    return;
+  currentUserProfile = nextProfile;
+
+  try {
+    await saveProgressToFirestore(activeTrackKey, progress);
+    lastSaveMessage = "Last saved just now.";
+    updateSaveStatus();
+    announceStatus("Progress saved to your account.");
+  } catch (error) {
+    console.error("Progress save failed:", error.message);
+    lastSaveMessage = "Could not sync right now.";
+    updateSaveStatus();
   }
-
-  const nextProfile = migrateProfile(profile);
-  nextProfile.tracks[activeTrackKey] = {
-    totalXp,
-    topicPerformance,
-    mistakesByTopic,
-    recommendedTopicIds,
-    lastAssessmentPerfect,
-    assessmentAttempts
-  };
-
-  users[currentUser] = nextProfile;
-  saveStoredUsers(users);
-  lastSaveMessage = "Last saved just now.";
-  updateSaveStatus();
-  announceStatus("Progress saved on this browser and device.");
 }
 
 function loadSavedProgress(progress = {}) {
@@ -1099,22 +1316,20 @@ function getProgressForCurrentUser(trackKey) {
     return getDefaultTrackProgress();
   }
 
-  const users = getStoredUsers();
-  const savedProfile = users[currentUser];
-
-  if (!savedProfile) {
+  if (!currentUserProfile) {
     return getDefaultTrackProgress();
   }
 
-  const migratedProfile = migrateProfile(savedProfile);
-  users[currentUser] = migratedProfile;
-  saveStoredUsers(users);
-  return getTrackProgress(migratedProfile, trackKey);
+  return getTrackProgress(currentUserProfile, trackKey);
 }
 
 function openTestSelection() {
-  saveCurrentUserProgress();
+  void saveCurrentUserProgress();
   activeTrackKey = null;
+  if (currentUserProfile) {
+    currentUserProfile.activeTrackKey = null;
+    void persistUserProfileMetadata();
+  }
   quizTopics = [];
   studyGuides = {};
   resetTransientState();
@@ -1131,8 +1346,12 @@ function openTestSelection() {
 }
 
 function openAspireSelection() {
-  saveCurrentUserProgress();
+  void saveCurrentUserProgress();
   activeTrackKey = null;
+  if (currentUserProfile) {
+    currentUserProfile.activeTrackKey = null;
+    void persistUserProfileMetadata();
+  }
   quizTopics = [];
   studyGuides = {};
   resetTransientState();
@@ -1152,20 +1371,41 @@ function openAspireSelection() {
 function enterTrack(trackKey) {
   const progress = getProgressForCurrentUser(trackKey);
   loadTrackState(trackKey, progress);
+  if (currentUserProfile) {
+    currentUserProfile.activeTrackKey = trackKey;
+    void persistUserProfileMetadata();
+  }
   buildStudyPlan();
   updateHeaderIdentity();
   announceStatus(`${getActiveTrack()?.shortLabel || "Track"} selected.`);
   showScreen(recommendedTopicIds.length > 0 || assessmentAttempts > 0 ? "studyPlan" : "welcome");
 }
 
-function loginAsSavedUser(username, profile) {
-  currentUser = username;
+function clearAuthenticatedSessionState() {
+  currentUser = null;
+  currentUserUid = null;
+  currentUserProfile = null;
+  isGuestMode = false;
+  activeTrackKey = null;
+  lastSaveMessage = "";
+  totalXp = 0;
+  topicPerformance = {};
+  mistakesByTopic = {};
+  recommendedTopicIds = [];
+  lastAssessmentPerfect = false;
+  assessmentAttempts = 0;
+  currentAssessmentLevel = 1;
+  resetTransientState();
+  updateTrackContent();
+  updateGlobalLevelDisplay();
+}
+
+function loginAsAuthenticatedUser(email, uid, profile) {
+  currentUser = email;
+  currentUserUid = uid;
+  currentUserProfile = migrateProfile(profile || getDefaultUserProfile());
   isGuestMode = false;
   lastSaveMessage = "";
-  const users = getStoredUsers();
-  users[username] = migrateProfile(profile);
-  saveStoredUsers(users);
-  localStorage.setItem(CURRENT_USER_STORAGE_KEY, username);
   activeTrackKey = null;
   totalXp = 0;
   topicPerformance = {};
@@ -1177,6 +1417,7 @@ function loginAsSavedUser(username, profile) {
   resetTransientState();
   updateTrackContent();
   updateGlobalLevelDisplay();
+  clearLoginMessage();
   showScreen("testSelection");
 }
 
@@ -1184,55 +1425,65 @@ async function handleLogin(event) {
   event.preventDefault();
   clearLoginMessage();
 
-  const username = usernameInput.value.trim();
+  const email = emailInput.value.trim();
   const password = passwordInput.value;
 
-  if (!username || !password) {
-    showLoginMessage("Enter both a username and password.", true);
+  if (!email || !password) {
+    showLoginMessage("Enter both an email and password.", true);
     return;
   }
 
   try {
-    await window.firebaseSignIn(username, password);
-  } catch (e) {
-    console.error("Firebase login failed:", e.message);
-  }
+    await window.firebaseSignIn(email, password);
+    showLoginMessage(`Welcome back, ${email}.`);
+  } catch (error) {
+    if (error?.code === "auth/user-not-found" || error?.code === "auth/invalid-credential") {
+      try {
+        await window.firebaseCreateAccount(email, password);
+        showLoginMessage(`Account created for ${email}.`);
+      } catch (createError) {
+        if (createError?.code === "auth/email-already-in-use") {
+          showLoginMessage("This email already exists. Check your password and try again.", true);
+          return;
+        }
 
-  const users = getStoredUsers();
-  const existingUser = users[username];
+        if (createError?.code === "auth/invalid-email") {
+          showLoginMessage("Enter a valid email address.", true);
+          return;
+        }
 
-  if (existingUser) {
-    if (existingUser.password !== password) {
-      showLoginMessage("Password does not match this user.", true);
+        console.error("Firebase account creation failed:", createError.message);
+        showLoginMessage("Could not create the account right now.", true);
+        return;
+      }
+    } else if (error?.code === "auth/wrong-password") {
+      showLoginMessage("Incorrect password for this email.", true);
+      return;
+    } else if (error?.code === "auth/invalid-email") {
+      showLoginMessage("Enter a valid email address.", true);
+      return;
+    } else if (error?.code === "auth/too-many-requests") {
+      showLoginMessage("Too many login attempts. Try again later.", true);
+      return;
+    } else {
+      console.error("Firebase login failed:", error.message);
+      showLoginMessage("Could not sign in right now.", true);
       return;
     }
-
-    loginAsSavedUser(username, existingUser);
-    showLoginMessage(`Welcome back, ${username}.`);
-  } else {
-    users[username] = getDefaultProfile(password);
-    saveStoredUsers(users);
-    loginAsSavedUser(username, users[username]);
-    showLoginMessage(`Account created for ${username}.`);
-
-    try {
-      await window.firebaseCreateAccount(username, password);
-    } catch (e) {
-      console.error("Firebase account creation failed:", e.message);
-    }
   }
 
-  usernameInput.value = "";
+  emailInput.value = "";
   passwordInput.value = "";
 }
 
 function handleGuestMode() {
   clearLoginMessage();
   currentUser = null;
+  currentUserUid = null;
+  currentUserProfile = null;
   isGuestMode = true;
   lastSaveMessage = "";
   activeTrackKey = null;
-  localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
   totalXp = 0;
   topicPerformance = {};
   mistakesByTopic = {};
@@ -1248,97 +1499,99 @@ function handleGuestMode() {
   announceStatus("Guest mode is active. Progress will not be saved.", { visible: true });
 }
 
-function handleLogout() {
-  saveCurrentUserProgress();
-  currentUser = null;
-  isGuestMode = false;
-  activeTrackKey = null;
-  lastSaveMessage = "";
-  localStorage.removeItem(CURRENT_USER_STORAGE_KEY);
-  totalXp = 0;
-  topicPerformance = {};
-  mistakesByTopic = {};
-  recommendedTopicIds = [];
-  lastAssessmentPerfect = false;
-  assessmentAttempts = 0;
-  currentAssessmentLevel = 1;
-  resetTransientState();
-  updateTrackContent();
-  updateGlobalLevelDisplay();
+async function handleLogout() {
+  await saveCurrentUserProgress();
+  isLoggingOut = true;
+
+  try {
+    await window.firebaseSignOut();
+  } catch (error) {
+    console.error("Firebase sign-out error:", error.message);
+  }
+
+  clearAuthenticatedSessionState();
   clearLoginMessage();
-  usernameInput.value = "";
+  emailInput.value = "";
   passwordInput.value = "";
   showScreen("login");
+  isLoggingOut = false;
 }
 
 window.firebaseCreateAccount = async function(email, password) {
   const auth = await waitForFirebaseAuth();
 
   if (!auth) {
-    console.error("Firebase Auth still not available");
-    return;
+    throw new Error("Firebase Auth still not available");
   }
 
-  try {
-    const { createUserWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    console.log("Firebase account created:", userCredential.user);
-  } catch (error) {
-    console.error("Firebase create error:", error.message);
-  }
+  const { createUserWithEmailAndPassword } = await firebaseAuthModulePromise;
+  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+  console.log("Firebase account created:", userCredential.user);
+  return userCredential;
 };
 
 window.firebaseSignIn = async function(email, password) {
   const auth = await waitForFirebaseAuth();
 
   if (!auth) {
-    console.error("Firebase Auth still not available");
-    return;
+    throw new Error("Firebase Auth still not available");
   }
 
-  try {
-    const { signInWithEmailAndPassword } = await import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
-    const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    console.log("Firebase signed in:", userCredential.user);
-  } catch (error) {
-    console.error("Firebase sign-in error:", error.message);
-  }
+  const { signInWithEmailAndPassword } = await firebaseAuthModulePromise;
+  const userCredential = await signInWithEmailAndPassword(auth, email, password);
+  console.log("Firebase signed in:", userCredential.user);
+  return userCredential;
 };
 
 window.firebaseSignOut = async function() {
   const auth = await waitForFirebaseAuth();
 
   if (!auth) {
-    console.error("Firebase Auth still not available");
-    return;
+    throw new Error("Firebase Auth still not available");
   }
 
-  try {
-    const { signOut } = await import("https://www.gstatic.com/firebasejs/12.11.0/firebase-auth.js");
-    await signOut(auth);
-    console.log("Firebase signed out");
-  } catch (error) {
-    console.error("Firebase sign-out error:", error.message);
-  }
+  const { signOut } = await firebaseAuthModulePromise;
+  await signOut(auth);
+  console.log("Firebase signed out");
 };
 
 firebaseAuthModulePromise
-  .then((firebaseAuthModule) => {
-    if (!firebaseAuthModule || !window.firebaseAuth) {
-      console.log("No Firebase user logged in");
+  .then(async (firebaseAuthModule) => {
+    const auth = await waitForFirebaseAuth();
+
+    if (!firebaseAuthModule || !auth) {
+      resolveInitialAuthState?.();
       return;
     }
 
-    firebaseAuthModule.onAuthStateChanged(window.firebaseAuth, (user) => {
-      if (user) {
-        console.log("Firebase user logged in:", user.email);
-      } else {
-        console.log("No Firebase user logged in");
+    firebaseAuthModule.onAuthStateChanged(auth, async (user) => {
+      try {
+        if (user?.email) {
+          console.log("Firebase user logged in:", user.email);
+          let profile = await loadUserProfileFromFirestore(user.uid);
+          profile = await migrateLegacyProgressIfNeeded(user.email, user.uid, profile);
+          loginAsAuthenticatedUser(user.email, user.uid, profile);
+        } else if (!isGuestMode && !isLoggingOut) {
+          console.log("No Firebase user logged in");
+          clearAuthenticatedSessionState();
+          showScreen("login");
+        }
+      } catch (error) {
+        console.error("Firebase auth listener error:", error.message);
+        if (!isGuestMode && !isLoggingOut) {
+          clearAuthenticatedSessionState();
+          showScreen("login");
+        }
+      } finally {
+        resolveInitialAuthState?.();
+        resolveInitialAuthState = null;
       }
     });
   })
   .catch((error) => {
     console.error("Firebase auth listener error:", error.message);
+    resolveInitialAuthState?.();
+    resolveInitialAuthState = null;
   });
 
 function updateTrackContent() {
@@ -1905,7 +2158,7 @@ function handleAnswer(selectedIndex, options = {}) {
   playQuestionFlash(isCorrect ? "flash-correct" : "flash-incorrect");
   updateGameStats(currentQuestionIndex + 1);
   updateGlobalLevelDisplay();
-  saveCurrentUserProgress();
+  void saveCurrentUserProgress();
 
   if (isCorrect) {
     encouragementText.textContent = getRandomMessage(correctMessages);
@@ -1990,7 +2243,7 @@ function showAssessmentReport() {
     : `Focus on: ${focusTopics.map((topic) => topic.name).join(", ")}`;
 
   buildStudyPlan();
-  saveCurrentUserProgress();
+  void saveCurrentUserProgress();
   announceStatus("Assessment complete. Recommendations updated.");
   showScreen("report");
 }
@@ -2013,7 +2266,7 @@ function showCompleteScreen() {
   completeMastery.textContent = `Topic Mastery: ${mastery}% | Overall Level ${getLevelFromXp(totalXp)}`;
 
   buildStudyPlan();
-  saveCurrentUserProgress();
+  void saveCurrentUserProgress();
   announceStatus(currentSessionType === "review" ? "Review session complete." : "Practice session complete.");
   showScreen("complete");
 }
@@ -2139,16 +2392,13 @@ async function loadTrackCatalog() {
 
 async function initializeApp() {
   try {
+    scrubLegacyPasswordStorage();
     await loadTrackCatalog();
     resetTransientState();
     updateTrackContent();
+    await initialAuthStatePromise;
 
-    const savedUser = localStorage.getItem(CURRENT_USER_STORAGE_KEY);
-    const users = getStoredUsers();
-
-    if (savedUser && users[savedUser]) {
-      loginAsSavedUser(savedUser, users[savedUser]);
-    } else {
+    if (!currentUser && !isGuestMode) {
       updateGlobalLevelDisplay();
       showScreen("login");
     }
