@@ -39,6 +39,7 @@ const screens = {
 const loginForm = document.getElementById("login-form");
 const emailInput = document.getElementById("email-input");
 const passwordInput = document.getElementById("password-input");
+const loginButton = document.getElementById("login-button");
 const guestButton = document.getElementById("guest-button");
 const loginMessage = document.getElementById("login-message");
 const heroStats = document.getElementById("hero-stats");
@@ -356,6 +357,33 @@ let assessmentAttempts = 0;
 let currentAssessmentLevel = 1;
 let lastSaveMessage = "";
 let isLoggingOut = false;
+let isAuthRequestInFlight = false;
+let authHydrationPromise = null;
+let authHydrationUid = null;
+
+function startPerfTimer(label, detail = "") {
+  const startedAt = performance.now();
+  console.log(`[perf] ${label} start @ ${startedAt.toFixed(1)}ms${detail ? ` ${detail}` : ""}`);
+  return startedAt;
+}
+
+function endPerfTimer(label, startedAt, detail = "") {
+  const duration = performance.now() - startedAt;
+  console.log(`[perf] ${label} end +${duration.toFixed(1)}ms${detail ? ` ${detail}` : ""}`);
+  return duration;
+}
+
+function logPerfPoint(label, detail = "") {
+  console.log(`[perf] ${label} @ ${performance.now().toFixed(1)}ms${detail ? ` ${detail}` : ""}`);
+}
+
+function setLoginPending(isPending, pendingLabel = "Signing in...") {
+  isAuthRequestInFlight = isPending;
+  loginButton.disabled = isPending;
+  emailInput.disabled = isPending;
+  passwordInput.disabled = isPending;
+  loginButton.textContent = isPending ? pendingLabel : "Login / Create Account";
+}
 
 function getLegacyUsers() {
   const rawUsers = localStorage.getItem(LEGACY_USERS_STORAGE_KEY);
@@ -494,10 +522,12 @@ function getCurrentTrackProgressPayload() {
 }
 
 async function loadUserProfileFromFirestore(uid) {
+  const timer = startPerfTimer("loadUserProfileFromFirestore", `uid=${uid}`);
   const db = await waitForFirebaseDB();
   const firestore = await firebaseFirestoreModulePromise;
 
   if (!db) {
+    endPerfTimer("loadUserProfileFromFirestore", timer, "firebaseDB unavailable");
     return getDefaultUserProfile();
   }
 
@@ -518,6 +548,7 @@ async function loadUserProfileFromFirestore(uid) {
     profile.activeTrackKey = userData.activeTrackKey;
   }
 
+  endPerfTimer("loadUserProfileFromFirestore", timer, `tracks=${tracksSnapshot.size}`);
   return profile;
 }
 
@@ -575,10 +606,12 @@ async function saveProgressToFirestore(trackKey, progress) {
 }
 
 async function migrateLegacyProgressIfNeeded(email, uid, existingProfile) {
+  const timer = startPerfTimer("migrateLegacyProgressIfNeeded", `email=${email}`);
   const legacyUsers = getLegacyUsers();
   const legacyProfile = legacyUsers[email];
 
   if (!legacyProfile) {
+    endPerfTimer("migrateLegacyProgressIfNeeded", timer, "no legacy profile");
     return existingProfile;
   }
 
@@ -586,6 +619,7 @@ async function migrateLegacyProgressIfNeeded(email, uid, existingProfile) {
   const firestore = await firebaseFirestoreModulePromise;
 
   if (!db) {
+    endPerfTimer("migrateLegacyProgressIfNeeded", timer, "firebaseDB unavailable");
     return existingProfile;
   }
 
@@ -642,6 +676,7 @@ async function migrateLegacyProgressIfNeeded(email, uid, existingProfile) {
   await Promise.all(writes);
   delete legacyUsers[email];
   saveLegacyUsers(legacyUsers);
+  endPerfTimer("migrateLegacyProgressIfNeeded", timer, `writes=${writes.length}`);
   return nextProfile;
 }
 
@@ -1385,6 +1420,8 @@ function clearAuthenticatedSessionState() {
   currentUser = null;
   currentUserUid = null;
   currentUserProfile = null;
+  authHydrationUid = null;
+  authHydrationPromise = null;
   isGuestMode = false;
   activeTrackKey = null;
   lastSaveMessage = "";
@@ -1401,6 +1438,7 @@ function clearAuthenticatedSessionState() {
 }
 
 function loginAsAuthenticatedUser(email, uid, profile) {
+  const timer = startPerfTimer("loginAsAuthenticatedUser", `email=${email}`);
   currentUser = email;
   currentUserUid = uid;
   currentUserProfile = migrateProfile(profile || getDefaultUserProfile());
@@ -1418,12 +1456,67 @@ function loginAsAuthenticatedUser(email, uid, profile) {
   updateTrackContent();
   updateGlobalLevelDisplay();
   clearLoginMessage();
+  logPerfPoint("showScreen(\"testSelection\") call");
   showScreen("testSelection");
+  endPerfTimer("loginAsAuthenticatedUser", timer, `uid=${uid}`);
+}
+
+async function applyAuthenticatedSessionState(user, options = {}) {
+  const source = options.source || "unknown";
+  const timer = startPerfTimer("applyAuthenticatedSessionState", `source=${source}`);
+
+  if (!user?.email || !user?.uid) {
+    endPerfTimer("applyAuthenticatedSessionState", timer, "missing user");
+    return;
+  }
+
+  if (currentUserUid !== user.uid || isGuestMode || !currentUser) {
+    loginAsAuthenticatedUser(user.email, user.uid, getDefaultUserProfile());
+  }
+
+  if (authHydrationUid === user.uid && authHydrationPromise) {
+    console.log(`[perf] applyAuthenticatedSessionState reuse hydration uid=${user.uid}`);
+    await authHydrationPromise;
+    endPerfTimer("applyAuthenticatedSessionState", timer, `source=${source} reused`);
+    return;
+  }
+
+  authHydrationUid = user.uid;
+  authHydrationPromise = (async () => {
+    try {
+      let profile = await loadUserProfileFromFirestore(user.uid);
+      profile = await migrateLegacyProgressIfNeeded(user.email, user.uid, profile);
+
+      if (currentUserUid === user.uid) {
+        currentUserProfile = migrateProfile(profile || getDefaultUserProfile());
+      }
+    } catch (error) {
+      console.error("Firestore profile load failed:", error.message);
+      if (currentUserUid === user.uid && !currentUserProfile) {
+        currentUserProfile = getDefaultUserProfile();
+      }
+    } finally {
+      if (authHydrationUid === user.uid) {
+        authHydrationUid = null;
+        authHydrationPromise = null;
+      }
+    }
+  })();
+
+  await authHydrationPromise;
+  endPerfTimer("applyAuthenticatedSessionState", timer, `source=${source}`);
 }
 
 async function handleLogin(event) {
   event.preventDefault();
+  const submitTimer = startPerfTimer("login submit");
   console.log("Login handler triggered");
+
+  if (isAuthRequestInFlight) {
+    endPerfTimer("login submit", submitTimer, "duplicate submit ignored");
+    return;
+  }
+
   clearLoginMessage();
 
   const email = emailInput.value.trim();
@@ -1432,53 +1525,67 @@ async function handleLogin(event) {
 
   if (!email || !password) {
     showLoginMessage("Enter both an email and password.", true);
+    endPerfTimer("login submit", submitTimer, "missing credentials");
     return;
   }
 
+  setLoginPending(true, "Signing in...");
+
   try {
     console.log("Attempting Firebase login...");
-    await window.firebaseSignIn(email, password);
+    const userCredential = await window.firebaseSignIn(email, password);
     console.log("Firebase login success");
-    showLoginMessage(`Welcome back, ${email}.`);
+    void applyAuthenticatedSessionState(userCredential.user, { source: "handleLogin-success" });
   } catch (error) {
     console.error("Firebase login error:", error.message);
-    if (error?.code === "auth/user-not-found" || error?.code === "auth/invalid-credential") {
+    if (error?.code === "auth/user-not-found") {
       try {
-        await window.firebaseCreateAccount(email, password);
-        showLoginMessage(`Account created for ${email}.`);
+        const userCredential = await window.firebaseCreateAccount(email, password);
+        console.log("Firebase account creation success");
+        void applyAuthenticatedSessionState(userCredential.user, { source: "handleLogin-createAccount" });
       } catch (createError) {
         if (createError?.code === "auth/email-already-in-use") {
           showLoginMessage("This email already exists. Check your password and try again.", true);
+          endPerfTimer("login submit", submitTimer, "email already in use");
           return;
         }
 
         if (createError?.code === "auth/invalid-email") {
           showLoginMessage("Enter a valid email address.", true);
+          endPerfTimer("login submit", submitTimer, "invalid email");
           return;
         }
 
         console.error("Firebase account creation failed:", createError.message);
         showLoginMessage("Could not create the account right now.", true);
+        endPerfTimer("login submit", submitTimer, `create account failed code=${createError?.code || "unknown"}`);
         return;
       }
-    } else if (error?.code === "auth/wrong-password") {
+    } else if (error?.code === "auth/wrong-password" || error?.code === "auth/invalid-credential") {
       showLoginMessage("Incorrect password for this email.", true);
+      endPerfTimer("login submit", submitTimer, `sign in failed code=${error.code}`);
       return;
     } else if (error?.code === "auth/invalid-email") {
       showLoginMessage("Enter a valid email address.", true);
+      endPerfTimer("login submit", submitTimer, "invalid email");
       return;
     } else if (error?.code === "auth/too-many-requests") {
       showLoginMessage("Too many login attempts. Try again later.", true);
+      endPerfTimer("login submit", submitTimer, "too many requests");
       return;
     } else {
       console.error("Firebase login failed:", error.message);
       showLoginMessage("Could not sign in right now.", true);
+      endPerfTimer("login submit", submitTimer, `sign in failed code=${error?.code || "unknown"}`);
       return;
     }
+  } finally {
+    setLoginPending(false);
   }
 
   emailInput.value = "";
   passwordInput.value = "";
+  endPerfTimer("login submit", submitTimer, "auth request completed");
 }
 
 function handleGuestMode() {
@@ -1523,28 +1630,34 @@ async function handleLogout() {
 }
 
 window.firebaseCreateAccount = async function(email, password) {
+  const timer = startPerfTimer("firebaseCreateAccount", `email=${email}`);
   const auth = await waitForFirebaseAuth();
 
   if (!auth) {
+    endPerfTimer("firebaseCreateAccount", timer, "firebaseAuth unavailable");
     throw new Error("Firebase Auth still not available");
   }
 
   const { createUserWithEmailAndPassword } = await firebaseAuthModulePromise;
   const userCredential = await createUserWithEmailAndPassword(auth, email, password);
   console.log("Firebase account created:", userCredential.user);
+  endPerfTimer("firebaseCreateAccount", timer, `uid=${userCredential.user?.uid || "unknown"}`);
   return userCredential;
 };
 
 window.firebaseSignIn = async function(email, password) {
+  const timer = startPerfTimer("firebaseSignIn", `email=${email}`);
   const auth = await waitForFirebaseAuth();
 
   if (!auth) {
+    endPerfTimer("firebaseSignIn", timer, "firebaseAuth unavailable");
     throw new Error("Firebase Auth still not available");
   }
 
   const { signInWithEmailAndPassword } = await firebaseAuthModulePromise;
   const userCredential = await signInWithEmailAndPassword(auth, email, password);
   console.log("Firebase signed in:", userCredential.user);
+  endPerfTimer("firebaseSignIn", timer, `uid=${userCredential.user?.uid || "unknown"}`);
   return userCredential;
 };
 
@@ -1570,12 +1683,11 @@ firebaseAuthModulePromise
     }
 
     firebaseAuthModule.onAuthStateChanged(auth, async (user) => {
+      logPerfPoint("onAuthStateChanged fire", user?.email ? `email=${user.email}` : "signedOut");
       try {
         if (user?.email) {
           console.log("Firebase user logged in:", user.email);
-          let profile = await loadUserProfileFromFirestore(user.uid);
-          profile = await migrateLegacyProgressIfNeeded(user.email, user.uid, profile);
-          loginAsAuthenticatedUser(user.email, user.uid, profile);
+          void applyAuthenticatedSessionState(user, { source: "onAuthStateChanged" });
         } else if (!isGuestMode && !isLoggingOut) {
           console.log("No Firebase user logged in");
           clearAuthenticatedSessionState();
