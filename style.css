@@ -399,7 +399,24 @@ p {
   color: var(--text);
 }
 
+.input-group select {
+  width: 100%;
+  border: 1px solid var(--panel-border);
+  border-radius: 16px;
+  padding: 16px 18px;
+  font: inherit;
+  font-size: 1rem;
+  background: #faf9fc;
+  color: var(--text);
+}
+
 .input-group input:focus {
+  outline: 3px solid rgba(15, 109, 202, 0.22);
+  border-color: var(--focus-ring);
+  outline-offset: 1px;
+}
+
+.input-group select:focus {
   outline: 3px solid rgba(15, 109, 202, 0.22);
   border-color: var(--focus-ring);
   outline-offset: 1px;
@@ -429,6 +446,20 @@ p {
   max-width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+.assessment-difficulty-panel {
+  display: grid;
+  gap: 10px;
+  margin: 22px 0;
+  padding: 18px;
+  border: 1px solid var(--panel-border);
+  border-radius: 20px;
+  background: #fcfbf8;
+}
+
+.assessment-difficulty-guidance {
+  margin-bottom: 0;
 }
 
 .welcome-message {
@@ -942,6 +973,7 @@ p {
 button:focus-visible,
 a:focus-visible,
 input:focus-visible,
+select:focus-visible,
 [tabindex="-1"]:focus {
   outline: 3px solid var(--focus-ring);
   outline-offset: 3px;

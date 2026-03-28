@@ -58,6 +58,7 @@ const aspireSelectionBackButton = document.getElementById("aspire-selection-back
 const currentTrackText = document.getElementById("current-track-text");
 const startAssessmentButton = document.getElementById("start-assessment-button");
 const startChallengeButton = document.getElementById("start-challenge-button");
+const assessmentDifficultySelect = document.getElementById("assessment-difficulty-select");
 const recommendedTopicList = document.getElementById("recommended-topic-list");
 const allTopicList = document.getElementById("all-topic-list");
 const studyPlanHeading = document.getElementById("study-plan-heading");
@@ -357,6 +358,7 @@ let currentUserUid = null;
 let currentUserProfile = null;
 let isGuestMode = false;
 let assessmentAttempts = 0;
+let selectedAssessmentDifficulty = 3;
 let currentAssessmentLevel = 1;
 let lastSaveMessage = "";
 let isLoggingOut = false;
@@ -435,7 +437,8 @@ function getDefaultTrackProgress() {
     recommendedTopicIds: [],
     lastAssessmentPerfect: false,
     lastTestMode: "assessment",
-    assessmentAttempts: 0
+    assessmentAttempts: 0,
+    assessmentDifficultySelection: 3
   };
 }
 
@@ -504,6 +507,8 @@ function getDefaultUserProfile() {
 }
 
 function sanitizeTrackProgress(progress = {}) {
+  const sanitizedDifficulty = normalizeDifficultyLevel(progress.assessmentDifficultySelection);
+
   return {
     totalXp: progress.totalXp || 0,
     topicPerformance: progress.topicPerformance || {},
@@ -511,7 +516,8 @@ function sanitizeTrackProgress(progress = {}) {
     recommendedTopicIds: Array.isArray(progress.recommendedTopicIds) ? progress.recommendedTopicIds : [],
     lastAssessmentPerfect: Boolean(progress.lastAssessmentPerfect),
     lastTestMode: progress.lastTestMode === "challenge" ? "challenge" : "assessment",
-    assessmentAttempts: progress.assessmentAttempts || 0
+    assessmentAttempts: progress.assessmentAttempts || 0,
+    assessmentDifficultySelection: sanitizedDifficulty || 3
   };
 }
 
@@ -523,7 +529,8 @@ function getCurrentTrackProgressPayload() {
     recommendedTopicIds,
     lastAssessmentPerfect,
     lastTestMode,
-    assessmentAttempts
+    assessmentAttempts,
+    assessmentDifficultySelection: selectedAssessmentDifficulty
   });
 }
 
@@ -1176,8 +1183,88 @@ function getDifficultyLabel(difficulty) {
   return difficulty.charAt(0).toUpperCase() + difficulty.slice(1);
 }
 
-function getAssessmentLevelFromAttempts(attempts = assessmentAttempts) {
-  return Math.min(Math.max((attempts || 0) + 1, 1), 5);
+function getAvailableAssessmentDifficultyLevels(topics = quizTopics) {
+  return topics
+    .flatMap((topic) => topic.questions || [])
+    .map((question) => question.difficultyLevel)
+    .filter((level, index, levels) => level !== null && level !== undefined && levels.indexOf(level) === index)
+    .sort((firstLevel, secondLevel) => firstLevel - secondLevel);
+}
+
+function getClosestAssessmentDifficulty(level, availableLevels = getAvailableAssessmentDifficultyLevels()) {
+  if (availableLevels.length === 0) {
+    return 3;
+  }
+
+  return availableLevels.reduce((bestLevel, candidateLevel) => {
+    const bestDifference = Math.abs(bestLevel - level);
+    const candidateDifference = Math.abs(candidateLevel - level);
+
+    if (candidateDifference !== bestDifference) {
+      return candidateDifference < bestDifference ? candidateLevel : bestLevel;
+    }
+
+    return candidateLevel < bestLevel ? candidateLevel : bestLevel;
+  }, availableLevels[0]);
+}
+
+function getDefaultAssessmentDifficulty(availableLevels = getAvailableAssessmentDifficultyLevels()) {
+  return getClosestAssessmentDifficulty(3, availableLevels);
+}
+
+function getAssessmentDifficultyLabel(level, topics = quizTopics) {
+  const normalizedLevel = normalizeDifficultyLevel(level);
+
+  if (normalizedLevel === null) {
+    return "Level 3";
+  }
+
+  const labeledQuestion = topics
+    .flatMap((topic) => topic.questions || [])
+    .find((question) => question.difficultyLevel === normalizedLevel && typeof question.difficultyLabel === "string" && question.difficultyLabel.trim());
+
+  return labeledQuestion?.difficultyLabel?.trim() || `Level ${normalizedLevel}`;
+}
+
+function syncSelectedAssessmentDifficulty(preferredLevel = selectedAssessmentDifficulty) {
+  const availableLevels = getAvailableAssessmentDifficultyLevels();
+  const nextSelection = getClosestAssessmentDifficulty(
+    normalizeDifficultyLevel(preferredLevel) || getDefaultAssessmentDifficulty(availableLevels),
+    availableLevels
+  );
+
+  selectedAssessmentDifficulty = nextSelection;
+  currentAssessmentLevel = nextSelection;
+  return nextSelection;
+}
+
+function renderAssessmentDifficultyOptions() {
+  if (!assessmentDifficultySelect) {
+    return;
+  }
+
+  const availableLevels = getAvailableAssessmentDifficultyLevels();
+  const selectedLevel = syncSelectedAssessmentDifficulty(selectedAssessmentDifficulty);
+
+  assessmentDifficultySelect.innerHTML = "";
+  assessmentDifficultySelect.disabled = availableLevels.length === 0;
+
+  availableLevels.forEach((level) => {
+    const option = document.createElement("option");
+    option.value = String(level);
+    option.textContent = getAssessmentDifficultyLabel(level);
+    option.selected = level === selectedLevel;
+    assessmentDifficultySelect.appendChild(option);
+  });
+}
+
+function handleAssessmentDifficultyChange() {
+  if (!assessmentDifficultySelect) {
+    return;
+  }
+
+  syncSelectedAssessmentDifficulty(assessmentDifficultySelect.value);
+  void saveCurrentUserProgress();
 }
 
 function getRandomMessage(messages) {
@@ -1259,7 +1346,7 @@ function getTopicByConfig(config) {
   return null;
 }
 
-function buildAssessmentQuestion(config, usedQuestionIds = new Set()) {
+function buildAssessmentQuestion(config, selectedLevel = currentAssessmentLevel, usedQuestionIds = new Set()) {
   const topic = getTopicByConfig(config);
 
   if (!topic) {
@@ -1275,30 +1362,35 @@ function buildAssessmentQuestion(config, usedQuestionIds = new Set()) {
     return null;
   }
 
+  const exactLevelQuestions = matchedQuestions.filter((question) => question.difficultyLevel === selectedLevel);
+
+  if (exactLevelQuestions.length > 0) {
+    const selectedQuestion = shuffleItems(exactLevelQuestions)[0];
+
+    return {
+      ...selectedQuestion,
+      area: config.label,
+      assessmentLabel: config.label,
+      topicId: topic.id,
+      topicName: topic.name
+    };
+  }
+
   const availableLevels = matchedQuestions
     .map((question) => question.difficultyLevel)
     .filter((level, index, levels) => level !== null && levels.indexOf(level) === index)
     .sort((firstLevel, secondLevel) => firstLevel - secondLevel);
-  const closestLevel = availableLevels.reduce((bestLevel, level) => {
-    if (bestLevel === null) {
-      return level;
-    }
-
-    const bestDifference = Math.abs(bestLevel - currentAssessmentLevel);
-    const levelDifference = Math.abs(level - currentAssessmentLevel);
-
-    if (levelDifference !== bestDifference) {
-      return levelDifference < bestDifference ? level : bestLevel;
-    }
-
-    return level < bestLevel ? level : bestLevel;
-  }, null);
-  const levelMatchedQuestions = matchedQuestions.filter((question) => question.difficultyLevel === closestLevel);
-  const selectedQuestion = levelMatchedQuestions[0] || matchedQuestions[0];
+  const fallbackLevel = getClosestAssessmentDifficulty(selectedLevel, availableLevels);
+  const fallbackQuestions = matchedQuestions.filter((question) => question.difficultyLevel === fallbackLevel);
+  const selectedQuestion = shuffleItems(fallbackQuestions.length > 0 ? fallbackQuestions : matchedQuestions)[0];
 
   if (!selectedQuestion) {
     return null;
   }
+
+  console.warn(
+    `[assessment] No exact level ${selectedLevel} question for "${config.label}". Using level ${fallbackLevel || selectedQuestion.difficultyLevel || "unknown"}.`
+  );
 
   return {
     ...selectedQuestion,
@@ -1356,6 +1448,7 @@ function resetRunStats() {
 function buildDiagnosticQuestions() {
   const activeTrack = getActiveTrack();
   const usedQuestionIds = new Set();
+  const selectedLevel = syncSelectedAssessmentDifficulty(selectedAssessmentDifficulty);
 
   if (!activeTrack) {
     return [];
@@ -1363,7 +1456,7 @@ function buildDiagnosticQuestions() {
 
   return activeTrack.assessmentTopicOrder
     .map((config) => {
-      const question = buildAssessmentQuestion(config, usedQuestionIds);
+      const question = buildAssessmentQuestion(config, selectedLevel, usedQuestionIds);
 
       if (question) {
         usedQuestionIds.add(question.id);
@@ -1498,7 +1591,8 @@ function loadSavedProgress(progress = {}) {
   lastAssessmentPerfect = Boolean(progress.lastAssessmentPerfect);
   lastTestMode = progress.lastTestMode === "challenge" ? "challenge" : "assessment";
   assessmentAttempts = progress.assessmentAttempts || 0;
-  currentAssessmentLevel = getAssessmentLevelFromAttempts(assessmentAttempts);
+  selectedAssessmentDifficulty = normalizeDifficultyLevel(progress.assessmentDifficultySelection) || 3;
+  syncSelectedAssessmentDifficulty(selectedAssessmentDifficulty);
   updateGlobalLevelDisplay();
 }
 
@@ -1542,6 +1636,7 @@ function openTestSelection() {
   lastAssessmentPerfect = false;
   lastTestMode = "assessment";
   assessmentAttempts = 0;
+  selectedAssessmentDifficulty = 3;
   currentAssessmentLevel = 1;
   updateGlobalLevelDisplay();
   announceStatus("Choose the test you want to prepare for.");
@@ -1565,6 +1660,7 @@ function openAspireSelection() {
   lastAssessmentPerfect = false;
   lastTestMode = "assessment";
   assessmentAttempts = 0;
+  selectedAssessmentDifficulty = 3;
   currentAssessmentLevel = 1;
   updateTrackContent();
   updateGlobalLevelDisplay();
@@ -1601,6 +1697,7 @@ function clearAuthenticatedSessionState() {
   lastAssessmentPerfect = false;
   lastTestMode = "assessment";
   assessmentAttempts = 0;
+  selectedAssessmentDifficulty = 3;
   currentAssessmentLevel = 1;
   resetTransientState();
   updateTrackContent();
@@ -1622,6 +1719,7 @@ function loginAsAuthenticatedUser(email, uid, profile) {
   lastAssessmentPerfect = false;
   lastTestMode = "assessment";
   assessmentAttempts = 0;
+  selectedAssessmentDifficulty = 3;
   currentAssessmentLevel = 1;
   resetTransientState();
   updateTrackContent();
@@ -1774,6 +1872,7 @@ function handleGuestMode() {
   lastAssessmentPerfect = false;
   lastTestMode = "assessment";
   assessmentAttempts = 0;
+  selectedAssessmentDifficulty = 3;
   currentAssessmentLevel = 1;
   resetTransientState();
   updateTrackContent();
@@ -1913,8 +2012,10 @@ function updateTrackContent() {
   }
 
   if (welcomeDescription) {
-    welcomeDescription.textContent = activeTrack?.welcomeDescription || "Answer a few mixed math questions, see your recommended focus areas, and get a study plan before you practice.";
+    welcomeDescription.textContent = "Choose a difficulty level for this assessment.";
   }
+
+  renderAssessmentDifficultyOptions();
 
   retakeAssessmentButton.textContent = activeTrack?.key === "act"
     ? "Retake ACT Assessment"
@@ -2316,12 +2417,15 @@ function startAssessment() {
   currentMode = "assessment";
   currentSessionType = "assessment";
   currentTopic = null;
-  currentAssessmentLevel = getAssessmentLevelFromAttempts();
+  currentAssessmentLevel = syncSelectedAssessmentDifficulty(
+    normalizeDifficultyLevel(assessmentDifficultySelect?.value) || selectedAssessmentDifficulty
+  );
   diagnosticQuestions = buildDiagnosticQuestions();
   currentQuestionSet = diagnosticQuestions;
   currentQuestionIndex = 0;
   assessmentResults = [];
   resetRunStats();
+  void saveCurrentUserProgress();
   renderQuestion();
   showScreen("quiz");
 }
@@ -2391,13 +2495,11 @@ function renderQuestion() {
     : currentSessionType === "review"
       ? "Revisit missed questions and lock in the right steps."
       : "Work through the topic and build your score.";
-  assessmentNoticeText.textContent = !isChallenge && isAssessment && currentAssessmentLevel > 1
-    ? "You are taking a more advanced assessment."
-    : "";
-  assessmentNoticeText.classList.toggle("hidden", !(isAssessment && !isChallenge && currentAssessmentLevel > 1));
+  assessmentNoticeText.textContent = "";
+  assessmentNoticeText.classList.add("hidden");
   progressText.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestionSet.length}`;
   difficultyText.textContent = isAssessment
-    ? `${isChallenge ? "Challenge" : "Assessment"} level: ${question.difficultyLevel || currentAssessmentLevel} of 5`
+    ? `${isChallenge ? "Challenge" : "Assessment"} difficulty: ${getAssessmentDifficultyLabel(question.difficultyLevel || currentAssessmentLevel)}`
     : `Difficulty: ${getDifficultyLabel(question.difficulty || "medium")}`;
   encouragementText.textContent = isAssessment ? "Show what you know." : "Stay focused and keep building.";
   reviewText.classList.toggle("hidden", !question.isReview);
@@ -2571,7 +2673,9 @@ function finalizeTestSession() {
   if (currentMode === "assessment") {
     assessmentAttempts += 1;
   }
-  currentAssessmentLevel = getAssessmentLevelFromAttempts();
+  currentAssessmentLevel = currentMode === "assessment"
+    ? syncSelectedAssessmentDifficulty(selectedAssessmentDifficulty)
+    : currentAssessmentLevel;
 
   reportScore.textContent = `Overall score: ${correctCount}/${questionCount} (${scorePercent}%)`;
   focusText.textContent = lastAssessmentPerfect
@@ -2756,6 +2860,7 @@ aspireTrackButton.addEventListener("click", openAspireSelection);
 aspireGrade9Button.addEventListener("click", () => enterTrack("aspireGrade9"));
 aspireGrade10Button.addEventListener("click", () => enterTrack("aspireGrade10"));
 aspireSelectionBackButton.addEventListener("click", openTestSelection);
+assessmentDifficultySelect?.addEventListener("change", handleAssessmentDifficultyChange);
 startAssessmentButton.addEventListener("click", startAssessment);
 startChallengeButton.addEventListener("click", startChallengeTest);
 stepperButtons.forEach((button) => {
