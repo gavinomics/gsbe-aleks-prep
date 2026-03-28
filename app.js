@@ -2659,11 +2659,11 @@ async function loadTrackCatalog() {
     aspireGrade9GuidesResponse,
     aspireGrade10GuidesResponse
   ] = await Promise.all([
-    fetch("apps/aleks.json"),
-    fetch("apps/act_math_bank_actlike_v2_app.json"),
+    fetch("apps/aleks_expanded.json"),
+    fetch("apps/act_math_bank_actlike_v2_app_expanded.json"),
     fetch("apps/act_math_study_guides_actlike_v2.json"),
-    fetch("apps/aspire_plus_grade9_math_bank.json"),
-    fetch("apps/aspire_plus_grade10_math_bank.json"),
+    fetch("apps/aspire_plus_grade9_math_bank_expanded.json"),
+    fetch("apps/aspire_plus_grade10_math_bank_expanded.json"),
     fetch("apps/aspire_plus_grade9_study_guides.json"),
     fetch("apps/aspire_plus_grade10_study_guides.json")
   ]);
@@ -2697,6 +2697,10 @@ async function loadTrackCatalog() {
     aspireGrade9GuidesResponse.json(),
     aspireGrade10GuidesResponse.json()
   ]);
+
+  [placementData, actData, aspireGrade9Data, aspireGrade10Data].forEach((bank) => {
+    console.log("Loaded expanded bank:", bank.metadata?.questionCount);
+  });
 
   trackCatalog = {
     placement: {
