@@ -29,6 +29,7 @@ const screens = {
   testSelection: document.getElementById("test-selection-screen"),
   aspireSelection: document.getElementById("aspire-selection-screen"),
   welcome: document.getElementById("welcome-screen"),
+  challenge: document.getElementById("challenge-screen"),
   report: document.getElementById("report-screen"),
   studyPlan: document.getElementById("study-plan-screen"),
   reviewMistakes: document.getElementById("review-mistakes-screen"),
@@ -56,6 +57,7 @@ const aspireGrade10Button = document.getElementById("aspire-grade10-button");
 const aspireSelectionBackButton = document.getElementById("aspire-selection-back-button");
 const currentTrackText = document.getElementById("current-track-text");
 const startAssessmentButton = document.getElementById("start-assessment-button");
+const startChallengeButton = document.getElementById("start-challenge-button");
 const recommendedTopicList = document.getElementById("recommended-topic-list");
 const allTopicList = document.getElementById("all-topic-list");
 const studyPlanHeading = document.getElementById("study-plan-heading");
@@ -349,6 +351,7 @@ let totalXp = 0;
 let topicPerformance = {};
 let mistakesByTopic = {};
 let lastAssessmentPerfect = false;
+let lastTestMode = "assessment";
 let currentUser = null;
 let currentUserUid = null;
 let currentUserProfile = null;
@@ -431,6 +434,7 @@ function getDefaultTrackProgress() {
     mistakesByTopic: {},
     recommendedTopicIds: [],
     lastAssessmentPerfect: false,
+    lastTestMode: "assessment",
     assessmentAttempts: 0
   };
 }
@@ -506,6 +510,7 @@ function sanitizeTrackProgress(progress = {}) {
     mistakesByTopic: normalizeMistakesByTopic(progress.mistakesByTopic),
     recommendedTopicIds: Array.isArray(progress.recommendedTopicIds) ? progress.recommendedTopicIds : [],
     lastAssessmentPerfect: Boolean(progress.lastAssessmentPerfect),
+    lastTestMode: progress.lastTestMode === "challenge" ? "challenge" : "assessment",
     assessmentAttempts: progress.assessmentAttempts || 0
   };
 }
@@ -517,6 +522,7 @@ function getCurrentTrackProgressPayload() {
     mistakesByTopic,
     recommendedTopicIds,
     lastAssessmentPerfect,
+    lastTestMode,
     assessmentAttempts
   });
 }
@@ -728,6 +734,22 @@ function getCurrentScreenName() {
   return Object.entries(screens).find(([, screen]) => !screen.hidden)?.[0] || "login";
 }
 
+function isTestMode(mode = currentMode) {
+  return mode === "assessment" || mode === "challenge";
+}
+
+function getModeDisplayName(mode = currentMode) {
+  return mode === "challenge" ? "Challenge Test" : "Assessment";
+}
+
+function getTestIntroScreen(mode = currentMode) {
+  return mode === "challenge" ? "challenge" : "welcome";
+}
+
+function hasCompletedAnyTest() {
+  return assessmentAttempts > 0 || lastAssessmentPerfect || recommendedTopicIds.length > 0;
+}
+
 function getScreenHeading(screen) {
   return screen?.querySelector("h2, h1, h3") || null;
 }
@@ -738,10 +760,11 @@ function getScreenTitle(screenName) {
     testSelection: "Choose Test",
     aspireSelection: "Choose Aspire Test",
     welcome: "Assessment",
+    challenge: "Challenge Test",
     report: "Assessment",
     studyPlan: "Study Plan",
     reviewMistakes: "Study Plan",
-    quiz: currentMode === "assessment" ? "Assessment" : "Study Plan",
+    quiz: isTestMode() ? getModeDisplayName() : "Study Plan",
     complete: "Study Plan"
   };
 
@@ -767,8 +790,20 @@ function getStepperStep(screenName) {
     return "assessment";
   }
 
+  if (screenName === "challenge") {
+    return "challenge";
+  }
+
   if (screenName === "quiz") {
-    return currentMode === "assessment" ? "assessment" : "study";
+    if (currentMode === "assessment") {
+      return "assessment";
+    }
+
+    if (currentMode === "challenge") {
+      return "challenge";
+    }
+
+    return "study";
   }
 
   if (["studyPlan", "reviewMistakes", "complete"].includes(screenName)) {
@@ -790,15 +825,23 @@ function hasAssessmentStartedOrCompleted(screenName = getCurrentScreenName()) {
 }
 
 function hasAssessmentCompleted() {
-  return assessmentAttempts > 0;
+  return hasCompletedAnyTest();
 }
 
 function getAssessmentNavigationTarget(screenName = getCurrentScreenName()) {
-  if (screenName === "welcome" || (!hasAssessmentCompleted() && hasAssessmentStartedOrCompleted(screenName))) {
-    return "welcome";
+  if (screenName === "quiz" && currentMode === "assessment") {
+    return "quiz";
   }
 
-  return "report";
+  return "welcome";
+}
+
+function getChallengeNavigationTarget(screenName = getCurrentScreenName()) {
+  if (screenName === "quiz" && currentMode === "challenge") {
+    return "quiz";
+  }
+
+  return "challenge";
 }
 
 function canNavigateToStep(stepName, screenName = getCurrentScreenName()) {
@@ -807,11 +850,15 @@ function canNavigateToStep(stepName, screenName = getCurrentScreenName()) {
   }
 
   if (stepName === "assessment") {
-    return hasAssessmentStartedOrCompleted(screenName);
+    return Boolean(getActiveTrack());
   }
 
   if (stepName === "study") {
     return hasAssessmentCompleted();
+  }
+
+  if (stepName === "challenge") {
+    return Boolean(getActiveTrack());
   }
 
   return false;
@@ -834,6 +881,11 @@ function handleStepperNavigation(stepName) {
 
   if (stepName === "study") {
     showStudyPlan();
+    return;
+  }
+
+  if (stepName === "challenge") {
+    showScreen(getChallengeNavigationTarget());
   }
 }
 
@@ -1257,6 +1309,40 @@ function buildAssessmentQuestion(config, usedQuestionIds = new Set()) {
   };
 }
 
+function getQuestionsForAssessmentConfig(config, usedQuestionIds = new Set()) {
+  const topic = getTopicByConfig(config);
+
+  if (!topic) {
+    return [];
+  }
+
+  return getOrderedQuestions(topic.questions)
+    .filter((question) => !usedQuestionIds.has(question.id))
+    .filter((question) => (
+      typeof config.questionMatcher === "function"
+        ? config.questionMatcher(question)
+        : true
+    ))
+    .map((question) => ({
+      ...question,
+      area: config.label,
+      assessmentLabel: config.label,
+      topicId: topic.id,
+      topicName: topic.name
+    }));
+}
+
+function shuffleItems(items) {
+  const shuffled = items.slice();
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+
+  return shuffled;
+}
+
 function resetRunStats() {
   hasAnsweredCurrentQuestion = false;
   retryUsed = false;
@@ -1286,6 +1372,60 @@ function buildDiagnosticQuestions() {
       return question;
     })
     .filter(Boolean);
+}
+
+function buildChallengeQuestions(questionCount = 15) {
+  const activeTrack = getActiveTrack();
+
+  if (!activeTrack) {
+    return [];
+  }
+
+  const areaPools = activeTrack.assessmentTopicOrder
+    .map((config, orderIndex) => {
+      const areaQuestions = getQuestionsForAssessmentConfig(config);
+
+      if (areaQuestions.length === 0) {
+        return null;
+      }
+
+      const hardestLevel = areaQuestions.reduce(
+        (highestLevel, question) => Math.max(highestLevel, question.difficultyLevel || 1),
+        1
+      );
+
+      return {
+        orderIndex,
+        questions: areaQuestions.filter((question) => (question.difficultyLevel || 1) === hardestLevel)
+      };
+    })
+    .filter((pool) => pool && pool.questions.length > 0);
+  const selectedQuestions = [];
+  const usedQuestionIds = new Set();
+
+  areaPools.slice(0, questionCount).forEach((pool) => {
+    const selectedQuestion = shuffleItems(pool.questions).find((question) => !usedQuestionIds.has(question.id));
+
+    if (!selectedQuestion) {
+      return;
+    }
+
+    usedQuestionIds.add(selectedQuestion.id);
+    selectedQuestions.push(selectedQuestion);
+  });
+
+  if (selectedQuestions.length < questionCount) {
+    shuffleItems(
+      areaPools.flatMap((pool) => pool.questions.filter((question) => !usedQuestionIds.has(question.id)))
+    )
+      .slice(0, questionCount - selectedQuestions.length)
+      .forEach((question) => {
+        usedQuestionIds.add(question.id);
+        selectedQuestions.push(question);
+      });
+  }
+
+  return selectedQuestions;
 }
 
 function resetTransientState() {
@@ -1356,6 +1496,7 @@ function loadSavedProgress(progress = {}) {
   mistakesByTopic = normalizeMistakesByTopic(progress.mistakesByTopic);
   recommendedTopicIds = progress.recommendedTopicIds || [];
   lastAssessmentPerfect = Boolean(progress.lastAssessmentPerfect);
+  lastTestMode = progress.lastTestMode === "challenge" ? "challenge" : "assessment";
   assessmentAttempts = progress.assessmentAttempts || 0;
   currentAssessmentLevel = getAssessmentLevelFromAttempts(assessmentAttempts);
   updateGlobalLevelDisplay();
@@ -1399,6 +1540,7 @@ function openTestSelection() {
   mistakesByTopic = {};
   recommendedTopicIds = [];
   lastAssessmentPerfect = false;
+  lastTestMode = "assessment";
   assessmentAttempts = 0;
   currentAssessmentLevel = 1;
   updateGlobalLevelDisplay();
@@ -1421,6 +1563,7 @@ function openAspireSelection() {
   mistakesByTopic = {};
   recommendedTopicIds = [];
   lastAssessmentPerfect = false;
+  lastTestMode = "assessment";
   assessmentAttempts = 0;
   currentAssessmentLevel = 1;
   updateTrackContent();
@@ -1439,7 +1582,7 @@ function enterTrack(trackKey) {
   buildStudyPlan();
   updateHeaderIdentity();
   announceStatus(`${getActiveTrack()?.shortLabel || "Track"} selected.`);
-  showScreen(recommendedTopicIds.length > 0 || assessmentAttempts > 0 ? "studyPlan" : "welcome");
+  showScreen(hasCompletedAnyTest() ? "studyPlan" : "welcome");
 }
 
 function clearAuthenticatedSessionState() {
@@ -1456,6 +1599,7 @@ function clearAuthenticatedSessionState() {
   mistakesByTopic = {};
   recommendedTopicIds = [];
   lastAssessmentPerfect = false;
+  lastTestMode = "assessment";
   assessmentAttempts = 0;
   currentAssessmentLevel = 1;
   resetTransientState();
@@ -1476,6 +1620,7 @@ function loginAsAuthenticatedUser(email, uid, profile) {
   mistakesByTopic = {};
   recommendedTopicIds = [];
   lastAssessmentPerfect = false;
+  lastTestMode = "assessment";
   assessmentAttempts = 0;
   currentAssessmentLevel = 1;
   resetTransientState();
@@ -1627,6 +1772,7 @@ function handleGuestMode() {
   mistakesByTopic = {};
   recommendedTopicIds = [];
   lastAssessmentPerfect = false;
+  lastTestMode = "assessment";
   assessmentAttempts = 0;
   currentAssessmentLevel = 1;
   resetTransientState();
@@ -1781,6 +1927,22 @@ function updateTrackContent() {
   updateHeaderIdentity();
 }
 
+function getDefaultStudyPlanDescription() {
+  return getActiveTrack()?.studyPlanDescription || "Recommended topics are shown first based on your assessment. You can still study any topic.";
+}
+
+function getStudyPlanSummaryMessage() {
+  if (!hasCompletedAnyTest()) {
+    return getDefaultStudyPlanDescription();
+  }
+
+  if (lastAssessmentPerfect) {
+    return `${getModeDisplayName(lastTestMode)} complete. You are in strong shape.`;
+  }
+
+  return `${getModeDisplayName(lastTestMode)} complete. Focus on the areas below to tighten up the gaps.`;
+}
+
 function updateGameStats(answeredCount = currentQuestionIndex) {
   const questionCount = currentQuestionSet.length || 1;
   const progressPercent = (answeredCount / questionCount) * 100;
@@ -1794,7 +1956,7 @@ function updateGameStats(answeredCount = currentQuestionIndex) {
     masteryText.textContent = `Mastery: ${mastery}%`;
     masteryFill.style.width = `${mastery}%`;
   } else {
-    masteryText.textContent = "Mastery: Assessment";
+    masteryText.textContent = `Mastery: ${getModeDisplayName()}`;
     masteryFill.style.width = "0%";
   }
 
@@ -2014,7 +2176,7 @@ function formatVideoLabel(title = "") {
 
 function getTopicRecommendationReason(topic, isRecommended) {
   if (isRecommended) {
-    return "Recommended because this topic needs more review from your assessment.";
+    return "Recommended because this topic needs more review from your latest test.";
   }
 
   if (lastAssessmentPerfect) {
@@ -2065,16 +2227,19 @@ function buildStudyPlan() {
   recommendedTopicList.innerHTML = "";
   allTopicList.innerHTML = "";
   updateReviewMistakesButton();
+  studyPlanDescription.textContent = getStudyPlanSummaryMessage();
 
   const recommendedTopics = getOrderedTopics(quizTopics.filter((topic) => recommendedTopicIds.includes(topic.id)));
   const orderedTopics = getOrderedTopics();
 
   if (lastAssessmentPerfect) {
-    studyPlanFocus.textContent = "Great work. You covered every assessment topic correctly, so use the full plan for extra review.";
+    studyPlanFocus.textContent = "Great work. You covered every tested area correctly, so use the full plan for extra review.";
   } else if (recommendedTopics.length > 0) {
     studyPlanFocus.textContent = `Start where it matters most: ${recommendedTopics.map((topic) => topic.name).join(", ")}`;
   } else {
-    studyPlanFocus.textContent = "Complete the diagnostic to see priority study areas.";
+    studyPlanFocus.textContent = hasCompletedAnyTest()
+      ? "No weak areas were identified. Use the full plan for extra review."
+      : "Complete the diagnostic to see priority study areas.";
   }
 
   recommendedTopics.forEach((topic) => {
@@ -2089,8 +2254,8 @@ function buildStudyPlan() {
     const message = document.createElement("div");
     message.className = "success-state";
     message.innerHTML = `
-      <p class="success-state-title">Assessment complete. You are in strong shape.</p>
-      <p class="panel-text">Study all areas for extra review, or jump into any topic to stay ready.</p>
+      <p class="success-state-title">${hasCompletedAnyTest() ? "No priority topics right now." : "No recommended topics yet."}</p>
+      <p class="panel-text">${hasCompletedAnyTest() ? "Study all areas for extra review, or jump into any topic to stay ready." : "Complete a test to unlock a focused recommendation list."}</p>
     `;
     recommendedTopicList.appendChild(message);
   }
@@ -2161,6 +2326,22 @@ function startAssessment() {
   showScreen("quiz");
 }
 
+function startChallengeTest() {
+  if (!getActiveTrack()) {
+    return;
+  }
+
+  currentMode = "challenge";
+  currentSessionType = "challenge";
+  currentTopic = null;
+  currentQuestionSet = buildChallengeQuestions();
+  currentQuestionIndex = 0;
+  assessmentResults = [];
+  resetRunStats();
+  renderQuestion();
+  showScreen("quiz");
+}
+
 function startTopic(topicId) {
   currentMode = "topic";
   currentSessionType = "topic";
@@ -2185,29 +2366,38 @@ function startReviewMistakes() {
 }
 
 function renderQuestion() {
-  const isAssessment = currentMode === "assessment";
+  const isAssessment = isTestMode();
+  const isChallenge = currentMode === "challenge";
   const activeTrack = getActiveTrack();
   const question = currentQuestionSet[currentQuestionIndex];
 
   if (!question) {
-    showCompleteScreen();
+    if (isAssessment) {
+      finalizeTestSession();
+    } else {
+      showCompleteScreen();
+    }
     return;
   }
 
   currentQuestion = question;
-  topicTitle.textContent = isAssessment ? activeTrack?.assessmentTitle || "Diagnostic Assessment" : currentTopic.name;
+  topicTitle.textContent = isAssessment
+    ? (isChallenge ? "Challenge Test" : activeTrack?.assessmentTitle || "Diagnostic Assessment")
+    : currentTopic.name;
   quizModeText.textContent = isAssessment
-    ? "Answer these mixed questions to build your study plan."
+    ? (isChallenge
+      ? "Answer these hardest-tier questions to see whether you are ready across all areas."
+      : "Answer these mixed questions to build your study plan.")
     : currentSessionType === "review"
       ? "Revisit missed questions and lock in the right steps."
       : "Work through the topic and build your score.";
-  assessmentNoticeText.textContent = isAssessment && currentAssessmentLevel > 1
+  assessmentNoticeText.textContent = !isChallenge && isAssessment && currentAssessmentLevel > 1
     ? "You are taking a more advanced assessment."
     : "";
-  assessmentNoticeText.classList.toggle("hidden", !(isAssessment && currentAssessmentLevel > 1));
+  assessmentNoticeText.classList.toggle("hidden", !(isAssessment && !isChallenge && currentAssessmentLevel > 1));
   progressText.textContent = `Question ${currentQuestionIndex + 1} of ${currentQuestionSet.length}`;
   difficultyText.textContent = isAssessment
-    ? `Assessment level: ${question.difficultyLevel || currentAssessmentLevel} of 5`
+    ? `${isChallenge ? "Challenge" : "Assessment"} level: ${question.difficultyLevel || currentAssessmentLevel} of 5`
     : `Difficulty: ${getDifficultyLabel(question.difficulty || "medium")}`;
   encouragementText.textContent = isAssessment ? "Show what you know." : "Stay focused and keep building.";
   reviewText.classList.toggle("hidden", !question.isReview);
@@ -2276,7 +2466,7 @@ function handleAnswer(selectedIndex, options = {}) {
   });
   dontKnowButton.disabled = true;
 
-  if (currentMode === "assessment" && !retryUsed) {
+  if (isTestMode() && !retryUsed) {
     assessmentResults[currentQuestionIndex] = {
       area: activeQuestion.area,
       topicId: activeQuestion.topicId,
@@ -2322,7 +2512,7 @@ function handleAnswer(selectedIndex, options = {}) {
   const isLastQuestion = currentQuestionIndex === currentQuestionSet.length - 1;
 
   nextButton.textContent = isLastQuestion
-    ? (currentMode === "assessment" ? "View Report" : "Finish Level")
+    ? (isTestMode() ? "View Study Plan" : "Finish Level")
     : "Next Question";
   nextButton.classList.remove("hidden");
 
@@ -2353,8 +2543,8 @@ function handleNextStep() {
   const isLastQuestion = currentQuestionIndex === currentQuestionSet.length - 1;
 
   if (isLastQuestion) {
-    if (currentMode === "assessment") {
-      showAssessmentReport();
+    if (isTestMode()) {
+      finalizeTestSession();
     } else {
       showCompleteScreen();
     }
@@ -2365,7 +2555,7 @@ function handleNextStep() {
   renderQuestion();
 }
 
-function showAssessmentReport() {
+function finalizeTestSession() {
   const correctCount = assessmentResults.filter((result) => result.correct).length;
   const questionCount = assessmentResults.length || 1;
   const scorePercent = Math.round((correctCount / questionCount) * 100);
@@ -2377,7 +2567,10 @@ function showAssessmentReport() {
 
   recommendedTopicIds = missedTopicIds;
   lastAssessmentPerfect = scorePercent === 100;
-  assessmentAttempts += 1;
+  lastTestMode = currentMode === "challenge" ? "challenge" : "assessment";
+  if (currentMode === "assessment") {
+    assessmentAttempts += 1;
+  }
   currentAssessmentLevel = getAssessmentLevelFromAttempts();
 
   reportScore.textContent = `Overall score: ${correctCount}/${questionCount} (${scorePercent}%)`;
@@ -2387,8 +2580,8 @@ function showAssessmentReport() {
 
   buildStudyPlan();
   void saveCurrentUserProgress();
-  announceStatus("Assessment complete. Recommendations updated.");
-  showScreen("report");
+  announceStatus(`${getModeDisplayName(lastTestMode)} complete. Recommendations updated.`);
+  showStudyPlan();
 }
 
 function showStudyPlan() {
@@ -2415,11 +2608,11 @@ function showCompleteScreen() {
 }
 
 function handleBack() {
-  if (currentMode === "assessment") {
-    if (recommendedTopicIds.length > 0 || assessmentAttempts > 0) {
+  if (isTestMode()) {
+    if (hasCompletedAnyTest()) {
       showStudyPlan();
     } else {
-      showScreen("welcome");
+      showScreen(getTestIntroScreen());
     }
     return;
   }
@@ -2560,6 +2753,7 @@ aspireGrade9Button.addEventListener("click", () => enterTrack("aspireGrade9"));
 aspireGrade10Button.addEventListener("click", () => enterTrack("aspireGrade10"));
 aspireSelectionBackButton.addEventListener("click", openTestSelection);
 startAssessmentButton.addEventListener("click", startAssessment);
+startChallengeButton.addEventListener("click", startChallengeTest);
 stepperButtons.forEach((button) => {
   button.addEventListener("click", () => handleStepperNavigation(button.dataset.stepButton));
 });

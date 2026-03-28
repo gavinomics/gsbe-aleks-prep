@@ -49,6 +49,9 @@
         <li data-step="study">
           <button class="stepper-button" data-step-button="study" type="button">Study Plan</button>
         </li>
+        <li data-step="challenge">
+          <button class="stepper-button" data-step-button="challenge" type="button">Challenge Test</button>
+        </li>
       </ol>
     </header>
 
@@ -138,6 +141,28 @@
         </p>
       </div>
       <button id="start-assessment-button" class="primary-button" type="button">Start Assessment</button>
+    </section>
+
+    <section id="challenge-screen" class="panel hidden">
+      <div class="welcome-logo-wrap">
+        <img
+          class="welcome-logo"
+          src="assets/images/cec-logo-circle.png"
+          alt="CEC circular logo"
+        >
+      </div>
+      <div class="welcome-badge">Challenge Test</div>
+      <h2>Challenge Test</h2>
+      <p class="panel-text">
+        This test pulls from the hardest questions in each area. If you can confidently answer all 15 questions correctly, you are likely very well prepared.
+      </p>
+      <div class="welcome-message" aria-label="challenge test explanation">
+        <p class="welcome-message-lead">Push your readiness.</p>
+        <p class="welcome-message-body">
+          This mode uses the hardest questions available in each area.
+        </p>
+      </div>
+      <button id="start-challenge-button" class="primary-button" type="button">Start Challenge Test</button>
     </section>
 
     <section id="report-screen" class="panel hidden">
